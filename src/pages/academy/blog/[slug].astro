@@ -1,0 +1,333 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+// Placeholder blog posts data
+const allPosts = [
+  {
+    title: "KI im Mittelstand: 5 Strategien für den erfolgreichen Einstieg",
+    excerpt: "Der Einstieg in KI muss nicht kompliziert sein. Wir zeigen Ihnen fünf bewährte Strategien, mit denen mittelständische Unternehmen erfolgreich starten.",
+    date: "15. November 2024",
+    category: "Strategie",
+    slug: "ki-mittelstand-strategien",
+    readTime: "8 min",
+    author: "Marco Heer",
+    content: `
+      <h2>Warum KI gerade für den Mittelstand relevant ist</h2>
+      <p>Künstliche Intelligenz ist längst keine Zukunftstechnologie mehr. Gerade mittelständische Unternehmen können von KI-Lösungen profitieren, ohne Millionen investieren zu müssen.</p>
+
+      <h2>Strategie 1: Mit einem konkreten Use Case starten</h2>
+      <p>Beginnen Sie nicht mit der großen KI-Transformation, sondern mit einem konkreten Problem, das gelöst werden soll. Beispiele sind Kundenanfragen automatisieren, Dokumente klassifizieren oder Prognosen erstellen.</p>
+
+      <h2>Strategie 2: Auf bestehende Tools setzen</h2>
+      <p>Sie müssen keine eigene KI entwickeln. Nutzen Sie vorhandene Lösungen wie ChatGPT, Microsoft Copilot oder spezialisierte Branchen-Tools. Die Integration ist oft einfacher als gedacht.</p>
+
+      <h2>Strategie 3: Mitarbeiter frühzeitig einbinden</h2>
+      <p>KI-Projekte scheitern häufig an der Akzeptanz. Binden Sie Ihre Mitarbeiter von Anfang an ein und zeigen Sie den konkreten Nutzen für ihren Arbeitsalltag.</p>
+
+      <h2>Strategie 4: Datenbasis aufbauen</h2>
+      <p>KI braucht Daten. Beginnen Sie damit, Ihre vorhandenen Daten zu strukturieren und zugänglich zu machen. Das ist oft der wichtigste Grundstein für alle weiteren KI-Projekte.</p>
+
+      <h2>Strategie 5: Expertise aufbauen</h2>
+      <p>Investieren Sie in das Know-how Ihrer Mitarbeiter. Ob durch Schulungen, Workshops oder externe Beratung - KI-Kompetenz im Unternehmen ist entscheidend für den langfristigen Erfolg.</p>
+
+      <h2>Fazit</h2>
+      <p>Der Einstieg in KI muss weder teuer noch kompliziert sein. Mit der richtigen Strategie können auch mittelständische Unternehmen von den Vorteilen der Künstlichen Intelligenz profitieren.</p>
+    `
+  },
+  {
+    title: "ChatGPT für Unternehmen: Ein praktischer Leitfaden",
+    excerpt: "Von der Textgenerierung bis zur Prozessautomatisierung - so setzen Sie ChatGPT effektiv in Ihrem Unternehmen ein.",
+    date: "10. November 2024",
+    category: "Tutorial",
+    slug: "chatgpt-unternehmen-leitfaden",
+    readTime: "12 min",
+    author: "Johannes Jägers",
+    content: `
+      <h2>ChatGPT im Unternehmenskontext</h2>
+      <p>ChatGPT hat die Art und Weise revolutioniert, wie wir mit KI interagieren. Für Unternehmen bietet es zahlreiche Einsatzmöglichkeiten.</p>
+
+      <h2>Einsatzbereich 1: Textgenerierung</h2>
+      <p>Von E-Mails über Marketingtexte bis hin zu Dokumentationen - ChatGPT kann Ihre Textproduktion erheblich beschleunigen.</p>
+
+      <h2>Einsatzbereich 2: Kundenservice</h2>
+      <p>Automatisieren Sie häufige Kundenanfragen und entlasten Sie Ihr Support-Team für komplexere Aufgaben.</p>
+
+      <h2>Einsatzbereich 3: Datenanalyse</h2>
+      <p>Nutzen Sie ChatGPT, um Daten zu analysieren, Berichte zu erstellen und Insights zu generieren.</p>
+
+      <h2>Best Practices für den Unternehmenseinsatz</h2>
+      <p>Beachten Sie Datenschutzrichtlinien, etablieren Sie klare Nutzungsregeln und schulen Sie Ihre Mitarbeiter im effektiven Umgang mit dem Tool.</p>
+    `
+  },
+  {
+    title: "Die wichtigsten KI-Skills für Führungskräfte 2025",
+    excerpt: "Welche KI-Kompetenzen brauchen Führungskräfte im kommenden Jahr? Ein Überblick über Must-Have Skills.",
+    date: "5. November 2024",
+    category: "Skills",
+    slug: "ki-skills-fuehrungskraefte-2025",
+    readTime: "6 min",
+    author: "Marco Heer",
+    content: `
+      <h2>Die KI-Revolution erfordert neue Führungskompetenzen</h2>
+      <p>2025 wird ein entscheidendes Jahr für den Einsatz von KI in Unternehmen. Führungskräfte müssen sich auf neue Herausforderungen einstellen.</p>
+
+      <h2>Skill 1: KI-Strategie entwickeln</h2>
+      <p>Führungskräfte müssen verstehen, wie KI strategisch eingesetzt werden kann, um Wettbewerbsvorteile zu schaffen.</p>
+
+      <h2>Skill 2: Datengetriebene Entscheidungen</h2>
+      <p>Die Fähigkeit, KI-generierte Insights zu interpretieren und in Entscheidungen einfließen zu lassen, wird essenziell.</p>
+
+      <h2>Skill 3: Change Management für KI</h2>
+      <p>KI-Projekte erfordern Veränderungen in der Organisation. Die Fähigkeit, diese Veränderungen zu managen, ist entscheidend.</p>
+
+      <h2>Skill 4: Ethische KI-Führung</h2>
+      <p>Verantwortungsvoller Umgang mit KI, Datenschutz und Transparenz werden zu wichtigen Führungsaufgaben.</p>
+    `
+  },
+  {
+    title: "DSGVO und KI: Was Sie beachten müssen",
+    excerpt: "Datenschutz und Künstliche Intelligenz - ein Überblick über die wichtigsten rechtlichen Aspekte.",
+    date: "1. November 2024",
+    category: "Compliance",
+    slug: "dsgvo-ki-leitfaden",
+    readTime: "10 min",
+    author: "Johannes Jägers",
+    content: `
+      <h2>DSGVO und KI: Eine komplexe Beziehung</h2>
+      <p>Die Nutzung von KI-Systemen mit personenbezogenen Daten unterliegt strengen datenschutzrechtlichen Anforderungen.</p>
+
+      <h2>Rechtsgrundlagen für KI-Verarbeitung</h2>
+      <p>Für den Einsatz von KI benötigen Sie eine valide Rechtsgrundlage nach Art. 6 DSGVO. Die Einwilligung ist nur eine von mehreren Möglichkeiten.</p>
+
+      <h2>Transparenz und Informationspflichten</h2>
+      <p>Betroffene Personen müssen über den Einsatz von KI-Systemen informiert werden, insbesondere bei automatisierten Entscheidungen.</p>
+
+      <h2>Auftragsverarbeitung bei KI-Diensten</h2>
+      <p>Bei der Nutzung externer KI-Dienste wie ChatGPT müssen Auftragsverarbeitungsverträge geschlossen werden.</p>
+
+      <h2>Technische und organisatorische Maßnahmen</h2>
+      <p>Implementieren Sie angemessene Sicherheitsmaßnahmen zum Schutz der verarbeiteten Daten.</p>
+    `
+  },
+  {
+    title: "ROI von KI-Projekten: So messen Sie den Erfolg",
+    excerpt: "Wie berechnet man den Return on Investment bei KI-Projekten? Praktische Frameworks und Methoden.",
+    date: "25. Oktober 2024",
+    category: "Business",
+    slug: "roi-ki-projekte",
+    readTime: "7 min",
+    author: "Marco Heer",
+    content: `
+      <h2>Die Herausforderung der ROI-Messung bei KI</h2>
+      <p>KI-Projekte haben oft indirekte Vorteile, die schwer zu quantifizieren sind. Ein strukturierter Ansatz ist notwendig.</p>
+
+      <h2>Direkte Kosteneinsparungen</h2>
+      <p>Messen Sie die eingesparten Arbeitsstunden, reduzierten Fehlerquoten und beschleunigten Prozesse.</p>
+
+      <h2>Qualitative Verbesserungen</h2>
+      <p>Kundenzufriedenheit, Mitarbeiterzufriedenheit und Entscheidungsqualität sind wichtige weiche Faktoren.</p>
+
+      <h2>Total Cost of Ownership</h2>
+      <p>Berücksichtigen Sie alle Kosten: Implementierung, Schulung, Wartung und potenzielle Risiken.</p>
+
+      <h2>Ein praktisches Framework</h2>
+      <p>Definieren Sie klare KPIs vor dem Projektstart und messen Sie diese regelmäßig über den gesamten Projektverlauf.</p>
+    `
+  },
+  {
+    title: "Von der Idee zum KI-Projekt: Ein Schritt-für-Schritt Guide",
+    excerpt: "Der komplette Prozess von der ersten Idee bis zum produktiven KI-System - erklärt für Einsteiger.",
+    date: "20. Oktober 2024",
+    category: "Tutorial",
+    slug: "idee-ki-projekt-guide",
+    readTime: "15 min",
+    author: "Johannes Jägers",
+    content: `
+      <h2>Der Weg zum erfolgreichen KI-Projekt</h2>
+      <p>KI-Projekte können überwältigend wirken. Dieser Guide führt Sie Schritt für Schritt durch den gesamten Prozess.</p>
+
+      <h2>Phase 1: Ideation und Use Case Definition</h2>
+      <p>Identifizieren Sie konkrete Geschäftsprobleme, die durch KI gelöst werden können. Priorisieren Sie nach Impact und Machbarkeit.</p>
+
+      <h2>Phase 2: Feasibility Study</h2>
+      <p>Prüfen Sie die technische Machbarkeit, die Datenverfügbarkeit und die wirtschaftliche Sinnhaftigkeit.</p>
+
+      <h2>Phase 3: Proof of Concept</h2>
+      <p>Erstellen Sie einen kleinen Prototyp, um die grundsätzliche Funktionalität zu validieren.</p>
+
+      <h2>Phase 4: Pilotprojekt</h2>
+      <p>Implementieren Sie die Lösung in einem begrenzten Bereich und sammeln Sie Feedback.</p>
+
+      <h2>Phase 5: Rollout und Skalierung</h2>
+      <p>Nach erfolgreichem Pilot können Sie die Lösung auf weitere Bereiche ausweiten.</p>
+
+      <h2>Phase 6: Kontinuierliche Verbesserung</h2>
+      <p>KI-Systeme müssen regelmäßig überwacht, angepasst und verbessert werden.</p>
+    `
+  }
+];
+
+// Get slug from URL
+const { slug } = Astro.params;
+
+// Find the post
+const post = allPosts.find(p => p.slug === slug);
+
+// If not found, redirect to blog index
+if (!post) {
+  return Astro.redirect('/academy/blog');
+}
+
+// Get related posts (other posts from same category or just first 3 different posts)
+const relatedPosts = allPosts
+  .filter(p => p.slug !== slug)
+  .slice(0, 3);
+---
+
+<MainLayout title={`${post.title} | Academy Blog | Synclaro`} description={post.excerpt}>
+  <article class="min-h-screen bg-white">
+    <!-- Header -->
+    <header class="pt-24 pb-12 px-6 lg:px-12">
+      <div class="container mx-auto max-w-4xl">
+        <!-- Back link -->
+        <a href="/academy/blog" class="inline-flex items-center text-swiss-orange hover:text-black font-bold mb-8 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Zurück zum Blog
+        </a>
+
+        <!-- Category Badge -->
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          {post.category}
+        </span>
+
+        <!-- Title -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          {post.title}
+        </h1>
+
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span class="font-medium">{post.author}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span>{post.date}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{post.readTime} Lesezeit</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="px-6 lg:px-12 pb-16">
+      <div class="container mx-auto max-w-4xl">
+        <div class="prose prose-lg max-w-none prose-headings:font-black prose-headings:text-black prose-a:text-swiss-orange prose-a:no-underline hover:prose-a:underline prose-strong:text-black prose-blockquote:border-l-swiss-orange prose-blockquote:bg-gray-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:border-2 prose-blockquote:border-black prose-blockquote:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" set:html={post.content} />
+      </div>
+    </div>
+
+    <!-- Author Box -->
+    <section class="px-6 lg:px-12 pb-16">
+      <div class="container mx-auto max-w-4xl">
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-start gap-6">
+            <div class="w-20 h-20 bg-swiss-orange border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl font-black text-white">
+                {post.author[0]}
+              </span>
+            </div>
+            <div>
+              <h3 class="text-xl font-black mb-2">{post.author}</h3>
+              <p class="text-gray-600">
+                Experte für KI-Integration und Workflow-Automatisierung. Teil des Synclaro Academy Teams und leidenschaftlicher Verfechter von praxisnaher KI-Weiterbildung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Posts -->
+    {relatedPosts.length > 0 && (
+      <section class="px-6 lg:px-12 pb-20 bg-gray-50 py-16">
+        <div class="container mx-auto max-w-6xl">
+          <h2 class="text-3xl font-black mb-8">Weitere Artikel</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            {relatedPosts.map((related) => (
+              <a href={`/academy/blog/${related.slug}`} class="group">
+                <article class="h-full bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 overflow-hidden">
+                  <div class="p-6">
+                    <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-bold">
+                      {related.category}
+                    </span>
+                    <h3 class="font-black text-lg mt-3 mb-2 group-hover:text-swiss-orange transition-colors">
+                      {related.title}
+                    </h3>
+                    <p class="text-gray-600 text-sm line-clamp-2">
+                      {related.excerpt}
+                    </p>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+      <div class="container mx-auto max-w-4xl text-center">
+        <h2 class="text-4xl lg:text-5xl font-black text-white mb-6">
+          Bereit für Ihre KI-Weiterbildung?
+        </h2>
+        <p class="text-xl text-white/90 mb-8">
+          Entdecken Sie unsere Kurse und Workshops für Führungskräfte und Teams.
+        </p>
+        <a
+          href="/academy"
+          class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+        >
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+          <span class="relative">Academy entdecken</span>
+        </a>
+      </div>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .prose :where(h2):not(:where([class~="not-prose"] *)) {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  .prose :where(h3):not(:where([class~="not-prose"] *)) {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose :where(p):not(:where([class~="not-prose"] *)) {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+</style>

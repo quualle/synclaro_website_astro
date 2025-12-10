@@ -1,0 +1,90 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Impressum - KI Mastermind | Synclaro";
+const description = "Impressum für das Synclaro KI Mastermind Programm.";
+---
+
+<MainLayout title={title} description={description}>
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        KI MASTERMIND
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-8">
+        <span class="text-swiss-orange">Impressum</span>
+      </h1>
+
+      <div class="prose prose-lg max-w-none">
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">Angaben gemäß § 5 TMG</h2>
+          <p class="text-gray-600">
+            <strong>Synclaro</strong><br />
+            Marco Heer<br />
+            <br />
+            Deutschland
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">Kontakt</h2>
+          <p class="text-gray-600">
+            E-Mail: mastermind@synclaro.de<br />
+            Telefon: Auf Anfrage
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">Umsatzsteuer-ID</h2>
+          <p class="text-gray-600">
+            Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br />
+            DE [Nummer auf Anfrage]
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+          <p class="text-gray-600">
+            Marco Heer<br />
+            (Anschrift wie oben)
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">Streitschlichtung</h2>
+          <p class="text-gray-600 mb-4">
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" class="text-swiss-orange hover:underline">
+              https://ec.europa.eu/consumers/odr
+            </a>
+          </p>
+          <p class="text-gray-600">
+            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+            Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-2xl font-black mb-4">Haftung für Inhalte</h2>
+          <p class="text-gray-600">
+            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten
+            nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+            Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+            Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
+            rechtswidrige Tätigkeit hinweisen.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <a
+          href="/mastermind"
+          class="inline-block px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Zurück zum Mastermind
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

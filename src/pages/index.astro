@@ -1,0 +1,648 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import InsightsCarousel from '../components/InsightsCarousel';
+
+// EXACT Testimonial Texts from Hero.tsx LiveTypingFlow
+const testimonials = [
+  { text: "Marco holt mich genau da ab, wo ich stehe - endlich auf Augenhöhe", type: "testimonial" },
+  { text: "Mittelständische Unternehmen sind perfekt positioniert für KI-Transformation", type: "fact" },
+  { text: "Die Flexibilität und Kundenorientierung hat mich überzeugt - genau was wir brauchten", type: "testimonial" },
+  { text: "Jetzt fühle ich mich gewappnet für das KI-Zeitalter - das war die beste Investition", type: "testimonial" },
+  { text: "Endlich ein Coach, der Geschäftsführer von KMUs wirklich versteht", type: "testimonial" },
+  { text: "Nach dem Mastermind haben wir Klarheit und einen konkreten Fahrplan", type: "testimonial" },
+  { text: "Marco geht extrem individuell auf uns ein - keine 08/15 Beratung", type: "testimonial" },
+  { text: "Von unsicher zu handlungsfähig - die Transformation war beeindruckend", type: "quote" }
+];
+
+// EXACT Insights/Use Cases Data from InsightsSection.tsx
+const insights = [
+  {
+    id: 'companygpt',
+    category: 'USE CASE',
+    title: 'Use Case: Wissensmanagement durch Company GPT',
+    subtitle: 'Für informationslastige Jobs ab 10 Mitarbeitern.',
+    description: 'Speziell für KMUs entwickelt: Ihr gesamtes Firmenwissen rechtssicher in einem System. Keine Cloud-Risiken, volle Kontrolle. Unsere Lösung berücksichtigt Betriebsvereinbarungen und deutsche Datenschutzstandards. Sinnvoll ab 10 Mitarbeitern bei informationslastigen Jobs - nach oben ohne Limit.'
+  },
+  {
+    id: 'smartbuero',
+    category: 'USE CASE',
+    title: 'Use Case: KI-Integration im Dokumentenmanagement',
+    subtitle: 'GoBD-konform, revisionssicher, KI-unterstützt - lohnt sich bereits ab einem Mitarbeiter.',
+    description: 'Viele Mittelständler haben bereits ein DMS – aber nutzen Sie dessen KI-Potenzial? Wir integrieren intelligente Suche und Automatisierung in Ihre bestehende Infrastruktur. 100% compliant mit GoBD, DSGVO und kommenden AI Act. Keine Experimente mit Ihren Geschäftsdaten. Kann sich bereits für nur einen Mitarbeiter lohnen!'
+  },
+  {
+    id: 'schattendaten',
+    category: 'USE CASE',
+    title: 'Use Case: Schattendaten',
+    subtitle: 'Warum KMUs hier einen Vorteil gegenüber Konzernen haben.',
+    description: 'Als Mittelständler haben Sie einen entscheidenden Vorteil: überschaubare Datenmengen, klare Strukturen. Wir helfen Ihnen, aus E-Mails, Chats und Dokumenten verwertbare KPIs zu generieren – ohne millionenschwere BI-Systeme. Pragmatisch, rechtskonform, in 6-8 Wochen produktiv.'
+  },
+  {
+    id: 'ki-readiness-study',
+    category: 'MITTELSTANDS-STUDIE',
+    title: 'KI-Readiness im digitalen Mittelstand 2025',
+    subtitle: 'Warum digitalisierte KMUs bei KI zögern.',
+    description: 'Paradox: Gerade digital fortgeschrittene Mittelständler scheuen KI-Integration. Gründe: Rechtsunsicherheit (67%), fehlendes Know-how (54%), Angst vor Kontrollverlust (41%). Unsere Studie zeigt Lösungswege speziell für Unternehmen mit 10-250 Mitarbeitern.'
+  },
+  {
+    id: 'synclaro-weg',
+    category: 'KMU-METHODIK',
+    title: 'Der Synclaro-Weg: KI-Integration für den Mittelstand',
+    subtitle: 'Pragmatisch, rechtssicher, messbar.',
+    description: 'Konzernmethoden funktionieren nicht im Mittelstand. Unser Ansatz: Schnelle Piloten, überschaubare Budgets, klare Meilensteine. Durchschnittliche Projektdauer: 8 Wochen. Durchschnittliches Investment: 15-30k€. Durchschnittlicher ROI: 6 Monate.'
+  },
+  {
+    id: 'ai-act-dsgvo',
+    category: 'RECHTSSICHERHEIT',
+    title: 'AI Act & DSGVO: Praxisleitfaden für KMUs',
+    subtitle: 'Was Mittelständler wirklich beachten müssen.',
+    description: 'Der AI Act kommt – aber keine Panik! 90% der KMU-Anwendungen fallen unter "minimales Risiko". Wir zeigen Ihnen, welche Dokumentation Sie wirklich brauchen, wie Sie Betriebsräte einbinden und warum "Made in Germany" Ihr Wettbewerbsvorteil wird.'
+  }
+];
+
+// EXACT References Data from ReferencesPreviewSection.tsx
+const references = [
+  {
+    id: 'company-gpt',
+    title: 'Company GPT',
+    subtitle: 'Business Management',
+    icon: 'brain' // AI Brain icon
+  },
+  {
+    id: 'office-helper',
+    title: 'Office Helper',
+    subtitle: 'Dokumentenmanagement',
+    icon: 'document' // Document/folder icon
+  },
+  {
+    id: 'agency-reporter',
+    title: 'AgencyReporter',
+    subtitle: 'Schattendatenanalyse',
+    icon: 'chart' // Analytics chart icon
+  },
+  {
+    id: 'workflow-automation',
+    title: 'Workflow Automation',
+    subtitle: 'Prozessoptimierung',
+    icon: 'cog' // Gear/automation icon
+  }
+];
+
+// EXACT Services Data from ServicesSection.tsx
+const mainServices = [
+  {
+    id: 'coaching-11',
+    title: '1:1 Coaching',
+    subtitle: 'Individuelle Begleitung auf Ihrer Reise',
+    description: 'Persönliche Einzelsessions, maßgeschneidert auf Ihre Situation. Von KI-Grundlagen bis zur eigenständigen Entwicklung komplexer Automationen.'
+  },
+  {
+    id: 'group-coaching',
+    title: 'Gruppencoaching',
+    subtitle: '6 Monate KI-Intensivtraining für Macher',
+    description: 'Für Selbstständige und Selbstmacher, die auf die KI-Überholspur wollen. 6 Monate, 2h pro Woche: Agent-Coding, n8n, Webseiten-Bau, Hosting, GitHub, Supabase, Bild- & Video-KI. Werden Sie zu den Top 0,1% der KI-Nutzer.'
+  },
+  {
+    id: 'mastermind',
+    title: 'Mastermind',
+    subtitle: '5-Tage-Intensiv-Programm',
+    description: 'Viermal jährlich: Von ChatGPT-Nutzer zum KI-Strategen. Intensive Workshops mit konkreten Umsetzungsprojekten und individuellem 90-Tage-Plan.'
+  },
+  {
+    id: 'done-for-you',
+    title: 'Done-For-You',
+    subtitle: 'Wir setzen Ihre Projekte um',
+    description: 'Von der Idee zur fertigen Lösung. Wir übernehmen Konzeption, Entwicklung und Implementierung Ihrer KI- und Automatisierungsprojekte.'
+  }
+];
+
+// EXACT Team Data from AboutSection.tsx
+const team = {
+  marco: {
+    name: 'Marco Heer',
+    role: 'KI-Spezialist für den Mittelstand',
+    bio1: 'Nach 3 Jahren bei Cisco Systems als Pre-Sales Engineer, wo Marco Unternehmen bei der Digitalisierung begleitet hat, erkannte er: Der Mittelstand braucht andere Lösungen als Konzerne. Seit 2025 fokussiert er sich ausschließlich auf KI-Integration für digitalisierte KMUs mit 10-250 Mitarbeitern.',
+    bio2: 'Mit seiner CCNP-Zertifizierung und über 6 Jahren Erfahrung in Digitalisierung, Cybersecurity und KI bringt er technische Expertise und Mittelstands-Verständnis zusammen.'
+  },
+  phil: {
+    name: 'Phil Kempter',
+    role: 'Marketing & Vertriebsexperte',
+    bio1: 'Seit über 10 Jahren erfolgreich selbstständig – Phil ist gelernter Betriebswirt mit tiefgreifender Expertise in Marketing, Werbung und Vertrieb. Er versteht, wie Unternehmen Kunden gewinnen und langfristig binden.',
+    bio2: 'Mit seinem betriebswirtschaftlichen Fundament und jahrelanger Praxiserfahrung bringt Phil die entscheidende Perspektive ein: Wie wird KI zum echten Wettbewerbsvorteil im Vertrieb und Marketing?'
+  },
+  mission: 'KMUs die gleichen KI-Vorteile ermöglichen wie Konzernen – aber zu Mittelstandsbudgets und mit Mittelstandspragmatismus. Keine überdimensionierten Lösungen, keine endlosen Beratungsprojekte. Stattdessen: Schnelle Piloten, messbare Ergebnisse, rechtssichere Implementierung.'
+};
+
+// EXACT Stats from AboutSection.tsx
+const stats = [
+  { value: '10+', label: 'Jahre KI-Erfahrung' },
+  { value: '100%', label: 'DSGVO & AI Act compliant' },
+  { value: '24h', label: 'Reaktionszeit garantiert' }
+];
+
+// EXACT FAQ Data from FAQSection.tsx
+const faqs = [
+  {
+    question: 'Für wen sind eure Leistungen geeignet?',
+    answer: 'Für Selbstständige und KMU-Geschäftsführer, die KI und Automatisierung nicht nur verstehen, sondern praktisch nutzen wollen. Egal ob du gerade erst anfängst oder schon erste Erfahrungen hast – wir holen dich da ab, wo du stehst.'
+  },
+  {
+    question: 'Brauche ich Programmierkenntnisse?',
+    answer: 'Nein. Du lernst nicht zu programmieren, sondern KI zu koordinieren. Mit modernen Tools wie n8n, Claude Code und ChatGPT sagst du der KI, was du willst – sie setzt es um. Genau das zeigen wir dir.'
+  },
+  {
+    question: 'Was ist der Unterschied zwischen Coaching und Mastermind?',
+    answer: 'Coaching (1:1 oder Gruppe) ist individuell auf deine Situation angepasst und läuft über mehrere Wochen/Monate. Das Mastermind ist ein intensives 5-Tage-Programm viermal im Jahr mit 4-6 Teilnehmern, bei dem du vom ChatGPT-Nutzer zum KI-Strategen wirst und einen konkreten 90-Tage-Plan entwickelst.'
+  },
+  {
+    question: 'Wann macht Done-For-You Sinn?',
+    answer: 'Wenn du konkrete Automatisierungswünsche hast, aber keine Zeit oder Kapazität zur Umsetzung. Wir übernehmen Konzeption, Entwicklung und Implementierung – von einfachen Workflows bis zu hochkomplexen Systemen. Du kannst mit einer fertigen Idee kommen oder wir identifizieren gemeinsam die Potenziale mit dem höchsten ROI.'
+  },
+  {
+    question: 'Wie lange dauert ein typisches Coaching?',
+    answer: 'Das hängt von deinen Zielen ab. Ein typisches 1:1 Coaching umfasst ca. 100 Stunden, kann aber bis zu 200 Stunden gehen. Gruppencoachings haben ähnliche Umfänge. Wir erstellen einen individuellen Lehrplan basierend auf deinen Bedürfnissen.'
+  },
+  {
+    question: 'Was ist das Ziel eurer Arbeit?',
+    answer: 'Autonomie statt Abhängigkeit. Nach dem Coaching oder Mastermind sollst du eigenständig kleine bis mittelkomplexe KI- und Automatisierungsprojekte umsetzen können. Du entwickelst die Fähigkeit zu entscheiden: Was kann ich selbst machen? Was braucht professionelle Unterstützung?'
+  },
+  {
+    question: 'Ist KI-Nutzung DSGVO-konform möglich?',
+    answer: 'Ja, absolut. Datenschutz ist uns extrem wichtig. Wir zeigen dir, wie du KI-Tools rechtssicher einsetzt und implementieren nur DSGVO-konforme Lösungen. Bei Done-For-You-Projekten ist Compliance ein fester Bestandteil.'
+  },
+  {
+    question: 'Kann ich auch als Team teilnehmen?',
+    answer: 'Ja! Beim Gruppencoaching bieten wir spezielle Firmen-Gruppen an, bei denen 2+ Mitarbeiter aus deinem Unternehmen gemeinsam lernen. Das schafft eine einheitliche Wissensbasis und ist ideal für KI-Transformation im Team.'
+  },
+  {
+    question: 'Wie funktioniert die Zusammenarbeit konkret?',
+    answer: 'Nach einem kostenlosen Erstgespräch klären wir, welches Angebot am besten zu dir passt. Dann erstellen wir einen individuellen Plan oder Kostenvoranschlag. Bei Coaching und Mastermind arbeitest du an echten Projekten aus deinem Unternehmen – keine theoretischen Beispiele.'
+  },
+  {
+    question: 'Wie starte ich?',
+    answer: 'Vereinbare einfach ein unverbindliches Erstgespräch über unser Kontaktformular. Wir besprechen deine Situation, deine Ziele und empfehlen das passende Angebot. Von dort aus können wir direkt loslegen oder einen Start-Termin vereinbaren.'
+  }
+];
+---
+
+<MainLayout title="Synclaro - Coaching. Mastermind. Individuelle Software-Lösungen.">
+
+  <!-- HERO SECTION - EXACT TEXT FROM Hero.tsx -->
+  <section class="min-h-screen flex flex-col justify-center px-4 md:px-12 pt-24 pb-12 border-b-2 border-black relative overflow-hidden bg-white">
+    <!-- Background Image - ausgegrautes Swiss Architecture Bild -->
+    <div class="absolute inset-0 z-0">
+      <img src="/images/hero_swiss_architecture.png" alt="" class="w-full h-full object-cover opacity-15 grayscale" />
+    </div>
+
+    <!-- Subtle dot pattern overlay -->
+    <div class="absolute inset-0 z-[1] bg-dots opacity-[0.03]"></div>
+
+    <!-- Gradient overlay for depth -->
+    <div class="absolute inset-0 z-[2] bg-gradient-to-br from-white/80 via-transparent to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto w-full relative z-10">
+      <!-- Animated label -->
+      <div class="mb-6 flex items-center gap-3 opacity-0 animate-fade-in-up">
+        <div class="w-3 h-3 bg-swiss-orange animate-pulse-glow"></div>
+        <span class="font-mono text-xs sm:text-sm tracking-widest uppercase text-gray-500">Synclaro Academy & Solutions</span>
+      </div>
+
+      <!-- Main Headline - EXACT TEXT: "Coaching. Mastermind. Individuelle Software-Lösungen." -->
+      <div class="mb-8 md:mb-12">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] tracking-tighter">
+          <span class="block mb-2 sm:mb-4 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">Coaching.</span>
+          <span class="block mb-2 sm:mb-4 text-gray-400 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">Mastermind.</span>
+          <span class="block opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">Individuelle <span class="text-swiss-orange relative">Software-Lösungen.<span class="absolute -bottom-2 left-0 w-full h-1 bg-swiss-orange/30"></span></span></span>
+        </h1>
+      </div>
+
+      <!-- Subtitle - EXACT TEXT FROM Hero.tsx -->
+      <div class="flex flex-col items-start gap-2 mb-8 sm:mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+        <p class="text-xl sm:text-2xl lg:text-3xl font-semibold">
+          Wir befähigen für den Eintritt ins KI-Zeitalter
+        </p>
+        <p class="text-base sm:text-lg text-gray-500">
+          Maßgeschneidert • Auf Augenhöhe • Made in Bavaria
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+        <a href="/kontakt" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+          <!-- Shine effect -->
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+          <span class="relative mr-2">Kostenloses Erstgespräch (30 min)</span>
+          <svg class="relative w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Quick Navigation - Mobile/Tablet visible -->
+      <div class="flex flex-wrap gap-2 sm:gap-3 items-center mt-6 sm:mt-8 lg:hidden opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <a href="/referenzen" class="bg-gray-100 border border-black/10 px-3 sm:px-4 py-2 text-xs sm:text-sm hover:bg-gray-200 hover:border-black transition-all hover:-translate-y-0.5">
+          ✨ Referenzen
+        </a>
+        <a href="#loesungen" class="bg-gray-100 border border-black/10 px-3 sm:px-4 py-2 text-xs sm:text-sm hover:bg-gray-200 hover:border-black transition-all hover:-translate-y-0.5">
+          ⚡ Use Cases
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 opacity-0 animate-fade-in" style="animation-delay: 1s;">
+        <span class="text-xs text-gray-400 font-mono tracking-wider">SCROLL</span>
+        <div class="w-px h-12 bg-gradient-to-b from-gray-400 to-transparent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION - EXACT QUOTES FROM Hero.tsx LiveTypingFlow -->
+  <section class="py-20 px-4 md:px-12 bg-gray-50 border-b-2 border-black relative overflow-hidden">
+    <!-- Subtle background pattern -->
+    <div class="absolute inset-0 bg-grid opacity-50"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10 reveal" data-reveal>
+      <!-- Quote icon -->
+      <div class="mb-6">
+        <svg class="w-12 h-12 mx-auto text-swiss-orange/30" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+      </div>
+
+      <blockquote class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold italic leading-tight text-gray-800">
+        "{testimonials[4].text}"
+      </blockquote>
+
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <div class="w-12 h-px bg-swiss-orange"></div>
+        <p class="text-sm text-gray-500 font-mono uppercase tracking-widest">Kundenfeedback</p>
+        <div class="w-12 h-px bg-swiss-orange"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS/USE CASES SECTION - VIDEO CAROUSEL FROM InsightsSection.tsx -->
+  <section id="loesungen" class="py-16 sm:py-24 px-4 md:px-12 border-b-2 border-black relative overflow-hidden bg-white">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Section Header - EXACT TEXT -->
+      <div class="text-center mb-8 md:mb-12 reveal" data-reveal>
+        <div class="inline-flex items-center gap-2 mb-4">
+          <div class="w-8 h-px bg-swiss-orange"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-swiss-orange">Use Cases & Insights</span>
+          <div class="w-8 h-px bg-swiss-orange"></div>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4">
+          Lösungen für <span class="text-swiss-orange">unsere Kunden</span>
+        </h2>
+        <p class="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
+          Konkrete Use Cases, fundierte Studien und bewährte Strategien
+        </p>
+      </div>
+
+      <!-- Video Carousel Component -->
+      <InsightsCarousel client:visible />
+    </div>
+  </section>
+
+  <!-- REFERENCES SECTION - EXACT TEXT FROM ReferencesPreviewSection.tsx -->
+  <section class="py-16 sm:py-24 px-4 md:px-12 border-b-2 border-black relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <!-- Animated gradient background -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-swiss-orange/20 via-transparent to-transparent animate-pulse"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-swiss-orange/15 via-transparent to-transparent animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,79,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,79,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+
+    <!-- Floating particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-swiss-orange/40 rounded-full animate-float"></div>
+      <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-swiss-orange/30 rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+      <div class="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-swiss-orange/35 rounded-full animate-float" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 right-1/4 w-1 h-1 bg-white/20 rounded-full animate-float" style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      <!-- Section Header - EXACT TEXT -->
+      <div class="text-center mb-8 sm:mb-12 reveal" data-reveal>
+        <div class="inline-flex items-center gap-3 mb-4">
+          <div class="w-12 h-px bg-gradient-to-r from-transparent via-swiss-orange to-transparent"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-swiss-orange px-3 py-1 border border-swiss-orange/30 bg-swiss-orange/10 backdrop-blur-sm">Portfolio</span>
+          <div class="w-12 h-px bg-gradient-to-r from-transparent via-swiss-orange to-transparent"></div>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter mb-3 sm:mb-4 text-white">
+          Erfolgreiche <span class="text-transparent bg-clip-text bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange animate-gradient-x">Projekte</span>
+        </h2>
+        <p class="text-base sm:text-lg text-gray-400">
+          Echte Lösungen für echte Herausforderungen
+        </p>
+      </div>
+
+      <!-- References Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {references.map((reference, index) => (
+          <a
+            href="/referenzen"
+            class="group relative block h-full reveal"
+            data-reveal
+            style={`transition-delay: ${index * 0.1}s;`}
+          >
+            <!-- Glow effect behind card -->
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-swiss-orange to-orange-600 rounded-lg opacity-0 group-hover:opacity-75 blur-lg transition-all duration-500 group-hover:duration-200"></div>
+
+            <div class="relative h-full bg-gray-900/90 backdrop-blur-sm p-5 sm:p-6 border border-gray-700/50 group-hover:border-swiss-orange/50 shadow-2xl group-hover:shadow-swiss-orange/20 transition-all duration-300 overflow-hidden">
+              <!-- Shine effect on hover -->
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"></div>
+
+              <!-- Top gradient line -->
+              <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-swiss-orange/50 to-transparent"></div>
+
+              <div class="relative z-10">
+                <!-- Animated icon container -->
+                <div class="w-12 h-12 sm:w-14 sm:h-14 relative mb-4">
+                  <!-- Pulsing ring -->
+                  <div class="absolute inset-0 bg-swiss-orange/20 rounded-lg animate-ping opacity-0 group-hover:opacity-75" style="animation-duration: 2s;"></div>
+                  <!-- Icon background -->
+                  <div class="relative w-full h-full bg-gradient-to-br from-swiss-orange/20 to-orange-600/10 border border-swiss-orange/40 rounded-lg flex items-center justify-center group-hover:from-swiss-orange/30 group-hover:to-orange-600/20 transition-all duration-300 group-hover:scale-110">
+                    {reference.icon === 'brain' && (
+                      <svg class="w-6 h-6 sm:w-7 sm:h-7 text-swiss-orange group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                      </svg>
+                    )}
+                    {reference.icon === 'document' && (
+                      <svg class="w-6 h-6 sm:w-7 sm:h-7 text-swiss-orange group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    )}
+                    {reference.icon === 'chart' && (
+                      <svg class="w-6 h-6 sm:w-7 sm:h-7 text-swiss-orange group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                      </svg>
+                    )}
+                    {reference.icon === 'cog' && (
+                      <svg class="w-6 h-6 sm:w-7 sm:h-7 text-swiss-orange group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+
+                <h3 class="text-base sm:text-lg font-bold mb-1 sm:mb-2 text-white group-hover:text-swiss-orange transition-colors">
+                  {reference.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">
+                  {reference.subtitle}
+                </p>
+                <div class="flex items-center text-xs sm:text-sm text-swiss-orange font-medium">
+                  <span class="relative">
+                    Mehr erfahren
+                    <span class="absolute bottom-0 left-0 w-0 h-px bg-swiss-orange group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Button - EXACT TEXT -->
+      <div class="text-center mt-8 sm:mt-12 reveal" data-reveal>
+        <a href="/referenzen" class="group relative inline-flex items-center gap-2 bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-8 py-4 font-bold rounded-lg shadow-lg shadow-swiss-orange/30 hover:shadow-xl hover:shadow-swiss-orange/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+          <!-- Shine effect -->
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12"></div>
+          <span class="relative">Alle Referenzen ansehen</span>
+          <svg class="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION - EXACT TEXT FROM ServicesSection.tsx -->
+  <section id="services" class="py-16 sm:py-24 px-4 md:px-12 border-b-2 border-black relative overflow-hidden">
+    <!-- Subtle background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50/30 to-white pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Section Header - EXACT TEXT -->
+      <div class="text-center mb-12 sm:mb-16 reveal" data-reveal>
+        <div class="inline-flex items-center gap-2 mb-4">
+          <div class="w-8 h-px bg-swiss-orange"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-swiss-orange">Services</span>
+          <div class="w-8 h-px bg-swiss-orange"></div>
+        </div>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter mb-4 sm:mb-6">
+          Unsere <span class="text-swiss-orange">Leistungen</span>
+        </h2>
+        <p class="text-base sm:text-lg lg:text-xl text-gray-500 max-w-3xl mx-auto px-4">
+          Wählen Sie den Weg, der zu Ihnen passt – von individueller Begleitung über intensive Workshops bis zur kompletten Projektumsetzung.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {mainServices.map((service, index) => (
+          <div
+            class="group cursor-pointer reveal"
+            data-reveal
+            style={`transition-delay: ${index * 0.1}s;`}
+          >
+            <div class="relative h-full bg-white border-2 border-black/10 hover:border-black shadow-[0_0_0_0_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-2 hover:-translate-y-2 transition-all duration-300 p-8 overflow-hidden">
+              <!-- Top accent line that grows on hover -->
+              <div class="absolute top-0 left-0 w-0 h-1 bg-swiss-orange group-hover:w-full transition-all duration-500"></div>
+
+              <!-- Number badge with hover effect -->
+              <div class="w-16 h-16 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center mb-6 group-hover:bg-swiss-orange group-hover:border-swiss-orange transition-all duration-300">
+                <span class="text-2xl font-black text-swiss-orange group-hover:text-white transition-colors duration-300">0{index + 1}</span>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-2 group-hover:text-swiss-orange transition-colors duration-300">{service.title}</h3>
+              <p class="text-lg text-gray-500 mb-4">{service.subtitle}</p>
+              <p class="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+
+              <div class="flex items-center text-swiss-orange font-medium">
+                <span class="group-hover:underline">Mehr erfahren</span>
+                <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION - EXACT TEXT FROM AboutSection.tsx -->
+  <section id="about" class="py-16 sm:py-24 px-4 md:px-12 bg-gray-50 border-b-2 border-black relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute top-0 left-0 w-64 h-64 bg-swiss-orange/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      <!-- Section Header - EXACT TEXT -->
+      <div class="text-center mb-8 sm:mb-16 reveal" data-reveal>
+        <div class="inline-flex items-center gap-2 mb-4">
+          <div class="w-8 h-px bg-swiss-orange"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-swiss-orange">Das Team</span>
+          <div class="w-8 h-px bg-swiss-orange"></div>
+        </div>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter mb-4 sm:mb-6">
+          Über <span class="text-swiss-orange">uns</span>
+        </h2>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+        <!-- Marco Heer -->
+        <div class="space-y-6 reveal" data-reveal>
+          <div class="relative aspect-[4/5] max-w-sm mx-auto overflow-hidden border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 group">
+            <img
+              src="/images/marco_new.png"
+              alt="Marco Heer - KI-Beratung und DSGVO-konforme Automatisierung für KMU und Mittelstand"
+              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+            />
+            <!-- Gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 bg-white border-t-2 border-black pt-4 pb-4 px-4 sm:px-6">
+              <h3 class="text-xl sm:text-2xl font-bold">{team.marco.name}</h3>
+              <p class="text-sm sm:text-base text-swiss-orange font-medium">{team.marco.role}</p>
+            </div>
+          </div>
+
+          <div class="text-base sm:text-lg text-gray-600 space-y-3 sm:space-y-4 leading-relaxed">
+            <p>{team.marco.bio1}</p>
+            <p>{team.marco.bio2}</p>
+          </div>
+        </div>
+
+        <!-- Phil Kempter -->
+        <div class="space-y-6 reveal" data-reveal style="transition-delay: 0.15s;">
+          <div class="relative aspect-[4/5] max-w-sm mx-auto overflow-hidden border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 group">
+            <img
+              src="/images/phil_kempter.png"
+              alt="Phil Kempter - Experte für Marketing, Werbung und Vertrieb"
+              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+            />
+            <!-- Gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 bg-white border-t-2 border-black pt-4 pb-4 px-4 sm:px-6">
+              <h3 class="text-xl sm:text-2xl font-bold">{team.phil.name}</h3>
+              <p class="text-sm sm:text-base text-swiss-orange font-medium">{team.phil.role}</p>
+            </div>
+          </div>
+
+          <div class="text-base sm:text-lg text-gray-600 space-y-3 sm:space-y-4 leading-relaxed">
+            <p>{team.phil.bio1}</p>
+            <p>{team.phil.bio2}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shared Mission - EXACT TEXT -->
+      <div class="mt-12 sm:mt-16 text-center reveal" data-reveal>
+        <div class="max-w-4xl mx-auto">
+          <h3 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 relative inline-block">
+            Unsere gemeinsame Mission
+            <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-swiss-orange"></span>
+          </h3>
+          <p class="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
+            {team.mission}
+          </p>
+
+          <!-- Key facts - EXACT VALUES -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
+            {stats.map((stat, index) => (
+              <div
+                class="bg-white border-2 border-black p-4 sm:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 reveal"
+                data-reveal
+                style={`transition-delay: ${index * 0.1}s;`}
+              >
+                <div class="text-3xl sm:text-4xl font-black text-swiss-orange mb-1 sm:mb-2 counter-number">{stat.value}</div>
+                <p class="text-gray-500 text-xs sm:text-sm font-medium">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- CTA - EXACT TEXT -->
+          <div class="pt-8 sm:pt-12">
+            <a href="/kontakt" class="inline-flex items-center gap-3 text-swiss-orange hover:underline font-medium text-sm sm:text-base group">
+              <span>Lernen Sie uns kennen</span>
+              <svg class="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION - EXACT TEXT FROM FAQSection.tsx -->
+  <section class="py-16 sm:py-24 px-4 md:px-12 bg-black text-white relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-swiss-orange/5 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-swiss-orange/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      <!-- Header - EXACT TEXT -->
+      <div class="text-center mb-8 sm:mb-12 md:mb-16 reveal" data-reveal>
+        <div class="inline-flex items-center gap-2 mb-4">
+          <div class="w-8 h-px bg-swiss-orange"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-swiss-orange">FAQ</span>
+          <div class="w-8 h-px bg-swiss-orange"></div>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 sm:mb-4">
+          <span class="text-swiss-orange">Häufige Fragen</span>
+        </h2>
+        <p class="text-sm sm:text-base md:text-lg text-gray-400">
+          Die wichtigsten Fragen zu unseren Leistungen – klar beantwortet.
+        </p>
+      </div>
+
+      <!-- FAQ Items -->
+      <div class="space-y-3 sm:space-y-4">
+        {faqs.map((faq, index) => (
+          <details
+            class="border border-white/20 bg-white/5 group hover:border-swiss-orange/50 transition-colors duration-300 reveal"
+            data-reveal
+            style={`transition-delay: ${index * 0.05}s;`}
+          >
+            <summary class="p-4 sm:p-5 md:p-6 cursor-pointer font-semibold text-sm sm:text-base md:text-lg flex justify-between items-center hover:bg-white/10 transition-all duration-300">
+              <span class="pr-4 group-hover:text-swiss-orange transition-colors">{faq.question}</span>
+              <div class="w-8 h-8 rounded-full border border-swiss-orange/50 flex items-center justify-center group-hover:bg-swiss-orange/20 transition-all duration-300">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-swiss-orange flex-shrink-0 group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="p-4 sm:p-5 md:p-6 pt-0 text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed border-t border-white/10">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- Bottom CTA - EXACT TEXT -->
+      <div class="text-center mt-12 sm:mt-16 md:mt-20 reveal" data-reveal>
+        <p class="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
+          Noch Fragen? Schreib uns direkt.
+        </p>
+        <a href="/kontakt" class="group relative inline-flex items-center gap-2 bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-8 py-4 font-bold rounded-lg shadow-lg shadow-swiss-orange/30 hover:shadow-xl hover:shadow-swiss-orange/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+          <!-- Shine effect -->
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12"></div>
+          <span class="relative">Kontakt aufnehmen</span>
+          <svg class="relative w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</MainLayout>

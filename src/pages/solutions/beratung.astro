@@ -1,0 +1,108 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Beratung | Synclaro Solutions";
+const description = "Wie möchten Sie mit uns in Kontakt treten? Wählen Sie die passende Option für Ihre Projektanfrage.";
+
+const contactOptions = [
+  {
+    title: "Scoping-Gespräch",
+    description: "In einem kostenlosen Scoping-Gespräch analysieren wir gemeinsam Ihre bestehenden Geschäftsprozesse und identifizieren konkrete Automatisierungspotenziale. Wir zeigen Ihnen auf, welche Ihrer Arbeitsabläufe sich durch KI-Lösungen optimieren lassen und welche Einsparpotenziale realistisch sind. Komplett unverbindlich und ohne versteckte Kosten.",
+    cta: "+49 160 99 47 10 52",
+    href: "tel:+4916099471052",
+    isPhone: true
+  },
+  {
+    title: "Kontaktformular",
+    description: "Nutzen Sie unser Kontaktformular für Ihre schriftliche Anfrage. Beschreiben Sie uns Ihr Anliegen, Ihre aktuellen Herausforderungen oder spezifischen Anforderungen im Detail. Unser Team prüft Ihre Nachricht sorgfältig und meldet sich garantiert innerhalb von 24 Stunden bei Ihnen zurück – wahlweise per E-Mail oder telefonisch, ganz wie Sie es wünschen.",
+    cta: "Zum Kontaktformular",
+    href: "/kontakt",
+    isPhone: false
+  },
+  {
+    title: "Vor-Ort-Termin",
+    description: "Für komplexere Projekte oder wenn Sie eine persönliche Beratung direkt in Ihrem Unternehmen bevorzugen, kommen wir zu Ihnen. Wir analysieren Ihre IT-Infrastruktur vor Ort, führen Workshops mit Ihren Teams durch und entwickeln maßgeschneiderte Lösungskonzepte. Nach einer initialen Kontaktaufnahme per Telefon oder E-Mail klären wir gemeinsam den Umfang und vereinbaren einen passenden Termin.",
+    cta: "Anfrage stellen",
+    href: "/kontakt",
+    isPhone: false,
+    warning: "Wichtiger Hinweis: Vor-Ort-Termine sind kostenpflichtig und richten sich nach Aufwand, Dauer und Anfahrtsweg. Eine vorherige telefonische oder schriftliche Kontaktaufnahme ist zwingend erforderlich, um den genauen Bedarf und die Konditionen abzustimmen."
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Main Content -->
+  <section class="pt-24 pb-20 px-6 lg:px-12 bg-white min-h-screen">
+    <div class="container mx-auto max-w-6xl">
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl font-black mb-6">
+          Wie möchten Sie mit uns <span class="text-swiss-orange">in Kontakt treten</span>?
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Wählen Sie die passende Option für Ihre Anfrage. Wir freuen uns auf den Austausch!
+        </p>
+      </div>
+
+      <!-- Contact Options -->
+      <div class="space-y-6 max-w-4xl mx-auto">
+        {contactOptions.map((option) => (
+          <a
+            href={option.href}
+            class="block bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 group"
+          >
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center flex-shrink-0 group-hover:bg-swiss-orange/20 transition-colors">
+                {option.isPhone ? (
+                  <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                ) : option.title === "Kontaktformular" ? (
+                  <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                ) : (
+                  <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                )}
+              </div>
+
+              <div class="flex-1">
+                <h3 class="text-2xl font-black mb-3">{option.title}</h3>
+                <p class="text-gray-600 mb-4">
+                  {option.description}
+                </p>
+
+                {option.warning && (
+                  <div class="mb-4 p-3 bg-amber-50 border-2 border-amber-200">
+                    <p class="text-xs text-amber-700">
+                      <strong>Wichtiger Hinweis:</strong> {option.warning}
+                    </p>
+                  </div>
+                )}
+
+                <span class="inline-flex items-center gap-2 text-swiss-orange font-bold group-hover:gap-3 transition-all">
+                  {option.cta}
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Back Link -->
+      <div class="text-center mt-12">
+        <a href="/solutions" class="inline-flex items-center gap-2 text-gray-500 hover:text-black transition-colors font-medium">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Zurück zu Solutions
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,166 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "Academy Blog | Synclaro";
+const description = "Insights, Tutorials und Best Practices zu KI-Weiterbildung, Automatisierung und digitaler Transformation.";
+
+// Placeholder blog posts - später aus Supabase laden
+const posts = [
+  {
+    title: "KI im Mittelstand: 5 Strategien für den erfolgreichen Einstieg",
+    excerpt: "Der Einstieg in KI muss nicht kompliziert sein. Wir zeigen Ihnen fünf bewährte Strategien, mit denen mittelständische Unternehmen erfolgreich starten.",
+    date: "15. November 2024",
+    category: "Strategie",
+    slug: "ki-mittelstand-strategien",
+    readTime: "8 min"
+  },
+  {
+    title: "ChatGPT für Unternehmen: Ein praktischer Leitfaden",
+    excerpt: "Von der Textgenerierung bis zur Prozessautomatisierung - so setzen Sie ChatGPT effektiv in Ihrem Unternehmen ein.",
+    date: "10. November 2024",
+    category: "Tutorial",
+    slug: "chatgpt-unternehmen-leitfaden",
+    readTime: "12 min"
+  },
+  {
+    title: "Die wichtigsten KI-Skills für Führungskräfte 2025",
+    excerpt: "Welche KI-Kompetenzen brauchen Führungskräfte im kommenden Jahr? Ein Überblick über Must-Have Skills.",
+    date: "5. November 2024",
+    category: "Skills",
+    slug: "ki-skills-fuehrungskraefte-2025",
+    readTime: "6 min"
+  },
+  {
+    title: "DSGVO und KI: Was Sie beachten müssen",
+    excerpt: "Datenschutz und Künstliche Intelligenz - ein Überblick über die wichtigsten rechtlichen Aspekte.",
+    date: "1. November 2024",
+    category: "Compliance",
+    slug: "dsgvo-ki-leitfaden",
+    readTime: "10 min"
+  },
+  {
+    title: "ROI von KI-Projekten: So messen Sie den Erfolg",
+    excerpt: "Wie berechnet man den Return on Investment bei KI-Projekten? Praktische Frameworks und Methoden.",
+    date: "25. Oktober 2024",
+    category: "Business",
+    slug: "roi-ki-projekte",
+    readTime: "7 min"
+  },
+  {
+    title: "Von der Idee zum KI-Projekt: Ein Schritt-für-Schritt Guide",
+    excerpt: "Der komplette Prozess von der ersten Idee bis zum produktiven KI-System - erklärt für Einsteiger.",
+    date: "20. Oktober 2024",
+    category: "Tutorial",
+    slug: "idee-ki-projekt-guide",
+    readTime: "15 min"
+  }
+];
+
+const categories = ["Alle", "Strategie", "Tutorial", "Skills", "Compliance", "Business"];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          Academy Blog
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          KI-Wissen für <span class="text-swiss-orange">Entscheider</span>
+        </h1>
+
+        <p class="text-xl text-gray-600">
+          Insights, Tutorials und Best Practices zu KI-Weiterbildung, Automatisierung und digitaler Transformation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="py-8 px-6 lg:px-12 bg-gray-50 border-y-2 border-black">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-wrap gap-3">
+        {categories.map((cat, index) => (
+          <button
+            class={`px-4 py-2 font-bold border-2 border-black transition-all duration-150 ${
+              index === 0
+                ? 'bg-swiss-orange text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                : 'bg-white hover:bg-gray-100'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <article class="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 flex flex-col">
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-bold">
+                  {post.category}
+                </span>
+                <span class="text-xs text-gray-500">{post.readTime}</span>
+              </div>
+
+              <h2 class="text-xl font-black mb-3 flex-grow">
+                <a href={`/academy/blog/${post.slug}`} class="hover:text-swiss-orange transition-colors">
+                  {post.title}
+                </a>
+              </h2>
+
+              <p class="text-gray-600 text-sm mb-4">{post.excerpt}</p>
+
+              <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-200">
+                <span class="text-xs text-gray-500">{post.date}</span>
+                <a
+                  href={`/academy/blog/${post.slug}`}
+                  class="text-swiss-orange font-bold text-sm hover:underline"
+                >
+                  Lesen →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl text-center">
+      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h2 class="text-3xl font-black mb-4">
+          KI-Insights direkt ins <span class="text-swiss-orange">Postfach</span>
+        </h2>
+        <p class="text-gray-600 mb-8 max-w-xl mx-auto">
+          Erhalten Sie wöchentlich die neuesten Artikel, Tutorials und Best Practices zu KI im Unternehmen.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="ihre@email.de"
+            class="flex-1 px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-swiss-orange"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-swiss-orange text-white font-bold px-6 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Abonnieren
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</MainLayout>

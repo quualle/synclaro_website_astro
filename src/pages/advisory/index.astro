@@ -1,0 +1,288 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI-Advisory für strategische Entscheider | Synclaro Advisory";
+const description = "Executive KI-Beratung auf C-Level: Strategische KI-Roadmaps, Implementierungsbegleitung und Governance-Frameworks für Ihr Unternehmen.";
+
+const services = [
+  {
+    title: "KI-Strategie",
+    description: "Entwicklung einer ganzheitlichen KI-Strategie, die zu Ihren Unternehmenszielen passt. Von der Vision bis zur Roadmap.",
+    features: ["Strategische Roadmap", "Use-Case Priorisierung", "ROI-Analyse"]
+  },
+  {
+    title: "Governance & Compliance",
+    description: "Aufbau von KI-Governance-Strukturen und Compliance-Frameworks. DSGVO, AI Act und branchenspezifische Regularien.",
+    features: ["AI Governance Framework", "Compliance-Audit", "Risikomanagement"]
+  },
+  {
+    title: "Technologie-Assessment",
+    description: "Bewertung von KI-Technologien und Anbietern. Build vs. Buy Analysen und Vendor Due Diligence.",
+    features: ["Technologie-Evaluation", "Vendor-Analyse", "Make-or-Buy"]
+  },
+  {
+    title: "Change Management",
+    description: "Begleitung der Organisation auf dem Weg zur KI-Transformation. Stakeholder Management und Kulturwandel.",
+    features: ["Transformationsbegleitung", "Stakeholder Alignment", "KI-Kultur"]
+  }
+];
+
+const approach = [
+  { step: 1, title: "Discovery", description: "Tiefes Verständnis Ihrer Geschäftsziele und Herausforderungen" },
+  { step: 2, title: "Analysis", description: "Umfassende Analyse und Bewertung der Möglichkeiten" },
+  { step: 3, title: "Strategy", description: "Entwicklung einer maßgeschneiderten KI-Strategie" },
+  { step: 4, title: "Execution", description: "Begleitung bei der Umsetzung und kontinuierliche Optimierung" }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] opacity-0 animate-[fade-in-up_0.6s_ease-out_0.1s_forwards]">
+            Executive Advisory
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 opacity-0 animate-[fade-in-up_0.6s_ease-out_0.2s_forwards]">
+            Strategische <span class="text-swiss-orange">KI-Beratung</span> auf C-Level
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8 opacity-0 animate-[fade-in-up_0.6s_ease-out_0.3s_forwards]">
+            KI-Transformation ist Chefsache. Wir beraten Geschäftsführer und Vorstände bei der strategischen Integration von KI in ihr Unternehmen – von der Vision bis zur erfolgreichen Implementierung.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <a
+              href="/advisory/kontakt"
+              class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+            >
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+              <span class="relative flex items-center gap-2">
+                Executive Briefing anfragen
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </a>
+            <a
+              href="/advisory/leistungen"
+              class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+            >
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+              <span class="relative">Leistungen entdecken</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-6">
+          <div class="reveal bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <div class="text-4xl font-black text-swiss-orange mb-2">C-Level</div>
+            <div class="text-sm text-gray-600">Fokus</div>
+          </div>
+          <div class="reveal bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <div class="text-4xl font-black text-swiss-orange mb-2">100%</div>
+            <div class="text-sm text-gray-600">Vertraulich</div>
+          </div>
+          <div class="reveal bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <div class="text-4xl font-black text-swiss-orange mb-2">15+</div>
+            <div class="text-sm text-gray-600">Jahre Erfahrung</div>
+          </div>
+          <div class="reveal bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <div class="text-4xl font-black text-swiss-orange mb-2">NDA</div>
+            <div class="text-sm text-gray-600">Standard</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="reveal text-3xl sm:text-4xl font-black mb-4">
+          Unsere <span class="text-swiss-orange">Advisory-Leistungen</span>
+        </h2>
+        <p class="reveal text-xl text-gray-600 max-w-3xl mx-auto">
+          Strategische Beratung für die KI-Transformation Ihres Unternehmens
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {services.map((service) => (
+          <div class="reveal bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <h3 class="text-2xl font-black mb-4">{service.title}</h3>
+            <p class="text-gray-600 mb-6">{service.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {service.features.map((feature) => (
+                <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 text-xs text-swiss-orange font-medium">
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/advisory/leistungen"
+          class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+        >
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+          <span class="relative flex items-center gap-2">
+            Alle Leistungen im Detail
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="reveal text-3xl sm:text-4xl font-black mb-4">
+          Unser <span class="text-swiss-orange">Beratungsansatz</span>
+        </h2>
+        <p class="reveal text-xl text-gray-600 max-w-3xl mx-auto">
+          Strukturiert, transparent und auf nachhaltige Ergebnisse fokussiert
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        {approach.map((step) => (
+          <div class="relative">
+            <div class="reveal bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              <div class="w-12 h-12 bg-swiss-orange text-white font-black text-xl flex items-center justify-center border-2 border-black mb-4">
+                {step.step}
+              </div>
+              <h3 class="text-xl font-black mb-2">{step.title}</h3>
+              <p class="text-gray-600 text-sm">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/advisory/prozess"
+          class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+        >
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+          <span class="relative flex items-center gap-2">
+            Mehr über unseren Prozess
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Advisory -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="reveal text-3xl sm:text-4xl font-black mb-6">
+            Warum <span class="text-swiss-orange">Advisory</span>?
+          </h2>
+          <p class="reveal text-xl text-gray-600 mb-6">
+            KI-Entscheidungen haben weitreichende Konsequenzen – für Ihre Wettbewerbsfähigkeit, Ihre Organisation und Ihre Mitarbeiter. Ein externer Sparringspartner bringt:
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-swiss-orange flex-shrink-0 flex items-center justify-center mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-gray-700"><strong>Objektivität</strong> – Unabhängige Perspektive ohne interne Agenden</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-swiss-orange flex-shrink-0 flex items-center justify-center mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-gray-700"><strong>Expertise</strong> – Tiefes Know-how aus zahlreichen KI-Projekten</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-swiss-orange flex-shrink-0 flex items-center justify-center mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-gray-700"><strong>Geschwindigkeit</strong> – Schnellere Entscheidungen durch fokussierte Analyse</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-swiss-orange flex-shrink-0 flex items-center justify-center mt-1">
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-gray-700"><strong>Netzwerk</strong> – Zugang zu bewährten Partnern und Technologien</span>
+            </li>
+          </ul>
+        </div>
+        <div class="reveal bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+          <blockquote class="text-xl italic text-gray-700 mb-6">
+            "Die Zusammenarbeit mit Synclaro Advisory hat uns geholfen, unsere KI-Strategie klar zu definieren und die richtigen Prioritäten zu setzen. Besonders wertvoll war die Kombination aus strategischem Weitblick und praktischer Umsetzungskompetenz."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+              <span class="text-xl font-bold text-gray-500">TM</span>
+            </div>
+            <div>
+              <div class="font-bold">Thomas Müller</div>
+              <div class="text-sm text-gray-600">CTO, Mittelstand GmbH</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <div class="reveal bg-gray-50 border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h2 class="text-3xl sm:text-4xl font-black mb-6">
+          Bereit für ein <span class="text-swiss-orange">Executive Briefing</span>?
+        </h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          In einem vertraulichen Gespräch analysieren wir Ihre Situation und zeigen Ihnen konkrete Handlungsoptionen auf. Kostenlos und unverbindlich.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/advisory/kontakt"
+            class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative flex items-center gap-2">
+              Executive Briefing anfragen
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+          <a
+            href="/advisory/kosteneinschaetzung"
+            class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Kosteneinschätzung erhalten</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

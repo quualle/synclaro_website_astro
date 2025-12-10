@@ -1,0 +1,443 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const problems = [
+  {
+    title: 'Datenlecks an US-Konzerne',
+    description: 'Standard-KI-Tools senden Ihre Daten oft unkontrolliert an Server außerhalb der EU.',
+    icon: 'lock'
+  },
+  {
+    title: 'Verletzung der DSGVO',
+    description: 'Ohne technische Schutzmaßnahmen drohen empfindliche Bußgelder und Abmahnungen.',
+    icon: 'warning'
+  },
+  {
+    title: 'Verlust der Datenhoheit',
+    description: 'Sie verlieren die Kontrolle darüber, wo Ihre wertvollsten Unternehmensdaten gespeichert und verarbeitet werden.',
+    icon: 'server'
+  },
+  {
+    title: 'Reputationsschaden',
+    description: 'Ein einziger Datenschutzvorfall kann das Vertrauen Ihrer Kunden und Partner nachhaltig zerstören.',
+    icon: 'cancel'
+  }
+];
+
+const solutions = [
+  {
+    number: '1',
+    title: 'Hosting in Deutschland',
+    description: 'Alle Ihre Daten werden ausschließlich auf zertifizierten Servern in Deutschland verarbeitet. Es findet kein Datentransfer in Drittstaaten wie die USA statt.'
+  },
+  {
+    number: '2',
+    title: 'Private-Cloud-Prinzip',
+    description: 'Wir implementieren KI-Modelle in Ihrer eigenen, gekapselten Umgebung. Ihre Daten verlassen niemals Ihren kontrollierten Bereich und werden nicht zum Training öffentlicher Modelle genutzt.'
+  },
+  {
+    number: '3',
+    title: 'Strenge Zugriffskontrollen',
+    description: 'Durch technische Maßnahmen stellen wir sicher, dass nur autorisierte Personen auf die Systeme zugreifen können, ganz im Sinne der DSGVO-Prinzipien.'
+  }
+];
+
+const chatbotFeatures = [
+  {
+    title: 'Keine Daten verlassen Ihr Unternehmen',
+    description: 'Vollständige Datenhoheit garantiert'
+  },
+  {
+    title: 'Basiert auf Ihrer internen Wissensdatenbank',
+    description: 'Maßgeschneidert auf Ihre Bedürfnisse'
+  },
+  {
+    title: 'Ideal für HR, IT-Support und Wissensmanagement',
+    description: 'Vielseitig einsetzbar in allen Abteilungen'
+  }
+];
+---
+
+<MainLayout title="DSGVO-konforme KI-Lösungen - Synclaro">
+  <div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 px-6 lg:px-12 overflow-hidden">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center">
+          <!-- Badge -->
+          <span class="inline-flex items-center gap-2 px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            100% DSGVO-KONFORM
+          </span>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6">
+            KI ohne <span class="text-swiss-orange">Datenschutz-Risiko</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8 max-w-4xl mx-auto">
+            Nutzen Sie die volle Kraft von KI und Large Language Models (LLMs) mit der Gewissheit,
+            dass Ihre sensiblen Unternehmens- und Kundendaten jederzeit geschützt sind.
+            Wir bauen KI-Lösungen, bei denen Sicherheit an erster Stelle steht.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#ki-projekt-planung"
+              class="px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+            >
+              Jetzt sichere KI-Lösung konzipieren →
+            </a>
+          </div>
+
+          <p class="text-gray-500 italic mt-4">
+            Vermeiden Sie teure Strafen und Reputationsschäden.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="text-4xl lg:text-5xl font-black text-center mb-12">
+          Die versteckten Risiken <span class="text-swiss-orange">ungesicherter KI-Systeme</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {problems.map((problem) => (
+            <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center text-white flex-shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  {problem.icon === 'lock' && (
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  )}
+                  {problem.icon === 'warning' && (
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  )}
+                  {problem.icon === 'server' && (
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    </svg>
+                  )}
+                  {problem.icon === 'cancel' && (
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    </svg>
+                  )}
+                </div>
+                <div>
+                  <h3 class="text-xl font-black text-black mb-2">{problem.title}</h3>
+                  <p class="text-gray-600">{problem.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 px-6 lg:px-12">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl lg:text-5xl font-black mb-6">
+            Die Synclaro-Sicherheitsarchitektur: <span class="text-swiss-orange">Ihr Schutzschild</span>
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Unsere Lösungen basieren auf drei fundamentalen Säulen, die Ihnen absolute Kontrolle und Compliance garantieren.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {solutions.map((solution) => (
+            <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black text-xl mb-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                {solution.number}
+              </div>
+              <h3 class="text-2xl font-black text-black mb-4">{solution.title}</h3>
+              <p class="text-gray-600">{solution.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left content -->
+          <div>
+            <h2 class="text-4xl lg:text-5xl font-black mb-6">
+              Anwendungsfall: <span class="text-swiss-orange">Der 100% sichere Unternehmens-Chatbot</span>
+            </h2>
+
+            <p class="text-xl text-gray-600 mb-8">
+              Nutzen Sie die Effizienz eines internen KI-Chatbots ohne die typischen Sicherheitsrisiken.
+              Unsere "Company GPT"-Lösungen laufen auf Basis Ihrer eigenen, internen Wissensdatenbank
+              und garantieren, dass keine sensiblen Informationen Ihr Unternehmen verlassen.
+            </p>
+
+            <div class="space-y-4">
+              {chatbotFeatures.map((feature) => (
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 bg-swiss-orange/10 border-2 border-black flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-black text-black">{feature.title}</h3>
+                    <p class="text-gray-600 text-sm">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="/unternehmens-chatbot"
+              class="inline-flex items-center mt-8 text-swiss-orange font-bold hover:underline"
+            >
+              Mehr über Company GPT erfahren →
+            </a>
+          </div>
+
+          <!-- Right visual - Chat mockup -->
+          <div class="bg-white border-2 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div class="bg-gray-50 border-2 border-black p-4">
+              <!-- Chat header -->
+              <div class="flex items-center gap-3 pb-4 border-b-2 border-black mb-4">
+                <div class="w-10 h-10 bg-swiss-orange border-2 border-black flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-black text-black">Company GPT</h3>
+                  <p class="text-xs text-swiss-orange font-mono">100% DSGVO-konform</p>
+                </div>
+              </div>
+
+              <!-- Chat messages -->
+              <div class="space-y-3">
+                <div class="flex justify-end">
+                  <div class="bg-swiss-orange/10 border-2 border-black px-4 py-2 max-w-[80%]">
+                    <p class="text-black text-sm">Wie lauten unsere aktuellen Datenschutzrichtlinien?</p>
+                  </div>
+                </div>
+
+                <div class="flex justify-start">
+                  <div class="bg-white border-2 border-black px-4 py-3 max-w-[85%] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <p class="text-gray-700 text-sm mb-2">
+                      Basierend auf unseren internen Dokumenten gelten folgende Richtlinien:
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                      <li class="flex items-start gap-2">
+                        <span class="text-swiss-orange font-bold">→</span>
+                        <span>Alle Daten werden in Deutschland verarbeitet</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-swiss-orange font-bold">→</span>
+                        <span>Keine Weitergabe an Drittanbieter</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-swiss-orange font-bold">→</span>
+                        <span>Verschlüsselung nach aktuellem Stand</span>
+                      </li>
+                    </ul>
+                    <div class="mt-3 pt-3 border-t-2 border-black">
+                      <p class="text-xs text-gray-500 font-mono">Quelle: Interne Datenschutzdokumentation v2.3</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Quote Section -->
+    <section class="py-20 px-6 lg:px-12">
+      <div class="container mx-auto max-w-4xl">
+        <div class="bg-gray-50 border-2 border-black p-8 lg:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="grid md:grid-cols-[200px,1fr] gap-8 items-center">
+            <!-- Portrait -->
+            <div class="mx-auto md:mx-0">
+              <div class="relative w-48 h-64 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+                <img
+                  src="/images/marco-heer.webp"
+                  alt="Marco Heer - KI-Beratung und DSGVO-konforme Automatisierung für KMU und Mittelstand"
+                  class="w-full h-full object-cover grayscale"
+                />
+              </div>
+            </div>
+
+            <!-- Quote -->
+            <div>
+              <blockquote class="text-xl lg:text-2xl text-gray-700 leading-relaxed mb-6 italic">
+                "Für den deutschen Mittelstand ist Vertrauen die härteste Währung.
+                Deshalb bauen wir bei Synclaro KI-Lösungen, die nicht nur intelligent,
+                sondern vor allem sicher und zu 100% gesetzeskonform sind."
+              </blockquote>
+
+              <footer class="flex items-center gap-4">
+                <div class="h-1 bg-swiss-orange w-12"></div>
+                <div>
+                  <div class="font-black text-black text-lg">Marco Heer</div>
+                  <div class="text-swiss-orange font-mono text-sm">Gründer von Synclaro</div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Form Section -->
+    <section id="ki-projekt-planung" class="py-20 px-6 lg:px-12 bg-swiss-orange">
+      <div class="container mx-auto max-w-2xl">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl lg:text-5xl font-black text-white mb-6">
+            Planen Sie Ihr sicheres KI-Projekt mit uns
+          </h2>
+          <p class="text-xl text-white/90">
+            Lassen Sie uns gemeinsam Ihre maßgeschneiderte KI-Lösung entwickeln -
+            100% DSGVO-konform und perfekt auf Ihre Anforderungen zugeschnitten.
+          </p>
+        </div>
+
+        <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <form id="dsgvo-ki-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-bold text-black mb-2">
+                Ihr Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-gray-50 border-2 border-black text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-swiss-orange"
+                placeholder="Max Mustermann"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-bold text-black mb-2">
+                Ihre Firmen-E-Mail
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-gray-50 border-2 border-black text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-swiss-orange"
+                placeholder="m.mustermann@firma.de"
+              />
+            </div>
+
+            <div>
+              <label for="telefon" class="block text-sm font-bold text-black mb-2">
+                Ihre Telefonnummer
+              </label>
+              <input
+                type="tel"
+                id="telefon"
+                name="telefon"
+                required
+                class="w-full px-4 py-3 bg-gray-50 border-2 border-black text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-swiss-orange"
+                placeholder="+49 123 456789"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full px-8 py-4 bg-black text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150 text-lg"
+            >
+              Kostenlose Beratung anfordern
+            </button>
+          </form>
+
+          <!-- Trust indicators -->
+          <div class="mt-8 pt-8 border-t-2 border-black">
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div class="w-10 h-10 mx-auto bg-swiss-orange/10 border-2 border-black flex items-center justify-center mb-2">
+                  <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <p class="text-xs text-gray-600 font-bold">100% Vertraulich</p>
+              </div>
+              <div>
+                <div class="w-10 h-10 mx-auto bg-swiss-orange/10 border-2 border-black flex items-center justify-center mb-2">
+                  <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <p class="text-xs text-gray-600 font-bold">Kostenlos</p>
+              </div>
+              <div>
+                <div class="w-10 h-10 mx-auto bg-swiss-orange/10 border-2 border-black flex items-center justify-center mb-2">
+                  <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0 1a2.5 2.5 0 005 0 6 6 0 10-5 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <p class="text-xs text-gray-600 font-bold">Unverbindlich</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script is:inline>
+  document.getElementById('dsgvo-ki-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet...';
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('telefon'),
+          campaign: 'dsgvo-ki',
+          session_id: crypto.randomUUID(),
+          quickcheck_data: {
+            source: 'dsgvo-ki',
+            message: 'Beratung für sichere KI-Lösung angefordert'
+          }
+        })
+      });
+
+      if (response.ok) {
+        window.location.href = '/danke?source=dsgvo-ki';
+      } else {
+        alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Kostenlose Beratung anfordern';
+      }
+    } catch (err) {
+      alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Kostenlose Beratung anfordern';
+    }
+  });
+</script>

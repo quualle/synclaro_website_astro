@@ -1,0 +1,80 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "Vorbereitung | Academy Portal";
+const description = "Materialien und Informationen zur Vorbereitung auf Ihren Kurs.";
+
+const materials = [
+  {
+    title: "Willkommenspaket",
+    description: "Alle wichtigen Informationen zum Kursstart",
+    type: "PDF",
+    size: "2.4 MB"
+  },
+  {
+    title: "Technische Anforderungen",
+    description: "Software und Hardware für die Sessions",
+    type: "PDF",
+    size: "1.1 MB"
+  },
+  {
+    title: "Vorbereitende Lektüre",
+    description: "Empfohlene Artikel und Ressourcen",
+    type: "PDF",
+    size: "3.8 MB"
+  },
+  {
+    title: "Checkliste Mastermind",
+    description: "Was Sie zum Präsenztermin mitbringen sollten",
+    type: "PDF",
+    size: "0.5 MB"
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <section class="pt-24 pb-8 px-6 lg:px-12 bg-white border-b-2 border-black">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex items-center gap-4 mb-4">
+        <a href="/academy/portal" class="text-swiss-orange hover:underline font-bold text-sm">
+          ← Zurück zum Dashboard
+        </a>
+      </div>
+      <h1 class="text-3xl font-black">Vorbereitung</h1>
+      <p class="text-gray-600 mt-2">Alle Materialien zur Kursvorbereitung</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <h2 class="text-xl font-black mb-6">Download-Materialien</h2>
+
+        <div class="space-y-4">
+          {materials.map((material) => (
+            <div class="flex items-center justify-between p-4 border-2 border-black hover:bg-gray-50 transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-swiss-orange/10 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold">{material.title}</h3>
+                  <p class="text-sm text-gray-600">{material.description}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-xs text-gray-500">{material.type} • {material.size}</span>
+                <button class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 py-2 font-bold text-sm rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+                  <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+                  <span class="relative">Download</span>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

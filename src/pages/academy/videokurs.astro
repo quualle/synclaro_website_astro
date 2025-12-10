@@ -1,0 +1,434 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI-Videokurs | Synclaro Academy";
+const description = "48 Stunden strukturierter Video-Content: Von ChatGPT-Basics bis zu professionellen Apps mit Datenbanken und APIs.";
+
+const tiers = [
+  {
+    name: "Basic",
+    price: "749€",
+    hours: "15 Stunden Content",
+    popular: false,
+    features: [
+      { text: "Module 1-6", sub: "KI-Grundlagen & Werkzeuge", included: true },
+      { text: "Level 20→40", sub: "Vom Anfänger zum fortgeschrittenen Nutzer", included: true },
+      { text: "1 Jahr Updates", sub: "Neue Inhalte & Verbesserungen", included: true },
+      { text: "Keine Office Hours", sub: "Selbststudium", included: false }
+    ]
+  },
+  {
+    name: "Advanced",
+    price: "2.449€",
+    hours: "30 Stunden Content",
+    popular: true,
+    features: [
+      { text: "Module 1-14", sub: "Bis Knowledge Assistant", included: true },
+      { text: "Level 40→70", sub: "Fortgeschritten bis Experte", included: true },
+      { text: "2 Jahre Updates", sub: "Längerer Support-Zeitraum", included: true },
+      { text: "10× 30 Min Office Hours", sub: "Persönliche Betreuung bei Fragen", included: true }
+    ]
+  },
+  {
+    name: "Master",
+    price: "5.749€",
+    hours: "48 Stunden Content",
+    popular: false,
+    features: [
+      { text: "Alle 17 Module", sub: "Komplettes Curriculum", included: true },
+      { text: "Level 70→85", sub: "Experte bis Master-Level", included: true },
+      { text: "4 Jahre Updates", sub: "Maximaler Zukunftsschutz", included: true },
+      { text: "20× Office Hours + Workshop", sub: "Intensive persönliche Betreuung", included: true }
+    ]
+  }
+];
+
+const phases = [
+  {
+    name: "Phase 1: Grundlagen (Level 20-40)",
+    items: [
+      "ChatGPT, Claude & andere KI-Tools effektiv nutzen",
+      "Prompt Engineering für bessere Ergebnisse",
+      "Erste eigene Workflows automatisieren"
+    ]
+  },
+  {
+    name: "Phase 2: Fortgeschritten (Level 40-70)",
+    items: [
+      "APIs verstehen und nutzen",
+      "Datenbanken einbinden und verwalten",
+      "Eigene Knowledge Assistants bauen"
+    ]
+  },
+  {
+    name: "Phase 3: Expert (Level 70-85)",
+    items: [
+      "Production-Ready Anwendungen entwickeln",
+      "Skalierbare Systeme aufsetzen",
+      "Native Apps mit KI-Funktionen erstellen"
+    ]
+  }
+];
+
+const afterLearning = [
+  "Eigene KI-Tools für dein Business entwickeln",
+  "Komplexe Automatisierungen umsetzen",
+  "Mit Entwicklern auf Augenhöhe kommunizieren",
+  "KI-Projekte selbstständig planen und umsetzen"
+];
+
+const videokursFor = [
+  "Du im eigenen Tempo lernen möchtest",
+  "Du flexibel lernen möchtest (abends, am Wochenende)",
+  "Du eine strukturierte Lernreise bevorzugst",
+  "Du ein begrenztes Budget hast"
+];
+
+const coachingFor = [
+  "Du ein konkretes Projekt umsetzen möchtest",
+  "Du direktes Feedback auf deinen Code brauchst",
+  "Du von anderen Teilnehmern lernen willst",
+  "Du mehr Struktur und Accountability brauchst"
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero & Pricing Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          KI-Videokurs
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Dein Weg zum <span class="text-swiss-orange">KI-Experten</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-4 max-w-4xl mx-auto">
+          48 Stunden strukturierter Video-Content: Von ChatGPT-Basics bis zu professionellen Apps mit Datenbanken und APIs
+        </p>
+        <p class="text-lg text-gray-500 mb-12">
+          Lernen im eigenen Tempo, mit lebenslangem Zugriff und optional mit persönlicher Betreuung
+        </p>
+      </div>
+
+      <!-- Pricing Tiers -->
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        {tiers.map((tier) => (
+          <div class={`relative bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${tier.popular ? 'border-4 border-swiss-orange' : ''}`}>
+            {tier.popular && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="px-4 py-1 bg-swiss-orange text-white text-xs font-bold border-2 border-black">
+                  Beliebt
+                </span>
+              </div>
+            )}
+
+            <div class="absolute top-4 left-1/2 transform -translate-x-1/2">
+              <span class="px-4 py-1 bg-white border-2 border-black text-xs font-medium">
+                {tier.name}
+              </span>
+            </div>
+
+            <div class="text-center mb-8 mt-8">
+              <div class={`text-5xl font-black mb-2 ${tier.popular ? 'text-swiss-orange' : ''}`}>{tier.price}</div>
+              <div class="text-gray-500 text-sm">{tier.hours}</div>
+            </div>
+
+            <div class="space-y-4 mb-8">
+              {tier.features.map((feature) => (
+                <div class="flex items-start gap-3">
+                  <svg class={`w-5 h-5 flex-shrink-0 mt-0.5 ${feature.included ? 'text-green-500' : 'text-gray-400'}`} fill="currentColor" viewBox="0 0 20 20">
+                    {feature.included ? (
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    ) : (
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    )}
+                  </svg>
+                  <div>
+                    <div class={`font-medium text-sm mb-1 ${feature.included ? '' : 'text-gray-400'}`}>{feature.text}</div>
+                    <p class={`text-xs ${feature.included ? 'text-gray-500' : 'text-gray-400'}`}>{feature.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="/academy/beratung"
+              class={`group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden w-full ${tier.popular ? 'bg-gradient-to-r from-swiss-orange to-orange-600 text-white shadow-swiss-orange/25 hover:shadow-swiss-orange/40' : 'bg-white text-black shadow-gray-300 hover:shadow-gray-400'}`}
+            >
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+              <span class="relative">{tier.name} anfragen</span>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <p class="text-gray-500 text-sm mb-4">
+          Alle Pakete beinhalten <strong class="text-black">lebenslangen Zugriff</strong> auf die Inhalte
+        </p>
+        <a href="/academy/lehrplan" class="inline-flex items-center gap-2 text-swiss-orange hover:underline font-medium">
+          <span>Detaillierten Lehrplan ansehen</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="mb-8">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          Lernpfad
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-4xl sm:text-5xl font-black mb-6">
+            Was du <span class="text-swiss-orange">lernen wirst</span>
+          </h2>
+          <p class="text-xl text-gray-600 mb-8">
+            Ein strukturierter Weg von den absoluten Grundlagen bis zu produktionsreifen Anwendungen. Kein wirres Durcheinander, sondern ein durchdachter Lehrplan.
+          </p>
+
+          <div class="space-y-6">
+            {phases.map((phase) => (
+              <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <h3 class="text-lg font-black mb-3">{phase.name}</h3>
+                <ul class="space-y-2">
+                  {phase.items.map((item) => (
+                    <li class="flex items-start gap-3">
+                      <span class="text-swiss-orange text-lg">→</span>
+                      <span class="text-gray-600 text-sm">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+            <h3 class="text-2xl font-black mb-6">Vibe Coding: Learning by Building</h3>
+            <p class="text-gray-600 mb-6">
+              Unser einzigartiger Ansatz kombiniert theoretisches Verständnis mit praktischer Umsetzung. Keine trockene Theorie, sondern <strong class="text-black">echtes Coding mit KI als Partner</strong>.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 mb-6">
+              <div class="text-center bg-gray-50 border-2 border-black p-4">
+                <div class="text-3xl font-black text-swiss-orange mb-2">70-80%</div>
+                <div class="text-sm text-gray-500">Praktische Umsetzung</div>
+              </div>
+              <div class="text-center bg-gray-50 border-2 border-black p-4">
+                <div class="text-3xl font-black text-swiss-orange mb-2">20-30%</div>
+                <div class="text-sm text-gray-500">Theorie & Konzepte</div>
+              </div>
+            </div>
+
+            <div class="bg-swiss-orange/10 border-2 border-black p-4">
+              <p class="text-sm text-gray-600">
+                <strong class="text-black">Wichtig:</strong> Du musst nicht programmieren können - die KI macht das. Du musst verstehen können - das lernst du hier.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h4 class="text-lg font-black mb-3">
+              Was du nach Abschluss kannst:
+            </h4>
+            <ul class="space-y-3">
+              {afterLearning.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-600 text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-5xl">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-black mb-4">
+          Videokurs vs. <span class="text-swiss-orange">Live-Coaching?</span>
+        </h2>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+          Beide Formate haben ihre Berechtigung - hier ist der Unterschied
+        </p>
+      </div>
+
+      <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-black mb-4">
+              <span class="text-swiss-orange">Videokurs</span> ist perfekt wenn:
+            </h3>
+            <ul class="space-y-3">
+              {videokursFor.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-black mb-4">
+              <span class="text-swiss-orange">Live-Coaching</span> ist besser wenn:
+            </h3>
+            <ul class="space-y-3">
+              {coachingFor.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="/academy/coaching" class="inline-flex items-center gap-2 text-swiss-orange hover:underline font-medium">
+            <span>Mehr über Live-Coaching erfahren</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Hours Explanation -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div class="text-center mb-8">
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            Office Hours
+          </span>
+        </div>
+
+        <h2 class="text-3xl font-black mb-6 text-center">
+          Persönliche Betreuung, wenn du sie brauchst
+        </h2>
+        <p class="text-lg text-gray-600 mb-8 text-center max-w-3xl mx-auto">
+          Bei Advanced und Master Paketen erhältst du direkten Zugang zu persönlicher Betreuung - perfekt für spezifische Fragen oder wenn du festhängst.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="space-y-4">
+            <h3 class="text-xl font-black mb-3">Was sind Office Hours?</h3>
+            <p class="text-gray-600 text-sm">
+              30-minütige 1:1 Video-Calls, in denen du mir deine Fragen stellen kannst. Egal ob technisches Problem, Architektur-Beratung oder Code-Review - ich helfe dir weiter.
+            </p>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-600 text-sm">Flexible Terminbuchung nach Verfügbarkeit</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-600 text-sm">Screen-Sharing für direktes Debugging</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-600 text-sm">Aufzeichnung für späteres Nachschauen</span>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-xl font-black mb-3">2-Tage Workshop (nur Master)</h3>
+            <p class="text-gray-600 text-sm">
+              Im Master-Paket ist zusätzlich ein 2-tägiger Workshop inkludiert, in dem wir gemeinsam an deinem konkreten Projekt arbeiten.
+            </p>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-600 text-sm">Intensive Projektarbeit über 2 volle Tage</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-600 text-sm">Remote oder optional vor Ort</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-600 text-sm">Perfekt für Kickoff deines ersten großen Projekts</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-swiss-orange/10 border-2 border-black p-6 text-center">
+          <p class="text-gray-600 text-sm">
+            <strong class="text-black">Tipp:</strong> Die Office Hours sind optional - wenn du alles alleine durchziehst, musst du sie nicht nutzen. Aber wenn du mal festhängst, sind sie Gold wert!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-gray-50 border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center">
+        <h2 class="text-3xl sm:text-4xl font-black mb-6">
+          Du bist unsicher, ob ein Videokurs zu dir passt?
+        </h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          Lass es uns gemeinsam herausfinden!
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/academy/beratung"
+            class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative flex items-center gap-2">
+              Beratungsgespräch buchen
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+
+          <div class="flex items-center space-x-2 text-gray-500">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm">100% unverbindlich & kostenlos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

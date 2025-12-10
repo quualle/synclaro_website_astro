@@ -1,0 +1,180 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "Dashboard | Academy Portal";
+const description = "Ihr persönliches Academy Dashboard - Zugriff auf Kurse, Materialien und Support.";
+
+// Placeholder data - später aus Supabase laden
+const courses = [
+  {
+    title: "KI-Mastermind Intensiv",
+    progress: 65,
+    nextLesson: "Tag 3: KI-Strategie Development",
+    status: "in_progress"
+  },
+  {
+    title: "ChatGPT für Unternehmen",
+    progress: 100,
+    status: "completed"
+  }
+];
+
+const upcomingEvents = [
+  {
+    title: "Live Q&A Session",
+    date: "20. Dez 2024, 14:00 Uhr",
+    type: "online"
+  },
+  {
+    title: "Mastermind Day 4",
+    date: "15. Jan 2025, 09:00 Uhr",
+    type: "präsenz"
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Portal Header -->
+  <section class="pt-24 pb-8 px-6 lg:px-12 bg-white border-b-2 border-black">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-gray-500 mb-2 block">Academy Portal</span>
+          <h1 class="text-3xl font-black">Willkommen zurück!</h1>
+        </div>
+        <div class="flex gap-4">
+          <a href="/academy/portal/support" class="px-4 py-2 border-2 border-black font-bold hover:bg-gray-100 transition-colors">
+            Support
+          </a>
+          <a href="/academy/login" class="px-4 py-2 bg-gray-100 border-2 border-black font-bold hover:bg-gray-200 transition-colors">
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Content -->
+  <section class="py-12 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Active Courses -->
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h2 class="text-xl font-black mb-6 flex items-center gap-2">
+              <span class="w-2 h-6 bg-swiss-orange"></span>
+              Meine Kurse
+            </h2>
+
+            <div class="space-y-4">
+              {courses.map((course) => (
+                <div class="border-2 border-black p-4 hover:bg-gray-50 transition-colors">
+                  <div class="flex items-start justify-between mb-3">
+                    <h3 class="font-bold">{course.title}</h3>
+                    <span class={`px-2 py-1 text-xs font-bold ${
+                      course.status === 'completed'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-swiss-orange/10 text-swiss-orange'
+                    }`}>
+                      {course.status === 'completed' ? 'Abgeschlossen' : 'In Bearbeitung'}
+                    </span>
+                  </div>
+
+                  {course.status !== 'completed' && (
+                    <>
+                      <div class="mb-2">
+                        <div class="h-2 bg-gray-200 border border-black">
+                          <div
+                            class="h-full bg-swiss-orange"
+                            style={`width: ${course.progress}%`}
+                          ></div>
+                        </div>
+                      </div>
+                      <p class="text-sm text-gray-600">
+                        Nächste Lektion: {course.nextLesson}
+                      </p>
+                    </>
+                  )}
+
+                  <a
+                    href="#"
+                    class="inline-block mt-3 text-swiss-orange font-bold text-sm hover:underline"
+                  >
+                    {course.status === 'completed' ? 'Zertifikat ansehen →' : 'Fortfahren →'}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="/academy/portal/vorbereitung" class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150">
+              <h3 class="font-black mb-2">Vorbereitung</h3>
+              <p class="text-sm text-gray-600">Materialien zur Kursvorbereitung</p>
+            </a>
+            <a href="/academy/portal/aufzeichnungen" class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150">
+              <h3 class="font-black mb-2">Aufzeichnungen</h3>
+              <p class="text-sm text-gray-600">Alle Session-Recordings</p>
+            </a>
+            <a href="/academy/portal/hotel" class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150">
+              <h3 class="font-black mb-2">Hotel & Anreise</h3>
+              <p class="text-sm text-gray-600">Informationen zum Veranstaltungsort</p>
+            </a>
+            <a href="/academy/portal/support" class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150">
+              <h3 class="font-black mb-2">Support</h3>
+              <p class="text-sm text-gray-600">Hilfe und Kontakt</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Upcoming Events -->
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h2 class="text-lg font-black mb-4">Anstehende Termine</h2>
+            <div class="space-y-4">
+              {upcomingEvents.map((event) => (
+                <div class="pb-4 border-b border-gray-200 last:border-0 last:pb-0">
+                  <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 bg-swiss-orange/10 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-sm">{event.title}</h3>
+                      <p class="text-xs text-gray-500">{event.date}</p>
+                      <span class={`inline-block mt-1 px-2 py-0.5 text-xs ${
+                        event.type === 'online'
+                          ? 'bg-blue-100 text-blue-700'
+                          : 'bg-green-100 text-green-700'
+                      }`}>
+                        {event.type}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Quick Contact -->
+          <div class="bg-swiss-orange text-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h2 class="text-lg font-black mb-4">Fragen?</h2>
+            <p class="text-sm mb-4 opacity-90">
+              Unser Support-Team ist für Sie da.
+            </p>
+            <a
+              href="/academy/portal/support"
+              class="inline-block bg-white text-black font-bold px-4 py-2 text-sm border-2 border-black"
+            >
+              Kontakt aufnehmen
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

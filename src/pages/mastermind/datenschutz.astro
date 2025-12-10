@@ -1,0 +1,112 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Datenschutz - KI Mastermind | Synclaro";
+const description = "Datenschutzerklärung für das Synclaro KI Mastermind Programm.";
+---
+
+<MainLayout title={title} description={description}>
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        KI MASTERMIND
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-8">
+        <span class="text-swiss-orange">Datenschutz</span>erklärung
+      </h1>
+
+      <div class="prose prose-lg max-w-none">
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">1. Verantwortlicher</h2>
+          <p class="text-gray-600">
+            Verantwortlich für die Datenverarbeitung im Rahmen des KI Mastermind Programms ist:<br /><br />
+            <strong>Synclaro</strong><br />
+            Marco Heer<br />
+            Deutschland<br /><br />
+            E-Mail: mastermind@synclaro.de
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">2. Bewerbungsdaten</h2>
+          <p class="text-gray-600 mb-4">
+            Im Rahmen Ihrer Bewerbung für das KI Mastermind Programm erheben wir:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 space-y-2">
+            <li>Name und Kontaktdaten</li>
+            <li>Unternehmensinformationen</li>
+            <li>Umsatzangaben</li>
+            <li>Ihre Ziele und Herausforderungen</li>
+            <li>Branche und Unternehmensgröße</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">3. Zweck der Verarbeitung</h2>
+          <p class="text-gray-600">
+            Die Daten werden ausschließlich verwendet für:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 space-y-2 mt-4">
+            <li>Prüfung Ihrer Bewerbung</li>
+            <li>Kontaktaufnahme für Erstgespräche</li>
+            <li>Durchführung des Mastermind Programms</li>
+            <li>Kommunikation während des Programms</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">4. Speicherdauer</h2>
+          <p class="text-gray-600">
+            Ihre Bewerbungsdaten werden für die Dauer des Auswahlprozesses gespeichert.
+            Bei Ablehnung werden die Daten nach 6 Monaten gelöscht, sofern Sie nicht
+            einer längeren Speicherung zustimmen. Bei Teilnahme am Programm werden
+            die Daten für die Dauer der Geschäftsbeziehung und darüber hinaus gemäß
+            gesetzlicher Aufbewahrungsfristen gespeichert.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">5. Vertraulichkeit</h2>
+          <p class="text-gray-600">
+            Alle im Rahmen des Mastermind Programms geteilten Informationen werden
+            vertraulich behandelt. Die Teilnehmer verpflichten sich zur Verschwiegenheit
+            über geschäftliche Informationen anderer Teilnehmer.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <h2 class="text-2xl font-black mb-4">6. Ihre Rechte</h2>
+          <ul class="list-disc list-inside text-gray-600 space-y-2">
+            <li>Recht auf Auskunft über gespeicherte Daten</li>
+            <li>Recht auf Berichtigung unrichtiger Daten</li>
+            <li>Recht auf Löschung</li>
+            <li>Recht auf Einschränkung der Verarbeitung</li>
+            <li>Widerspruchsrecht</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-2xl font-black mb-4">7. Kontakt</h2>
+          <p class="text-gray-600">
+            Bei Fragen zum Datenschutz im Mastermind Programm:<br /><br />
+            E-Mail: mastermind@synclaro.de
+          </p>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-8">
+          Stand: Dezember 2024
+        </p>
+      </div>
+
+      <div class="mt-12">
+        <a
+          href="/mastermind"
+          class="inline-block px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Zurück zum Mastermind
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

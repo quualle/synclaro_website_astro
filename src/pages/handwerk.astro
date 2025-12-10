@@ -1,0 +1,532 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Recordings data
+const recordings = [
+  {
+    title: 'KI-Grundlagen',
+    date: '22.10.2025',
+    description: 'Einführung in Künstliche Intelligenz und praktische Anwendungen im Handwerk',
+    driveUrl: 'https://drive.google.com/file/d/1Cf5ML2rTjh_ZDmpANjJlKuFn2TUoo3lo/view?usp=sharing',
+  },
+  {
+    title: 'N8N-Grundlagen',
+    date: '05.11.2025',
+    description: 'Workflow-Automatisierung mit N8N für Ihren Handwerksbetrieb',
+    driveUrl: 'https://drive.google.com/file/d/1tEjGQCxmOO7VX9wFQmI1OAxtPOmsTfST/view?usp=sharing',
+  },
+  {
+    title: 'Programmieren ohne Programmierer zu sein',
+    date: '19.11.2025',
+    description: 'No-Code Lösungen und fortgeschrittene Automatisierungsstrategien',
+    driveUrl: 'https://drive.google.com/file/d/1zDw375r2tKqrlYt_a5GjusVnK28HK0OI/view?usp=sharing',
+  },
+];
+
+// Upcoming Schulungen
+const upcomingSchulungen = [
+  {
+    date: '03.12.2025',
+    day: 'Dienstag',
+    time: '10:00 - 12:00',
+    title: 'Schulung 4',
+    projectName: 'Moderne Website - ADS System',
+    company: 'ADS System GmbH (Netzwerktechnik)',
+  },
+  {
+    date: '17.12.2025',
+    day: 'Dienstag',
+    time: '10:00 - 12:00',
+    title: 'Schulung 5',
+    projectName: 'Event-Automatisierung - Bauverband',
+    company: 'Bauverband Hessen-Thüringen',
+  },
+  {
+    date: '14.01.2025',
+    day: 'Dienstag',
+    time: '10:00 - 12:00',
+    title: 'Schulung 6',
+    projectName: 'Automatische Ausstellungs-Recherche',
+    company: 'Projekt Malerei',
+  },
+  {
+    date: '28.01.2025',
+    day: 'Dienstag',
+    time: '10:00 - 12:00',
+    title: 'Schulung 7',
+    projectName: 'KI-Sprachprotokoll',
+    company: 'Zitzelsberger Gebäudereinigung',
+  },
+];
+
+// Sprechstunden
+const sprechstunden = [
+  { date: '26.11.2025', day: 'Mittwoch', time: '10:00 - 12:00' },
+  { date: '10.12.2025', day: 'Mittwoch', time: '10:00 - 12:00' },
+  { date: '07.01.2026', day: 'Mittwoch', time: '10:00 - 12:00' },
+  { date: '21.01.2026', day: 'Mittwoch', time: '10:00 - 12:00' },
+];
+
+// 5-Day Program
+const phases = [
+  {
+    day: 'TAG 1',
+    title: 'Verstehen, was geht',
+    main: 'Die Welt der KI verstehen.',
+    detail: 'Du siehst, was modernste Konzerne und Silicon Valley-Unternehmen bereits mit KI und Automatisierung realisieren.',
+  },
+  {
+    day: 'TAG 2',
+    title: 'Status-Quo-Analyse',
+    main: 'Deine Firma unter der Lupe.',
+    detail: 'Detaillierte Analyse deiner individuellen Unternehmenssituation. Wo liegen die Probleme?',
+  },
+  {
+    day: 'TAG 3',
+    title: 'Grundlagen-Befähigung',
+    main: 'Strategisches KI-Wissen.',
+    detail: 'Du erhältst das strategische Wissen für deine KI-Transformation: Anbieter, Tools, Wissensmanagement.',
+  },
+  {
+    day: 'TAG 4',
+    title: 'Fahrplanaufstellung',
+    main: 'Dein individueller KI-Fahrplan.',
+    detail: 'In Einzel-Sessions mit Marco entwickelst du deine individuelle Strategie. Du baust ein Company GPT.',
+  },
+  {
+    day: 'TAG 5',
+    title: 'Finalisierung',
+    main: 'Dein KI-Fahrplan fertig.',
+    detail: 'Du verlässt das Programm mit deinem individuellen KI-Fahrplan und konkreten nächsten Schritten.',
+  },
+];
+---
+
+<MainLayout title="KI-Werkbank Portal - Synclaro">
+  <!-- Header with Logos -->
+  <header class="border-b-2 border-black bg-white">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+        <!-- Synclaro Logo -->
+        <div class="flex items-center">
+          <span class="text-3xl font-black">SYNC<span class="text-swiss-orange">C</span>LARO</span>
+        </div>
+
+        <!-- Connector -->
+        <div class="hidden md:flex items-center gap-3 text-gray-500">
+          <div class="h-px w-8 bg-gray-300"></div>
+          <span class="text-sm font-medium whitespace-nowrap">in Kooperation mit</span>
+          <div class="h-px w-8 bg-gray-300"></div>
+        </div>
+
+        <!-- Mobile Connector -->
+        <div class="md:hidden text-xs text-gray-500 font-medium text-center">
+          in Kooperation mit
+        </div>
+
+        <!-- MD Handwerk Logo -->
+        <div class="text-center">
+          <span class="text-lg font-bold text-gray-900">Mittelstand Digital</span>
+          <span class="text-sm text-gray-600 block">Zentrum Handwerk</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 bg-white border-b-2 border-black shadow-sm z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-center gap-4 md:gap-8 py-4 flex-wrap">
+        <a href="#aufzeichnungen" class="text-sm md:text-base font-medium text-gray-700 hover:text-swiss-orange transition-colors">
+          Aufzeichnungen
+        </a>
+        <a href="#termine" class="text-sm md:text-base font-medium text-gray-700 hover:text-swiss-orange transition-colors">
+          Termine
+        </a>
+        <a href="#zusammenarbeit" class="text-sm md:text-base font-medium text-gray-700 hover:text-swiss-orange transition-colors">
+          Zusammenarbeit
+        </a>
+        <a href="#intensiv-coaching" class="text-sm md:text-base font-medium text-gray-700 hover:text-swiss-orange transition-colors">
+          Intensiv Coaching
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+      <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] opacity-0 animate-[fade-in-up_0.6s_ease-out_0.1s_forwards]">
+        KI-WERKBANK PORTAL
+      </span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6 opacity-0 animate-[fade-in-up_0.6s_ease-out_0.2s_forwards]">
+        KI-Werkbank <span class="text-swiss-orange">Portal</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-10 opacity-0 animate-[fade-in-up_0.6s_ease-out_0.3s_forwards]">
+        Schulungsaufzeichnungen und kommende Termine
+      </p>
+
+      <a
+        href="#zusammenarbeit"
+        class="inline-block bg-swiss-orange text-white font-bold px-10 py-5 text-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+      >
+        Zusammenarbeit? Hier klicken!
+      </a>
+    </div>
+  </section>
+
+  <!-- Schulungsaufzeichnungen Section -->
+  <section id="aufzeichnungen" class="bg-gray-50 py-20 scroll-mt-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
+      <h2 class="reveal text-4xl font-black mb-10">
+        Schulungs<span class="text-swiss-orange">aufzeichnungen</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recordings.map((recording, index) => (
+          <a
+            href={recording.driveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reveal block bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 group"
+          >
+            <div class="flex items-start justify-between mb-3">
+              <span class="text-sm font-mono text-swiss-orange uppercase tracking-wider">
+                Teil {index + 1}
+              </span>
+              <span class="text-xs text-gray-500">
+                {recording.date}
+              </span>
+            </div>
+            <h3 class="text-xl font-black mb-3 text-black group-hover:text-swiss-orange transition-colors">
+              {recording.title}
+            </h3>
+            <p class="text-sm text-gray-600">
+              {recording.description}
+            </p>
+            <div class="mt-4 flex items-center text-swiss-orange font-bold text-sm">
+              <span>Ansehen</span>
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Kommende Termine Section -->
+  <section id="termine" class="bg-white py-20 scroll-mt-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
+      <h2 class="reveal text-4xl font-black mb-10">
+        Kommende <span class="text-swiss-orange">Termine</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Schulungen -->
+        <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <h3 class="text-xl font-black mb-6 flex items-center gap-2">
+            <div class="w-4 h-4 bg-swiss-orange border-2 border-black"></div>
+            Schulungen
+          </h3>
+          <div class="space-y-4">
+            {upcomingSchulungen.map((termin) => (
+              <div class="py-3 border-b border-gray-200 last:border-0">
+                <div class="flex items-center gap-3 mb-1">
+                  <svg class="w-4 h-4 text-swiss-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span class="font-bold text-black">{termin.date}</span>
+                  <span class="text-sm text-gray-500">({termin.day})</span>
+                </div>
+                <div class="ml-7">
+                  <div class="text-sm font-bold text-swiss-orange mb-1">
+                    {termin.projectName}
+                  </div>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>{termin.time}</span>
+                    <span>{termin.company}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sprechstunden -->
+        <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <h3 class="text-xl font-black mb-6 flex items-center gap-2">
+            <div class="w-4 h-4 bg-black border-2 border-black"></div>
+            Sprechstunden
+          </h3>
+          <div class="space-y-4">
+            {sprechstunden.map((termin) => (
+              <div class="py-3 border-b border-gray-200 last:border-0">
+                <div class="flex items-center gap-3 mb-1">
+                  <svg class="w-4 h-4 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span class="font-bold text-black">{termin.date}</span>
+                  <span class="text-sm text-gray-500">({termin.day})</span>
+                </div>
+                <div class="ml-7 flex items-center justify-between">
+                  <span class="text-sm text-gray-600">Sprechstunde</span>
+                  <span class="text-xs text-gray-500">{termin.time}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zusammenarbeit Section -->
+  <section id="zusammenarbeit" class="bg-gray-50 py-20 scroll-mt-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
+      <div class="reveal bg-white border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] transition-all duration-300 hover:shadow-[12px_12px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-black mb-4">
+            Du möchtest mit mir <span class="text-swiss-orange">zusammenarbeiten?</span>
+          </h2>
+          <p class="text-lg text-gray-600">
+            Wir bieten verschiedene Wege, dein Unternehmen mit KI voranzubringen
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <!-- Vor Ort Intensiv Coaching - Featured -->
+          <div class="reveal md:col-span-2 bg-swiss-orange border-2 border-black p-8 text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <span class="inline-block px-3 py-1 bg-white/20 border border-white/30 text-xs font-mono uppercase tracking-wider mb-3">
+                  EMPFOHLEN
+                </span>
+                <h3 class="text-2xl md:text-3xl font-black mb-2">
+                  Vor Ort Intensiv Coaching
+                </h3>
+                <p class="text-white/90 font-medium mb-4">
+                  5-Tage-Intensiv-Programm
+                </p>
+              </div>
+            </div>
+            <p class="text-white/95 leading-relaxed mb-4">
+              Viermal jährlich vor Ort stattfindendes Programm für Geschäftsführer und Entscheider. Das Kernprogramm bildet dich intensiv weiter, um autonom im KI-Zeitalter als Entscheider und in einer Führungsposition zu agieren.
+            </p>
+            <a
+              href="#intensiv-coaching"
+              class="inline-block bg-white text-swiss-orange font-bold px-6 py-3 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Mehr erfahren
+            </a>
+          </div>
+
+          <!-- 1:1 Coaching -->
+          <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300">
+            <h3 class="text-xl font-black mb-2">1:1 Coaching</h3>
+            <p class="text-sm text-swiss-orange font-bold mb-3">
+              Individuelle Begleitung auf deiner Reise
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              Persönliche Einzelsessions, maßgeschneidert auf deine Situation. Der Kurs erstreckt sich von KI-Grundlagen bis zur eigenständigen Entwicklung komplexer Automationen.
+            </p>
+            <a
+              href="/kontakt"
+              class="inline-block bg-black text-white font-bold px-4 py-2 text-sm border-2 border-black hover:bg-swiss-orange transition-colors"
+            >
+              Kontakt aufnehmen
+            </a>
+          </div>
+
+          <!-- Gruppencoaching -->
+          <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300">
+            <h3 class="text-xl font-black mb-2">Gruppencoaching</h3>
+            <p class="text-sm text-swiss-orange font-bold mb-3">
+              Gemeinsam lernen, voneinander profitieren
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              Coaching in der Gruppe – entweder mit Kollegen aus deinem Unternehmen oder in offenen Gruppen mit gleichgesinnten Teilnehmern.
+            </p>
+            <a
+              href="/kontakt"
+              class="inline-block bg-black text-white font-bold px-4 py-2 text-sm border-2 border-black hover:bg-swiss-orange transition-colors"
+            >
+              Kontakt aufnehmen
+            </a>
+          </div>
+
+          <!-- Done-For-You -->
+          <div class="reveal md:col-span-2 bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300">
+            <h3 class="text-xl font-black mb-2">Done-For-You</h3>
+            <p class="text-sm text-swiss-orange font-bold mb-3">
+              Wir setzen deine Projekte um
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              Von der Idee zur fertigen Lösung. Synclaro übernimmt Konzeption, Entwicklung und Implementierung deiner KI- und Automatisierungsprojekte.
+            </p>
+            <a
+              href="/kontakt"
+              class="inline-block bg-black text-white font-bold px-6 py-2 text-sm border-2 border-black hover:bg-swiss-orange transition-colors"
+            >
+              Kontakt aufnehmen
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intensiv Coaching Section -->
+  <section id="intensiv-coaching" class="bg-white py-20 scroll-mt-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl">
+      <div class="text-center mb-12">
+        <span class="reveal inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          5-TAGE-INTENSIV-PROGRAMM
+        </span>
+        <h2 class="reveal text-4xl md:text-5xl font-black mb-4">
+          Intensiv vor Ort <span class="text-swiss-orange">Coaching</span>
+        </h2>
+        <p class="reveal text-xl text-gray-600 max-w-3xl mx-auto">
+          Das transformative 5-Tage-Programm für Handwerksbetriebe, die KI und Automatisierung erfolgreich implementieren wollen
+        </p>
+      </div>
+
+      <!-- What is it -->
+      <div class="reveal bg-gray-50 border-2 border-black p-8 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-10 transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+        <h3 class="text-2xl md:text-3xl font-black mb-6">
+          Was ist das Intensiv vor Ort Coaching?
+        </h3>
+        <div class="text-gray-600 space-y-4">
+          <p>
+            Ein exklusives 5-Tage-Programm, das viermal jährlich stattfindet und speziell für Geschäftsführer und Entscheider im Handwerk konzipiert wurde. In einer kleinen Gruppe von maximal 10 Teilnehmern erhältst du intensive Betreuung und praktisches Know-how.
+          </p>
+          <p>
+            Das Programm kombiniert fundierte Wissensvermittlung mit direkter praktischer Umsetzung. Du lernst nicht nur Theorie, sondern setzt vom ersten Tag an konkrete Automatisierungen für deinen Betrieb um.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Benefits -->
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-black mb-2">Praktisches Lernen</h4>
+          <p class="text-gray-600">
+            Kein reines Frontal-Training. Du arbeitest täglich an realen Projekten aus deinem Betrieb.
+          </p>
+        </div>
+
+        <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-black mb-2">Kleine Gruppen</h4>
+          <p class="text-gray-600">
+            Maximal 10 Teilnehmer garantieren intensive Betreuung für jeden.
+          </p>
+        </div>
+
+        <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-black mb-2">Individueller Fahrplan</h4>
+          <p class="text-gray-600">
+            Du erhältst einen maßgeschneiderten Implementierungsplan für deinen Betrieb.
+          </p>
+        </div>
+
+        <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h4 class="text-xl font-black mb-2">Vom Anfänger zum Umsetzer</h4>
+          <p class="text-gray-600">
+            Egal ob du bei Null startest – du wirst eigenständig Automationen entwickeln können.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5-Day Program -->
+      <div class="reveal bg-gray-50 border-2 border-black p-8 md:p-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-10 transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+        <h3 class="text-2xl md:text-3xl font-black mb-8">
+          Was du in 5 Tagen erreichst
+        </h3>
+
+        <div class="space-y-6">
+          {phases.map((phase) => (
+            <div class="border-l-4 border-swiss-orange pl-6">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="text-sm font-mono font-bold text-swiss-orange bg-swiss-orange/10 px-3 py-1 border border-swiss-orange/30">
+                  {phase.day}
+                </span>
+                <h4 class="text-lg font-black text-black">{phase.title}</h4>
+              </div>
+              <p class="text-lg font-bold text-swiss-orange mb-2">{phase.main}</p>
+              <p class="text-gray-600">{phase.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal text-center">
+        <a
+          href="/kontakt"
+          class="inline-block bg-swiss-orange text-white font-bold px-12 py-5 text-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+        >
+          Jetzt bewerben →
+        </a>
+        <p class="text-sm text-gray-500 mt-4">
+          Begrenzte Plätze • Wir melden uns innerhalb von 48 Stunden
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-2xl text-center">
+      <div class="reveal bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+        <h2 class="text-2xl font-black mb-4">
+          Hast du Fragen?
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Buche ein kostenloses Beratungsgespräch
+        </p>
+        <a
+          href="/termin"
+          class="inline-flex items-center justify-center gap-2 bg-swiss-orange text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Kostenloses Beratungsgespräch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Note -->
+  <section class="bg-white border-t-2 border-black py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-600 flex items-center justify-center gap-2 flex-wrap">
+        <span>Eine Kooperation von</span>
+        <span class="font-black text-black">Synclaro</span>
+        <span>&</span>
+        <span class="font-black text-black">Mittelstand Digital Zentrum Handwerk</span>
+      </p>
+    </div>
+  </section>
+</MainLayout>

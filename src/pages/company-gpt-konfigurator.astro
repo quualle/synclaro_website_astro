@@ -1,0 +1,130 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const title = "Company GPT Konfigurator - Ihre KI-Lösung konfigurieren | Synclaro";
+const description = "Konfigurieren Sie Ihren individuellen Company GPT. Wählen Sie Funktionen, Integrationen und den passenden Plan.";
+
+const features = [
+  { id: 'chat', label: 'Chat-Interface', description: 'Interaktiver Chat für Mitarbeiter und Kunden' },
+  { id: 'search', label: 'Intelligente Suche', description: 'Durchsuchen Sie alle Unternehmensdokumente' },
+  { id: 'automation', label: 'Prozess-Automatisierung', description: 'Automatisieren Sie wiederkehrende Aufgaben' },
+  { id: 'analytics', label: 'Analytics Dashboard', description: 'Auswertungen und Insights' }
+];
+
+const integrations = [
+  { id: 'sharepoint', label: 'SharePoint', icon: '📁' },
+  { id: 'teams', label: 'MS Teams', icon: '💬' },
+  { id: 'salesforce', label: 'Salesforce', icon: '☁️' },
+  { id: 'confluence', label: 'Confluence', icon: '📚' },
+  { id: 'slack', label: 'Slack', icon: '💬' },
+  { id: 'custom', label: 'Custom API', icon: '🔌' }
+];
+
+const plans = [
+  { id: 'starter', label: 'Starter', users: 'bis 50 Nutzer', price: 'ab 999€/Monat' },
+  { id: 'business', label: 'Business', users: 'bis 250 Nutzer', price: 'ab 2.499€/Monat' },
+  { id: 'enterprise', label: 'Enterprise', users: 'unbegrenzt', price: 'Individuell' }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-8 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl text-center">
+      <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        KONFIGURATOR
+      </span>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+        Konfigurieren Sie <span class="text-swiss-orange">Ihren Company GPT</span>
+      </h1>
+
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Wählen Sie die Funktionen und Integrationen, die zu Ihrem Unternehmen passen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Configurator -->
+  <section class="py-12 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <!-- Step 1: Features -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-10 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            1
+          </div>
+          <h2 class="text-2xl font-black">Funktionen wählen</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          {features.map((feature) => (
+            <label class="bg-gray-50 border-2 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <div class="flex items-start gap-3">
+                <input type="checkbox" class="mt-1 w-5 h-5 accent-swiss-orange" />
+                <div>
+                  <span class="font-bold block">{feature.label}</span>
+                  <span class="text-sm text-gray-600">{feature.description}</span>
+                </div>
+              </div>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <!-- Step 2: Integrations -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-10 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            2
+          </div>
+          <h2 class="text-2xl font-black">Integrationen auswählen</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {integrations.map((integration) => (
+            <label class="bg-gray-50 border-2 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer text-center">
+              <input type="checkbox" class="mb-2 w-5 h-5 accent-swiss-orange" />
+              <div class="text-3xl mb-2">{integration.icon}</div>
+              <span class="font-bold text-sm">{integration.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <!-- Step 3: Plan -->
+      <div class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-10 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            3
+          </div>
+          <h2 class="text-2xl font-black">Plan auswählen</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          {plans.map((plan) => (
+            <label class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+              <input type="radio" name="plan" class="mb-3 w-5 h-5 accent-swiss-orange" />
+              <h3 class="text-xl font-black mb-1">{plan.label}</h3>
+              <p class="text-sm text-gray-600 mb-2">{plan.users}</p>
+              <p class="text-lg font-bold text-swiss-orange">{plan.price}</p>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a
+          href="https://cal.com/marcoheer/erstgesprach"
+          class="inline-block px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Unverbindliches Angebot anfordern
+        </a>
+        <p class="mt-4 text-sm text-gray-500">
+          Wir erstellen Ihnen ein individuelles Angebot basierend auf Ihrer Konfiguration.
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

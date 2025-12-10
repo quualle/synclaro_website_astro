@@ -1,0 +1,233 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const title = "KI-Beratung für den deutschen Mittelstand - Synclaro";
+const description = "Strategische KI-Beratung speziell für mittelständische Unternehmen. Von der Potenzialanalyse bis zur Implementierung - 100% DSGVO-konform.";
+
+const challenges = [
+  {
+    icon: '⏰',
+    title: 'Zeitdruck im Tagesgeschäft',
+    description: 'Zwischen Kundenaufträgen und Mitarbeiterführung bleibt kaum Zeit für strategische KI-Projekte.'
+  },
+  {
+    icon: '🔒',
+    title: 'Datenschutz-Bedenken',
+    description: 'Sie wollen KI nutzen, aber nicht auf Kosten der Datensicherheit Ihrer Kunden und Mitarbeiter.'
+  },
+  {
+    icon: '💰',
+    title: 'Budget-Unsicherheit',
+    description: 'Große Investitionen in unbekannte Technologie fühlen sich riskant an.'
+  },
+  {
+    icon: '🎯',
+    title: 'Fehlende Orientierung',
+    description: 'Der KI-Markt ist unübersichtlich - welche Lösung passt wirklich zu Ihrem Unternehmen?'
+  }
+];
+
+const solutions = [
+  {
+    number: '01',
+    title: 'Kostenlose Erstanalyse',
+    description: 'In einem unverbindlichen 30-Minuten-Gespräch analysieren wir gemeinsam Ihre größten Zeitfresser und identifizieren Quick Wins.',
+    benefits: ['Konkrete Einsparpotenziale', 'Erste ROI-Schätzung', 'Kein Risiko']
+  },
+  {
+    number: '02',
+    title: 'Maßgeschneiderte Strategie',
+    description: 'Wir entwickeln einen realistischen Fahrplan, der zu Ihrem Budget und Ihren Ressourcen passt.',
+    benefits: ['Priorisierte Maßnahmen', 'Klarer Zeitplan', 'Transparente Kosten']
+  },
+  {
+    number: '03',
+    title: 'Begleitete Umsetzung',
+    description: 'Wir setzen die Lösungen gemeinsam mit Ihrem Team um und sorgen für nachhaltige Ergebnisse.',
+    benefits: ['Hands-on Unterstützung', 'Schulung inklusive', 'Langfristige Begleitung']
+  }
+];
+
+const stats = [
+  { value: '50+', label: 'Mittelständler beraten' },
+  { value: '87%', label: 'Durchschnittliche Zeitersparnis' },
+  { value: '100%', label: 'DSGVO-konform' },
+  { value: '<6', label: 'Wochen bis zum ersten Ergebnis' }
+];
+
+const testimonial = {
+  quote: 'Endlich jemand, der KI verständlich erklärt und nicht nur verkaufen will. Die Beratung hat uns konkrete Ergebnisse gebracht.',
+  author: 'Geschäftsführer eines mittelständischen Maschinenbauers',
+  company: '120 Mitarbeiter'
+};
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            FÜR DEN MITTELSTAND
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+            KI-Beratung, die zum <span class="text-swiss-orange">Mittelstand</span> passt.
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8">
+            Sie haben keine Zeit für theoretische Konzepte? Wir liefern praktische KI-Lösungen,
+            die sich in Ihren Arbeitsalltag integrieren und messbaren Mehrwert schaffen.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://cal.com/marcoheer/erstgesprach"
+              class="px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150 text-center"
+            >
+              Kostenlose Erstberatung buchen
+            </a>
+            <a
+              href="#wie-wir-helfen"
+              class="px-8 py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 text-center"
+            >
+              So helfen wir
+            </a>
+          </div>
+
+          <p class="mt-6 text-sm text-gray-500 flex items-center">
+            <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            30 Min. • Unverbindlich • 100% DSGVO-konform
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div class="grid grid-cols-2 gap-6">
+              {stats.map((stat) => (
+                <div class="text-center">
+                  <div class="text-4xl font-black text-swiss-orange mb-1">{stat.value}</div>
+                  <div class="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+          Kennen Sie diese <span class="text-swiss-orange">Herausforderungen</span>?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Als Mittelständler haben Sie besondere Anforderungen. Wir verstehen das.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {challenges.map((challenge) => (
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <div class="text-4xl mb-4">{challenge.icon}</div>
+            <h3 class="text-xl font-black mb-2">{challenge.title}</h3>
+            <p class="text-gray-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section id="wie-wir-helfen" class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+          Unser <span class="text-swiss-orange">Ansatz</span> für Sie
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Drei Schritte von der ersten Analyse bis zur erfolgreichen Umsetzung.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {solutions.map((solution, idx) => (
+          <div class="grid md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-1">
+              <div class="w-16 h-16 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black text-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                {solution.number}
+              </div>
+            </div>
+            <div class="md:col-span-11">
+              <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <h3 class="text-2xl font-black mb-2">{solution.title}</h3>
+                <p class="text-gray-600 mb-4">{solution.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {solution.benefits.map((benefit) => (
+                    <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange text-swiss-orange text-sm font-bold">
+                      {benefit}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <svg class="w-12 h-12 text-swiss-orange mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <blockquote class="text-2xl md:text-3xl font-black mb-6">
+          {testimonial.quote}
+        </blockquote>
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-gray-200 border-2 border-black"></div>
+          <div>
+            <p class="font-bold">{testimonial.author}</p>
+            <p class="text-sm text-gray-500">{testimonial.company}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6">
+        Bereit für den nächsten Schritt?
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Wir zeigen Ihnen konkret,
+        wie KI Ihrem Unternehmen helfen kann.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://cal.com/marcoheer/erstgesprach"
+          class="px-8 py-4 bg-black text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+        >
+          Erstgespräch buchen
+        </a>
+        <a
+          href="/kontakt"
+          class="px-8 py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

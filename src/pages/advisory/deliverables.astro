@@ -1,0 +1,140 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Deliverables | Synclaro Advisory";
+const description = "Was Sie nach dem Advisory-Projekt erhalten: Ist-Analyse Report, Opportunity Map, Priorisierungs-Matrix und Implementierungs-Roadmap.";
+
+const deliverables = [
+  {
+    title: "Ist-Analyse Report",
+    description: "Detaillierte Dokumentation Ihrer aktuellen Situation. Prozesse, Technologie-Stack, organisatorische Struktur – alles auf einen Blick.",
+    contents: ["Prozess-Mapping aller relevanten Workflows", "Tool-Landscape-Analyse", "Stakeholder-Interviews zusammengefasst", "Engpässe und Pain Points identifiziert"]
+  },
+  {
+    title: "Opportunity Map",
+    description: "Visualisierung aller identifizierten KI-Potenziale in Ihrem Unternehmen. Von Quick Wins bis strategische Transformationsprojekte.",
+    contents: ["Alle Use Cases kategorisiert", "Verbindungen zwischen Use Cases", "Abhängigkeiten visualisiert", "Quick Wins hervorgehoben"]
+  },
+  {
+    title: "Priorisierungs-Matrix",
+    description: "Bewertung aller Potenziale nach Business-Impact und Umsetzungsaufwand. Klare Handlungsempfehlungen.",
+    contents: ["Impact-Effort-Matrix", "ROI-Schätzungen pro Use Case", "Risk-Assessment", "Empfohlene Reihenfolge"]
+  },
+  {
+    title: "Implementierungs-Roadmap",
+    description: "Detaillierter 3-Phasen-Plan mit konkreten Zeitlinien. Von Quick Wins bis zur strategischen Transformation.",
+    contents: ["Phase 1: Quick Wins (0-6 Monate)", "Phase 2: Mittelfristige Projekte (6-18 Monate)", "Phase 3: Strategische Transformation (18+ Monate)", "Ressourcen-Planung pro Phase"]
+  },
+  {
+    title: "Success Metrics & KPIs",
+    description: "Messbare Erfolgskriterien für jedes Projekt. So wissen Sie, ob die Umsetzung funktioniert.",
+    contents: ["KPIs pro Use Case definiert", "Baseline-Werte dokumentiert", "Zielwerte festgelegt", "Messmethoden beschrieben"]
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Was Sie <span class="text-swiss-orange">erhalten</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Nach Abschluss des Advisory-Projekts haben Sie alle strategischen Dokumente in der Hand, um fundierte Entscheidungen zu treffen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Grid -->
+  <section class="pb-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="space-y-8">
+        {deliverables.map((deliverable, idx) => (
+          <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 bg-swiss-orange text-white font-black text-2xl flex items-center justify-center border-2 border-black flex-shrink-0">
+                {idx + 1}
+              </div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-black mb-3">{deliverable.title}</h3>
+                <p class="text-gray-600 mb-6">{deliverable.description}</p>
+                <div class="grid md:grid-cols-2 gap-3">
+                  {deliverable.contents.map((content) => (
+                    <div class="flex items-start gap-2">
+                      <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm text-gray-700">{content}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Format Info -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h2 class="text-2xl font-black mb-6 text-center">Format der Deliverables</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 class="font-black mb-2">PDF-Dokumente</h3>
+            <p class="text-sm text-gray-600">Alle Reports als professionell gestaltete PDFs</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+              </svg>
+            </div>
+            <h3 class="font-black mb-2">Präsentation</h3>
+            <p class="text-sm text-gray-600">Alle Ergebnisse in einer Management-Präsentation</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+              </svg>
+            </div>
+            <h3 class="font-black mb-2">Editierbare Dateien</h3>
+            <p class="text-sm text-gray-600">Roadmap und Matrix als bearbeitbare Dateien</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <a
+        href="/advisory/kontakt"
+        class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+      >
+        <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+        <span class="relative flex items-center gap-2">
+          Jetzt Strategiegespräch vereinbaren
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </span>
+      </a>
+      <p class="text-gray-500 mt-6">
+        Oder mehr über <a href="/advisory/prozess" class="text-swiss-orange hover:underline">unseren Prozess</a> oder <a href="/advisory/kosteneinschaetzung" class="text-swiss-orange hover:underline">die Investition</a> erfahren
+      </p>
+    </div>
+  </section>
+</MainLayout>

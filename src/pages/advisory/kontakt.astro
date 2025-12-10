@@ -1,0 +1,183 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Strategiegespräch vereinbaren | Synclaro Advisory";
+const description = "Kostenloses, 60-minütiges Erstgespräch – unverbindlich und ohne Verkaufsdruck.";
+
+const expectations = [
+  { step: 1, title: "Ihre Situation verstehen", description: "Wir hören zu und verstehen Ihre Herausforderungen und Ziele" },
+  { step: 2, title: "Erste Einschätzung", description: "Wir geben eine ehrliche Einschätzung, ob Advisory der richtige Ansatz ist" },
+  { step: 3, title: "Nächste Schritte klären", description: "Falls Advisory passt: Scope, Timeline und Investition transparent besprechen" }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Main Content -->
+  <section class="pt-24 pb-20 px-6 lg:px-12 bg-white min-h-screen">
+    <div class="container mx-auto max-w-5xl">
+      <!-- Hero Section -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Strategiegespräch <span class="text-swiss-orange">vereinbaren</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Kostenloses, 60-minütiges Erstgespräch – unverbindlich und ohne Verkaufsdruck
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Left Column - Info -->
+        <div>
+          <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+            <h2 class="text-2xl font-black mb-6">Was erwartet Sie?</h2>
+            <div class="space-y-4">
+              {expectations.map((item) => (
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-swiss-orange/20 flex items-center justify-center flex-shrink-0 mt-1 border border-black">
+                    <span class="text-swiss-orange text-xs font-bold">{item.step}</span>
+                  </div>
+                  <div>
+                    <p class="font-bold mb-1">{item.title}</p>
+                    <p class="text-gray-600 text-sm">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-gray-100 border-2 border-black p-6 mb-8">
+            <h3 class="text-lg font-black mb-4">Direkter Kontakt</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:kontakt@synclaro.de" class="text-gray-700 hover:text-black transition-colors">
+                  kontakt@synclaro.de
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <a href="tel:+4916099471052" class="text-gray-700 hover:text-black transition-colors">
+                  +49 160 99471052
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-swiss-orange/10 border-2 border-black p-6">
+            <p class="text-sm text-gray-700">
+              <span class="font-bold">Versprechen:</span> Im Gespräch klären wir ehrlich, ob Advisory überhaupt der richtige Ansatz für Sie ist. Falls nicht, empfehlen wir Ihnen die bessere Alternative – sei es <a href="/academy" class="text-swiss-orange hover:underline">Academy</a> oder <a href="/solutions" class="text-swiss-orange hover:underline">Solutions</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column - Form -->
+        <div>
+          <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h2 class="text-2xl font-black mb-6">Anfrage senden</h2>
+
+            <form action="/danke?source=advisory" method="GET" class="space-y-5">
+              <div>
+                <label for="name" class="block text-sm font-bold mb-2">Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                  placeholder="Ihr Name"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-bold mb-2">E-Mail *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                  placeholder="ihre@email.de"
+                />
+              </div>
+
+              <div>
+                <label for="telefon" class="block text-sm font-bold mb-2">Telefon (optional)</label>
+                <input
+                  type="tel"
+                  id="telefon"
+                  name="telefon"
+                  class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                  placeholder="+49 ..."
+                />
+              </div>
+
+              <div>
+                <label for="unternehmen" class="block text-sm font-bold mb-2">Unternehmen *</label>
+                <input
+                  type="text"
+                  id="unternehmen"
+                  name="unternehmen"
+                  required
+                  class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                  placeholder="Ihr Unternehmen"
+                />
+              </div>
+
+              <div>
+                <label for="mitarbeiteranzahl" class="block text-sm font-bold mb-2">Mitarbeiteranzahl *</label>
+                <select
+                  id="mitarbeiteranzahl"
+                  name="mitarbeiteranzahl"
+                  required
+                  class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none bg-white"
+                >
+                  <option value="">Bitte auswählen</option>
+                  <option value="1-10">1-10 Mitarbeiter</option>
+                  <option value="11-50">11-50 Mitarbeiter</option>
+                  <option value="51-200">51-200 Mitarbeiter</option>
+                  <option value="201-500">201-500 Mitarbeiter</option>
+                  <option value="500+">500+ Mitarbeiter</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="beschreibung" class="block text-sm font-bold mb-2">Kurze Beschreibung Ihrer Situation *</label>
+                <textarea
+                  id="beschreibung"
+                  name="beschreibung"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none resize-none"
+                  placeholder="Was sind Ihre größten Herausforderungen? Wo sehen Sie Potenzial für KI?"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="group relative w-full inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+              >
+                <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+                <span class="relative">Anfrage senden</span>
+              </button>
+
+              <p class="text-gray-500 text-xs text-center">
+                Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Kontaktaufnahme zu.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Links -->
+      <div class="text-center mt-12">
+        <p class="text-gray-500">
+          Oder mehr über unsere <a href="/advisory/leistungen" class="text-swiss-orange hover:underline">Leistungen</a>, <a href="/advisory/prozess" class="text-swiss-orange hover:underline">Prozess</a> oder <a href="/advisory/kosteneinschaetzung" class="text-swiss-orange hover:underline">Preise</a> erfahren
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

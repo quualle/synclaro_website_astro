@@ -1,0 +1,471 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI Coaching | Synclaro Academy";
+const description = "Gruppen-Coaching und 1:1 Coaching für KI und Automatisierung. Finde das Format, das zu deinen Zielen passt.";
+
+const gruppenWorkflow = [
+  { step: 1, title: "Kick-off & Einführung", description: "Wir starten gemeinsam, lernen die Tools kennen und richten deine Entwicklungsumgebung ein." },
+  { step: 2, title: "Wöchentliche Sessions", description: "6 Monate lang, 2 Stunden pro Woche: Von Agent-Coding über n8n bis Webseiten-Bau und Hosting." },
+  { step: 3, title: "Hands-on Projekte", description: "Du baust echte Projekte: Eigene Webseiten, KI-Agents, Automatisierungen mit n8n, Datenbanken mit Supabase." },
+  { step: 4, title: "Multimodale KI", description: "Bildgenerierung, Videogenerierung und die neuesten KI-Tools für Alltag und Beruf." }
+];
+
+const einsZuEinsWorkflow = [
+  { step: 1, title: "Kostenloses Kennenlerngespräch", description: "30 Minuten, in denen wir klären, ob die Chemie stimmt und was deine Ziele sind." },
+  { step: 2, title: "Individueller Fahrplan", description: "Basierend auf deinem Kenntnisstand und Zielen erstellen wir gemeinsam einen Lernplan." },
+  { step: 3, title: "Flexible Sessions", description: "Du buchst Termine nach deinem Zeitplan. Sessions dauern typisch 2-4 Stunden, je nach Thema." },
+  { step: 4, title: "Hands-on Umsetzung", description: "Wir arbeiten direkt an deinen Projekten. Du schreibst Code, ich gebe Feedback und zeige Best Practices." },
+  { step: 5, title: "Kontinuierlicher Support", description: "Zwischen den Sessions kannst du mir jederzeit Fragen stellen. Ich antworte innerhalb von 24h." }
+];
+
+const useCases = [
+  { title: "Spezifische Projekte umsetzen", description: "Du hast eine konkrete Idee und möchtest sie gemeinsam realisieren" },
+  { title: "Bestehende Systeme optimieren", description: "Deine Workflows funktionieren, aber du willst sie auf das nächste Level heben" },
+  { title: "Technische Herausforderungen lösen", description: "Du steckst bei einem Problem fest und brauchst Expertise" },
+  { title: "Architektur-Beratung", description: "Planung größerer Systeme von Anfang an richtig angehen" }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Comparison Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          COACHING
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl font-black mb-4">
+          Welches Format passt <span class="text-swiss-orange">zu dir?</span>
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Vergleiche beide Coaching-Formate und finde heraus, welches am besten zu deinen Zielen passt
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Gruppen-Coaching Card -->
+        <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center">
+              <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-black">Gruppen-Coaching</h3>
+              <p class="text-swiss-orange font-bold">ab 90€/h pro Person</p>
+            </div>
+          </div>
+
+          <div class="space-y-4 mb-6">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">6 Monate Intensiv</div>
+                <p class="text-sm text-gray-600">2 Stunden pro Woche – strukturierter Lernpfad zum KI-Profi</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">Macher-Skills</div>
+                <p class="text-sm text-gray-600">Agent-Coding, n8n, Webseiten-Bau, GitHub, Supabase, Edge Functions</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">Multimodale KI</div>
+                <p class="text-sm text-gray-600">Bildgenerierung, Videogenerierung, KI-Automatisierung im Alltag</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">Top 0,1%</div>
+                <p class="text-sm text-gray-600">Werde zu den absoluten Spitzenreitern unter den KI-Nutzern</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t-2 border-black">
+            <p class="font-bold mb-2">Ideal für:</p>
+            <p class="text-gray-600 text-sm">Selbstständige und Macher, die alles selbst können wollen – die KI-Überholspur 2025/2026</p>
+          </div>
+
+          <a href="/academy/beratung" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden mt-6 w-full text-center">
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Gruppen-Coaching anfragen</span>
+          </a>
+        </div>
+
+        <!-- 1:1 Coaching Card -->
+        <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center">
+              <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-black">1:1 Coaching</h3>
+              <p class="text-swiss-orange font-bold">190€/h</p>
+            </div>
+          </div>
+
+          <div class="space-y-4 mb-6">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">Maximale Flexibilität</div>
+                <p class="text-sm text-gray-600">Termine nach deinem Zeitplan und Tempo</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">100% maßgeschneidert</div>
+                <p class="text-sm text-gray-600">Vollständig auf deine Projekte zugeschnitten</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">Eigenes Tempo</div>
+                <p class="text-sm text-gray-600">Du bestimmst die Lerngeschwindigkeit</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-gray-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-bold mb-1">Höherer Preis</div>
+                <p class="text-sm text-gray-500">Investition in individuelle Betreuung</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t-2 border-black">
+            <p class="font-bold mb-2">Ideal für:</p>
+            <p class="text-gray-600 text-sm">Spezifische Anforderungen, individuelle Projekte und flexible Zeitplanung</p>
+          </div>
+
+          <a href="/academy/beratung" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden mt-6 w-full text-center">
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Kennenlerngespräch buchen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gruppen-Coaching Detail Section -->
+  <section id="gruppen-coaching" class="py-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+        GRUPPEN-COACHING
+      </span>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-4xl font-black mb-6">
+            Gemeinsam lernen, <span class="text-swiss-orange">schneller wachsen</span>
+          </h2>
+          <p class="text-xl text-gray-600 mb-6">
+            Im Gruppen-Coaching profitierst du nicht nur von meiner Expertise, sondern auch vom Wissen und den Projekten der anderen Teilnehmer.
+          </p>
+
+          <h3 class="text-xl font-black mb-4">So läuft das Gruppen-Coaching ab:</h3>
+          <div class="space-y-4">
+            {gruppenWorkflow.map((item) => (
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-swiss-orange text-white font-bold flex items-center justify-center border border-black flex-shrink-0">
+                  {item.step}
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">{item.title}</h4>
+                  <p class="text-gray-600 text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h3 class="text-2xl font-black mb-6">Zwei Format-Optionen</h3>
+
+            <div class="space-y-6">
+              <div class="bg-white border-2 border-black p-6">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-black mb-1">Kleine Gruppen</h4>
+                    <p class="text-sm text-gray-600">Max. 5 Personen</p>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-2xl font-black text-swiss-orange">90€/h</div>
+                    <div class="text-xs text-gray-500">pro Person</div>
+                  </div>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">
+                  Perfekt für Einzelpersonen oder kleine Teams. Du wirst mit anderen Teilnehmern zusammengebracht, die ähnliche Ziele verfolgen.
+                </p>
+                <div class="space-y-2 text-sm text-gray-600">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Feste Termine & Struktur
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Netzwerk-Effekt
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Typisch 30-50 Stunden
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white border-2 border-black p-6">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-black mb-1">Geschlossene Abteilungen</h4>
+                    <p class="text-sm text-gray-600">z.B. Personal, Buchhaltung, Vertrieb</p>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-2xl font-black text-swiss-orange">Individuell</div>
+                    <div class="text-xs text-gray-500">auf Anfrage</div>
+                  </div>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">
+                  Ideal für Unternehmen, die eine komplette Abteilung schulen möchten. Inhalte werden auf eure spezifischen Prozesse zugeschnitten.
+                </p>
+                <div class="space-y-2 text-sm text-gray-600">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Abteilungsspezifische Inhalte
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Flexible Terminplanung
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Förderung möglich (QCG)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1:1 Coaching Detail Section -->
+  <section id="eins-zu-eins" class="py-16 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+        1:1 COACHING
+      </span>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-4xl font-black mb-6">
+            Maximale <span class="text-swiss-orange">Flexibilität</span> für deine Ziele
+          </h2>
+          <p class="text-xl text-gray-600 mb-6">
+            Im 1:1 Coaching dreht sich alles um dich und deine spezifischen Anforderungen. Kein starrer Lehrplan, sondern maßgeschneiderte Betreuung.
+          </p>
+
+          <h3 class="text-xl font-black mb-4">So funktioniert 1:1 Coaching:</h3>
+          <div class="space-y-4 mb-8">
+            {einsZuEinsWorkflow.map((item) => (
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-swiss-orange text-white font-bold flex items-center justify-center border border-black flex-shrink-0">
+                  {item.step}
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">{item.title}</h4>
+                  <p class="text-gray-600 text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="bg-swiss-orange/10 border-2 border-black p-6">
+            <h4 class="font-black mb-2">Wann macht 1:1 Sinn?</h4>
+            <p class="text-gray-600 text-sm">
+              Wenn du sehr spezifische Projekte hast, die nicht in eine Gruppendynamik passen. Wenn du maximale Flexibilität bei Terminen und Inhalten brauchst. Oder wenn du einfach die volle Aufmerksamkeit eines Coaches für dich haben möchtest.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+            <div class="bg-swiss-orange/10 border-2 border-black p-8 mb-6 text-center">
+              <div class="text-5xl font-black mb-3">190€/h</div>
+              <div class="text-gray-600 mb-2">Typisch 40-50 Stunden</div>
+              <div class="text-sm text-gray-500">Bis zu 200 Stunden möglich</div>
+            </div>
+
+            <h4 class="font-black mb-4">Was ist inkludiert?</h4>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">Flexible Terminvereinbarung nach deinem Zeitplan</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">Individueller Lehrplan basierend auf deinen Zielen</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">Code-Reviews und direktes Feedback zu deinen Projekten</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">Support zwischen Sessions per Slack/Discord</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">Zugang zu allen Lernmaterialien und Code-Vorlagen</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h4 class="font-black mb-4">Typische Use Cases für 1:1</h4>
+            <div class="space-y-3">
+              {useCases.map((useCase) => (
+                <div class="flex items-start gap-3">
+                  <span class="text-swiss-orange text-lg font-bold">→</span>
+                  <div>
+                    <div class="font-bold mb-1">{useCase.title}</div>
+                    <p class="text-sm text-gray-600">{useCase.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mastermind Teaser -->
+  <section class="py-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="bg-swiss-orange/10 border-2 border-black p-8 lg:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div class="flex flex-col lg:flex-row items-start gap-8">
+          <div class="w-16 h-16 bg-swiss-orange text-white flex items-center justify-center border-2 border-black flex-shrink-0">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-3xl font-black mb-4">
+              Brauchst du mehr als <span class="text-swiss-orange">Coaching?</span>
+            </h3>
+            <p class="text-lg text-gray-600 mb-6">
+              Das Mastermind-Programm richtet sich gezielt an Geschäftsführer und C-Level, die neben der KI-Umsetzung auch strategische Weichenstellungen für ihr Unternehmen vornehmen möchten. 5 intensive Tage mit exklusivem Austausch auf Führungsebene, gehobenen Locations und direkter Anwendung auf deine Unternehmensstrategie.
+            </p>
+            <div class="flex flex-wrap gap-4 mb-6">
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm">5 Tage Intensiv</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm">Strategischer Fokus</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm">Nur für C-Level & GF</span>
+              </div>
+            </div>
+            <a href="/academy/mastermind" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+              <span class="relative">Mehr über das Mastermind-Programm</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-16 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center">
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          Im kostenlosen Beratungsgespräch finden wir gemeinsam heraus, welches Coaching-Format am besten zu deinen Zielen passt.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/academy/beratung" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Beratungsgespräch buchen</span>
+          </a>
+          <span class="flex items-center gap-2 text-gray-600">
+            <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm">100% unverbindlich & kostenlos</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

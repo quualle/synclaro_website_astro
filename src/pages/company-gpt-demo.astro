@@ -1,0 +1,119 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const title = "Company GPT Demo - Erleben Sie KI in Aktion | Synclaro";
+const description = "Testen Sie unseren KI-Assistenten live. Sehen Sie, wie Company GPT Fragen beantwortet und Ihre Mitarbeiter unterstützt.";
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          LIVE DEMO
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Company GPT <span class="text-swiss-orange">in Aktion</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Erleben Sie, wie ein KI-Assistent Fragen zu Ihrem Unternehmen beantwortet.
+          Trainiert auf echtem Unternehmenswissen.
+        </p>
+      </div>
+
+      <!-- Demo Chat Interface -->
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gray-50 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <!-- Chat Header -->
+          <div class="bg-black text-white p-4 flex items-center gap-3">
+            <div class="w-10 h-10 bg-swiss-orange rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="font-bold">Company GPT Demo</h2>
+              <p class="text-xs text-gray-400">Trainiert auf Beispiel-Unternehmensdaten</p>
+            </div>
+          </div>
+
+          <!-- Chat Messages -->
+          <div class="p-6 space-y-4 min-h-[400px]">
+            <!-- Bot Welcome -->
+            <div class="flex gap-3">
+              <div class="w-8 h-8 bg-swiss-orange border-2 border-black flex items-center justify-center flex-shrink-0">
+                <span class="text-white text-xs font-bold">AI</span>
+              </div>
+              <div class="bg-white border-2 border-black p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-[80%]">
+                <p>Hallo! Ich bin der Company GPT Demo-Assistent. Ich kann Fragen zu unserem Beispielunternehmen beantworten. Probieren Sie es aus!</p>
+              </div>
+            </div>
+
+            <!-- Example Questions -->
+            <div class="mt-8">
+              <p class="text-sm text-gray-500 mb-3">Beispielfragen:</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="px-3 py-2 bg-white border-2 border-black text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                  Was sind eure Öffnungszeiten?
+                </button>
+                <button class="px-3 py-2 bg-white border-2 border-black text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                  Wie kann ich bestellen?
+                </button>
+                <button class="px-3 py-2 bg-white border-2 border-black text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                  Wer ist der Ansprechpartner?
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Input -->
+          <div class="border-t-2 border-black p-4">
+            <div class="flex gap-2">
+              <input
+                type="text"
+                placeholder="Ihre Frage eingeben..."
+                class="flex-1 px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+              />
+              <button class="px-6 py-3 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                Senden
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-4">
+          Dies ist eine Demo-Version. Die vollständige Version wird auf Ihre Unternehmensdaten trainiert.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6">
+        Bereit für Ihren eigenen Company GPT?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Lassen Sie uns gemeinsam besprechen, wie Company GPT Ihr Unternehmen unterstützen kann.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://cal.com/marcoheer/erstgesprach"
+          class="px-8 py-4 bg-black text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Demo für Ihr Unternehmen anfragen
+        </a>
+        <a
+          href="/company-gpt"
+          class="px-8 py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Mehr über Company GPT
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,298 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Lehrplan | Synclaro Academy";
+const description = "17 Kapitel, 84 Themen, 48 Stunden Video-Content: Von den Grundlagen bis zur nativen App.";
+
+const curriculum = [
+  {
+    chapter: 1,
+    title: "Einführung",
+    description: "Zielsetzung ist die digitale Autonomie des gecoachten. Überblick über den Kurs, Erfolgsdefinition und das Prinzip von Sam Altman.",
+    topics: 0,
+    phase: "grundlagen"
+  },
+  {
+    chapter: 2,
+    title: "KI-Grundlagen",
+    description: "Fundamentale Konzepte von KI, neuronalen Netzwerken, LLMs und verschiedenen Modelltypen.",
+    topics: 6,
+    highlights: ["Neuronale Netzwerke", "LLMs", "Token & Context Window", "Modelltypen"],
+    phase: "grundlagen"
+  },
+  {
+    chapter: 3,
+    title: "Werkzeuge und Grundlagen",
+    description: "Einführung in ChatGPT, Claude, Gemini, GroK, Perplexity und deren erweiterte Funktionen.",
+    topics: 8,
+    highlights: ["ChatGPT & Claude", "Custom GPTs", "Memory Mechanic", "Voice Mode"],
+    phase: "grundlagen"
+  },
+  {
+    chapter: 4,
+    title: "Hilfsmittel und Werkzeuge Fortgeschritten",
+    description: "Fortgeschrittene Techniken wie Prompt Engineering, Context Engineering und Meta-Prompting.",
+    topics: 5,
+    highlights: ["Prompt Engineering", "Context Engineering", "Chain of Thought", "Meta-Prompting"],
+    phase: "grundlagen"
+  },
+  {
+    chapter: 5,
+    title: "Tools",
+    description: "Übersicht über wichtige Tools für Automatisierung, Entwicklung und Deployment.",
+    topics: 13,
+    highlights: ["Make & Zapier", "N8n", "Cursor AI", "Deployment-Tools"],
+    phase: "automatisierung"
+  },
+  {
+    chapter: 6,
+    title: "Fehlerbehandlung und Debugging",
+    description: "Systematische Fehlersuche und robuste Workflow-Entwicklung.",
+    topics: 5,
+    highlights: ["Debugging-Strategien", "Fehlerbehandlung", "Robuste Workflows"],
+    phase: "automatisierung"
+  },
+  {
+    chapter: 7,
+    title: "DSGVO und AI-EU-Act und Sicherheit",
+    description: "Rechtliche Anforderungen und Sicherheitsthemen im KI-Kontext.",
+    topics: 4,
+    highlights: ["DSGVO", "EU AI Act", "API-Keys", "Webhook-Sicherheit"],
+    phase: "automatisierung"
+  },
+  {
+    chapter: 8,
+    title: "Website mit Basic-Hosting",
+    description: "Erste Anwendung: Website-Entwicklung mit Tracking, Funnelling und Payment-Integration.",
+    topics: 6,
+    highlights: ["Landing Pages", "Payment-Integration", "Analytics", "User-Tracking"],
+    phase: "automatisierung"
+  },
+  {
+    chapter: 9,
+    title: "OCR und Dokumenten-Workflows",
+    description: "Automatische Dokumentenverarbeitung und DMS-Integration.",
+    topics: 5,
+    highlights: ["OCR-Grundlagen", "DMS-Workflow", "Banking-Integration"],
+    phase: "automatisierung"
+  },
+  {
+    chapter: 10,
+    title: "Voice und Transkriptions-Pipelines",
+    description: "Automatische Transkription und Intent-Erkennung aus Gesprächen.",
+    topics: 5,
+    highlights: ["Whisper", "Intent-Erkennung", "Telefonie-APIs"],
+    phase: "entwicklung"
+  },
+  {
+    chapter: 11,
+    title: "Knowledge Assistant",
+    description: "Entwicklung eines generellen Knowledge Assistants mit RAG und Multi-Source-Integration.",
+    topics: 6,
+    highlights: ["CAG & RAG", "Mandantenverwaltung", "Feedbacksystem"],
+    phase: "entwicklung"
+  },
+  {
+    chapter: 12,
+    title: "Monitoring und Observability",
+    description: "Error-Tracking, Uptime-Monitoring und Alert-Systeme.",
+    topics: 5,
+    highlights: ["Error-Tracking", "Uptime-Monitoring", "Dashboards"],
+    phase: "entwicklung"
+  },
+  {
+    chapter: 13,
+    title: "Notification-Systeme",
+    description: "Push-Notifications, E-Mail-Alerts und Multi-Channel-Benachrichtigungen.",
+    topics: 5,
+    highlights: ["Push-Notifications", "E-Mail-Alerts", "Multi-Channel"],
+    phase: "entwicklung"
+  },
+  {
+    chapter: 14,
+    title: "Programmierung eigener MCP-Server",
+    description: "Entwicklung eigener MCP-Server und Custom Tools.",
+    topics: 3,
+    highlights: ["MCP-Architektur", "Custom Tools", "Claude Integration"],
+    phase: "entwicklung"
+  },
+  {
+    chapter: 15,
+    title: "App-Entwicklung",
+    description: "Mobile App-Entwicklung mit Expo, Deployment und CI/CD.",
+    topics: 6,
+    highlights: ["App Store Deployment", "Expo", "CI/CD"],
+    phase: "entwicklung"
+  },
+  {
+    chapter: 16,
+    title: "Skalierung und Cost Optimization",
+    description: "API-Kosten optimieren, Caching und Skalierungsstrategien.",
+    topics: 5,
+    highlights: ["Cost Optimization", "Caching", "Skalierung auf 1000+ Nutzer"],
+    phase: "production"
+  },
+  {
+    chapter: 17,
+    title: "Production Hardening",
+    description: "Backup-Strategien, Disaster Recovery und Security-Best-Practices.",
+    topics: 5,
+    highlights: ["Backup-Strategien", "Disaster Recovery", "Security Best-Practices"],
+    phase: "production"
+  }
+];
+
+const phaseLabels: Record<string, string> = {
+  grundlagen: "Grundlagen",
+  automatisierung: "Automatisierung",
+  entwicklung: "Entwicklung",
+  production: "Production"
+};
+
+const totalTopics = curriculum.reduce((sum, chapter) => sum + chapter.topics, 0);
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Was du in der <span class="text-swiss-orange">Academy lernst</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-4 max-w-3xl mx-auto">
+          17 Kapitel · {totalTopics} Themen · Von den Grundlagen bis zur nativen App
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-4xl font-black text-swiss-orange mb-2">17</div>
+          <div class="text-sm text-gray-500">Kapitel</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-4xl font-black text-swiss-orange mb-2">{totalTopics}</div>
+          <div class="text-sm text-gray-500">Themen</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-4xl font-black text-swiss-orange mb-2">48h</div>
+          <div class="text-sm text-gray-500">Video-Content</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-4xl font-black text-swiss-orange mb-2">∞</div>
+          <div class="text-sm text-gray-500">Updates</div>
+        </div>
+      </div>
+
+      <!-- Phase Overview -->
+      <div class="grid md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="w-12 h-12 mx-auto mb-3 bg-swiss-orange/10 border-2 border-black flex items-center justify-center">
+            <span class="text-2xl">📚</span>
+          </div>
+          <h3 class="font-black mb-1">Grundlagen</h3>
+          <p class="text-xs text-gray-500">Kapitel 1-4</p>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="w-12 h-12 mx-auto mb-3 bg-swiss-orange/10 border-2 border-black flex items-center justify-center">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="font-black mb-1">Automatisierung</h3>
+          <p class="text-xs text-gray-500">Kapitel 5-9</p>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="w-12 h-12 mx-auto mb-3 bg-swiss-orange/10 border-2 border-black flex items-center justify-center">
+            <span class="text-2xl">🚀</span>
+          </div>
+          <h3 class="font-black mb-1">Entwicklung</h3>
+          <p class="text-xs text-gray-500">Kapitel 10-15</p>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="w-12 h-12 mx-auto mb-3 bg-swiss-orange/10 border-2 border-black flex items-center justify-center">
+            <span class="text-2xl">🎯</span>
+          </div>
+          <h3 class="font-black mb-1">Production</h3>
+          <p class="text-xs text-gray-500">Kapitel 16-17</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum Grid -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl font-black mb-12 text-center">Alle Kapitel im Detail</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {curriculum.map((chapter) => (
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150">
+            <!-- Header -->
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-swiss-orange text-white font-black text-lg flex items-center justify-center border-2 border-black">
+                {chapter.chapter}
+              </div>
+              <div class="flex flex-col items-end gap-1">
+                <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 text-xs text-swiss-orange font-medium">
+                  {phaseLabels[chapter.phase]}
+                </span>
+                {chapter.topics > 0 && (
+                  <span class="px-3 py-1 bg-gray-100 border border-gray-300 text-xs text-gray-500">
+                    {chapter.topics} Themen
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-xl font-black mb-3">{chapter.title}</h3>
+            <p class="text-sm text-gray-600 mb-4">{chapter.description}</p>
+
+            <!-- Highlights -->
+            {chapter.highlights && chapter.highlights.length > 0 && (
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
+                {chapter.highlights.map((highlight) => (
+                  <span class="px-2 py-1 bg-gray-100 border border-gray-200 text-xs text-gray-500">
+                    {highlight}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl sm:text-4xl font-black mb-4">
+        Haben wir dich <span class="text-swiss-orange">neugierig gemacht</span>?
+      </h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Lass uns gemeinsam herausfinden, welches Format am besten zu deinen Zielen passt.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/academy/beratung"
+          class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+        >
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+          <span class="relative flex items-center gap-2">
+            Jetzt Beratungsgespräch vereinbaren
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+        </a>
+        <a
+          href="/academy"
+          class="inline-flex items-center justify-center gap-2 bg-white text-black font-bold py-4 px-8 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Zurück zur Übersicht
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

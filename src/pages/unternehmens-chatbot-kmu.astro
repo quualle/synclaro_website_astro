@@ -1,0 +1,287 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const title = "KI-Chatbot für KMU - Ihr intelligenter Mitarbeiter | Synclaro";
+const description = "Der KI-Chatbot speziell für kleine und mittlere Unternehmen. Beantworten Sie 80% der Kundenanfragen automatisch - DSGVO-konform und bezahlbar.";
+
+const benefits = [
+  {
+    icon: '⏰',
+    title: '24/7 Verfügbarkeit',
+    value: 'Rund um die Uhr',
+    description: 'Ihre Kunden bekommen sofort Antworten - auch außerhalb der Geschäftszeiten.'
+  },
+  {
+    icon: '💰',
+    title: 'Kostenersparnis',
+    value: 'Bis zu 60%',
+    description: 'Reduzieren Sie Support-Kosten durch automatisierte Beantwortung von Standardfragen.'
+  },
+  {
+    icon: '⚡',
+    title: 'Schnelle Einrichtung',
+    value: '< 2 Wochen',
+    description: 'Von der Bestellung bis zum produktiven Einsatz vergehen nur wenige Tage.'
+  },
+  {
+    icon: '🔒',
+    title: '100% DSGVO',
+    value: 'Deutsche Server',
+    description: 'Ihre Daten bleiben in Deutschland. Garantierte Rechtssicherheit.'
+  }
+];
+
+const useCases = [
+  {
+    title: 'Kundenservice',
+    description: 'Beantworten Sie häufige Fragen zu Produkten, Preisen und Verfügbarkeit automatisch.',
+    examples: ['Öffnungszeiten', 'Produktinfos', 'Bestellstatus', 'Rückgabebedingungen']
+  },
+  {
+    title: 'Vertrieb',
+    description: 'Qualifizieren Sie Leads und vereinbaren Sie automatisch Termine.',
+    examples: ['Lead-Qualifizierung', 'Terminbuchung', 'Angebotsanfragen', 'Produktberatung']
+  },
+  {
+    title: 'Interner Support',
+    description: 'Entlasten Sie Ihre HR- und IT-Abteilung mit einem internen Wissensassistenten.',
+    examples: ['IT-Helpdesk', 'HR-Fragen', 'Onboarding', 'Wissensdatenbank']
+  }
+];
+
+const pricing = [
+  {
+    name: 'Starter',
+    price: 'ab 299€',
+    period: '/Monat',
+    features: [
+      '1.000 Chats/Monat',
+      'Website-Integration',
+      'Basis-Anpassung',
+      'E-Mail-Support',
+      'DSGVO-konform'
+    ],
+    cta: 'Jetzt starten',
+    popular: false
+  },
+  {
+    name: 'Business',
+    price: 'ab 599€',
+    period: '/Monat',
+    features: [
+      '5.000 Chats/Monat',
+      'Multi-Channel (Web, WhatsApp)',
+      'Erweiterte Personalisierung',
+      'CRM-Integration',
+      'Priority Support',
+      'Eigenes Training'
+    ],
+    cta: 'Beliebteste Wahl',
+    popular: true
+  },
+  {
+    name: 'Enterprise',
+    price: 'Individuell',
+    period: '',
+    features: [
+      'Unbegrenzte Chats',
+      'Alle Integrationen',
+      'Vollständige Anpassung',
+      'Dedicated Manager',
+      '24/7 Support',
+      'SLA-Garantie'
+    ],
+    cta: 'Kontaktieren',
+    popular: false
+  }
+];
+
+const faq = [
+  {
+    question: 'Wie lange dauert die Einrichtung?',
+    answer: 'Die Basis-Einrichtung dauert typischerweise 1-2 Wochen. Bei komplexeren Integrationen planen wir 3-4 Wochen ein.'
+  },
+  {
+    question: 'Brauche ich technisches Know-how?',
+    answer: 'Nein. Wir übernehmen die komplette Einrichtung und schulen Ihre Mitarbeiter im Umgang mit dem System.'
+  },
+  {
+    question: 'Kann der Chatbot auch Deutsch?',
+    answer: 'Natürlich! Der Chatbot ist speziell für den deutschen Markt optimiert und versteht auch Dialekte und Umgangssprache.'
+  },
+  {
+    question: 'Was passiert, wenn der Bot nicht weiter weiß?',
+    answer: 'Bei komplexen Anfragen wird automatisch an einen Mitarbeiter übergeben. Der Chatbot lernt aus diesen Fällen.'
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          FÜR KLEINE & MITTLERE UNTERNEHMEN
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Der KI-Chatbot, der <span class="text-swiss-orange">bezahlbar</span> ist.
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          Automatisieren Sie Ihren Kundenservice, ohne Ihr Budget zu sprengen.
+          Unser KI-Chatbot ist speziell für KMU entwickelt - einfach, effektiv, DSGVO-konform.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://cal.com/marcoheer/erstgesprach"
+            class="px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+          >
+            Kostenlose Demo anfragen
+          </a>
+          <a
+            href="#preise"
+            class="px-8 py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Preise ansehen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+            <div class="text-4xl mb-2">{benefit.icon}</div>
+            <div class="text-3xl font-black text-swiss-orange mb-1">{benefit.value}</div>
+            <h3 class="text-lg font-bold mb-2">{benefit.title}</h3>
+            <p class="text-sm text-gray-600">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+          Einsatzgebiete für <span class="text-swiss-orange">Ihr KMU</span>
+        </h2>
+        <p class="text-xl text-gray-600">
+          Flexibel einsetzbar - genau dort, wo Sie ihn brauchen.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {useCases.map((useCase) => (
+          <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h3 class="text-2xl font-black mb-3">{useCase.title}</h3>
+            <p class="text-gray-600 mb-4">{useCase.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {useCase.examples.map((example) => (
+                <span class="px-2 py-1 bg-white border border-black text-xs font-mono">
+                  {example}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="preise" class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+          Transparente <span class="text-swiss-orange">Preise</span>
+        </h2>
+        <p class="text-xl text-gray-600">
+          Keine versteckten Kosten. Wählen Sie das Paket, das zu Ihnen passt.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {pricing.map((plan) => (
+          <div class={`bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 ${plan.popular ? 'ring-4 ring-swiss-orange relative' : ''}`}>
+            {plan.popular && (
+              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span class="bg-swiss-orange text-white text-xs font-bold px-3 py-1 border-2 border-black">
+                  EMPFOHLEN
+                </span>
+              </div>
+            )}
+            <h3 class="text-2xl font-black mb-2">{plan.name}</h3>
+            <div class="mb-4">
+              <span class="text-4xl font-black text-swiss-orange">{plan.price}</span>
+              <span class="text-gray-600">{plan.period}</span>
+            </div>
+            <ul class="space-y-3 mb-6">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://cal.com/marcoheer/erstgesprach"
+              class={`block text-center px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 ${plan.popular ? 'bg-swiss-orange text-white' : 'bg-white text-black'}`}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+          Häufige <span class="text-swiss-orange">Fragen</span>
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {faq.map((item) => (
+          <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h3 class="text-xl font-black mb-2">{item.question}</h3>
+            <p class="text-gray-600">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6">
+        Starten Sie jetzt!
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Vereinbaren Sie eine kostenlose Demo und sehen Sie, wie der Chatbot Ihrem Unternehmen helfen kann.
+      </p>
+      <a
+        href="https://cal.com/marcoheer/erstgesprach"
+        class="inline-block px-8 py-4 bg-black text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+      >
+        Kostenlose Demo anfragen
+      </a>
+    </div>
+  </section>
+</MainLayout>

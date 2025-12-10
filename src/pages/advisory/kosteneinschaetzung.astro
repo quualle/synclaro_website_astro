@@ -1,0 +1,191 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Kosteneinschätzung | Synclaro Advisory";
+const description = "Transparente Preisgestaltung für strategische KI-Beratung. Investition abhängig von Unternehmensgröße und Scope.";
+
+const packages = [
+  {
+    name: "Starter",
+    target: "10-50 Mitarbeiter",
+    description: "Für kleinere Unternehmen, die erste Schritte mit KI planen",
+    features: ["Strategiegespräch (60 Min)", "Fokussiertes Assessment (2 Tage)", "Opportunity Map", "Priorisierungs-Matrix", "Management-Präsentation"],
+    duration: "2 Wochen"
+  },
+  {
+    name: "Professional",
+    target: "50-200 Mitarbeiter",
+    description: "Für mittelständische Unternehmen mit komplexeren Strukturen",
+    features: ["Strategiegespräch (60 Min)", "Umfassendes Assessment (4 Tage)", "Ist-Analyse Report", "Opportunity Map", "Priorisierungs-Matrix", "Implementierungs-Roadmap", "Success Metrics & KPIs", "Management-Präsentation"],
+    duration: "3-4 Wochen",
+    popular: true
+  },
+  {
+    name: "Enterprise",
+    target: "200+ Mitarbeiter",
+    description: "Für größere Unternehmen mit umfangreichen Anforderungen",
+    features: ["Strategiegespräch (60 Min)", "Intensives Assessment (5+ Tage)", "Alle Deliverables", "Mehrere Abteilungen", "Change-Management-Konzept", "Technologie-Strategie", "Umsetzungs-Begleitung"],
+    duration: "4-6 Wochen"
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Kosten<span class="text-swiss-orange">einschätzung</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Transparente Preisgestaltung. Die genaue Investition hängt von Unternehmensgröße und Scope ab – wir besprechen das im kostenlosen Strategiegespräch.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Grid -->
+  <section class="pb-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-3 gap-8">
+        {packages.map((pkg) => (
+          <div class={`relative bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${pkg.popular ? 'border-4 border-swiss-orange' : ''}`}>
+            {pkg.popular && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="px-4 py-1 bg-swiss-orange text-white text-xs font-bold border-2 border-black">
+                  Beliebt
+                </span>
+              </div>
+            )}
+
+            <div class="text-center mb-6 mt-4">
+              <h3 class="text-2xl font-black mb-2">{pkg.name}</h3>
+              <p class="text-sm text-swiss-orange font-medium mb-2">{pkg.target}</p>
+              <p class="text-gray-600 text-sm">{pkg.description}</p>
+            </div>
+
+            <div class="mb-6">
+              <div class="flex items-center justify-center gap-2 text-sm text-gray-500 mb-4">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Dauer: {pkg.duration}</span>
+              </div>
+            </div>
+
+            <div class="space-y-3 mb-8">
+              {pkg.features.map((feature) => (
+                <div class="flex items-start gap-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-sm text-gray-700">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="/advisory/kontakt"
+              class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+            >
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+              <span class="relative">Gespräch vereinbaren</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h2 class="text-2xl font-black mb-6 text-center">Wie wir kalkulieren</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-black mb-3">Faktoren für die Preisgestaltung</h3>
+            <ul class="space-y-2 text-gray-600 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-swiss-orange">→</span>
+                <span>Unternehmensgröße und Komplexität</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-swiss-orange">→</span>
+                <span>Anzahl der zu analysierenden Abteilungen</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-swiss-orange">→</span>
+                <span>Umfang des gewünschten Assessments</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-swiss-orange">→</span>
+                <span>Gewünschte Deliverables</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-black mb-3">Was immer inkludiert ist</h3>
+            <ul class="space-y-2 text-gray-600 text-sm">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Kostenloses Strategiegespräch</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Transparente Festpreise</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Keine versteckten Kosten</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Management-Präsentation</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 p-6 bg-swiss-orange/10 border-2 border-swiss-orange/30">
+          <p class="text-center text-gray-700">
+            <strong>Wichtig:</strong> Wir nennen Ihnen einen verbindlichen Preis erst nach dem kostenlosen Strategiegespräch, wenn wir Ihre Situation kennen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl font-black mb-6">
+        Lassen Sie uns über Ihr <span class="text-swiss-orange">Projekt sprechen</span>
+      </h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Im kostenlosen Strategiegespräch klären wir Ihre Anforderungen und geben Ihnen eine realistische Einschätzung.
+      </p>
+      <a
+        href="/advisory/kontakt"
+        class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+      >
+        <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+        <span class="relative flex items-center gap-2">
+          Kostenloses Strategiegespräch
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  </section>
+</MainLayout>

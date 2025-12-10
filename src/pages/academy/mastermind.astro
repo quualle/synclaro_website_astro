@@ -1,0 +1,399 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Mastermind für Geschäftsführer | Synclaro Academy";
+const description = "5-Tages Intensiv-Veranstaltung: Strategische KI-Weiterbildung für Führungskräfte, die KI ernst nehmen.";
+
+const stats = [
+  { value: "5", label: "Intensive Tage" },
+  { value: "8-12", label: "Teilnehmer" },
+  { value: "100%", label: "Praxisnah" },
+  { value: "∞", label: "Netzwerk-Wert" }
+];
+
+const mastermindFeatures = [
+  {
+    title: "Geschlossene Gruppe",
+    description: "6-10 Geschäftsführer aus ähnlichen Branchen für maximale Relevanz und Vertraulichkeit"
+  },
+  {
+    title: "Exklusiver Zugang",
+    description: "Direkter Kontakt zu Marco Heer und seinem Team für spezifische Fragen auch nach der Mastermind"
+  },
+  {
+    title: "Strategischer Fokus",
+    description: "Keine Tool-Tutorials, sondern strategisches Verständnis für richtige Entscheidungen und Delegation"
+  }
+];
+
+const perfectFor = [
+  "Du als GF/CEO strategische Entscheidungen über KI-Einsatz treffen musst",
+  "Du verstehen willst, was technisch möglich ist, ohne selbst programmieren zu müssen",
+  "Du ein Netzwerk von Unternehmern aufbauen willst, die vor ähnlichen Herausforderungen stehen",
+  "Du 5 Tage für eine intensive Weiterbildung investieren kannst",
+  "Du bereit bist, deine KI-Strategie grundlegend zu überdenken"
+];
+
+const notFor = [
+  "Du konkrete Tool-Tutorials und Schritt-für-Schritt-Anleitungen suchst (→ Videokurs)",
+  "Du selbst programmieren lernen möchtest (→ 1:1 Coaching)",
+  "Du keine 5 Tage am Stück Zeit hast (→ Flexiblerer Videokurs oder Coaching)",
+  "Du als Mitarbeiter (nicht GF) teilnehmen möchtest (→ Gruppen-Coaching für Teams)"
+];
+
+const days = [
+  {
+    day: 1,
+    title: "KI-Grundlagen & Strategie",
+    description: "Verstehe fundamentale Konzepte: Wie funktionieren LLMs? Was ist möglich? Entwickle ein Gefühl für Machbarkeit.",
+    tags: ["Neuronale Netzwerke", "Modellauswahl"]
+  },
+  {
+    day: 2,
+    title: "Automatisierung & Tools",
+    description: "Welche Tools gibt es? Wie wähle ich das richtige? Verstehe das Ökosystem und triff die richtigen Entscheidungen.",
+    tags: ["No-Code Tools", "APIs"]
+  },
+  {
+    day: 3,
+    title: "Team & Delegation",
+    description: "Wie baue ich KI-Kompetenz im Team auf? Wann delegiere ich? Entwickle eine Strategie für den Kompetenzaufbau.",
+    tags: ["Team-Struktur", "Change"]
+  },
+  {
+    day: 4,
+    title: "Sicherheit & Compliance",
+    description: "DSGVO, EU AI Act - verstehe rechtliche Rahmenbedingungen und bleib compliant, ohne Innovation zu bremsen.",
+    tags: ["DSGVO", "EU AI Act"]
+  },
+  {
+    day: 5,
+    title: "Roadmap & Umsetzung",
+    description: "Entwickle deine 90-Tage-Roadmap. Quick Wins und langfristiger Aufbau. Gehe mit einem klaren Aktionsplan.",
+    tags: ["Quick Wins", "Roadmap"]
+  }
+];
+
+const afterOptions = [
+  {
+    title: "Gruppen-Coaching für dein Team",
+    description: "Schule deine Mitarbeiter im Gruppen-Format. Sie setzen um, was du strategisch definiert hast."
+  },
+  {
+    title: "Done-for-You Service",
+    description: "Wir setzen deine Projekte um. Du bleibst strategisch involviert, wir übernehmen die Umsetzung."
+  },
+  {
+    title: "Mastermind-Netzwerk",
+    description: "Bleibe Teil der Community. Monatliche Check-ins, exklusiver Slack-Channel, gegenseitiger Support."
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          5-Tages Intensiv-Veranstaltung
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Mastermind für <span class="text-swiss-orange">Geschäftsführer</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-4 max-w-4xl mx-auto">
+          Strategische KI-Weiterbildung für Führungskräfte, die KI ernst nehmen
+        </p>
+        <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+          Verstehe wie alles funktioniert und was möglich ist, um es gezielt an deine Mitarbeiter zu delegieren
+        </p>
+      </div>
+
+      <!-- Key Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {stats.map((stat) => (
+          <div class="bg-gray-50 border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div class="text-4xl font-black text-swiss-orange mb-2">{stat.value}</div>
+            <div class="text-sm text-gray-600 font-medium">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Was ist die Mastermind? -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            Was ist die <span class="text-swiss-orange">Mastermind</span>?
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p class="text-lg">
+              Die Synclaro Mastermind ist keine gewöhnliche Weiterbildung. Es ist ein intensives 5-Tages-Format, in dem du als Geschäftsführer das strategische Verständnis aufbaust, um KI erfolgreich in deinem Unternehmen zu implementieren.
+            </p>
+            <p>
+              In einer geschlossenen Gruppe von 6-10 Geschäftsführern aus ähnlichen Branchen entwickelst du nicht nur technisches Verständnis, sondern auch ein wertvolles Netzwerk von Gleichgesinnten.
+            </p>
+            <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mt-6">
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-swiss-orange flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div>
+                  <div class="font-black mb-2">Warum "Mastermind"?</div>
+                  <div class="text-sm text-gray-600">
+                    Der Begriff stammt aus Napoleon Hills Klassiker "Think and Grow Rich". Eine Mastermind-Gruppe ist ein Zusammenschluss von Personen, die sich gegenseitig herausfordern, unterstützen und zu höheren Zielen inspirieren.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          {mastermindFeatures.map((feature) => (
+            <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 class="text-lg font-black mb-2">{feature.title}</h3>
+              <p class="text-sm text-gray-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Für wen? -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Ist die Mastermind das <span class="text-swiss-orange">Richtige für dich</span>?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Die Mastermind ist speziell für Geschäftsführer konzipiert, die KI strategisch in ihrem Unternehmen einsetzen wollen
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Perfekt für -->
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-green-500 flex items-center justify-center border-2 border-black">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-black">Perfekt für dich, wenn...</h3>
+          </div>
+          <ul class="space-y-4">
+            {perfectFor.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Nicht geeignet -->
+        <div class="bg-gray-100 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-gray-400 flex items-center justify-center border-2 border-black">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-black">Weniger geeignet, wenn...</h3>
+          </div>
+          <ul class="space-y-4">
+            {notFor.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-500">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Die 5 Tage im Überblick -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Die 5 Tage im <span class="text-swiss-orange">Überblick</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Von KI-Grundlagen bis zur konkreten Implementierungs-Roadmap
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {days.map((day) => (
+          <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-t-4 border-t-swiss-orange">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-swiss-orange text-white text-xl font-black flex items-center justify-center border-2 border-black">
+                {day.day}
+              </div>
+              <h3 class="text-lg font-black">{day.title}</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">
+              {day.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {day.tags.map((tag) => (
+                <span class="px-2 py-1 bg-swiss-orange/10 border border-swiss-orange/30 text-xs text-swiss-orange font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nach der Mastermind -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="bg-gray-50 border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-black mb-4">
+            Nach der Mastermind: <span class="text-swiss-orange">Deine Optionen</span>
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Die Mastermind ist der Anfang, nicht das Ende. So geht es weiter.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {afterOptions.map((option) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-black flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-black mb-3">{option.title}</h3>
+              <p class="text-gray-600 text-sm">{option.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl text-center">
+      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <p class="text-xl text-gray-600 mb-8">
+          Lass uns in einem unverbindlichen Erstgespräch klären, ob die Mastermind zu dir und deinem Unternehmen passt.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-center justify-center gap-3 text-gray-600">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>100% unverbindliches Erstgespräch</span>
+          </div>
+          <div class="flex items-center justify-center gap-3 text-gray-600">
+            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>Individuelle Preisgestaltung nach Gruppengröße</span>
+          </div>
+        </div>
+
+        <!-- Förderungsmöglichkeiten -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-gray-50 border-2 border-black p-6 text-left shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h4 class="text-lg font-black mb-1">Für Selbständige</h4>
+            <p class="text-xs text-gray-500 mb-3">BAFA-Förderung für Unternehmensberatung</p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Bis zu 80% Förderung (max. 2.800€ pro Beratung)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Für KMU und Existenzgründer</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Antragstellung vor Vertragsabschluss notwendig</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 border-2 border-black p-6 text-left shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h4 class="text-lg font-black mb-1">Für Arbeitgeber</h4>
+            <p class="text-xs text-gray-500 mb-3">Qualifizierungschancengesetz (QCG)</p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Bis zu 100% Förderung der Weiterbildungskosten</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Bis zu 100% Zuschuss zum Arbeitsentgelt während der Weiterbildung</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Förderhöhe abhängig von Unternehmensgröße</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-500 mb-8">
+          Wir beraten dich gerne zu den passenden Fördermöglichkeiten für deine Situation.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/academy/beratung"
+            class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative flex items-center gap-2">
+              Erstgespräch vereinbaren
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+          <a
+            href="/academy"
+            class="inline-flex items-center justify-center gap-2 bg-white text-black font-bold py-4 px-8 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Zurück zur Übersicht
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

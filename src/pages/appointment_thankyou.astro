@@ -1,0 +1,127 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const title = "Termin gebucht - Vielen Dank! | Synclaro";
+const description = "Vielen Dank für Ihre Terminbuchung. Wir freuen uns auf das Gespräch mit Ihnen.";
+
+const nextSteps = [
+  {
+    number: '1',
+    title: 'Kalendereinladung',
+    description: 'Sie erhalten in Kürze eine Kalendereinladung per E-Mail mit allen Details.'
+  },
+  {
+    number: '2',
+    title: 'Vorbereitung',
+    description: 'Überlegen Sie sich Ihre wichtigsten Fragen und Herausforderungen.'
+  },
+  {
+    number: '3',
+    title: 'Gespräch',
+    description: 'Wir treffen uns zum vereinbarten Zeitpunkt via Video-Call.'
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <div class="min-h-screen bg-white flex items-center py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="max-w-4xl mx-auto">
+        <!-- Success Icon & Message -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center justify-center w-24 h-24 bg-swiss-orange border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4">
+            Termin <span class="text-swiss-orange">gebucht!</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
+            Vielen Dank für Ihre Terminbuchung. Wir freuen uns darauf, Sie kennenzulernen
+            und gemeinsam Ihre KI-Potenziale zu entdecken.
+          </p>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-12">
+          <h2 class="text-2xl font-black mb-6 text-center">
+            Die nächsten <span class="text-swiss-orange">Schritte</span>
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            {nextSteps.map((step) => (
+              <div class="text-center">
+                <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black text-xl mx-auto mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  {step.number}
+                </div>
+                <h3 class="font-black text-lg mb-2">{step.title}</h3>
+                <p class="text-gray-600 text-sm">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Preparation Tips -->
+        <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-12">
+          <h2 class="text-xl font-black mb-4">
+            💡 Tipp für das Gespräch
+          </h2>
+          <p class="text-gray-600">
+            Für ein möglichst produktives Erstgespräch empfehlen wir, sich vorab
+            Gedanken zu folgenden Punkten zu machen:
+          </p>
+          <ul class="mt-4 space-y-2 text-gray-600">
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Welche repetitiven Aufgaben kosten Sie am meisten Zeit?</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Welche Prozesse möchten Sie gerne automatisieren?</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Haben Sie bereits Erfahrungen mit KI-Tools gemacht?</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <p class="text-gray-600 mb-6">
+            In der Zwischenzeit können Sie mehr über unsere Leistungen erfahren:
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/ki-beratung"
+              class="px-6 py-3 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              KI-Beratung
+            </a>
+            <a
+              href="/ki-automatisierung"
+              class="px-6 py-3 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              KI-Automatisierung
+            </a>
+            <a
+              href="/referenzen"
+              class="px-6 py-3 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Referenzen
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

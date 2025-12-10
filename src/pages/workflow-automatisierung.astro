@@ -1,0 +1,220 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const benefits = [
+  { metric: '80%', label: 'Zeitersparnis', desc: 'bei repetitiven Aufgaben' },
+  { metric: '95%', label: 'Fehlerreduzierung', desc: 'durch automatisierte Prozesse' },
+  { metric: '24/7', label: 'Verfügbarkeit', desc: 'Rund um die Uhr aktiv' },
+  { metric: '3x', label: 'ROI', desc: 'innerhalb 12 Monaten' }
+];
+
+const useCases = [
+  {
+    title: 'Dokumentenverarbeitung',
+    icon: '📄',
+    tasks: [
+      'Rechnungsverarbeitung',
+      'Vertragsanalyse',
+      'Datenextraktion',
+      'Archivierung'
+    ]
+  },
+  {
+    title: 'Kundenservice',
+    icon: '💬',
+    tasks: [
+      'E-Mail-Beantwortung',
+      'Ticket-Routing',
+      'FAQ-Automatisierung',
+      'Eskalationsmanagement'
+    ]
+  },
+  {
+    title: 'Datenanalyse',
+    icon: '📊',
+    tasks: [
+      'Report-Generierung',
+      'KPI-Monitoring',
+      'Trend-Analyse',
+      'Prognosen'
+    ]
+  },
+  {
+    title: 'HR-Prozesse',
+    icon: '👥',
+    tasks: [
+      'Bewerberverwaltung',
+      'Onboarding',
+      'Zeiterfassung',
+      'Urlaubsverwaltung'
+    ]
+  },
+  {
+    title: 'Marketing',
+    icon: '📱',
+    tasks: [
+      'Content-Erstellung',
+      'Social Media Posts',
+      'E-Mail-Kampagnen',
+      'Lead-Scoring'
+    ]
+  },
+  {
+    title: 'Vertrieb',
+    icon: '💼',
+    tasks: [
+      'Lead-Qualifizierung',
+      'Angebotserstellung',
+      'Follow-ups',
+      'CRM-Updates'
+    ]
+  }
+];
+
+const processSteps = [
+  { step: '1', title: 'Analyse', desc: 'Wir analysieren Ihre bestehenden Prozesse und identifizieren Automatisierungspotenziale.' },
+  { step: '2', title: 'Design', desc: 'Entwicklung maßgeschneiderter Automatisierungs-Workflows für Ihre Anforderungen.' },
+  { step: '3', title: 'Implementation', desc: 'Schrittweise Einführung der Automatisierung mit kontinuierlicher Optimierung.' },
+  { step: '4', title: 'Skalierung', desc: 'Ausweitung erfolgreicher Automatisierungen auf weitere Unternehmensbereiche.' }
+];
+---
+
+<MainLayout title="Workflow-Automatisierung mit KI - Synclaro">
+  <div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 px-6 lg:px-12 overflow-hidden">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center">
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] opacity-0 animate-[fade-in-up_0.6s_ease-out_0.1s_forwards]">
+            WORKFLOW-AUTOMATISIERUNG
+          </span>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6 opacity-0 animate-[fade-in-up_0.6s_ease-out_0.2s_forwards]">
+            Workflow-<span class="text-swiss-orange">Automatisierung</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto opacity-0 animate-[fade-in-up_0.6s_ease-out_0.3s_forwards]">
+            Transformieren Sie manuelle Prozesse in intelligente, automatisierte Workflows.
+            Steigern Sie Ihre Produktivität um bis zu 80% mit KI-gestützter Automatisierung.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/lp/express-configurator"
+              class="px-8 py-4 bg-swiss-orange text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+            >
+              Automatisierung starten →
+            </a>
+            <a
+              href="https://cal.com/marcoheer/erstgesprach"
+              class="px-8 py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+            >
+              Demo anfordern
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="reveal text-4xl lg:text-5xl font-black text-center mb-12">
+          Vorteile der <span class="text-swiss-orange">Workflow-Automatisierung</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefits.map((benefit) => (
+            <div class="reveal bg-white border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              <div class="text-5xl font-black text-swiss-orange mb-2">{benefit.metric}</div>
+              <div class="text-xl font-bold text-black mb-1">{benefit.label}</div>
+              <div class="text-sm text-gray-600">{benefit.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-20 px-6 lg:px-12">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="reveal text-4xl lg:text-5xl font-black text-center mb-12">
+          Automatisierbare <span class="text-swiss-orange">Anwendungsfälle</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {useCases.map((useCase) => (
+            <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              <div class="text-4xl mb-4">{useCase.icon}</div>
+              <h3 class="text-xl font-black text-black mb-4">{useCase.title}</h3>
+              <ul class="space-y-2">
+                {useCase.tasks.map((task) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-swiss-orange font-bold">→</span>
+                    <span class="text-gray-700">{task}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="reveal text-4xl lg:text-5xl font-black text-center mb-12">
+          Unser <span class="text-swiss-orange">Automatisierungsprozess</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {processSteps.map((phase, idx) => (
+            <div class="reveal relative">
+              <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] h-full transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+                <div class="w-12 h-12 bg-swiss-orange border-2 border-black flex items-center justify-center text-white font-black text-xl mb-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  {phase.step}
+                </div>
+                <h3 class="text-xl font-black text-black mb-2">{phase.title}</h3>
+                <p class="text-gray-600">{phase.desc}</p>
+              </div>
+              {idx < 3 && (
+                <div class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                  <svg class="w-8 h-8 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+      <div class="container mx-auto max-w-4xl text-center">
+        <h2 class="reveal text-4xl lg:text-5xl font-black text-white mb-6">
+          Starten Sie Ihre Automatisierungsreise
+        </h2>
+        <p class="reveal text-xl text-white/90 mb-8">
+          Entdecken Sie, wie viel Zeit und Ressourcen Sie mit intelligenter Automatisierung sparen können.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/lp/express-configurator"
+            class="px-8 py-4 bg-black text-white font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+          >
+            Jetzt automatisieren
+          </a>
+          <a
+            href="mailto:marcoheer@synclaro.de"
+            class="px-8 py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-150"
+          >
+            Kontakt aufnehmen
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>

@@ -1,0 +1,404 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import AcademyServiceCard from '../../components/AcademyServiceCard';
+
+const title = "KI Academy | Synclaro";
+const description = "Deine KI-Ausbildung vom Anfänger zum Profi. Wir befähigen Geschäftsführer, Entscheider und Selbstständige im KI-Zeitalter.";
+
+const services = [
+  {
+    title: "Mastermind",
+    category: "5 Tage Intensiv",
+    description: "Exklusiv für Geschäftsführer & C-Level. Strategische KI-Weiterbildung in intensiver Gruppen-Atmosphäre - von Strategie bis zur konkreten Umsetzung",
+    href: "/academy/mastermind",
+    videoSrc: "/mastermind.mp4"
+  },
+  {
+    title: "Gruppen-Coaching",
+    category: "6 Monate Intensiv",
+    description: "Für Selbstständige und Macher: 6 Monate, 2h pro Woche. Agent-Coding, n8n, Webseiten-Bau, Hosting, GitHub, Supabase, Bild- & Video-KI. Alles selbst können – zu den Top 0,1% der KI-Nutzer gehören.",
+    href: "/academy/coaching",
+    videoSrc: "/groupcoaching.mp4"
+  },
+  {
+    title: "1:1 Coaching",
+    category: "Das umfangreichste Coaching",
+    description: "Wir begleiten dich 1:1, um dir die strategischen und operativen Fähigkeiten zu vermitteln, die es braucht, um autonom von Softwareanbietern und Zulieferern zu werden und KI plus Automatisierung maximal auszunutzen",
+    href: "/academy/coaching",
+    videoSrc: "/1-1coaching.mp4"
+  },
+  {
+    title: "Videokurs",
+    category: "Selbstlern-Tempo",
+    description: "48 Stunden Video-Content in 17 Kapiteln, perfekt geeignet für Selbstständige und interessierte private Umsetzer. Theorie, Praxis, fundamentale Grundlagen zum Selbstbauen und darauf aufbauen",
+    href: "/academy/videokurs",
+    videoSrc: "/videocourse.mp4"
+  }
+];
+
+const foerderungen = [
+  {
+    title: "BAFA Beratung",
+    zuschuss: "50–80% Zuschuss",
+    max: "Max. 1.750€ (West) / 2.800€ (Ost)",
+    fuerWen: "KMU, Freiberufler in Deutschland",
+    wasWirdGefoerdert: "KI-Strategie, Unternehmensanalyse, Prozessoptimierung - perfekt für Advisory",
+    hinweis: "Gilt NUR für Beratung, nicht für Schulung • Antrag vor Beginn • Programm wird voraussichtlich verlängert"
+  },
+  {
+    title: "Digitalbonus Bayern",
+    zuschuss: "Bis zu 50% Förderung",
+    max: "Standard: 7.500€ / Plus: 30.000€",
+    fuerWen: "Kleine Unternehmen in Bayern (<50 MA)",
+    wasWirdGefoerdert: "KI-Systeme, Software, Automatisierung - ideal für Done-for-You Lösungen (inkl. bis zu 50% Schulungsanteil)",
+    hinweis: "Antrag VOR Projektstart • KI & Robotik priorisiert • Läuft bis Ende 2027"
+  },
+  {
+    title: "Bildungsgutschein",
+    zuschuss: "100% Kostenübernahme",
+    max: "Inkl. Fahrt- & Unterbringungskosten",
+    fuerWen: "Arbeitnehmer, Menschen in Weiterbildung und Arbeitssuchende",
+    wasWirdGefoerdert: "KI-Weiterbildungen, Umschulungen (z.B. KI-Manager Kurse)",
+    hinweis: "AZAV-Zertifizierung • Beratungsgespräch bei Arbeitsagentur"
+  }
+];
+
+const speakerPoints = [
+  'Strategische und tiefste operative Einblicke in KI-Automatisierung',
+  'Live-Demonstrationen von Production-Ready Systemen',
+  'Strategische Einführung von KI im Unternehmen'
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white relative overflow-hidden">
+    <!-- Background elements like main page -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-swiss-orange/3 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+
+    <div class="container mx-auto max-w-6xl relative z-10">
+      <div class="text-center mb-12">
+        <!-- Animated label like main page -->
+        <div class="mb-6 flex items-center justify-center gap-3 opacity-0 animate-fade-in-up">
+          <div class="w-3 h-3 bg-swiss-orange animate-pulse-glow"></div>
+          <span class="font-mono text-xs sm:text-sm tracking-widest uppercase text-gray-500">Synclaro Academy</span>
+        </div>
+
+        <!-- Hero title in main page style -->
+        <div class="mb-8">
+          <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter">
+            <span class="block mb-2 sm:mb-4 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">KI-Ausbildung.</span>
+            <span class="block mb-2 sm:mb-4 text-gray-400 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">Vom Anfänger.</span>
+            <span class="block opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">Zum <span class="text-swiss-orange relative">Profi.<span class="absolute -bottom-2 left-0 w-full h-1 bg-swiss-orange/30"></span></span></span>
+          </h1>
+        </div>
+
+        <div class="flex flex-col items-center gap-2 mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+          <p class="text-xl sm:text-2xl lg:text-3xl font-semibold">
+            Wir befähigen Geschäftsführer, Entscheider und Selbstständige
+          </p>
+          <p class="text-base sm:text-lg text-gray-500">
+            Egal ob Anfänger oder Fortgeschritten • Wir steigen genau dort ein, wo du stehst
+          </p>
+        </div>
+
+        <!-- CTA Buttons in main page style -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+          <a href="/academy/beratung" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative mr-2">Jetzt Beratungsgespräch vereinbaren</span>
+            <svg class="relative w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="/academy/lehrplan" class="group relative inline-flex items-center justify-center bg-white text-gray-900 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg border border-gray-200 hover:border-swiss-orange/50 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+            <span class="mr-2">Kurse ansehen</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services Grid with Video Cards -->
+      <div class="grid md:grid-cols-2 gap-6 mt-16">
+        {services.map((service) => (
+          <AcademyServiceCard
+            title={service.title}
+            category={service.category}
+            description={service.description}
+            href={service.href}
+            videoSrc={service.videoSrc}
+            client:visible
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Förderungen Section -->
+  <section class="py-16 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="reveal bg-white border-2 border-black p-8 lg:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-black mb-3">
+            Förderungen für <span class="text-swiss-orange">KI-Weiterbildung & Implementierung</span>
+          </h2>
+          <p class="text-lg text-gray-600">
+            Spare bis zu 100% der Kosten durch staatliche Förderprogramme
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          {foerderungen.map((foerderung) => (
+            <div class="reveal bg-gray-50 border-2 border-black p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+              <h4 class="text-lg font-black mb-4">{foerderung.title}</h4>
+              <div class="space-y-3 text-sm">
+                <div>
+                  <div class="text-swiss-orange font-bold mb-1">{foerderung.zuschuss}</div>
+                  <div class="text-gray-600">{foerderung.max}</div>
+                </div>
+                <div>
+                  <div class="font-bold">Für wen?</div>
+                  <div class="text-gray-600">{foerderung.fuerWen}</div>
+                </div>
+                <div>
+                  <div class="font-bold">Was wird gefördert?</div>
+                  <div class="text-gray-600">{foerderung.wasWirdGefoerdert}</div>
+                </div>
+                <div class="pt-2 border-t border-black/20">
+                  <div class="text-xs text-gray-500">{foerderung.hinweis}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- QCG Section -->
+        <div class="bg-swiss-orange/5 border-2 border-black p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          <h4 class="text-xl font-black mb-3">Qualifizierungschancengesetz (QCG) - Für Mitarbeiterschulungen</h4>
+          <div class="grid md:grid-cols-3 gap-6 mb-4">
+            <div>
+              <div class="text-swiss-orange font-bold mb-1">15–100% Lehrgangskosten</div>
+              <div class="text-gray-600 text-sm">+ bis zu 75% Lohnkostenzuschuss</div>
+            </div>
+            <div>
+              <div class="font-bold mb-1">Für wen?</div>
+              <div class="text-gray-600 text-sm">Beschäftigte in Unternehmen (alle Größen, KMU profitieren besonders)</div>
+            </div>
+            <div>
+              <div class="font-bold mb-1">Was wird gefördert?</div>
+              <div class="text-gray-600 text-sm">KI-Weiterbildungen für Ihre Mitarbeiter - perfekt für unser Gruppen-Coaching</div>
+            </div>
+          </div>
+          <div class="bg-white border border-black p-4">
+            <p class="text-sm"><strong>Perfekt für Geschäftsführer:</strong> Lassen Sie Ihre Mitarbeiter fortbilden und erhalten Sie einen Großteil der Kosten zurück. Besonders vorteilhaft nach Implementierung von Done-for-You Lösungen zur Einarbeitung Ihres Teams.</p>
+          </div>
+        </div>
+
+        <div class="text-center pt-8 mt-8 border-t-2 border-black">
+          <p class="text-gray-600 mb-6">
+            <strong>Die richtige Förderung finden?</strong> Wir beraten dich kostenlos, welches Programm am besten zu deiner Situation passt.
+          </p>
+          <a href="/academy/beratung" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 py-3 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Kostenlose Förderberatung anfragen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaker Section - Full Width Dark Style -->
+  <section class="py-20 px-6 lg:px-12 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-swiss-orange/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-swiss-orange/5 rounded-full blur-2xl"></div>
+
+    <div class="container mx-auto max-w-6xl relative z-10">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <div class="w-2 h-2 bg-swiss-orange rounded-full animate-pulse"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-gray-400">Speaker & KI-Experte</span>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
+          Marco Heer als <span class="text-swiss-orange">Speaker</span>
+        </h2>
+
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          KI-Experte und gefragter Speaker bei Unternehmen, Verbänden und Institutionen
+        </p>
+      </div>
+
+      <!-- Speaker Points as Cards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        {speakerPoints.map((point, index) => (
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+            <div class="w-12 h-12 bg-gradient-to-br from-swiss-orange to-orange-600 rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-swiss-orange/25">
+              <span class="text-white font-black text-xl">{index + 1}</span>
+            </div>
+            <p class="text-gray-200 leading-relaxed">{point}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Webinar CTA -->
+      <div class="bg-gradient-to-r from-swiss-orange/20 to-orange-600/20 backdrop-blur-sm border border-swiss-orange/30 rounded-2xl p-8 md:p-12 text-center">
+        <h3 class="text-2xl font-black mb-4">In eines seiner Webinare reinschnuppern?</h3>
+        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+          Erlebe Marco live in einem seiner aktuellen Webinar-Formate und erhalte erste Einblicke in die Welt der KI-Automatisierung.
+        </p>
+        <a href="/academy/webinar" class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-8 py-4 font-bold rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+          <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+          <span class="relative mr-2">Webinar-Einladung anfragen</span>
+          <svg class="relative w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Academy Section - Horizontal Layout with Marco -->
+  <section class="py-20 px-6 lg:px-12 bg-white relative overflow-hidden">
+    <div class="container mx-auto max-w-6xl">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <div class="w-2 h-2 bg-swiss-orange rounded-full"></div>
+          <span class="font-mono text-xs tracking-widest uppercase text-gray-500">Über die Academy</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+          Willkommen bei der <span class="text-swiss-orange">Synclaro Academy</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Dein Partner für praxisnahe KI-Weiterbildung – online, live und vor Ort
+        </p>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+        <!-- Marco Image - Left Side -->
+        <div class="lg:col-span-2">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-br from-swiss-orange/20 to-orange-600/10 rounded-3xl blur-xl"></div>
+            <div class="relative bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
+              <img src="/images/marco_new.png" alt="Marco Heer - Gründer Synclaro Academy" class="w-full h-auto object-cover" />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <p class="text-white font-black text-lg">Marco Heer</p>
+                <p class="text-gray-300 text-sm">Gründer & Head Coach</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content - Right Side -->
+        <div class="lg:col-span-3 space-y-8">
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-600 leading-relaxed">
+              Die Synclaro Academy ist mehr als eine klassische Weiterbildungseinrichtung. Wir verbinden fundiertes technisches Wissen mit praktischer Anwendung und begleiten dich von den ersten Schritten mit ChatGPT bis zur Entwicklung produktionsreifer Systeme.
+            </p>
+          </div>
+
+          <!-- Feature Cards -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-swiss-orange/30 hover:shadow-lg transition-all duration-300">
+              <div class="w-10 h-10 bg-swiss-orange/10 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h4 class="font-bold mb-2">Unsere Mission</h4>
+              <p class="text-gray-600 text-sm">KI und Automatisierung praxisnah und umsetzbar verständlich für jedermann machen.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-swiss-orange/30 hover:shadow-lg transition-all duration-300">
+              <div class="w-10 h-10 bg-swiss-orange/10 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h4 class="font-bold mb-2">Unsere Formate</h4>
+              <p class="text-gray-600 text-sm">Hochwertige Locations für intensiven Austausch, Vernetzung und strategisches Lernen.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-swiss-orange/30 hover:shadow-lg transition-all duration-300">
+              <div class="w-10 h-10 bg-swiss-orange/10 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+              <h4 class="font-bold mb-2">Flexibles Lernen</h4>
+              <p class="text-gray-600 text-sm">Online-Formate für maximale Flexibilität, Vor-Ort-Events für persönlichen Austausch.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-swiss-orange/30 hover:shadow-lg transition-all duration-300">
+              <div class="w-10 h-10 bg-swiss-orange/10 rounded-lg flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h4 class="font-bold mb-2">100% Praxis</h4>
+              <p class="text-gray-600 text-sm">Bei uns lernst du nicht nur Theorie, sondern setzt echte Projekte um.</p>
+            </div>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="flex flex-wrap gap-8 pt-4">
+            <div>
+              <div class="text-4xl font-black text-swiss-orange">2024</div>
+              <div class="text-sm text-gray-500">Gegründet</div>
+            </div>
+            <div>
+              <div class="text-4xl font-black text-swiss-orange">450+</div>
+              <div class="text-sm text-gray-500">Menschen KI gelehrt</div>
+            </div>
+            <div>
+              <div class="text-4xl font-black text-swiss-orange">100%</div>
+              <div class="text-sm text-gray-500">Praxisorientiert</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto max-w-4xl">
+      <div class="relative bg-gradient-to-br from-swiss-orange to-orange-600 rounded-3xl p-12 md:p-16 text-center text-white overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="relative z-10">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-6">
+            Starte jetzt deine KI-Ausbildung
+          </h2>
+
+          <p class="text-lg text-white/90 mb-10 max-w-2xl mx-auto">
+            Buche dein kostenloses Beratungsgespräch und finde heraus, welches Coaching-Format am besten zu deinen Zielen passt.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/kontakt" class="group relative inline-flex items-center justify-center bg-white text-swiss-orange px-8 py-4 font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden">
+              <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-swiss-orange/10 to-transparent skew-x-12"></div>
+              <span class="relative mr-2">Termin wählen</span>
+              <svg class="relative w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <span class="flex items-center gap-2 text-white/80">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm">100% unverbindlich</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

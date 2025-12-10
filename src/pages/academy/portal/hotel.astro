@@ -1,0 +1,101 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "Hotel & Anreise | Academy Portal";
+const description = "Informationen zum Veranstaltungsort und zur Anreise.";
+---
+
+<MainLayout title={title} description={description}>
+  <section class="pt-24 pb-8 px-6 lg:px-12 bg-white border-b-2 border-black">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex items-center gap-4 mb-4">
+        <a href="/academy/portal" class="text-swiss-orange hover:underline font-bold text-sm">
+          ← Zurück zum Dashboard
+        </a>
+      </div>
+      <h1 class="text-3xl font-black">Hotel & Anreise</h1>
+      <p class="text-gray-600 mt-2">Alle Informationen zum Veranstaltungsort</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Veranstaltungsort -->
+        <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-xl font-black mb-6 flex items-center gap-2">
+            <span class="w-2 h-6 bg-swiss-orange"></span>
+            Veranstaltungsort
+          </h2>
+
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-bold">Synclaro Academy Center</h3>
+              <p class="text-gray-600">Musterstraße 123</p>
+              <p class="text-gray-600">80331 München</p>
+            </div>
+
+            <div class="aspect-video bg-gray-200 border-2 border-black flex items-center justify-center">
+              <span class="text-gray-500">Google Maps Embed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotelempfehlungen -->
+        <div class="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-xl font-black mb-6 flex items-center gap-2">
+            <span class="w-2 h-6 bg-swiss-orange"></span>
+            Hotelempfehlungen
+          </h2>
+
+          <div class="space-y-4">
+            <div class="p-4 border-2 border-black">
+              <h3 class="font-bold">Hotel München Premium</h3>
+              <p class="text-sm text-gray-600 mb-2">5 Min. zu Fuß • Ab 129€/Nacht</p>
+              <p class="text-sm text-swiss-orange">Sonderkonditionen für Teilnehmer verfügbar</p>
+            </div>
+            <div class="p-4 border-2 border-black">
+              <h3 class="font-bold">Business Hotel City</h3>
+              <p class="text-sm text-gray-600 mb-2">10 Min. zu Fuß • Ab 99€/Nacht</p>
+              <p class="text-sm text-gray-500">Frühstück inklusive</p>
+            </div>
+            <div class="p-4 border-2 border-black">
+              <h3 class="font-bold">Boutique Hotel Central</h3>
+              <p class="text-sm text-gray-600 mb-2">3 Min. zu Fuß • Ab 159€/Nacht</p>
+              <p class="text-sm text-gray-500">Direkt gegenüber</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anreise -->
+        <div class="lg:col-span-2 bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-xl font-black mb-6 flex items-center gap-2">
+            <span class="w-2 h-6 bg-swiss-orange"></span>
+            Anreise
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div>
+              <h3 class="font-bold mb-2">Mit dem Auto</h3>
+              <p class="text-sm text-gray-600">
+                A9 Ausfahrt München-Schwabing, dann B2 Richtung Zentrum. Parkhaus direkt im Gebäude verfügbar (15€/Tag).
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold mb-2">Mit der Bahn</h3>
+              <p class="text-sm text-gray-600">
+                Vom Hauptbahnhof mit U-Bahn U4/U5 bis Odeonsplatz, dann 5 Min. zu Fuß.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold mb-2">Mit dem Flugzeug</h3>
+              <p class="text-sm text-gray-600">
+                Vom Flughafen München mit S-Bahn S8 zum Hauptbahnhof (ca. 45 Min.).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

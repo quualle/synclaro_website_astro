@@ -1,0 +1,680 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const rotatingQuotes = [
+  "Können Sie mir schnell die Preisliste raussuchen?",
+  "Wo finde ich denn die Steuernummer im System?",
+  "Wer ist nochmal für Reklamationen zuständig?",
+  "Wie war das nochmal mit der Garantie-Regelung?",
+  "Wo stehen die aktuellen Öffnungszeiten?",
+  "In welcher E-Mail war nochmal die Anleitung?"
+];
+
+const problemTimeline = [
+  {
+    time: "8:30 Uhr",
+    text: "Mitarbeiter fragen Sie schon wieder: 'Wo finde ich die Preisliste?' Ihr konzentrierter Freitag ist unterbrochen."
+  },
+  {
+    time: "10:15 Uhr",
+    text: "Kollege unterbricht wichtiges Meeting: 'Kannst du mir schnell die Garantie-Infos raussuchen?'"
+  },
+  {
+    time: "15:30 Uhr",
+    text: "30 Minuten E-Mail-Postfach durchsucht für eine Info, die jeder täglich braucht."
+  },
+  {
+    time: "19:45 Uhr",
+    text: "Immer noch im Büro, weil den ganzen Tag Informationen gesucht statt gearbeitet wurden."
+  }
+];
+
+const benefits = [
+  {
+    title: "Individuell konfiguriert",
+    description: "Nach 2 Wochen Auslieferung und 1h Setup. Lernt aus Ihren FAQ, Handbüchern und Dokumenten.",
+    proof: "Echte Kundenreferenzen verfügbar"
+  },
+  {
+    title: "24/7 verfügbar",
+    description: "Beantwortet Anfragen auch nachts, am Wochenende und im Urlaub.",
+    proof: "Kontinuierliche Verfügbarkeit für Ihre Mitarbeiter"
+  },
+  {
+    title: "Weniger Routine-Fragen",
+    description: "Messbar weniger Unterbrechungen. Mehr Zeit für wichtige Aufgaben.",
+    proof: "Deutliche Zeitersparnis in der täglichen Arbeit"
+  },
+  {
+    title: "100% Ihr Wissen",
+    description: "Nutzt nur Ihre Daten. Kein Raten, keine falschen Antworten.",
+    proof: "Basiert ausschließlich auf Ihren eigenen Dokumenten"
+  }
+];
+
+const objections = [
+  {
+    icon: "💰",
+    title: "Ist das nicht zu teuer?",
+    answer: "Amortisation bei bisherigen Kunden: <2 Monate",
+    detail: "Zeitersparnis: 30 Min/Tag pro Mitarbeiter. In informationsintensiven Jobs: bis zu 2h/Tag"
+  },
+  {
+    icon: "⚙️",
+    title: "Ist das kompliziert?",
+    answer: "2 Wochen Auslieferung, dann 1 Stunde Setup.",
+    detail: "Dokumente hochladen, fertig. Ihr Aufwand dabei: 30 min"
+  },
+  {
+    icon: "🎯",
+    title: "Woher soll der Chatbot das alles wissen?",
+    answer: "Hochmoderne Suchtechnologie",
+    detail: "Findet JEDE Info in bis zu 15.000 Dokumenten, Tabellen, Texten uvm."
+  }
+];
+
+const steps = [
+  {
+    step: "01",
+    title: "Wissen hochladen",
+    description: "FAQ, Handbücher, Preislisten – einfach per Drag & Drop. Company GPT lernt Ihr Unternehmen in Minuten kennen.",
+    icon: "📚"
+  },
+  {
+    step: "02",
+    title: "Chatbot einrichten",
+    description: "Design anpassen, auf Ihrer Website einbinden. Ein Code-Snippet, fertig. Kein Programmierer nötig.",
+    icon: "⚙️"
+  },
+  {
+    step: "03",
+    title: "Zeit sparen",
+    description: "Ab sofort beantwortet Company GPT 87% Ihrer Anfragen automatisch. Sie konzentrieren sich auf Wichtigeres.",
+    icon: "🚀"
+  }
+];
+
+const faqs = [
+  {
+    question: "Ist das nicht zu teuer für ein kleines Unternehmen?",
+    answer: "Company GPT schafft gerade in kleinen Unternehmen den meisten Mehrwert. Das Investment ist durchschnittlich in 2 Monaten wieder drin. Konkrete Preise besprechen wir im Beratungsgespräch."
+  },
+  {
+    question: "Ist die Einrichtung kompliziert? Brauche ich einen Programmierer?",
+    answer: "Nein, überhaupt nicht. Company GPT wird online gehostet auf einer eigenen Website nur für Sie. Sie brauchen nur Username & Passwort oder Google Login zu nutzen. Es ist wirklich kinderleicht für Nutzer."
+  },
+  {
+    question: "Was ist, wenn der Chatbot falsche Antworten gibt?",
+    answer: "Company GPT antwortet nur basierend auf Ihren eigenen Dokumenten. Bei 10.000 eingespeisten Dokumenten können Sie von einer Antwortquote von 94% ausgehen. Nicht beantwortete Fragen sind meist nur fehlende Informationen, die ganz leicht nachgeholt werden können."
+  },
+  {
+    question: "Wollen meine Mitarbeiter nicht lieber direkt nachfragen?",
+    answer: "Studien zeigen: Mitarbeiter schätzen sofortige, verfügbare Antworten sehr. Company GPT ist rund um die Uhr da - auch nachts und am Wochenende. Bei komplexen Fragen leitet es an die richtige Person weiter."
+  },
+  {
+    question: "Was passiert mit meinen Daten? Ist das sicher?",
+    answer: "Ihre Daten bleiben zu 100% in Deutschland, DSGVO-konform. Company GPT lernt nur aus Ihren Dokumenten, die Sie bewusst hochladen. Keine Weiterverwendung, kein Training anderer Modelle."
+  },
+  {
+    question: "Funktioniert das auch in meiner speziellen Branche?",
+    answer: "Company GPT funktioniert in jeder Branche: Handwerk, Beratung, E-Commerce, Dienstleistung. Egal ob Sie Rechnungsfragen, Produktinfos oder Terminbuchungen haben – es passt sich Ihren Inhalten an."
+  }
+];
+
+const stats = [
+  { number: "30min", label: "weniger Routine-Anfragen", sublabel: "pro Mitarbeiter täglich" },
+  { number: "2h", label: "Zeit gespart in info-intensiven Jobs", sublabel: "pro Mitarbeiter täglich" },
+  { number: "2 Wo", label: "Auslieferungszeit", sublabel: "dann 1h Setup" }
+];
+---
+
+<MainLayout title="Unternehmens-Chatbot - Company GPT - Synclaro">
+  <div class="min-h-screen bg-white">
+    <!-- Top Bar - Quick CTA -->
+    <div class="bg-swiss-orange/10 border-b-2 border-black py-3">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-center gap-4 text-center">
+          <span class="text-2xl">↘️</span>
+          <div>
+            <a href="#live-chatbot-test" class="text-black hover:text-swiss-orange font-bold transition-colors">
+              Keine Zeit? Lieber direkt <span class="text-swiss-orange">KOSTENLOSEN BOT</span> testen.
+            </a>
+            <p class="text-gray-600 text-xs">
+              Dauert 5 Sekunden. Keine Daten erforderlich, keine Weiterleitung.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 px-6 lg:px-12">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center">
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-8 leading-tight opacity-0 animate-[fade-in-up_0.6s_ease-out_0.1s_forwards]">
+            Warum Unternehmen jeden Tag<br/>
+            <span class="text-red-500">STUNDEN VERLIEREN</span>
+          </h1>
+
+          <!-- Rotating Quote Display -->
+          <div class="mb-8 max-w-3xl mx-auto opacity-0 animate-[fade-in-up_0.6s_ease-out_0.2s_forwards]">
+            <p class="text-2xl md:text-3xl text-gray-700 font-medium italic" id="rotating-quote">
+              „{rotatingQuotes[0]}"
+            </p>
+            <p class="text-gray-500 mt-4 text-lg">
+              → Kommt Ihnen bekannt vor?
+            </p>
+          </div>
+
+          <!-- Problem Statement -->
+          <p class="text-xl text-gray-600 mb-6 max-w-4xl mx-auto opacity-0 animate-[fade-in-up_0.6s_ease-out_0.3s_forwards]">
+            Jeden Tag sucht Ihr Team dieselben Informationen: in E-Mails, Dokumenten, bei Kollegen.
+          </p>
+
+          <div class="mb-8 opacity-0 animate-[fade-in-up_0.6s_ease-out_0.4s_forwards]">
+            <p class="text-2xl md:text-3xl font-black text-red-500 flex items-center justify-center gap-4">
+              <span class="text-5xl">➤</span>
+              Ständige Unterbrechungen stören die Produktivität!
+            </p>
+          </div>
+
+          <!-- CTA Button -->
+          <a
+            href="#live-chatbot-test"
+            class="inline-flex items-center gap-3 bg-swiss-orange text-white px-8 py-4 font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150 mb-4"
+          >
+            <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+            <span>Das kennen Sie? Hier kostenlos sehen, wie smarte Unternehmen das lösen!</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+
+          <p class="text-gray-500 text-sm italic mb-12">
+            Kostenloser Test • Keine Daten benötigt • Keine Weiterleitung auf andere Websites
+          </p>
+
+          <!-- Reality Box -->
+          <div class="bg-orange-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-4xl mx-auto mb-12">
+            <p class="text-black font-black text-xl mb-3">Die Realität:</p>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+              Unzählige Studien und Analysen belegen, dass Mitarbeiter täglich Stunden dabei verlieren unzählige Informationen herauszusuchen, zu erfragen und zu recherchieren. Nur wenige <span class="text-swiss-orange font-bold">smarte Unternehmen</span> haben verstanden, dass es dafür eine <span class="text-swiss-orange font-bold">etablierte Lösung gibt!</span>
+            </p>
+            <div class="text-xs text-gray-500 pt-2 border-t border-orange-200">
+              <p>Quellen: McKinsey (2025): 1,8h/Tag (25% der Arbeitszeit) • IDC Research (2025): 2,5h/Tag • Microsoft (2025): >1h/Tag durch Unterbrechungen</p>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="flex items-center justify-center gap-8 flex-wrap">
+            <div class="flex items-center gap-2 text-gray-600">
+              <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>DSGVO-konform</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-600">
+              <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Individuell anpassbar</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-600">
+              <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Deutsche Server</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Agitation Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-6">
+            <span class="text-red-500">Erkennen Sie sich wieder?</span> Die Unternehmer-Falle
+          </h2>
+          <p class="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
+            <strong class="text-black">Sie sind gefangen</strong> in einem System, das Sie zum Sklaven Ihres eigenen Erfolgs macht.
+            Hier ein typischer Tag – <span class="text-red-500 font-bold">schmerzhaft vertraut?</span>
+          </p>
+
+          <div class="bg-red-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-2xl mx-auto mb-12">
+            <p class="text-red-600 font-black text-2xl mb-2">Sie sind unersetzbar = Sie sind gefangen</p>
+            <p class="text-gray-700">
+              Während andere Unternehmer <span class="font-bold">frei und skaliert</span> agieren,
+              arbeiten Sie wie ein überbezahlter Angestellter in Ihrem eigenen Unternehmen
+            </p>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Timeline -->
+          <div class="space-y-6">
+            {problemTimeline.map((item) => (
+              <div class="reveal flex items-start gap-4 p-6 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+                <div class="flex-shrink-0 w-12 h-12 bg-red-100 border-2 border-black flex items-center justify-center">
+                  <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-black text-red-500 mb-1">{item.time}</p>
+                  <p class="text-gray-700">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Efficiency Loss Box -->
+          <div>
+            <div class="bg-orange-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+              <h3 class="text-3xl font-black text-swiss-orange mb-4">
+                Effizienz-Verlust durch Informationssuche
+              </h3>
+              <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                Während <strong class="text-black">andere Unternehmen</strong> ihre Teams mit effizienten Wissenssystemen ausstatten,
+                verlieren Sie täglich wertvolle Arbeitszeit durch Informationsbeschaffung.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-700">Unterbrochene Arbeitsabläufe durch Routine-Anfragen</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-700">Verzögerte Projekte durch Informationsbeschaffung</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-gray-700">Doppelarbeit durch fehlende Wissensverteilung</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-gray-600 text-lg">
+              <strong class="text-black">Der Effizienz-Vorsprung:</strong> Fortschrittliche Unternehmen setzen bereits auf
+              <span class="text-swiss-orange font-bold">automatisierte Wissenssysteme und gewinnen dadurch messbare Arbeitszeit zurück.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Chatbot Test Section -->
+    <section id="live-chatbot-test" class="py-20 px-6 lg:px-12">
+      <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-4">
+            Lieber selbst testen? - Gerne! <span class="text-green-500">LIVE</span> <span class="text-swiss-orange">& kostenlos</span>
+          </h2>
+        </div>
+
+        <!-- Chat Demo Frame -->
+        <div class="reveal bg-white border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden mb-8 transition-all duration-300 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+          <!-- Chat Header -->
+          <div class="bg-swiss-orange p-4 flex items-center gap-3">
+            <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-sm">Company GPT Demo</h3>
+              <div class="flex items-center gap-2 text-white/80 text-xs">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                LIVE & kostenlos
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Body -->
+          <div class="h-[400px] bg-gray-50 p-4 flex flex-col justify-center items-center">
+            <p class="text-gray-700 font-bold mb-4">👋 Stellen Sie Ihre Fragen - ich bin Ihr KI-Kollege:</p>
+
+            <!-- Example Questions -->
+            <div class="space-y-3 w-full max-w-md">
+              <button class="w-full text-left bg-white hover:bg-swiss-orange/5 p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 bg-swiss-orange/10 flex items-center justify-center text-swiss-orange text-xs font-bold">?</span>
+                  <span>"Wo finde ich die aktuelle Preisliste?"</span>
+                </div>
+              </button>
+              <button class="w-full text-left bg-white hover:bg-swiss-orange/5 p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 bg-swiss-orange/10 flex items-center justify-center text-swiss-orange text-xs font-bold">?</span>
+                  <span>"Wie funktioniert die Garantie-Abwicklung?"</span>
+                </div>
+              </button>
+              <button class="w-full text-left bg-white hover:bg-swiss-orange/5 p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 bg-swiss-orange/10 flex items-center justify-center text-swiss-orange text-xs font-bold">?</span>
+                  <span>"Wer ist für Reklamationen zuständig?"</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="mt-6 flex items-center justify-center gap-4 flex-wrap text-xs text-green-600">
+              <span class="flex items-center gap-1">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                100% Ihre Daten
+              </span>
+              <span class="flex items-center gap-1">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                DSGVO-konform
+              </span>
+              <span class="flex items-center gap-1">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                Sofortige Antworten
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+          <p class="text-black font-bold text-lg mb-3 text-center">
+            So antwortet Ihr individualisierter KI-Kollege auf alle Routinefragen Ihres Teams.
+          </p>
+          <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+              <span>24/7 verfügbar</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-swiss-orange rounded-full"></span>
+              <span>Mit Ihrem echten Unternehmenswissen</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+              <span>DSGVO konform auf deutschen Servern</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <a
+            href="https://cal.com/marcoheer/erstgesprach"
+            class="inline-block bg-swiss-orange text-white font-black text-xl px-12 py-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-150"
+          >
+            JA, WILL ICH AUCH! - Kostenloses Erstgespräch
+          </a>
+          <p class="text-gray-500 text-sm mt-4">
+            Sichern Sie sich jetzt Ihr kostenloses 30-Min Erstgespräch und erfahren Sie, wie wir Ihren KI-Kollegen für Sie umsetzen
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objection Handling Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-12">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-4">
+            <span class="text-yellow-500">Moment!</span> Nach dem Live-Test haben viele diese 3 Gedanken:
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {objections.map((obj) => (
+            <div class="reveal bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+              <div class="text-4xl mb-4">{obj.icon}</div>
+              <h3 class="text-xl font-black text-red-500 mb-4">
+                "{obj.title}"
+              </h3>
+              <p class="text-black font-bold mb-4">
+                {obj.answer}
+              </p>
+              <div class="bg-swiss-orange/10 p-4 border-2 border-swiss-orange/30">
+                <p class="text-swiss-orange text-sm font-medium">
+                  {obj.detail}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="https://cal.com/marcoheer/erstgesprach"
+            class="inline-block bg-black text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Jetzt mehr erfahren
+          </a>
+          <p class="text-gray-500 text-sm mt-4 max-w-2xl mx-auto">
+            In einem kostenlosen Gespräch beantworten wir Ihre weiteren Fragen und zeigen auf, wie Sie das für Ihr Unternehmen realisieren.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 px-6 lg:px-12">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-6">
+            Die Lösung: <span class="text-swiss-orange">Company GPT</span>
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Ein intelligenter interner Assistent für Ihre Mitarbeiter, der Ihr gesamtes Unternehmenswissen kennt und
+            87% der internen Routine-Anfragen sofort beantwortet
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {benefits.map((benefit) => (
+            <div class="reveal bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+              <h3 class="font-black text-black text-xl mb-2">{benefit.title}</h3>
+              <p class="text-gray-600 mb-4">{benefit.description}</p>
+              <div class="bg-swiss-orange/5 p-3 border-2 border-swiss-orange/20">
+                <p class="text-swiss-orange text-sm italic">
+                  {benefit.proof}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-6">
+            <span class="text-swiss-orange">Erfolgreiche Unternehmen</span> sparen bereits Zeit
+          </h2>
+          <p class="text-xl text-gray-600">
+            Echte Ergebnisse von echten Kunden
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {stats.map((stat) => (
+            <div class="reveal bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1">
+              <div class="text-5xl font-black text-swiss-orange mb-2">
+                {stat.number}
+              </div>
+              <div class="text-black font-bold mb-1">{stat.label}</div>
+              <div class="text-gray-500 text-sm">{stat.sublabel}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="py-20 px-6 lg:px-12">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-6">
+            So einfach geht's: <span class="text-swiss-orange">3 Schritte</span>
+          </h2>
+          <p class="text-xl text-gray-600">
+            Von der ersten Anfrage bis zum laufenden System in 2 Wochen + 1h Setup
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {steps.map((step, idx) => (
+            <div class="reveal text-center relative">
+              <div class="relative mb-8">
+                <div class="w-20 h-20 bg-swiss-orange border-2 border-black flex items-center justify-center text-3xl mx-auto mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  {step.icon}
+                </div>
+                <div class="absolute -top-4 -right-4 w-12 h-12 bg-white border-2 border-black flex items-center justify-center">
+                  <span class="text-swiss-orange font-black">{step.step}</span>
+                </div>
+              </div>
+              <h3 class="text-2xl font-black text-black mb-4">{step.title}</h3>
+              <p class="text-gray-600">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-16">
+          <a
+            href="https://cal.com/marcoheer/erstgesprach"
+            class="inline-block bg-swiss-orange text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Jetzt kostenlosen Setup-Termin buchen
+          </a>
+          <p class="text-gray-500 text-sm mt-4">
+            ✓ 30 Min kostenloses Beratungsgespräch • Wir zeigen Ihnen alle Möglichkeiten
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-16">
+          <h2 class="reveal text-4xl lg:text-5xl font-black mb-6">
+            Häufige <span class="text-swiss-orange">Fragen</span>
+          </h2>
+          <p class="text-xl text-gray-600">
+            Hier finden Sie Antworten auf die wichtigsten Bedenken
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, idx) => (
+            <details class="group bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-bold text-black hover:bg-gray-50 transition-colors">
+                <span>{faq.question}</span>
+                <svg class="w-5 h-5 text-swiss-orange group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+      <div class="container mx-auto max-w-4xl text-center">
+        <h2 class="reveal text-4xl lg:text-5xl font-black text-white mb-8">
+          Schaffen Sie effiziente Arbeitsabläufe für Ihr Team
+        </h2>
+        <p class="text-xl text-white/90 mb-12 max-w-3xl mx-auto">
+          Erfolgreiche Unternehmen statten ihre Teams bereits mit intelligenten Wissenssystemen aus.
+          Ihre Mitarbeiter arbeiten fokussierter, motivierter und effizienter.
+        </p>
+
+        <!-- Urgency Box -->
+        <div class="bg-white/10 border-2 border-white/30 p-8 mb-12 max-w-2xl mx-auto">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <svg class="w-6 h-6 text-white animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-white font-bold text-lg">KRITISCHE WARTEZEIT</span>
+          </div>
+          <h3 class="text-2xl font-black text-white mb-4">
+            ⏰ Nächster freier Setup-Termin erst in <span class="text-yellow-300">12 Tagen</span>
+          </h3>
+          <p class="text-white/80 mb-4">
+            Vereinbaren Sie Ihr kostenloses Beratungsgespräch
+          </p>
+        </div>
+
+        <a
+          href="https://cal.com/marcoheer/erstgesprach"
+          class="inline-block bg-black text-white font-black text-xl px-12 py-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-150 mb-8"
+        >
+          Kostenloses Erstgespräch vereinbaren
+        </a>
+
+        <div class="flex items-center justify-center gap-4 text-white/80 mb-8">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>DSGVO-konform • Deutsche Server</span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <div class="text-center text-white">
+            <div class="text-3xl mb-2">✓</div>
+            <p class="text-sm">30 Min kostenloses Beratungsgespräch</p>
+          </div>
+          <div class="text-center text-white">
+            <div class="text-3xl mb-2">✓</div>
+            <p class="text-sm">Individuelle Demo Ihres Chatbots</p>
+          </div>
+          <div class="text-center text-white">
+            <div class="text-3xl mb-2">✓</div>
+            <p class="text-sm">Keine Verpflichtungen</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script>
+  // Rotating quotes animation
+  const quotes = [
+    "Können Sie mir schnell die Preisliste raussuchen?",
+    "Wo finde ich denn die Steuernummer im System?",
+    "Wer ist nochmal für Reklamationen zuständig?",
+    "Wie war das nochmal mit der Garantie-Regelung?",
+    "Wo stehen die aktuellen Öffnungszeiten?",
+    "In welcher E-Mail war nochmal die Anleitung?"
+  ];
+
+  let currentIndex = 0;
+  const quoteElement = document.getElementById('rotating-quote');
+
+  if (quoteElement) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % quotes.length;
+      quoteElement.style.opacity = '0';
+      setTimeout(() => {
+        quoteElement.textContent = `„${quotes[currentIndex]}"`;
+        quoteElement.style.opacity = '1';
+      }, 300);
+    }, 2500);
+  }
+</script>
+
+<style>
+  #rotating-quote {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>

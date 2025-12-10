@@ -1,0 +1,135 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Login | Synclaro Academy";
+const description = "Melden Sie sich in Ihrem Academy-Portal an, um auf Ihre Kurse und Materialien zuzugreifen.";
+---
+
+<MainLayout title={title} description={description}>
+  <section class="min-h-screen flex items-center justify-center px-6 py-24 bg-gray-50">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <a href="/academy" class="inline-block mb-6">
+          <span class="text-2xl font-black">SYNC<span class="text-swiss-orange">CLARO</span></span>
+        </a>
+        <h1 class="text-3xl font-black mb-2">Academy Login</h1>
+        <p class="text-gray-600">Zugang zu Ihren Kursen und Materialien</p>
+      </div>
+
+      <div class="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <form id="login-form" class="space-y-6">
+          <div>
+            <label for="email" class="block text-sm font-bold mb-2">
+              E-Mail Adresse *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ihre@email.de"
+              required
+              class="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-swiss-orange focus:border-swiss-orange transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="password" class="block text-sm font-bold mb-2">
+              Passwort *
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              required
+              class="w-full px-4 py-3 border-2 border-black focus:outline-none focus:ring-2 focus:ring-swiss-orange focus:border-swiss-orange transition-all"
+            />
+          </div>
+
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                name="remember"
+                class="w-4 h-4 border-2 border-black accent-swiss-orange"
+              />
+              <span class="text-sm">Angemeldet bleiben</span>
+            </label>
+            <a href="/academy/passwort-vergessen" class="text-sm text-swiss-orange hover:underline font-medium">
+              Passwort vergessen?
+            </a>
+          </div>
+
+          <button
+            type="submit"
+            class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden w-full"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Anmelden</span>
+          </button>
+
+          <div id="error-message" class="hidden p-4 bg-red-50 border-2 border-red-500 text-red-700 text-sm">
+            <!-- Error message will be shown here -->
+          </div>
+        </form>
+
+        <div class="mt-6 pt-6 border-t border-gray-200 text-center">
+          <p class="text-sm text-gray-600">
+            Noch kein Account?
+            <a href="/academy/beratung" class="text-swiss-orange font-bold hover:underline">
+              Kurs buchen
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/academy" class="text-sm text-gray-500 hover:text-swiss-orange">
+          ← Zurück zur Academy
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const errorMessage = document.getElementById('error-message');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const password = (document.getElementById('password') as HTMLInputElement).value;
+
+      // Basic validation
+      if (!email || !password) {
+        errorMessage!.textContent = 'Bitte füllen Sie alle Felder aus.';
+        errorMessage!.classList.remove('hidden');
+        return;
+      }
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorMessage!.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+        errorMessage!.classList.remove('hidden');
+        return;
+      }
+
+      // Hide error message
+      errorMessage!.classList.add('hidden');
+
+      // Here you would typically make an API call to authenticate
+      // For now, we'll just redirect to the portal
+      try {
+        // Placeholder for actual authentication
+        console.log('Login attempt:', { email });
+        // Redirect to portal after successful login
+        // window.location.href = '/academy/portal';
+        alert('Login-Funktion wird in Kürze aktiviert. Bitte kontaktieren Sie uns für Zugangsdaten.');
+      } catch (error) {
+        errorMessage!.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
+        errorMessage!.classList.remove('hidden');
+      }
+    });
+  </script>
+</MainLayout>

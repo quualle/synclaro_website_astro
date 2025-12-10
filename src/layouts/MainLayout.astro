@@ -1,0 +1,214 @@
+---
+import '../styles/global.css';
+import UserBehaviorTracker from '../components/UserBehaviorTracker';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Synclaro - Wir befähigen für den Eintritt ins KI-Zeitalter. Coaching, Mastermind und individuelle Software-Lösungen für den Mittelstand." } = Astro.props;
+
+const navLinks = [
+  { text: 'Überblick', href: '/' },
+  { text: 'Academy', href: '/academy' },
+  { text: 'Solutions', href: '/solutions' },
+  { text: 'Advisory', href: '/advisory' },
+  { text: 'Kontakt', href: '/kontakt' },
+];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/10 transition-all duration-300">
+      <nav class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="text-2xl font-black tracking-tight transition-colors duration-300 group-hover:text-swiss-orange">
+            SYN<span class="text-swiss-orange group-hover:text-black transition-colors duration-300">C</span>LARO
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-8">
+          {navLinks.slice(0, -1).map((link) => (
+            <a
+              href={link.href}
+              class="font-medium text-gray-700 hover:text-swiss-orange transition-colors relative group/link"
+            >
+              <span class="text-swiss-orange font-bold">{link.text.charAt(0)}</span>{link.text.slice(1)}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-swiss-orange group-hover/link:w-full transition-all duration-300"></span>
+            </a>
+          ))}
+          <a
+            href="/kontakt"
+            class="bg-swiss-orange text-white px-6 py-2 font-bold hover:bg-black transition-all duration-300 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5"
+          >
+            Kontakt
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 hover:bg-gray-100 transition-colors rounded-lg"
+          aria-label="Menü öffnen"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10">
+        <div class="px-4 py-4 space-y-2">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="block font-medium text-gray-700 hover:text-swiss-orange hover:bg-gray-50 transition-all py-3 px-3 rounded-lg"
+            >
+              {link.text}
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16 px-4 md:px-8 relative overflow-hidden">
+      <!-- Decorative elements -->
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-swiss-orange/50 to-transparent"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+
+      <div class="max-w-7xl mx-auto relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <!-- Logo & Description -->
+          <div class="md:col-span-2">
+            <a href="/" class="text-3xl font-black tracking-tight mb-4 block group">
+              SYN<span class="text-swiss-orange group-hover:text-white transition-colors duration-300">C</span>LARO
+            </a>
+            <p class="text-gray-400 max-w-md leading-relaxed mb-6">
+              Wir befähigen für den Eintritt ins KI-Zeitalter.
+              Maßgeschneidert. Auf Augenhöhe. Made in Bavaria.
+            </p>
+            <!-- Social proof badge -->
+            <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
+              <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-sm text-gray-400">Jetzt Beratungstermin sichern</span>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-bold text-lg mb-4 relative inline-block">
+              Leistungen
+              <span class="absolute -bottom-1 left-0 w-8 h-0.5 bg-swiss-orange"></span>
+            </h4>
+            <ul class="space-y-3">
+              <li><a href="/academy" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Schulungen</a></li>
+              <li><a href="/solutions" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Automatisierung</a></li>
+              <li><a href="/advisory" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Beratung</a></li>
+              <li><a href="/solutions/referenzen" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">Individuelle Use Cases</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-bold text-lg mb-4 relative inline-block">
+              Kontakt
+              <span class="absolute -bottom-1 left-0 w-8 h-0.5 bg-swiss-orange"></span>
+            </h4>
+            <ul class="space-y-3">
+              <li><a href="/kontakt" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">Kontaktformular</a></li>
+              <li><a href="/termin" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">Termin buchen</a></li>
+              <li><a href="/ueber-uns" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">Über uns</a></li>
+              <li><a href="/referenzen" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">Referenzen</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Synclaro. Alle Rechte vorbehalten.
+          </p>
+          <div class="flex gap-6 text-sm">
+            <a href="/impressum" class="text-gray-500 hover:text-swiss-orange transition-colors">Impressum</a>
+            <a href="/datenschutz" class="text-gray-500 hover:text-swiss-orange transition-colors">Datenschutz</a>
+            <a href="/agb" class="text-gray-500 hover:text-swiss-orange transition-colors">AGB</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- User Behavior Tracker -->
+    <UserBehaviorTracker websiteDomain="synclaro.de" client:load />
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+
+    <!-- Scroll-triggered Reveal Animations -->
+    <script>
+      // Intersection Observer for reveal animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            // Optional: unobserve after revealing for performance
+            // revealObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with reveal classes
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, [data-reveal]');
+        revealElements.forEach((el) => {
+          revealObserver.observe(el);
+        });
+      });
+
+      // Also run on astro page loads (for client-side navigation)
+      document.addEventListener('astro:page-load', () => {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, [data-reveal]');
+        revealElements.forEach((el) => {
+          if (!el.classList.contains('revealed')) {
+            revealObserver.observe(el);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

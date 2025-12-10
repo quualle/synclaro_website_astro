@@ -1,0 +1,107 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI-Workshop für Ihr Team | Synclaro";
+const description = "Praxisnaher KI-Workshop für Ihre Mitarbeiter. Von den Grundlagen bis zur Anwendung.";
+
+const workshopModules = [
+  { title: 'KI-Grundlagen', duration: '2h', description: 'Was ist KI und wie funktioniert sie?' },
+  { title: 'Praxis-Tools', duration: '3h', description: 'Hands-on mit ChatGPT, Claude & Co.' },
+  { title: 'Use Cases', duration: '2h', description: 'KI-Anwendungen für Ihren Arbeitsalltag' },
+  { title: 'Prompt Engineering', duration: '1h', description: 'Die Kunst der richtigen Fragen' }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            KI-WORKSHOP
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+            KI-Workshop für <span class="text-swiss-orange">Ihr Team</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8">
+            Ein ganzer Tag praxisnahes KI-Training. Ihre Mitarbeiter lernen,
+            KI-Tools effektiv für ihre tägliche Arbeit einzusetzen.
+          </p>
+
+          <div class="space-y-3">
+            {workshopModules.map((module) => (
+              <div class="flex items-center gap-4 bg-gray-50 border-2 border-black p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <span class="px-2 py-1 bg-swiss-orange text-white text-xs font-bold border border-black">{module.duration}</span>
+                <div>
+                  <h3 class="font-black text-sm">{module.title}</h3>
+                  <p class="text-xs text-gray-600">{module.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Lead Capture Form -->
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-2xl font-black mb-6">Workshop anfragen</h2>
+
+          <form action="/danke?source=workshop" method="GET" class="space-y-4">
+            <div>
+              <label class="block text-sm font-bold mb-2">Name *</label>
+              <input
+                type="text"
+                name="name"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="Ihr Name"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">E-Mail *</label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="ihre@email.de"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">Unternehmen *</label>
+              <input
+                type="text"
+                name="company"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="Ihr Unternehmen"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">Anzahl Teilnehmer</label>
+              <select
+                name="participants"
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none bg-white"
+              >
+                <option value="">Bitte wählen</option>
+                <option value="5-10">5-10 Teilnehmer</option>
+                <option value="11-20">11-20 Teilnehmer</option>
+                <option value="21-50">21-50 Teilnehmer</option>
+                <option value="50+">Mehr als 50</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-swiss-orange text-white font-bold py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Workshop anfragen
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

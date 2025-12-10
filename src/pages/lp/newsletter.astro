@@ -1,0 +1,82 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI-Newsletter abonnieren | Synclaro";
+const description = "Bleiben Sie auf dem Laufenden: Wöchentliche KI-Insights, Tipps und Best Practices direkt in Ihr Postfach.";
+
+const features = [
+  'Wöchentliche KI-News und Trends',
+  'Praktische Tipps für den Alltag',
+  'Exklusive Inhalte nur für Abonnenten',
+  'Kein Spam, jederzeit abbestellbar'
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white min-h-screen flex items-center">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          NEWSLETTER
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          KI-Wissen direkt ins <span class="text-swiss-orange">Postfach</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Erhalten Sie wöchentlich die wichtigsten KI-News, praktische Tipps
+          und exklusive Einblicke für Ihr Unternehmen.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          {features.map((feature) => (
+            <div class="flex items-center gap-2 bg-gray-50 border-2 border-black px-4 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-sm font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Newsletter Form -->
+      <div class="max-w-xl mx-auto bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <form action="/danke?source=newsletter" method="GET" class="space-y-4">
+          <div>
+            <label class="block text-sm font-bold mb-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+              placeholder="Ihr Vorname"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-bold mb-2">E-Mail *</label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+              placeholder="ihre@email.de"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-swiss-orange text-white font-bold py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Jetzt anmelden
+          </button>
+
+          <p class="text-xs text-gray-500 text-center">
+            Mit der Anmeldung stimmen Sie unserer <a href="/datenschutz" class="text-swiss-orange hover:underline">Datenschutzerklärung</a> zu.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</MainLayout>

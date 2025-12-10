@@ -1,0 +1,99 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Kostenloses KI-Webinar | Synclaro";
+const description = "Melden Sie sich zu unserem kostenlosen KI-Webinar an. Lernen Sie die Grundlagen der KI-Integration.";
+
+const learnings = [
+  'Aktuelle KI-Trends und Entwicklungen',
+  'Praktische Anwendungsbeispiele',
+  'Live-Demos mit KI-Tools',
+  'Q&A mit KI-Experten'
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            KOSTENLOSES WEBINAR
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+            KI im <span class="text-swiss-orange">Mittelstand</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8">
+            Erfahren Sie in 60 Minuten, wie Sie KI gewinnbringend in Ihrem
+            Unternehmen einsetzen können. Kostenlos und ohne Vorkenntnisse.
+          </p>
+
+          <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+            <h3 class="font-black mb-4">Sie lernen:</h3>
+            <ul class="space-y-2">
+              {learnings.map((learning) => (
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span>{learning}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Lead Capture Form -->
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-2xl font-black mb-6">Jetzt anmelden</h2>
+
+          <form action="/danke?source=webinar" method="GET" class="space-y-4">
+            <div>
+              <label class="block text-sm font-bold mb-2">Name *</label>
+              <input
+                type="text"
+                name="name"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="Ihr Name"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">E-Mail *</label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="ihre@email.de"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">Unternehmen</label>
+              <input
+                type="text"
+                name="company"
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="Ihr Unternehmen"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-swiss-orange text-white font-bold py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Kostenlos anmelden
+            </button>
+
+            <p class="text-xs text-gray-500 text-center">
+              Sie erhalten eine Bestätigung mit dem Zugangslink per E-Mail.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

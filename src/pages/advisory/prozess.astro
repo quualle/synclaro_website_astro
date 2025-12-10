@@ -1,0 +1,253 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Beratungsprozess | Synclaro Advisory";
+const description = "Unser strukturierter Beratungsprozess: Von der Discovery-Phase bis zur erfolgreichen Umsetzung Ihrer KI-Strategie.";
+
+const phases = [
+  {
+    phase: 1,
+    title: "Discovery",
+    duration: "1-2 Wochen",
+    description: "In der Discovery-Phase entwickeln wir ein tiefes Verständnis für Ihr Unternehmen, Ihre Ziele und Ihre Herausforderungen.",
+    activities: [
+      "Kick-off Workshop mit Stakeholdern",
+      "Analyse der Geschäftsstrategie",
+      "Interviews mit Schlüsselpersonen",
+      "Dokumentation bestehender Prozesse",
+      "Identifikation von Pain Points"
+    ],
+    output: "Discovery Report mit Status-Quo Analyse"
+  },
+  {
+    phase: 2,
+    title: "Analysis",
+    duration: "2-3 Wochen",
+    description: "Wir analysieren die gewonnenen Erkenntnisse, bewerten Potenziale und entwickeln erste Handlungsempfehlungen.",
+    activities: [
+      "KI-Readiness Assessment",
+      "Use-Case Identifikation",
+      "Technologie-Screening",
+      "Wettbewerbsanalyse",
+      "Risikobewertung"
+    ],
+    output: "Analyse-Report mit priorisierten Use Cases"
+  },
+  {
+    phase: 3,
+    title: "Strategy",
+    duration: "2-4 Wochen",
+    description: "Auf Basis der Analyse entwickeln wir eine maßgeschneiderte KI-Strategie mit konkreter Roadmap.",
+    activities: [
+      "Strategie-Entwicklung",
+      "Roadmap-Planung",
+      "Business Case Erstellung",
+      "Governance-Konzeption",
+      "Ressourcenplanung"
+    ],
+    output: "Strategisches KI-Framework mit Roadmap"
+  },
+  {
+    phase: 4,
+    title: "Execution",
+    duration: "Fortlaufend",
+    description: "Wir begleiten Sie bei der Umsetzung, stellen Fortschritte sicher und optimieren kontinuierlich.",
+    activities: [
+      "Implementierungsbegleitung",
+      "Regelmäßige Steering Meetings",
+      "KPI-Monitoring",
+      "Change Management",
+      "Kontinuierliche Optimierung"
+    ],
+    output: "Regelmäßige Status-Reports und Handlungsempfehlungen"
+  }
+];
+
+const principles = [
+  {
+    title: "Transparenz",
+    description: "Sie wissen jederzeit, wo wir stehen und was als nächstes kommt."
+  },
+  {
+    title: "Partnerschaft",
+    description: "Wir arbeiten mit Ihnen, nicht für Sie. Wissenstransfer ist Teil unseres Ansatzes."
+  },
+  {
+    title: "Pragmatismus",
+    description: "Keine Theorie-Exzesse. Wir fokussieren auf umsetzbare Ergebnisse."
+  },
+  {
+    title: "Vertraulichkeit",
+    description: "Absolute Diskretion. NDA als Standard, keine Referenzen ohne Ihre Zustimmung."
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          Prozess
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          Unser <span class="text-swiss-orange">Beratungsprozess</span>
+        </h1>
+
+        <p class="text-xl text-gray-600">
+          Strukturiert und bewährt: So begleiten wir Sie von der ersten Analyse bis zur erfolgreichen Umsetzung.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Timeline -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="space-y-8">
+        {phases.map((phase, index) => (
+          <div class="relative">
+            {/* Connector Line */}
+            {index < phases.length - 1 && (
+              <div class="hidden lg:block absolute left-[3.5rem] top-full h-8 w-0.5 bg-swiss-orange"></div>
+            )}
+
+            <div class="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+              <div class="grid lg:grid-cols-4">
+                {/* Phase Header */}
+                <div class="bg-swiss-orange text-white p-6 lg:p-8">
+                  <div class="text-6xl font-black opacity-30 mb-2">{phase.phase}</div>
+                  <h2 class="text-2xl font-black mb-2">{phase.title}</h2>
+                  <div class="text-sm opacity-80">{phase.duration}</div>
+                </div>
+
+                {/* Content */}
+                <div class="lg:col-span-3 p-6 lg:p-8">
+                  <p class="text-lg text-gray-600 mb-6">{phase.description}</p>
+
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 class="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3">Aktivitäten</h3>
+                      <ul class="space-y-2">
+                        {phase.activities.map((activity) => (
+                          <li class="flex items-start gap-2 text-sm text-gray-700">
+                            <span class="text-swiss-orange mt-1">•</span>
+                            {activity}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 class="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3">Output</h3>
+                      <div class="bg-gray-50 border-2 border-black p-4">
+                        <span class="font-bold">{phase.output}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Unsere <span class="text-swiss-orange">Prinzipien</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Diese Werte leiten uns in jedem Projekt
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {principles.map((principle) => (
+          <div class="bg-gray-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <h3 class="text-xl font-black mb-3">{principle.title}</h3>
+            <p class="text-gray-600 text-sm">{principle.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Flexible Engagement -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-black mb-6">
+            Flexible <span class="text-swiss-orange">Engagement-Modelle</span>
+          </h2>
+          <p class="text-xl text-gray-600 mb-6">
+            Nicht jedes Projekt ist gleich. Deshalb bieten wir verschiedene Engagement-Modelle:
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 bg-white border-2 border-black">
+              <div class="w-8 h-8 bg-swiss-orange text-white font-bold flex items-center justify-center flex-shrink-0">1</div>
+              <div>
+                <h3 class="font-bold">Projekt-basiert</h3>
+                <p class="text-sm text-gray-600">Definierter Scope, klares Budget, fester Zeitrahmen</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white border-2 border-black">
+              <div class="w-8 h-8 bg-swiss-orange text-white font-bold flex items-center justify-center flex-shrink-0">2</div>
+              <div>
+                <h3 class="font-bold">Retainer</h3>
+                <p class="text-sm text-gray-600">Monatliches Kontingent für kontinuierliche Beratung</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white border-2 border-black">
+              <div class="w-8 h-8 bg-swiss-orange text-white font-bold flex items-center justify-center flex-shrink-0">3</div>
+              <div>
+                <h3 class="font-bold">Sparring</h3>
+                <p class="text-sm text-gray-600">Regelmäßige Strategie-Sessions als externen Sparringspartner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h3 class="text-2xl font-black mb-6">Starten Sie mit einem Executive Briefing</h3>
+          <p class="text-gray-600 mb-6">
+            Unverbindliches 45-minütiges Gespräch, in dem wir Ihre Situation verstehen und Ihnen konkrete erste Einschätzungen geben.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Kostenlos und unverbindlich</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>100% vertraulich (NDA)</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Konkrete erste Einschätzungen</span>
+            </li>
+          </ul>
+          <a
+            href="/advisory/kontakt"
+            class="group relative w-full inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative">Executive Briefing anfragen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

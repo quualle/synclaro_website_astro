@@ -1,0 +1,91 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI-Automatisierung | Synclaro";
+const description = "Automatisieren Sie repetitive Aufgaben mit intelligenter KI. Sparen Sie Zeit und Ressourcen.";
+
+const useCases = [
+  { title: 'Dokumentenverarbeitung', savings: '70%', description: 'Automatische Extraktion und Verarbeitung' },
+  { title: 'E-Mail-Bearbeitung', savings: '60%', description: 'Intelligente Kategorisierung und Antworten' },
+  { title: 'Datenerfassung', savings: '80%', description: 'Automatisierte Dateneingabe aus verschiedenen Quellen' },
+  { title: 'Berichtswesen', savings: '50%', description: 'Automatische Report-Generierung' }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            AUTOMATISIERUNG
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+            Prozesse <span class="text-swiss-orange">automatisieren</span>
+          </h1>
+
+          <p class="text-xl text-gray-600 mb-8">
+            Befreien Sie Ihr Team von repetitiven Aufgaben. Unsere KI-Lösungen
+            automatisieren zeitaufwendige Prozesse - zuverlässig und DSGVO-konform.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            {useCases.map((useCase) => (
+              <div class="bg-gray-50 border-2 border-black p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <div class="text-2xl font-black text-swiss-orange mb-1">{useCase.savings}</div>
+                <h3 class="font-black text-sm">{useCase.title}</h3>
+                <p class="text-xs text-gray-600">{useCase.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Lead Capture Form -->
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <h2 class="text-2xl font-black mb-6">Automatisierungspotenzial entdecken</h2>
+
+          <form action="/danke?source=automatisierung" method="GET" class="space-y-4">
+            <div>
+              <label class="block text-sm font-bold mb-2">Name *</label>
+              <input
+                type="text"
+                name="name"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="Ihr Name"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">E-Mail *</label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none"
+                placeholder="ihre@email.de"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">Welchen Prozess möchten Sie automatisieren?</label>
+              <textarea
+                name="process"
+                rows="3"
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none resize-none"
+                placeholder="Beschreiben Sie kurz den Prozess..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-swiss-orange text-white font-bold py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Kostenlose Analyse anfragen
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

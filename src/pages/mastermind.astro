@@ -1,0 +1,615 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Testimonials data
+const testimonials = [
+  {
+    name: 'Norman Liersch',
+    role: 'Geschäftsführer der Pflegehilfe für Senioren 24 GmbH',
+    story: 'Im Rahmen unserer Zusammenarbeit mit Marco hat er über mehrere Monate hinweg unser Geschäftsmodell in der Tiefe verstanden. Vor allem für den Vertrieb hat er das Automatisierungspotenzial freigelegt.',
+    image: '/images/testimonial_Pflegehilfe_compressed.jpg',
+  },
+  {
+    name: 'Sara Wietritschowski',
+    role: 'Leiterin Familienbetrieb • Handwerk & Coaching',
+    story: 'Nach 50 Stunden Coaching mit Marco habe ich endlich jemanden gefunden, der mich genau da abholt, wo ich stehe.',
+    result: '50 Stunden Coaching',
+    image: '/images/testimonial_sara.jpg',
+  },
+  {
+    name: 'Evelyn Biesinger',
+    role: 'Leiterin Familienbetrieb • Handwerk & Coaching',
+    story: 'Jetzt habe ich einen guten Überblick über die Möglichkeiten, kann komplexere Tools anwenden und baue sogar eigene Programme.',
+    result: '50 Stunden Coaching',
+    image: '/images/testimonial_evelyn_compressed.jpg',
+  },
+  {
+    name: 'Holger Neumann',
+    role: 'Geschäftsführer Baufirma Neurealis GmbH',
+    story: 'Die Angebotserstellung nutzt jetzt automatisch Daten aus Aufmaß und Leistungsverzeichnis. Besonders wertvoll ist der VoiceBot.',
+    result: 'Done-For-You Automatisierung',
+    image: '/images/testimonial_holger_compressed.jpg',
+  },
+];
+
+// 5-Day Program
+const phases = [
+  {
+    id: 1,
+    title: 'TAG 1 – Verstehen, was geht',
+    main: 'Die Welt der KI verstehen.',
+    detail: 'Sie sehen, was modernste Konzerne und Silicon Valley-Unternehmen bereits mit KI und Automatisierung realisieren. Nach diesem Tag wissen Sie, wo die Welt mit KI wirklich steht – und was möglich ist.',
+  },
+  {
+    id: 2,
+    title: 'TAG 2 – Status-Quo-Analyse',
+    main: 'Ihre Firma unter der Lupe.',
+    detail: 'Detaillierte Analyse Ihrer individuellen Unternehmenssituation. Wo liegen die Probleme? Wo verlieren Sie Mitarbeitermotivation, Geld und Zeit?',
+  },
+  {
+    id: 3,
+    title: 'TAG 3 – Grundlagen-Befähigung',
+    main: 'Strategisches KI-Wissen.',
+    detail: 'Sie erhalten das strategische Wissen für Ihre KI-Transformation: Anbieter, Tools, Wissensmanagement und Implementierung.',
+  },
+  {
+    id: 4,
+    title: 'TAG 4 – Fahrplanaufstellung',
+    main: 'Ihr individueller KI-Fahrplan.',
+    detail: 'In Einzel-Sessions mit Marco und Gruppendiskussionen entwickeln Sie Ihre individuelle Strategie. Sie bauen ein Company GPT – ein Wissensmanagement-System.',
+  },
+  {
+    id: 5,
+    title: 'TAG 5 – Finalisierung',
+    main: 'Ihr KI-Fahrplan fertig.',
+    detail: 'Sie verlassen das Retreat mit Ihrem individuellen KI-Fahrplan, dem nötigen Wissen und konkreten nächsten Schritten.',
+  },
+];
+
+// Value props that morph
+const valueProps = [
+  { line1: 'Tag 1:', line2: 'Strategie entwickeln.', line3: 'Tag 5:', line4: 'System live.' },
+  { line1: 'Früher:', line2: 'Berater bezahlen.', line3: 'Heute:', line4: 'Selbst umsetzen können.' },
+  { line1: '10–15', line2: 'Unternehmer.', line3: '5 Tage', line4: 'intensiv.' },
+];
+---
+
+<MainLayout title="Mastermind Retreat - Synclaro">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,79,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.3) 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+    <!-- Decorative blur circles -->
+    <div class="absolute top-1/4 right-0 w-[500px] h-[500px] bg-swiss-orange/10 rounded-full blur-[120px] translate-x-1/2"></div>
+    <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-swiss-orange/5 rounded-full blur-[100px] -translate-x-1/2"></div>
+
+    <div class="relative z-10 text-center px-4 max-w-6xl mx-auto py-20">
+      <!-- Hook -->
+      <div class="mb-10">
+        <!-- Animated label -->
+        <div class="opacity-0 animate-fade-in-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 bg-swiss-orange/10 border-2 border-swiss-orange/30 text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,0.3)]">
+            <span class="w-2 h-2 bg-swiss-orange rounded-full animate-pulse"></span>
+            MASTERMIND RETREAT
+          </span>
+        </div>
+
+        <p class="text-lg sm:text-xl md:text-2xl text-white mb-4 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+          In 5 Tagen zum umsetzungsfähigen KI-Plan.
+        </p>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
+          <span class="block opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">Von Überforderung zu</span>
+          <span class="text-swiss-orange block opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">KI-Strategie.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-400 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+          Für Unternehmer, die nicht nur reden, sondern machen wollen.
+        </p>
+      </div>
+
+      <!-- Value Props -->
+      <div class="min-h-[120px] flex flex-col items-center justify-center mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;" id="value-props">
+        <p class="text-xl sm:text-2xl md:text-3xl">
+          <span class="text-white font-black">Tag 1:</span>
+          <span class="text-gray-400"> Strategie entwickeln.</span>
+        </p>
+        <p class="text-xl sm:text-2xl md:text-3xl">
+          <span class="text-white font-black">Tag 5:</span>
+          <span class="text-gray-400"> System live.</span>
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <a
+          href="#bewerbung"
+          class="group inline-block bg-white text-black font-bold px-8 py-4 text-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:bg-swiss-orange hover:text-white hover:-translate-x-1 hover:-translate-y-1 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-300"
+        >
+          Zur Bewerbung <span class="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+        </a>
+
+        <p class="text-gray-400 text-sm mt-8 italic flex items-center justify-center gap-2">
+          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          10 Plätze. Nächster Termin: 25. Februar – 1. März 2025.
+        </p>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style="animation-delay: 1s;">
+      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-swiss-orange rounded-full mt-2 animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="bg-black py-24 relative overflow-hidden">
+    <!-- Decorative blur -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <!-- Left: Problem Statement -->
+        <div class="reveal-left">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-10">
+            Du bist <span class="text-swiss-orange">Unternehmer</span>, der sein Unternehmen kontinuierlich verbessern will.
+          </h2>
+
+          <div class="border-l-4 border-swiss-orange p-6 bg-gray-900/50 mb-10 hover:bg-gray-900/70 transition-colors duration-300">
+            <p class="text-2xl md:text-3xl font-bold text-white mb-4">
+              Du weißt:<br/>
+              <span class="text-swiss-orange text-3xl md:text-4xl">KI ist die Zukunft.</span>
+            </p>
+            <div class="space-y-3 text-gray-300">
+              <p class="flex items-start gap-2 hover:text-white transition-colors duration-300">
+                <span class="text-swiss-orange">→</span> Aber du hast keine Zeit für YouTube-Tutorials.
+              </p>
+              <p class="flex items-start gap-2 hover:text-white transition-colors duration-300">
+                <span class="text-swiss-orange">→</span> Berater sind teuer und reden abstrakt.
+              </p>
+              <p class="flex items-start gap-2 hover:text-white transition-colors duration-300">
+                <span class="text-swiss-orange">→</span> Deine Mitarbeiter sind überfordert.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-lg text-white italic">
+            <p class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-swiss-orange rounded-full"></span>
+              Wo fange ich konkret an?
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-swiss-orange rounded-full"></span>
+              Wie setze ich das um – ohne IT-Abteilung?
+            </p>
+            <p class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-swiss-orange rounded-full"></span>
+              Was bringt das wirklich meinem Business?
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Marco -->
+        <div class="flex flex-col items-center reveal-right">
+          <div class="relative w-full max-w-sm mx-auto mb-6 group">
+            <!-- Orange accent line -->
+            <div class="absolute -top-2 -left-2 w-20 h-1 bg-swiss-orange"></div>
+            <div class="absolute -top-2 -left-2 w-1 h-20 bg-swiss-orange"></div>
+
+            <div class="border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden group-hover:shadow-[12px_12px_0px_0px_rgba(255,79,0,1)] transition-all duration-500">
+              <img
+                src="/images/marco_compressed.jpg"
+                alt="Marco Heer"
+                class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+          </div>
+
+          <!-- Quote icon -->
+          <div class="text-swiss-orange/30 text-6xl font-serif leading-none mb-2">"</div>
+
+          <p class="text-gray-300 italic text-center max-w-lg leading-relaxed">
+            3 Jahre habe ich Tag und Nacht KI studiert & angewendet, um meinem und anderen Unternehmen daraus echten Nutzen zu erschaffen.
+            <br/><br/>
+            Jetzt helfe ich anderen dabei, KI zu begreifen, anzuwenden und in den Alltag zu integrieren.
+            <br/><br/>
+            Im 5-Tage-Retreat zeige ich dir genau das – praxisnah, ohne Bullshit, mit messbaren Ergebnissen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section class="bg-gray-900 py-24 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 bg-dots opacity-[0.02]"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-swiss-orange/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
+      <div class="text-center mb-16 reveal">
+        <!-- Section label -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-px w-12 bg-swiss-orange"></div>
+          <span class="font-mono text-xs uppercase tracking-widest text-swiss-orange">REFERENZEN</span>
+          <div class="h-px w-12 bg-swiss-orange"></div>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+          Wer mit uns arbeitet – <span class="text-swiss-orange">und was sie erreicht haben</span>
+        </h2>
+        <p class="text-gray-400 max-w-3xl mx-auto">
+          Das Retreat startet bald. Bis dahin: Hier siehst du, was Unternehmer durch meine Begleitungen erreicht haben.
+          Im Retreat läuft es ähnlich – nur intensiver und in 5 Tagen.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {testimonials.map((testimonial, index) => (
+          <div class={`reveal group bg-black border-2 border-gray-800 p-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300`} style={`animation-delay: ${index * 0.1}s;`}>
+            <!-- Top accent line -->
+            <div class="absolute top-0 left-0 w-0 h-1 bg-swiss-orange group-hover:w-full transition-all duration-500"></div>
+
+            <div class="flex items-start gap-4 mb-4">
+              <div class="relative w-16 h-16 border-2 border-swiss-orange/50 overflow-hidden flex-shrink-0 group-hover:border-swiss-orange transition-colors duration-300">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <div>
+                <h3 class="text-lg font-black text-white group-hover:text-swiss-orange transition-colors duration-300">{testimonial.name}</h3>
+                <p class="text-sm text-gray-400">{testimonial.role}</p>
+              </div>
+            </div>
+            <p class="text-gray-300 mb-4 leading-relaxed">"{testimonial.story}"</p>
+            {testimonial.result && (
+              <span class="inline-flex items-center gap-2 px-3 py-1 bg-swiss-orange/20 border border-swiss-orange/50 text-swiss-orange text-sm font-semibold group-hover:bg-swiss-orange group-hover:text-white transition-all duration-300">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {testimonial.result}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-gray-500 text-sm mt-12 reveal">
+        Jedes Unternehmen ist anders. Im Retreat arbeiten wir an deinen spezifischen Herausforderungen.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5-Day Program Section -->
+  <section class="bg-black py-24 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 bg-grid opacity-[0.03]"></div>
+    <div class="absolute top-1/2 right-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-5xl relative z-10">
+      <div class="text-center mb-16 reveal">
+        <!-- Section label -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-px w-12 bg-swiss-orange"></div>
+          <span class="font-mono text-xs uppercase tracking-widest text-swiss-orange">DAS PROGRAMM</span>
+          <div class="h-px w-12 bg-swiss-orange"></div>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-4">
+          So läuft das <span class="text-swiss-orange">5-Tage-Retreat</span> ab.
+        </h2>
+      </div>
+
+      <div class="space-y-8 relative">
+        <!-- Vertical connector line -->
+        <div class="absolute left-8 top-16 bottom-16 w-0.5 bg-gradient-to-b from-swiss-orange via-swiss-orange/50 to-swiss-orange hidden md:block"></div>
+
+        {phases.map((phase, index) => (
+          <div class="reveal group relative bg-gray-900 border-2 border-gray-800 p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] hover:border-swiss-orange/50 hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300" style={`animation-delay: ${index * 0.1}s;`}>
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0 w-16 h-16 bg-swiss-orange border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center group-hover:scale-110 group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 relative z-10">
+                <span class="text-2xl font-black text-white">{phase.id}</span>
+              </div>
+              <div class="flex-1">
+                <p class="text-swiss-orange font-mono text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
+                  <span class="w-2 h-2 bg-swiss-orange rounded-full group-hover:animate-pulse"></span>
+                  PHASE {phase.id}
+                </p>
+                <h3 class="text-2xl md:text-3xl font-black text-white mb-2 group-hover:text-swiss-orange transition-colors duration-300">{phase.title}</h3>
+                <p class="text-xl text-swiss-orange font-bold mb-3">{phase.main}</p>
+                <p class="text-gray-400 leading-relaxed">{phase.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form Section -->
+  <section id="bewerbung" class="bg-gray-900 py-24 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 bg-dots opacity-[0.02]"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-swiss-orange/30 to-transparent"></div>
+    <div class="absolute top-1/2 left-0 w-96 h-96 bg-swiss-orange/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-3xl relative z-10">
+      <div class="text-center mb-12 reveal">
+        <!-- Section label -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-px w-12 bg-swiss-orange"></div>
+          <span class="font-mono text-xs uppercase tracking-widest text-swiss-orange">JETZT BEWERBEN</span>
+          <div class="h-px w-12 bg-swiss-orange"></div>
+        </div>
+
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-swiss-orange/10 border-2 border-swiss-orange/30 text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(255,79,0,0.3)]">
+          <span class="w-2 h-2 bg-swiss-orange rounded-full animate-pulse"></span>
+          BEWERBUNG
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-black text-white mb-4">
+          Bewerbung für <span class="text-swiss-orange">Q1 2025</span>
+        </h2>
+        <p class="text-gray-400 flex items-center justify-center gap-2">
+          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          25. Februar – 1. März 2025 • 10 Plätze
+        </p>
+      </div>
+
+      <form class="reveal-scale bg-black border-2 border-gray-800 p-8 shadow-[8px_8px_0px_0px_rgba(255,79,0,1)] relative overflow-hidden" id="mastermind-form">
+        <!-- Decorative corner -->
+        <div class="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-swiss-orange/30"></div>
+        <div class="space-y-6">
+          <!-- Personal Info -->
+          <div>
+            <h3 class="text-lg font-black text-white mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Persönliche Informationen
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Vorname *</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  required
+                  class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300"
+                  placeholder="Max"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Nachname *</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  required
+                  class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300"
+                  placeholder="Mustermann"
+                />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-300 mb-2">E-Mail-Adresse *</label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300"
+                placeholder="max@beispiel.de"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label class="block text-sm font-medium text-gray-300 mb-2">Telefonnummer *</label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300"
+                placeholder="+49 123 456789"
+              />
+            </div>
+          </div>
+
+          <!-- Business Info -->
+          <div class="pt-6 border-t border-gray-800">
+            <h3 class="text-lg font-black text-white mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Unternehmen
+            </h3>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Unternehmen *</label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300"
+                  placeholder="Beispiel GmbH"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Position *</label>
+                <input
+                  type="text"
+                  name="position"
+                  required
+                  class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300"
+                  placeholder="Geschäftsführer"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Motivation -->
+          <div class="pt-6 border-t border-gray-800">
+            <h3 class="text-lg font-black text-white mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              Ihre Motivation
+            </h3>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Welche aktuellen Herausforderungen haben Sie in Bezug auf KI? *</label>
+                <textarea
+                  name="currentChallenges"
+                  required
+                  rows="4"
+                  class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300 resize-none"
+                  placeholder="z.B. Wo stehen Sie gerade? Was blockiert Sie?"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Was möchten Sie in den nächsten 90 Tagen erreichen? *</label>
+                <textarea
+                  name="goals"
+                  required
+                  rows="4"
+                  class="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-swiss-orange focus:outline-none focus:shadow-[0_0_0_3px_rgba(255,79,0,0.2)] transition-all duration-300 resize-none"
+                  placeholder="Ihre konkreten Ziele..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="group w-full bg-swiss-orange text-white font-bold py-4 text-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white hover:text-black active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-300"
+          >
+            Bewerbung absenden <span class="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </button>
+
+          <!-- Privacy Notice -->
+          <div class="bg-gray-900/50 p-4 border border-gray-800 rounded">
+            <p class="text-xs text-gray-400 flex items-start gap-2">
+              <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+              Mit dem Absenden dieser Bewerbung stimmen Sie zu, dass Synclaro Sie bezüglich
+              Ihrer Bewerbung kontaktieren darf. Ihre Daten werden vertraulich behandelt und
+              nicht an Dritte weitergegeben. Sie können Ihre Bewerbung jederzeit zurückziehen.
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-black py-24 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 bg-grid opacity-[0.03]"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-swiss-orange/30 to-transparent"></div>
+    <div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-swiss-orange/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-4xl text-center relative z-10">
+      <div class="reveal">
+        <!-- Section label -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-px w-12 bg-swiss-orange"></div>
+          <span class="font-mono text-xs uppercase tracking-widest text-swiss-orange">LET'S GO</span>
+          <div class="h-px w-12 bg-swiss-orange"></div>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6">
+          Bereit für Ihre <span class="text-swiss-orange">KI-Transformation?</span>
+        </h2>
+        <p class="text-xl text-gray-400 mb-10 flex items-center justify-center gap-3">
+          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          10 Plätze • Nächster Termin: 25. Februar – 1. März 2025
+        </p>
+        <a
+          href="#bewerbung"
+          class="group inline-block bg-swiss-orange text-white font-bold px-10 py-5 text-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:bg-white hover:text-black hover:-translate-x-1 hover:-translate-y-1 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-300"
+        >
+          Zur Bewerbung <span class="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+        </a>
+
+        <!-- Trust indicators -->
+        <div class="flex flex-wrap items-center justify-center gap-8 mt-12 text-gray-500 text-sm">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            100% DSGVO-konform
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            5 intensive Tage
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            Max. 10 Teilnehmer
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  // Form submission handler
+  document.getElementById('mastermind-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // Map form fields to API expected format
+    const firstName = formData.get('firstName') || '';
+    const lastName = formData.get('lastName') || '';
+    const position = formData.get('position') || '';
+    const currentChallenges = formData.get('currentChallenges') || '';
+    const goals = formData.get('goals') || '';
+
+    const data = {
+      name: `${firstName} ${lastName}`.trim(),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      revenue: position, // Use position as revenue placeholder since form doesn't have revenue field
+      goals: `Herausforderungen: ${currentChallenges}\n\nZiele: ${goals}\n\nSeminar: Q1 2025 (25.02.-01.03.2025)`
+    };
+
+    try {
+      const response = await fetch('/api/mastermind', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        alert('Vielen Dank für Ihre Bewerbung! Wir melden uns innerhalb von 48 Stunden bei Ihnen.');
+        form.reset();
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (error) {
+      alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.');
+    }
+  });
+</script>

@@ -1,0 +1,78 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "Webinar | Synclaro Academy";
+const description = "Erlebe unsere Webinare live und lerne unsere Arbeitsweise kennen.";
+---
+
+<MainLayout title={title} description={description}>
+  <!-- Main Content -->
+  <section class="pt-24 pb-20 px-6 lg:px-12 bg-white min-h-screen flex items-center">
+    <div class="container mx-auto max-w-4xl">
+      <!-- Announcement Section -->
+      <div class="text-center mb-16">
+        <div class="w-20 h-20 mx-auto mb-6 bg-amber-500/10 border-2 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <svg class="w-10 h-10 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-black mb-6">
+          Webinar <span class="text-swiss-orange">Ankündigung</span>
+        </h1>
+
+        <div class="bg-gray-50 border-2 border-black p-8 sm:p-12 max-w-2xl mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <p class="text-xl text-gray-600 mb-4">
+            Im Moment ist kein nächstes Webinar geplant.
+          </p>
+          <p class="text-lg text-gray-500">
+            Der nächste Termin wird bald angekündigt.
+          </p>
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="bg-gray-50 border-2 border-black p-8 max-w-2xl mx-auto mb-12 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <h3 class="text-2xl font-black mb-4">
+          Möchtest du informiert werden?
+        </h3>
+        <p class="text-gray-600 mb-6">
+          Kontaktiere uns und wir informieren dich, sobald ein neuer Webinar-Termin feststeht.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="tel:+4916099471052"
+            class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
+          >
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
+            <span class="relative flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              +49 160 99471052
+            </span>
+          </a>
+          <a
+            href="/academy/beratung"
+            class="inline-flex items-center justify-center gap-2 bg-white text-black font-bold py-3 px-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            <span>Kontaktformular</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Back to Home Link -->
+      <div class="text-center">
+        <a href="/academy" class="inline-flex items-center gap-2 text-gray-500 hover:text-black transition-colors font-medium">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Zurück zur Startseite
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,3 @@
+# Redirect CRM routes to dedicated CRM subdomain
+/crm/*  https://crm.synclaro.de/crm/:splat  301
+/crm    https://crm.synclaro.de/crm         301

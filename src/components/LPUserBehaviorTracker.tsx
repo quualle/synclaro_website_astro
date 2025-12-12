@@ -267,7 +267,7 @@ export default function LPUserBehaviorTracker({ webhookUrl, pagePath }: LPUserBe
         elementId,
         elementType,
         elementLabel,
-        sectionId,
+        sectionId: sectionId || undefined,
         timestamp: new Date().toISOString(),
         isCta: isCTA
       })

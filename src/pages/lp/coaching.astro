@@ -11,19 +11,19 @@ const testimonials = [
     name: 'Sara Wietritschowski',
     role: 'Leiterin Familienbetrieb',
     quote: 'Nach 50 Stunden Coaching mit Marco habe ich endlich jemanden gefunden, der mich genau da abholt, wo ich stehe.',
-    image: '/images/testimonial_sara.jpg',
+    initials: 'SW',
   },
   {
     name: 'Evelyn Biesinger',
     role: 'Familienbetrieb Handwerk & Coaching',
     quote: 'Jetzt habe ich einen guten Überblick über die Möglichkeiten, kann komplexere Tools anwenden und baue sogar eigene Programme.',
-    image: '/images/testimonial_evelyn_compressed.jpg',
+    initials: 'EB',
   },
   {
     name: 'Norman Liersch',
     role: 'GF Pflegehilfe für Senioren 24 GmbH',
     quote: 'Marco hat über mehrere Monate hinweg unser Geschäftsmodell in der Tiefe verstanden und das Automatisierungspotenzial freigelegt.',
-    image: '/images/testimonial_Pflegehilfe_compressed.jpg',
+    initials: 'NL',
   },
 ];
 
@@ -409,8 +409,8 @@ const mastermindDays = [
           {testimonials.map((t) => (
             <div class="bg-gray-900 border-2 border-gray-800 p-6 hover:border-swiss-orange/50 transition-all duration-300 group">
               <div class="flex items-center gap-4 mb-4">
-                <div class="w-14 h-14 border-2 border-swiss-orange/50 overflow-hidden">
-                  <img src={t.image} alt={t.name} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <div class="w-14 h-14 border-2 border-swiss-orange/50 bg-swiss-orange/20 flex items-center justify-center">
+                  <span class="text-swiss-orange font-bold text-lg">{t.initials}</span>
                 </div>
                 <div>
                   <div class="font-bold text-white">{t.name}</div>

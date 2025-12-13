@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 interface TrackingPayload {
-  event_type: 'pageview' | 'click' | 'section_view';
+  event_type: 'pageview' | 'click' | 'section_view' | 'session_update';
   page: string;
   referrer?: string | null;
   user_agent?: string;
@@ -23,6 +23,39 @@ interface TrackingPayload {
   is_cta?: boolean;
   // Section view-specific
   section_name?: string;
+  // Session update-specific
+  total_duration_seconds?: number;
+  total_clicks?: number;
+  total_sections_viewed?: number;
+  max_scroll_depth?: number;
+}
+
+// Helper to ensure session exists before inserting dependent records
+async function ensureSessionExists(
+  supabaseUrl: string,
+  headers: Record<string, string>,
+  sessionId: string,
+  pagePath: string,
+  websiteDomain: string
+): Promise<void> {
+  const sessionPayload = {
+    session_id: sessionId,
+    website_domain: websiteDomain,
+    page_path: pagePath,
+    entry_time: new Date().toISOString(),
+    total_clicks: 0,
+    total_sections_viewed: 0,
+  };
+
+  // Use upsert to create session if it doesn't exist
+  await fetch(
+    `${supabaseUrl}/rest/v1/website_user_behavior_sessions`,
+    {
+      method: 'POST',
+      headers: { ...headers, 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+      body: JSON.stringify(sessionPayload),
+    }
+  );
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -56,13 +89,15 @@ export const POST: APIRoute = async ({ request }) => {
       'Prefer': 'return=minimal',
     };
 
+    const websiteDomain = data.website_domain || 'synclaro.de';
+
     // Handle different event types
     switch (data.event_type) {
       case 'pageview': {
         // Insert or update session in website_user_behavior_sessions
         const sessionPayload = {
           session_id: data.session_id,
-          website_domain: data.website_domain || 'synclaro.de',
+          website_domain: websiteDomain,
           page_path: data.page,
           entry_time: data.timestamp || new Date().toISOString(),
           user_agent: data.user_agent || null,
@@ -87,12 +122,15 @@ export const POST: APIRoute = async ({ request }) => {
 
         if (!sessionResponse.ok) {
           const errorText = await sessionResponse.text();
-          console.error('[Track API] Session insert error:', errorText);
+          console.error('[Track API] Session insert error:', sessionResponse.status, errorText);
         }
         break;
       }
 
       case 'click': {
+        // Ensure session exists first (handles race condition with pageview)
+        await ensureSessionExists(supabaseUrl, headers, data.session_id, data.page, websiteDomain);
+
         // Insert into website_user_behavior_interactions
         const interactionPayload = {
           session_id: data.session_id,
@@ -117,13 +155,16 @@ export const POST: APIRoute = async ({ request }) => {
 
         if (!clickResponse.ok) {
           const errorText = await clickResponse.text();
-          console.error('[Track API] Interaction insert error:', errorText);
+          console.error('[Track API] Interaction insert error:', clickResponse.status, errorText);
         }
         break;
       }
 
       case 'section_view': {
-        // Insert into website_user_behavior_sections
+        // Ensure session exists first (handles race condition with pageview)
+        await ensureSessionExists(supabaseUrl, headers, data.session_id, data.page, websiteDomain);
+
+        // Insert into website_user_behavior_section_views
         const sectionPayload = {
           session_id: data.session_id,
           section_id: data.section_id || 'unknown',
@@ -134,7 +175,7 @@ export const POST: APIRoute = async ({ request }) => {
         };
 
         const sectionResponse = await fetch(
-          `${supabaseUrl}/rest/v1/website_user_behavior_sections`,
+          `${supabaseUrl}/rest/v1/website_user_behavior_section_views`,
           {
             method: 'POST',
             headers,
@@ -144,13 +185,39 @@ export const POST: APIRoute = async ({ request }) => {
 
         if (!sectionResponse.ok) {
           const errorText = await sectionResponse.text();
-          console.error('[Track API] Section insert error:', errorText);
+          console.error('[Track API] Section insert error:', sectionResponse.status, errorText);
+        }
+        break;
+      }
+
+      case 'session_update': {
+        // Update existing session with duration, clicks, etc.
+        const updatePayload = {
+          total_duration_seconds: data.total_duration_seconds || 0,
+          total_clicks: data.total_clicks || 0,
+          total_sections_viewed: data.total_sections_viewed || 0,
+          updated_at: new Date().toISOString(),
+        };
+
+        const updateResponse = await fetch(
+          `${supabaseUrl}/rest/v1/website_user_behavior_sessions?session_id=eq.${data.session_id}`,
+          {
+            method: 'PATCH',
+            headers,
+            body: JSON.stringify(updatePayload),
+          }
+        );
+
+        if (!updateResponse.ok) {
+          const errorText = await updateResponse.text();
+          console.error('[Track API] Session update error:', updateResponse.status, errorText);
         }
         break;
       }
 
       default:
-        console.warn('[Track API] Unknown event type:', data.event_type);
+        // Silently ignore unknown event types to avoid log spam
+        break;
     }
 
     return new Response(

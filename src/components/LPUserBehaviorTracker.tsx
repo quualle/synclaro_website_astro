@@ -3,7 +3,6 @@
 import { useEffect, useRef, useCallback } from 'react'
 
 interface LPUserBehaviorTrackerProps {
-  webhookUrl: string
   pagePath: string
 }
 
@@ -49,7 +48,7 @@ function getBrowser(): string {
   return 'Other'
 }
 
-export default function LPUserBehaviorTracker({ webhookUrl, pagePath }: LPUserBehaviorTrackerProps) {
+export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTrackerProps) {
   const sessionRef = useRef<SessionData | null>(null)
   const clicksRef = useRef<Array<{
     elementId?: string
@@ -67,7 +66,7 @@ export default function LPUserBehaviorTracker({ webhookUrl, pagePath }: LPUserBe
   const webhookSentRef = useRef<boolean>(false)
   const durationIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Send webhook for page visit
+  // Send webhook for page visit via server-side proxy to avoid CORS
   const sendPageVisitWebhook = useCallback(async () => {
     if (!sessionRef.current || webhookSentRef.current) return
 
@@ -76,7 +75,8 @@ export default function LPUserBehaviorTracker({ webhookUrl, pagePath }: LPUserBe
     const session = sessionRef.current
 
     try {
-      await fetch(webhookUrl, {
+      // Use server-side API route to proxy webhook call (avoids CORS issues)
+      await fetch('/api/lp-webhook', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -97,7 +97,7 @@ export default function LPUserBehaviorTracker({ webhookUrl, pagePath }: LPUserBe
     } catch (error) {
       console.error('[LPTracker] Error sending page visit webhook:', error)
     }
-  }, [webhookUrl])
+  }, [])
 
   // Send tracking data to API
   const sendTrackingData = useCallback(async (eventType: 'pageview' | 'click' | 'section_view', data: Record<string, unknown> = {}) => {

@@ -1,0 +1,146 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const prerender = false;
+
+const title = "Dashboard | Synclaro Intern";
+const description = "Internes Tool-Dashboard";
+
+// Check authentication
+const sessionCookie = Astro.cookies.get('intern_session');
+if (!sessionCookie?.value) {
+  return Astro.redirect('/intern');
+}
+
+const tools = [
+  {
+    name: 'CRM',
+    description: 'Kundenverwaltung, Transkript-Analyse, Meeting-Briefings',
+    icon: '👥',
+    url: 'https://crm.synclaro.de/crm',
+    color: 'swiss-orange',
+    features: ['Kundenübersicht', 'Transkript-Analyse', 'AI Briefings', 'Curriculum-Tracking']
+  },
+  {
+    name: 'Content Planner',
+    description: 'Instagram Video Content Planung mit AI-Unterstützung',
+    icon: '🎬',
+    url: 'https://contentplan.synclaro.de',
+    color: 'purple-600',
+    features: ['Video-Skripte', 'Hook-Kategorien', 'Teleprompter', 'Performance-Tracking']
+  },
+  {
+    name: 'AI Assistant',
+    description: 'Persönlicher AI-Assistent für Wissensmanagement',
+    icon: '🤖',
+    url: 'https://assistant.synclaro.de',
+    color: 'blue-600',
+    features: ['Chat', 'Knowledge Base', 'Briefings', 'Trend-Analyse']
+  }
+];
+---
+
+<MainLayout title={title} description={description}>
+  <section class="py-12 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-12">
+        <div>
+          <h1 class="text-4xl font-black mb-2">
+            <span class="text-swiss-orange">S</span>ynclaro Tools
+          </h1>
+          <p class="text-gray-600">Internes Dashboard für alle Synclaro-Tools</p>
+        </div>
+        <form action="/api/auth/intern-logout" method="POST">
+          <button
+            type="submit"
+            class="text-gray-500 hover:text-red-500 font-medium transition-colors flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
+            Ausloggen
+          </button>
+        </form>
+      </div>
+
+      <!-- Tool Cards Grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+        {tools.map((tool) => (
+          <a
+            href={tool.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block bg-white border-2 border-black p-6 transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1"
+          >
+            <!-- Icon & Title -->
+            <div class="flex items-start gap-4 mb-4">
+              <div class={`text-4xl`}>
+                {tool.icon}
+              </div>
+              <div>
+                <h2 class="text-xl font-black group-hover:text-swiss-orange transition-colors">
+                  {tool.name}
+                </h2>
+                <p class="text-sm text-gray-600 mt-1">
+                  {tool.description}
+                </p>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="border-t border-gray-200 pt-4 mt-4">
+              <ul class="space-y-2">
+                {tool.features.map((feature) => (
+                  <li class="flex items-center gap-2 text-sm text-gray-700">
+                    <svg class="w-4 h-4 text-swiss-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Open Link Indicator -->
+            <div class="flex justify-end mt-4">
+              <span class="text-sm text-gray-400 group-hover:text-swiss-orange transition-colors flex items-center gap-1">
+                Öffnen
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Quick Stats Section -->
+      <div class="mt-12 bg-gray-50 border-2 border-black p-6">
+        <h3 class="font-bold text-lg mb-4">Schnellzugriff</h3>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://crm.synclaro.de/crm/dashboard" target="_blank" class="px-4 py-2 bg-white border border-gray-300 hover:border-swiss-orange hover:text-swiss-orange transition-colors text-sm">
+            📊 CRM Dashboard
+          </a>
+          <a href="https://crm.synclaro.de/crm/customers" target="_blank" class="px-4 py-2 bg-white border border-gray-300 hover:border-swiss-orange hover:text-swiss-orange transition-colors text-sm">
+            👤 Kunden
+          </a>
+          <a href="https://crm.synclaro.de/crm/transcripts" target="_blank" class="px-4 py-2 bg-white border border-gray-300 hover:border-swiss-orange hover:text-swiss-orange transition-colors text-sm">
+            📝 Transkripte
+          </a>
+          <a href="https://app.netlify.com/teams/quualle/overview" target="_blank" class="px-4 py-2 bg-white border border-gray-300 hover:border-swiss-orange hover:text-swiss-orange transition-colors text-sm">
+            🚀 Netlify
+          </a>
+          <a href="https://supabase.com/dashboard/project/ouqhysemcldamthpuqqq" target="_blank" class="px-4 py-2 bg-white border border-gray-300 hover:border-swiss-orange hover:text-swiss-orange transition-colors text-sm">
+            🗄️ Supabase
+          </a>
+        </div>
+      </div>
+
+      <!-- Info Footer -->
+      <div class="mt-8 text-center text-sm text-gray-500">
+        <p>Alle Tools sind nach dem Login ohne weiteres Passwort erreichbar.</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

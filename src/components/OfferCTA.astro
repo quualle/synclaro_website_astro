@@ -1,0 +1,132 @@
+---
+/**
+ * OfferCTA Component - C4: Interne Verlinkung Blog -> Money-Pages
+ *
+ * Zeigt kontextbezogene CTAs am Ende von Blogartikeln basierend auf Tags.
+ *
+ * Mapping-Regeln:
+ * - Tags: kmu, gf, c-level, strategie, ai-act, governance -> Mastermind CTA
+ * - Tags: selbstständig, macher, agent-coding, n8n, tutorial -> Gruppencoaching CTA
+ * - Default: Generischer CTA
+ */
+
+interface Props {
+  tags?: string[];
+  variant?: 'mastermind' | 'gruppencoaching' | 'auto';
+}
+
+const { tags = [], variant = 'auto' } = Astro.props;
+
+// Determine which CTA to show
+const mastermindTags = ['kmu', 'gf', 'c-level', 'strategie', 'ai-act', 'governance', 'führungskraft', 'management', 'entscheider'];
+const gruppencoachingTags = ['selbstständig', 'macher', 'agent-coding', 'n8n', 'tutorial', 'automatisierung', 'prompt', 'hands-on', 'praxis'];
+
+function determineVariant(tags: string[], variant: string): 'mastermind' | 'gruppencoaching' | 'general' {
+  if (variant !== 'auto') return variant as 'mastermind' | 'gruppencoaching';
+
+  const normalizedTags = tags.map(t => t.toLowerCase());
+
+  const mastermindScore = normalizedTags.filter(t => mastermindTags.includes(t)).length;
+  const gruppencoachingScore = normalizedTags.filter(t => gruppencoachingTags.includes(t)).length;
+
+  if (mastermindScore > gruppencoachingScore) return 'mastermind';
+  if (gruppencoachingScore > mastermindScore) return 'gruppencoaching';
+  return 'general';
+}
+
+const selectedVariant = determineVariant(tags, variant);
+
+const ctaContent = {
+  mastermind: {
+    headline: "Strategische KI-Weiterbildung für Führungskräfte",
+    description: "Die Synclaro Mastermind ist ein 5-Tages-Intensivformat für Geschäftsführer, die KI strategisch in ihrem Unternehmen einsetzen wollen.",
+    features: [
+      "5 Tage Intensiv-Format",
+      "Geschlossene Gruppe (max. 12 Teilnehmer)",
+      "Strategischer Fokus, keine Tool-Tutorials"
+    ],
+    buttonText: "Mehr zur Mastermind",
+    buttonLink: "/academy/mastermind",
+    secondaryLink: "/academy/beratung",
+    secondaryText: "Erstgespräch buchen"
+  },
+  gruppencoaching: {
+    headline: "KI praktisch lernen im Gruppencoaching",
+    description: "In 6 Monaten vom Einsteiger zum KI-Praktiker: Agent-Coding, n8n-Automatisierung und eigene Projekte umsetzen.",
+    features: [
+      "6 Monate, 2h pro Woche",
+      "Kleine Gruppen (4-8 Teilnehmer)",
+      "Hands-on Projekte ab Tag 1"
+    ],
+    buttonText: "Mehr zum Gruppencoaching",
+    buttonLink: "/academy/gruppen-coaching",
+    secondaryLink: "/academy/beratung",
+    secondaryText: "Erstgespräch buchen"
+  },
+  general: {
+    headline: "Bereit für KI in Ihrem Unternehmen?",
+    description: "Ob strategische Weiterbildung für Führungskräfte oder praktisches Hands-on-Training - wir haben das passende Format für Sie.",
+    features: [
+      "Mastermind für Geschäftsführer",
+      "Gruppencoaching für Praktiker",
+      "Individuelle Beratung"
+    ],
+    buttonText: "Formate vergleichen",
+    buttonLink: "/academy/coaching",
+    secondaryLink: "/academy/beratung",
+    secondaryText: "Erstgespräch buchen"
+  }
+};
+
+const content = ctaContent[selectedVariant];
+---
+
+<aside class="my-12 bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+  <div class="flex flex-col md:flex-row gap-8 items-start">
+    <!-- Icon -->
+    <div class="flex-shrink-0">
+      <div class="w-16 h-16 bg-swiss-orange flex items-center justify-center border-2 border-black">
+        <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-grow">
+      <h3 class="text-xl font-black mb-3">{content.headline}</h3>
+      <p class="text-gray-600 mb-4">{content.description}</p>
+
+      <!-- Features -->
+      <ul class="flex flex-wrap gap-3 mb-6">
+        {content.features.map((feature) => (
+          <li class="flex items-center gap-2 text-sm text-gray-600">
+            <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap gap-4">
+        <a
+          href={content.buttonLink}
+          class="inline-flex items-center gap-2 bg-swiss-orange text-white font-bold px-6 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          {content.buttonText}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a
+          href={content.secondaryLink}
+          class="inline-flex items-center gap-2 bg-white text-black font-bold px-6 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          {content.secondaryText}
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>

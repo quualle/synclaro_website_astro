@@ -1,20 +1,24 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import cohortData from '../../content/mastermind-cohorts.json';
 
 const title = "Mastermind für Geschäftsführer | Synclaro Academy";
-const description = "5-Tages Intensiv-Veranstaltung: Strategische KI-Weiterbildung für Führungskräfte, die KI ernst nehmen.";
+const description = "5-Tages Intensiv-Veranstaltung: Strategische KI-Weiterbildung für Führungskräfte, die KI ernst nehmen. Max. 12 Teilnehmer, 4x pro Jahr.";
+
+// Get upcoming cohorts
+const upcomingCohorts = cohortData.cohorts.filter(c => c.status === 'upcoming' || c.status === 'planned').slice(0, 2);
 
 const stats = [
   { value: "5", label: "Intensive Tage" },
-  { value: "8-12", label: "Teilnehmer" },
-  { value: "100%", label: "Praxisnah" },
+  { value: "12", label: "Max. Teilnehmer" },
+  { value: "4x", label: "Pro Jahr" },
   { value: "∞", label: "Netzwerk-Wert" }
 ];
 
 const mastermindFeatures = [
   {
     title: "Geschlossene Gruppe",
-    description: "6-10 Geschäftsführer aus ähnlichen Branchen für maximale Relevanz und Vertraulichkeit"
+    description: "Maximal 12 Geschäftsführer aus ähnlichen Branchen für maximale Relevanz und Vertraulichkeit"
   },
   {
     title: "Exklusiver Zugang",
@@ -88,9 +92,83 @@ const afterOptions = [
     description: "Bleibe Teil der Community. Monatliche Check-ins, exklusiver Slack-Channel, gegenseitiger Support."
   }
 ];
+
+// FAQ - erweitert auf mind. 8 Fragen
+const faqs = [
+  {
+    question: "Wie viel Zeit muss ich einplanen?",
+    answer: "Die Mastermind ist ein 5-Tages-Format, typischerweise Montag bis Freitag. Sessions laufen von 9:00 bis 17:00 Uhr mit Pausen. Plane zusätzlich Zeit für Networking am Abend ein."
+  },
+  {
+    question: "Wo findet die Mastermind statt?",
+    answer: "Wir veranstalten die Mastermind an wechselnden Locations im Raum München. Die genaue Adresse erhältst du nach erfolgreicher Bewerbung. Unterkunftsempfehlungen geben wir gerne."
+  },
+  {
+    question: "Für wen ist die Mastermind geeignet?",
+    answer: "Die Mastermind richtet sich an Geschäftsführer, CEOs und Inhaber von mittelständischen Unternehmen, die KI strategisch in ihrem Unternehmen einsetzen wollen. Keine technischen Vorkenntnisse erforderlich."
+  },
+  {
+    question: "Welche Ergebnisse kann ich erwarten?",
+    answer: "Nach der Mastermind hast du: Ein tiefes Verständnis der KI-Möglichkeiten, eine konkrete 90-Tage-Roadmap, die Fähigkeit fundierte Entscheidungen zu treffen, und ein starkes Netzwerk von Gleichgesinnten."
+  },
+  {
+    question: "Gibt es Follow-up nach der Mastermind?",
+    answer: "Ja! Du erhältst Zugang zu unserem Alumni-Netzwerk mit monatlichen Check-in Calls und einem exklusiven Slack-Channel. Optional kannst du Gruppen-Coaching für dein Team oder Done-for-You Services buchen."
+  },
+  {
+    question: "Was ist die Stornierungsregelung?",
+    answer: "Bis 30 Tage vor Beginn: volle Erstattung. 15-30 Tage: 50% Erstattung. Unter 15 Tagen: keine Erstattung, aber du kannst deinen Platz auf eine andere Kohorte übertragen."
+  },
+  {
+    question: "Was muss ich mitbringen?",
+    answer: "Einen Laptop, Offenheit für neue Perspektiven und die Bereitschaft, deine bisherigen Annahmen zu hinterfragen. Alle Unterlagen und Tools werden gestellt."
+  },
+  {
+    question: "Wie werden meine Daten geschützt?",
+    answer: "Alle Teilnehmer unterzeichnen eine Vertraulichkeitsvereinbarung. Was in der Mastermind besprochen wird, bleibt in der Mastermind. Wir speichern nur notwendige Kontaktdaten DSGVO-konform."
+  }
+];
+
+// Event JSON-LD Schema (placeholder dates)
+const nextCohort = upcomingCohorts[0];
+const eventSchema = nextCohort ? {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Synclaro KI-Mastermind für Geschäftsführer",
+  "description": description,
+  "startDate": nextCohort.startDate,
+  "endDate": nextCohort.endDate,
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": nextCohort.locationName,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "München",
+      "addressCountry": "DE"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Synclaro",
+    "url": "https://synclaro.de"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://synclaro.de/academy/mastermind/bewerbung",
+    "availability": "https://schema.org/LimitedAvailability"
+  },
+  "maximumAttendeeCapacity": 12
+} : null;
 ---
 
 <MainLayout title={title} description={description}>
+  <!-- Event JSON-LD Schema -->
+  {eventSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
+  )}
+
   <!-- Hero Section -->
   <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
     <div class="container mx-auto max-w-6xl">
@@ -293,12 +371,42 @@ const afterOptions = [
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- FAQ Section -->
   <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Häufige <span class="text-swiss-orange">Fragen</span>
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <summary class="flex items-center justify-between p-6 cursor-pointer font-bold">
+              <span>{faq.question}</span>
+              <svg class="w-5 h-5 text-swiss-orange transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-gray-600">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
     <div class="container mx-auto max-w-4xl text-center">
-      <div class="bg-white border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <div class="bg-gray-50 border-2 border-black p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h2 class="text-3xl font-black mb-4">
+          Bereit für die <span class="text-swiss-orange">Mastermind</span>?
+        </h2>
         <p class="text-xl text-gray-600 mb-8">
-          Lass uns in einem unverbindlichen Erstgespräch klären, ob die Mastermind zu dir und deinem Unternehmen passt.
+          Die Teilnahme erfolgt auf Bewerbungsbasis. Wir prüfen, ob die Mastermind zu dir und deinem Unternehmen passt.
         </p>
 
         <div class="space-y-4 mb-8">
@@ -375,22 +483,22 @@ const afterOptions = [
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="/academy/beratung"
+            href="/academy/mastermind/bewerbung"
             class="group relative inline-flex items-center justify-center bg-gradient-to-r from-swiss-orange to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-lg shadow-lg shadow-swiss-orange/25 hover:shadow-xl hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 overflow-hidden"
           >
             <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
             <span class="relative flex items-center gap-2">
-              Erstgespräch vereinbaren
+              Bewerbung starten
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
           </a>
           <a
-            href="/academy"
+            href="/academy/beratung"
             class="inline-flex items-center justify-center gap-2 bg-white text-black font-bold py-4 px-8 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
           >
-            Zurück zur Übersicht
+            Erst Beratung anfragen
           </a>
         </div>
       </div>

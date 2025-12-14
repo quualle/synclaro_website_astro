@@ -1,0 +1,165 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// Placeholder case studies - in production würden diese aus einer CMS/Datenbank kommen
+const caseStudies = [
+  {
+    slug: "beispiel-projekt",
+    title: "KI-Automatisierung für mittelständisches Unternehmen",
+    client: "Musterunternehmen GmbH",
+    industry: "Produktion / Fertigung",
+    challenge: "Manuelle Datenerfassung und zeitaufwändige Reporting-Prozesse führten zu hohen Fehlerquoten und verzögerten Entscheidungen.",
+    solution: "Implementierung einer n8n-basierten Automatisierung mit GPT-Integration für intelligente Datenverarbeitung und automatisiertes Reporting.",
+    stack: ["n8n", "OpenAI GPT-4", "Supabase", "Custom Dashboard"],
+    results: {
+      note: "[PLATZHALTER - Echte KPIs nach Abschluss einfügen]",
+      metrics: [
+        { label: "Zeitersparnis", value: "XX%", description: "Reduktion des manuellen Aufwands" },
+        { label: "Fehlerquote", value: "-XX%", description: "Weniger manuelle Fehler" },
+        { label: "ROI", value: "X Monate", description: "Amortisationszeit" }
+      ]
+    },
+    quote: {
+      text: "[PLATZHALTER - Kundenzitat nach Freigabe einfügen]",
+      author: "Max Mustermann",
+      role: "Geschäftsführer",
+      company: "Musterunternehmen GmbH"
+    },
+    timeline: "Q1 2025",
+    status: "placeholder"
+  }
+];
+
+export function getStaticPaths() {
+  return caseStudies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study }
+  }));
+}
+
+const { study } = Astro.props;
+
+const title = `${study.title} | Synclaro Referenzen`;
+const description = `Case Study: ${study.title}. ${study.challenge.substring(0, 100)}...`;
+---
+
+<MainLayout title={title} description={description}>
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <!-- Back Link -->
+      <a href="/referenzen" class="inline-flex items-center text-swiss-orange hover:text-black font-bold mb-8 transition-colors">
+        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+        </svg>
+        Alle Referenzen
+      </a>
+
+      <!-- Placeholder Warning -->
+      {study.status === 'placeholder' && (
+        <div class="bg-yellow-50 border-2 border-yellow-400 p-4 mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span class="font-bold text-yellow-700">
+              PLATZHALTER-CASE-STUDY - Echte Daten nach Projektabschluss einfügen
+            </span>
+          </div>
+        </div>
+      )}
+
+      <!-- Header -->
+      <div class="mb-12">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          {study.industry}
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4">
+          {study.title}
+        </h1>
+
+        <p class="text-xl text-gray-600">
+          {study.client} | {study.timeline}
+        </p>
+      </div>
+
+      <!-- Challenge -->
+      <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+        <h2 class="text-2xl font-black mb-4">Ausgangslage</h2>
+        <p class="text-gray-600 text-lg">{study.challenge}</p>
+      </div>
+
+      <!-- Solution -->
+      <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+        <h2 class="text-2xl font-black mb-4">Lösung</h2>
+        <p class="text-gray-600 text-lg mb-6">{study.solution}</p>
+
+        <h3 class="font-bold mb-3">Technologie-Stack:</h3>
+        <div class="flex flex-wrap gap-2">
+          {study.stack.map((tech) => (
+            <span class="px-3 py-1 bg-swiss-orange/10 border-2 border-black text-sm font-mono shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="bg-swiss-orange/10 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8">
+        <h2 class="text-2xl font-black mb-4">Ergebnis</h2>
+
+        {study.results.note && (
+          <p class="text-sm text-gray-500 italic mb-6">{study.results.note}</p>
+        )}
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {study.results.metrics.map((metric) => (
+            <div class="bg-white border-2 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div class="text-3xl font-black text-swiss-orange mb-2">{metric.value}</div>
+              <div class="font-bold mb-1">{metric.label}</div>
+              <div class="text-sm text-gray-500">{metric.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quote -->
+      {study.quote && (
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-12">
+          <svg class="w-12 h-12 text-swiss-orange mb-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          </svg>
+          <blockquote class="text-xl text-gray-700 italic mb-4">
+            "{study.quote.text}"
+          </blockquote>
+          <div class="font-bold">{study.quote.author}</div>
+          <div class="text-sm text-gray-500">{study.quote.role}, {study.quote.company}</div>
+        </div>
+      )}
+
+      <!-- CTA -->
+      <div class="text-center bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h3 class="text-2xl font-black mb-4">
+          Ähnliche Ergebnisse für Ihr Unternehmen?
+        </h3>
+        <p class="text-gray-600 mb-6">
+          Lassen Sie uns besprechen, wie wir KI-Automatisierung in Ihrem Unternehmen implementieren können.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/academy/mastermind"
+            class="inline-flex items-center gap-2 bg-swiss-orange text-white font-bold px-6 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Mastermind für Führungskräfte
+          </a>
+          <a
+            href="/academy/gruppen-coaching"
+            class="inline-flex items-center gap-2 bg-white text-black font-bold px-6 py-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Gruppencoaching
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

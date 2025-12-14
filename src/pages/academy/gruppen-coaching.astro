@@ -1,0 +1,342 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const title = "KI Gruppencoaching (6 Monate) | Agent-Coding, n8n & Automatisierung";
+const description = "Intensives 6-monatiges Gruppencoaching für KI-Implementierung: Agent-Coding, n8n Automatisierung und praktische KI-Anwendungen. 2h/Woche mit Experten.";
+
+const format = {
+  duration: "6 Monate",
+  rhythm: "2 Stunden pro Woche",
+  format: "Live-Online Sessions",
+  groupSize: "4-8 Teilnehmer",
+  support: "Slack-Community + Q&A"
+};
+
+const modules = [
+  {
+    number: 1,
+    title: "Fundament: KI-Grundlagen & Prompt Engineering",
+    duration: "Wochen 1-4",
+    topics: [
+      "Wie LLMs funktionieren (technisches Verständnis)",
+      "Prompt Engineering Masterclass",
+      "API-Grundlagen und Kostenoptimierung",
+      "Erste eigene Automationen"
+    ]
+  },
+  {
+    number: 2,
+    title: "n8n Mastery: Workflow-Automatisierung",
+    duration: "Wochen 5-10",
+    topics: [
+      "n8n Setup (Cloud vs. Self-Hosted)",
+      "Workflow-Design Best Practices",
+      "Integration mit CRM, E-Mail, Datenbanken",
+      "Fehlerhandling und Monitoring"
+    ]
+  },
+  {
+    number: 3,
+    title: "Agent-Coding: Autonome KI-Systeme",
+    duration: "Wochen 11-16",
+    topics: [
+      "Agent-Architekturen verstehen",
+      "Tool-Use und Function Calling",
+      "Multi-Agent-Systeme",
+      "RAG-Implementierungen"
+    ]
+  },
+  {
+    number: 4,
+    title: "Praxis: Eigene Projekte umsetzen",
+    duration: "Wochen 17-24",
+    topics: [
+      "Individuelles Projekt planen",
+      "Code-Reviews in der Gruppe",
+      "Production-Ready machen",
+      "Dokumentation und Handover"
+    ]
+  }
+];
+
+const targetAudience = [
+  "Selbstständige und Freelancer, die KI-Skills aufbauen wollen",
+  "Mitarbeiter aus Marketing, Sales oder Operations",
+  "Technisch interessierte Quereinsteiger",
+  "Entwickler, die in KI einsteigen wollen"
+];
+
+const prerequisites = [
+  "Grundlegende Computer-Kenntnisse",
+  "Bereitschaft, 4-6 Stunden pro Woche zu investieren",
+  "Eigener Laptop mit Internetzugang",
+  "Englischkenntnisse (viel Dokumentation ist englisch)"
+];
+
+const faqs = [
+  {
+    question: "Welche technischen Vorkenntnisse brauche ich?",
+    answer: "Keine Programmierkenntnisse erforderlich. Wir starten bei Null und bauen systematisch auf. Wichtiger ist die Bereitschaft zu lernen und Zeit zu investieren."
+  },
+  {
+    question: "Wie läuft eine typische Woche ab?",
+    answer: "Montags gibt es eine 2-stündige Live-Session mit Theorie und Praxis. Zwischen den Sessions arbeitest du an Übungen und deinem eigenen Projekt. Im Slack-Channel kannst du jederzeit Fragen stellen."
+  },
+  {
+    question: "Was wenn ich eine Session verpasse?",
+    answer: "Alle Sessions werden aufgezeichnet und stehen dir dauerhaft zur Verfügung. Du kannst auch asynchron Fragen stellen und bekommst Feedback."
+  },
+  {
+    question: "Kann ich das Gelernte direkt im Job anwenden?",
+    answer: "Ja, das ist das Ziel. Ab Modul 2 baust du Automationen, die du direkt in deinem Arbeitsalltag einsetzen kannst. Viele Teilnehmer automatisieren schon nach 4 Wochen erste Prozesse."
+  },
+  {
+    question: "Bekomme ich ein Zertifikat?",
+    answer: "Ja, nach erfolgreichem Abschluss (Projektpräsentation) erhältst du ein Synclaro-Zertifikat, das deine erworbenen Fähigkeiten dokumentiert."
+  },
+  {
+    question: "Wie groß sind die Gruppen?",
+    answer: "Die Gruppen haben 4-8 Teilnehmer. So ist genug Raum für individuelle Fragen, aber auch Austausch und gegenseitiges Lernen."
+  },
+  {
+    question: "Was kostet das Gruppencoaching?",
+    answer: "Die genauen Konditionen besprechen wir im Erstgespräch, da sie von Gruppengröße und individuellen Anforderungen abhängen. Wir beraten auch zu Fördermöglichkeiten."
+  },
+  {
+    question: "Gibt es eine Geld-zurück-Garantie?",
+    answer: "Ja, wenn du nach den ersten 4 Wochen nicht zufrieden bist, erstatten wir dir den vollen Betrag zurück - ohne Wenn und Aber."
+  }
+];
+
+// Course JSON-LD Schema
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "KI Gruppencoaching: Agent-Coding, n8n & Automatisierung",
+  "description": description,
+  "provider": {
+    "@type": "Organization",
+    "name": "Synclaro",
+    "sameAs": "https://synclaro.de"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "duration": "P6M",
+    "courseSchedule": {
+      "@type": "Schedule",
+      "repeatFrequency": "P1W",
+      "duration": "PT2H"
+    }
+  },
+  "educationalLevel": "Beginner to Intermediate",
+  "teaches": [
+    "KI-Grundlagen",
+    "Prompt Engineering",
+    "n8n Workflow-Automatisierung",
+    "Agent-Coding",
+    "RAG-Implementierungen"
+  ],
+  "occupationalCategory": "Marketing, Sales, Operations, Development"
+};
+---
+
+<MainLayout title={title} description={description}>
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
+
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-black text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          6-Monats Programm
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+          KI Gruppencoaching: <span class="text-swiss-orange">Agent-Coding, n8n & Automatisierung</span>
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-4 max-w-4xl mx-auto">
+          Lerne in 6 Monaten, wie du KI praktisch einsetzt: Von Prompt Engineering über n8n-Automationen bis hin zu eigenen KI-Agenten.
+        </p>
+      </div>
+
+      <!-- Format Overview -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+        <div class="bg-gray-50 border-2 border-black p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-2xl font-black text-swiss-orange mb-1">{format.duration}</div>
+          <div class="text-xs text-gray-600">Programmdauer</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-2xl font-black text-swiss-orange mb-1">2h</div>
+          <div class="text-xs text-gray-600">pro Woche</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-2xl font-black text-swiss-orange mb-1">Live</div>
+          <div class="text-xs text-gray-600">Online Sessions</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-2xl font-black text-swiss-orange mb-1">4-8</div>
+          <div class="text-xs text-gray-600">Teilnehmer</div>
+        </div>
+        <div class="bg-gray-50 border-2 border-black p-4 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="text-2xl font-black text-swiss-orange mb-1">24/7</div>
+          <div class="text-xs text-gray-600">Slack Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Das <span class="text-swiss-orange">Curriculum</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          4 Module in 6 Monaten - vom Anfänger zum KI-Praktiker
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {modules.map((module) => (
+          <div class="bg-white border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 bg-swiss-orange text-white text-2xl font-black flex items-center justify-center border-2 border-black">
+                  {module.number}
+                </div>
+              </div>
+              <div class="flex-grow">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <h3 class="text-xl font-black">{module.title}</h3>
+                  <span class="text-sm text-gray-500 font-mono">{module.duration}</span>
+                </div>
+                <ul class="grid md:grid-cols-2 gap-2">
+                  {module.topics.map((topic) => (
+                    <li class="flex items-center gap-2 text-gray-600">
+                      <svg class="w-4 h-4 text-swiss-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm">{topic}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience & Prerequisites -->
+  <section class="py-20 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Target Audience -->
+        <div class="bg-gray-50 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-swiss-orange flex items-center justify-center border-2 border-black">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-black">Zielgruppe</h3>
+          </div>
+          <ul class="space-y-3">
+            {targetAudience.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Prerequisites -->
+        <div class="bg-gray-100 border-2 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-gray-600 flex items-center justify-center border-2 border-black">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-black">Voraussetzungen</h3>
+          </div>
+          <ul class="space-y-3">
+            {prerequisites.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-gray-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Häufige <span class="text-swiss-orange">Fragen</span>
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <details class="group bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <summary class="flex items-center justify-between p-6 cursor-pointer font-bold">
+              <span>{faq.question}</span>
+              <svg class="w-5 h-5 text-swiss-orange transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-gray-600">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-4xl lg:text-5xl font-black text-white mb-6">
+        Bereit für den Start?
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Lass uns in einem kostenlosen Erstgespräch klären, ob das Gruppencoaching das Richtige für dich ist.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/academy/beratung"
+          class="inline-flex items-center justify-center gap-2 bg-black text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Erstgespräch vereinbaren
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a
+          href="/academy/coaching"
+          class="inline-flex items-center justify-center gap-2 bg-white text-black font-bold py-4 px-8 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+        >
+          Formate vergleichen
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

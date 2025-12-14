@@ -8,3 +8,163 @@
 [functions]
   directory = ".netlify/functions"
   included_files = [".netlify/functions/**"]
+
+# ===========================================
+# B1: NOINDEX für Danke-Seiten (Index-Bloat)
+# ===========================================
+[[headers]]
+  for = "/danke"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/appointment_thankyou"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/ki-beratung/danke"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/ki-automatisierung/danke"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/dsgvo-ki/danke"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+# Pattern-based für alle weiteren Danke-Seiten
+[[headers]]
+  for = "/*/danke"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/*/danke/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+# ===========================================
+# B6: NOINDEX für interne/private Bereiche
+# ===========================================
+[[headers]]
+  for = "/intern/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/intern/dashboard"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/academy/portal/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# ===========================================
+# B2: Subdomain-Konsolidierung (301 Redirects)
+# Host-based redirects für Subdomains
+# ===========================================
+
+# academy.synclaro.de -> synclaro.de/academy
+[[redirects]]
+  from = "https://academy.synclaro.de/*"
+  to = "https://synclaro.de/academy/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://academy.synclaro.de"
+  to = "https://synclaro.de/academy"
+  status = 301
+  force = true
+
+# solutions.synclaro.de -> synclaro.de/solutions
+[[redirects]]
+  from = "https://solutions.synclaro.de/*"
+  to = "https://synclaro.de/solutions/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://solutions.synclaro.de"
+  to = "https://synclaro.de/solutions"
+  status = 301
+  force = true
+
+# advisory.synclaro.de -> synclaro.de/advisory
+[[redirects]]
+  from = "https://advisory.synclaro.de/*"
+  to = "https://synclaro.de/advisory/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://advisory.synclaro.de"
+  to = "https://synclaro.de/advisory"
+  status = 301
+  force = true
+
+# ===========================================
+# B3: Blog-URL Bereinigung (Prompt-Artefakte)
+# 301 Redirects: alte Slugs -> neue Slugs
+# ===========================================
+
+# 1) n8n-monitoring-logging
+[[redirects]]
+  from = "/blog/which-primary-keyword-should-the-title-target-provisional-using-n8n-monitoring-n8n-monitoring-logging-fehlerhandling-fuer-ki-workflows"
+  to = "/blog/n8n-monitoring-logging-fehlerhandling-ki-workflows"
+  status = 301
+  force = true
+
+# 2) n8n-hosting-deutschland
+[[redirects]]
+  from = "/blog/what-exact-keyword-should-the-title-target-for-example-n8n-hosting-deutschland-n8n-selbst-hosten-n8n-dsgvo-n8n-self-hosting-if-you-prefer-i-can-proceed-with-n8n-hosting-deutschland-and-craft-a-60-character-title"
+  to = "/blog/n8n-hosting-deutschland-n8n-selbst-hosten-dsgvo"
+  status = 301
+  force = true
+
+# 3) on-premise-llms
+[[redirects]]
+  from = "/blog/bitte-nenne-das-fokus-keyword-bis-dahin-ein-vorschlag-mit-on-premise-llms-on-premise-llms-fuer-deutsche-kmu-datenschutz-praxis-2025"
+  to = "/blog/on-premise-llms-deutsche-kmu-datenschutz-praxis-2025"
+  status = 301
+  force = true
+
+# 4) ki-projekt-scopen
+[[redirects]]
+  from = "/blog/welches-fokus-keyword-soll-der-titel-enthalten-falls-keins-vorliegt-nutze-ich-ki-projekt-scopen-vorschlag-mit-diesem-keyword-ki-projekt-scopen-vom-business-problem-zum-lastenheft"
+  to = "/blog/ki-projekt-scopen-vom-business-problem-zum-lastenheft"
+  status = 301
+  force = true
+
+# 5) ki-weiterbildung-kmu
+[[redirects]]
+  from = "/blog/welches-ziel-keyword-soll-der-titel-enthalten-bis-dahin-ein-starker-default-ki-weiterbildung-fuer-kmu-von-chatgpt-zur-automation"
+  to = "/blog/ki-weiterbildung-kmu-von-chatgpt-zur-automation"
+  status = 301
+  force = true
+
+# ===========================================
+# Optional: Landing Page Redirects
+# ===========================================
+[[redirects]]
+  from = "/lp/coaching"
+  to = "/academy/gruppen-coaching"
+  status = 301
+  force = true
+
+# ===========================================
+# Security Headers (Best Practices)
+# ===========================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

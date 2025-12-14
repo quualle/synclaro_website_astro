@@ -1,0 +1,40 @@
+{
+  "authors": [
+    {
+      "id": "marco-heer",
+      "name": "Marco Heer",
+      "role": "Gründer & KI-Stratege",
+      "bio": "Marco Heer ist Gründer von Synclaro und berät Unternehmen bei der strategischen Implementierung von KI-Lösungen. Mit über 10 Jahren Erfahrung in der digitalen Transformation hilft er Führungskräften, das volle Potenzial von künstlicher Intelligenz zu nutzen.",
+      "shortBio": "Gründer von Synclaro, KI-Stratege mit Fokus auf Mittelstand.",
+      "image": "/images/team/marco-heer.jpg",
+      "linkedin": "https://www.linkedin.com/in/marcoheer/",
+      "email": "marco@synclaro.de"
+    },
+    {
+      "id": "phil-kempter",
+      "name": "Phil Kempter",
+      "role": "Co-Founder & Technical Lead",
+      "bio": "Phil Kempter ist Co-Founder bei Synclaro und verantwortet die technische Umsetzung von KI-Projekten. Seine Expertise liegt in der Entwicklung von Automatisierungslösungen mit n8n, Agent-Coding und Custom LLM-Integrationen.",
+      "shortBio": "Co-Founder bei Synclaro, Technical Lead für KI-Implementierungen.",
+      "image": "/images/team/phil-kempter.jpg",
+      "linkedin": "https://www.linkedin.com/in/philkempter/",
+      "email": "phil@synclaro.de"
+    },
+    {
+      "id": "synclaro-redaktion",
+      "name": "Synclaro Redaktion",
+      "role": "Redaktionsteam",
+      "bio": "Die Synclaro Redaktion besteht aus KI-Experten und Fachautoren, die aktuelle Entwicklungen im Bereich künstliche Intelligenz aufbereiten und praxisnahe Einblicke für den Mittelstand liefern. Alle Artikel werden von Marco Heer oder Phil Kempter fachlich geprüft.",
+      "shortBio": "Redaktionsteam mit Fokus auf praxisnahe KI-Themen.",
+      "image": "/images/team/synclaro-team.jpg",
+      "linkedin": "https://www.linkedin.com/company/synclaro/",
+      "email": "redaktion@synclaro.de"
+    }
+  ],
+  "legacyAuthorMapping": {
+    "AI Tech Writer": "synclaro-redaktion",
+    "AI Marketing Strategist": "synclaro-redaktion",
+    "AI Content Team": "synclaro-redaktion",
+    "Synclaro Team": "synclaro-redaktion"
+  }
+}

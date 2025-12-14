@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import OfferCTA from '../../components/OfferCTA.astro';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client
@@ -225,21 +226,10 @@ if (article && article.tags && article.tags.length > 0) {
           </section>
         )}
 
-        <!-- CTA Section -->
-        <section class="py-20 px-6 lg:px-12 bg-swiss-orange">
-          <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-4xl lg:text-5xl font-black text-white mb-6">
-              Bereit für KI in Ihrem Unternehmen?
-            </h2>
-            <p class="text-xl text-white/90 mb-8">
-              Lassen Sie uns gemeinsam besprechen, wie KI Ihre Prozesse optimieren kann.
-            </p>
-            <a
-              href="/termin"
-              class="inline-block bg-black text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
-            >
-              Kostenloses Erstgespräch buchen
-            </a>
+        <!-- Tag-basierte CTA Section -->
+        <section class="py-16 px-6 lg:px-12">
+          <div class="container mx-auto max-w-4xl">
+            <OfferCTA tags={article.tags || []} />
           </div>
         </section>
       </>

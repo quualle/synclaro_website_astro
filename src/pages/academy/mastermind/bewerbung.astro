@@ -1,0 +1,185 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+
+const title = "Mastermind Bewerbung | Synclaro Academy";
+const description = "Bewerben Sie sich für die Synclaro KI-Mastermind. 5-Tages Intensiv-Veranstaltung für Geschäftsführer, die KI strategisch einsetzen wollen.";
+
+// Get cohort from URL params if present
+const cohort = Astro.url.searchParams.get('cohort') || '';
+---
+
+<MainLayout title={title} description={description}>
+  <section class="pt-24 pb-20 px-6 lg:px-12 bg-white min-h-screen">
+    <div class="container mx-auto max-w-2xl">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <a href="/academy/mastermind" class="inline-flex items-center text-swiss-orange hover:text-black font-bold mb-6 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Zurück zur Mastermind-Übersicht
+        </a>
+
+        <h1 class="text-4xl font-black tracking-tight mb-4">
+          Mastermind <span class="text-swiss-orange">Bewerbung</span>
+        </h1>
+
+        <p class="text-lg text-gray-600">
+          Bitte füllen Sie das Formular aus. Wir melden uns innerhalb von 2 Werktagen.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form
+        name="mastermind-bewerbung"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/danke"
+        class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+      >
+        <input type="hidden" name="form-name" value="mastermind-bewerbung" />
+        <input type="hidden" name="cohort" value={cohort} />
+        <p class="hidden">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+
+        <div class="space-y-6">
+          <!-- Personal Info -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label for="firstName" class="block font-bold mb-2">Vorname *</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label for="lastName" class="block font-bold mb-2">Nachname *</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block font-bold mb-2">E-Mail *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="block font-bold mb-2">Telefon *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors"
+            />
+          </div>
+
+          <!-- Company Info -->
+          <div class="border-t-2 border-black pt-6 mt-6">
+            <h3 class="font-black text-lg mb-4">Unternehmen</h3>
+          </div>
+
+          <div>
+            <label for="company" class="block font-bold mb-2">Unternehmen *</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              required
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="position" class="block font-bold mb-2">Position *</label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              required
+              placeholder="z.B. Geschäftsführer, CEO, Inhaber"
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors"
+            />
+          </div>
+
+          <!-- Motivation -->
+          <div class="border-t-2 border-black pt-6 mt-6">
+            <h3 class="font-black text-lg mb-4">Ihre Motivation</h3>
+          </div>
+
+          <div>
+            <label for="motivation" class="block font-bold mb-2">
+              Warum möchten Sie an der Mastermind teilnehmen? *
+            </label>
+            <textarea
+              id="motivation"
+              name="motivation"
+              required
+              rows="4"
+              placeholder="Was erhoffen Sie sich von der Teilnahme?"
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="challenges" class="block font-bold mb-2">
+              Was sind Ihre aktuellen Herausforderungen mit KI? *
+            </label>
+            <textarea
+              id="challenges"
+              name="challenges"
+              required
+              rows="4"
+              placeholder="Wo stehen Sie aktuell? Was fehlt Ihnen?"
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="goals" class="block font-bold mb-2">
+              Was möchten Sie nach der Mastermind konkret umsetzen? *
+            </label>
+            <textarea
+              id="goals"
+              name="goals"
+              required
+              rows="4"
+              placeholder="Welche konkreten Ziele haben Sie?"
+              class="w-full px-4 py-3 border-2 border-black focus:border-swiss-orange focus:outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-4">
+            <button
+              type="submit"
+              class="w-full bg-swiss-orange text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Bewerbung absenden
+            </button>
+            <p class="text-sm text-gray-500 mt-4 text-center">
+              Wir melden uns innerhalb von 2 Werktagen bei Ihnen.
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</MainLayout>

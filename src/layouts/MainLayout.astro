@@ -1,13 +1,33 @@
 ---
 import '../styles/global.css';
 import UserBehaviorTracker from '../components/UserBehaviorTracker';
+import SEOHead from '../components/SEOHead.astro';
 
 interface Props {
   title: string;
   description?: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
 }
 
-const { title, description = "Synclaro - Wir befähigen für den Eintritt ins KI-Zeitalter. Coaching, Mastermind und individuelle Software-Lösungen für den Mittelstand." } = Astro.props;
+const {
+  title,
+  description = "Synclaro - Wir befähigen für den Eintritt ins KI-Zeitalter. Coaching, Mastermind und individuelle Software-Lösungen für den Mittelstand.",
+  canonical,
+  image,
+  noindex = false,
+  nofollow = false,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  author
+} = Astro.props;
 
 const navLinks = [
   { text: 'Überblick', href: '/' },
@@ -27,6 +47,18 @@ const navLinks = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      image={image}
+      noindex={noindex}
+      nofollow={nofollow}
+      type={type}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      author={author}
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">

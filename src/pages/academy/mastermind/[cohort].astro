@@ -1,0 +1,223 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import cohortData from '../../../content/mastermind-cohorts.json';
+
+// Generate static paths for all cohorts
+export function getStaticPaths() {
+  const cohorts = cohortData.cohorts;
+  return cohorts.map((cohort) => ({
+    params: { cohort: cohort.slug },
+    props: { cohort }
+  }));
+}
+
+const { cohort } = Astro.props;
+
+// Format dates
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('de-DE', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+}
+
+function formatDateISO(dateString: string) {
+  return new Date(dateString).toISOString();
+}
+
+const title = `${cohort.name} | Synclaro Mastermind`;
+const description = `KI-Mastermind für Geschäftsführer vom ${formatDate(cohort.startDate)} bis ${formatDate(cohort.endDate)} in ${cohort.locationName}. 5 Tage intensive KI-Strategie-Weiterbildung.`;
+
+// Event JSON-LD Schema
+const eventSchema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": cohort.name,
+  "description": description,
+  "startDate": formatDateISO(cohort.startDate),
+  "endDate": formatDateISO(cohort.endDate),
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": cohort.locationName,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": cohort.locationAddress
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Synclaro",
+    "url": "https://synclaro.de"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": `https://synclaro.de/academy/mastermind/${cohort.slug}`,
+    "availability": "https://schema.org/LimitedAvailability",
+    "validFrom": formatDateISO(new Date().toISOString())
+  },
+  "image": "https://synclaro.de/og-mastermind.png"
+};
+---
+
+<MainLayout title={title} description={description}>
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
+
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 px-6 lg:px-12 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-12">
+        <!-- Status Badge -->
+        <span class={`inline-block px-4 py-2 border-2 border-black font-mono text-xs uppercase tracking-widest mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
+          cohort.status === 'upcoming' ? 'bg-green-100 text-green-700' :
+          cohort.status === 'planned' ? 'bg-swiss-orange/10 text-swiss-orange' :
+          'bg-gray-100 text-gray-600'
+        }`}>
+          {cohort.status === 'upcoming' ? 'Anmeldung offen' :
+           cohort.status === 'planned' ? 'In Planung' :
+           'Abgeschlossen'}
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-6">
+          {cohort.name}
+        </h1>
+
+        <p class="text-xl text-gray-600 mb-8">
+          5-Tages Intensiv-Veranstaltung für Geschäftsführer
+        </p>
+      </div>
+
+      <!-- Event Details Card -->
+      <div class="bg-gray-50 border-2 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-12">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Dates -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-swiss-orange flex items-center justify-center border-2 border-black flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-black text-lg mb-1">Datum</div>
+              <div class="text-gray-600">
+                {formatDate(cohort.startDate)} - {formatDate(cohort.endDate)}
+              </div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-swiss-orange flex items-center justify-center border-2 border-black flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-black text-lg mb-1">Ort</div>
+              <div class="text-gray-600">
+                {cohort.locationName}<br />
+                <span class="text-sm">{cohort.locationAddress}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group Size -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-swiss-orange flex items-center justify-center border-2 border-black flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-black text-lg mb-1">Teilnehmer</div>
+              <div class="text-gray-600">
+                Max. {cohort.seatsTotal} Plätze
+              </div>
+            </div>
+          </div>
+
+          <!-- Application Deadline -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-swiss-orange flex items-center justify-center border-2 border-black flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-black text-lg mb-1">Bewerbungsfrist</div>
+              <div class="text-gray-600">
+                {formatDate(cohort.applicationDeadline)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlights -->
+      {cohort.highlights && (
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          {cohort.highlights.map((highlight: string) => (
+            <span class="flex items-center gap-2 px-4 py-2 bg-swiss-orange/10 border-2 border-black text-sm font-medium shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <svg class="w-4 h-4 text-swiss-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              {highlight}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <!-- CTA Buttons -->
+      <div class="text-center">
+        {cohort.status === 'upcoming' ? (
+          <div class="space-y-4">
+            <a
+              href="/academy/mastermind/bewerbung"
+              class="inline-flex items-center gap-2 bg-swiss-orange text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              Bewerbung starten
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <p class="text-sm text-gray-500">
+              Bewerbungsfrist: {formatDate(cohort.applicationDeadline)}
+            </p>
+          </div>
+        ) : (
+          <a
+            href="/academy/beratung"
+            class="inline-flex items-center gap-2 bg-black text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+          >
+            Interesse an dieser Kohorte?
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Link to Main Mastermind Page -->
+  <section class="py-12 px-6 lg:px-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl text-center">
+      <p class="text-gray-600 mb-4">
+        Mehr über das Mastermind-Format erfahren?
+      </p>
+      <a
+        href="/academy/mastermind"
+        class="inline-flex items-center gap-2 text-swiss-orange font-bold hover:text-black transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+        </svg>
+        Zur Mastermind-Übersicht
+      </a>
+    </div>
+  </section>
+</MainLayout>

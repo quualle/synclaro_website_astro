@@ -1,0 +1,78 @@
+{
+  "cohorts": [
+    {
+      "slug": "q1-2025",
+      "name": "KI-Mastermind Q1/2025",
+      "startDate": "2025-03-10",
+      "endDate": "2025-03-14",
+      "locationName": "Design Offices München",
+      "locationAddress": "Arnulfstraße 126, 80636 München",
+      "seatsTotal": 12,
+      "applicationDeadline": "2025-02-15",
+      "applicationUrl": "/academy/mastermind/bewerbung?cohort=q1-2025",
+      "status": "upcoming",
+      "highlights": [
+        "5 Tage Intensiv-Format",
+        "Exklusiv für Geschäftsführer",
+        "Strategischer KI-Fokus"
+      ]
+    },
+    {
+      "slug": "q2-2025",
+      "name": "KI-Mastermind Q2/2025",
+      "startDate": "2025-06-16",
+      "endDate": "2025-06-20",
+      "locationName": "Design Offices München",
+      "locationAddress": "Arnulfstraße 126, 80636 München",
+      "seatsTotal": 12,
+      "applicationDeadline": "2025-05-15",
+      "applicationUrl": "/academy/mastermind/bewerbung?cohort=q2-2025",
+      "status": "planned",
+      "highlights": [
+        "5 Tage Intensiv-Format",
+        "Exklusiv für Geschäftsführer",
+        "Strategischer KI-Fokus"
+      ]
+    },
+    {
+      "slug": "q3-2025",
+      "name": "KI-Mastermind Q3/2025",
+      "startDate": "2025-09-15",
+      "endDate": "2025-09-19",
+      "locationName": "Wird noch bekanntgegeben",
+      "locationAddress": "Raum München",
+      "seatsTotal": 12,
+      "applicationDeadline": "2025-08-15",
+      "applicationUrl": "/academy/mastermind/bewerbung?cohort=q3-2025",
+      "status": "planned",
+      "highlights": [
+        "5 Tage Intensiv-Format",
+        "Exklusiv für Geschäftsführer",
+        "Strategischer KI-Fokus"
+      ]
+    },
+    {
+      "slug": "q4-2025",
+      "name": "KI-Mastermind Q4/2025",
+      "startDate": "2025-11-17",
+      "endDate": "2025-11-21",
+      "locationName": "Wird noch bekanntgegeben",
+      "locationAddress": "Raum München",
+      "seatsTotal": 12,
+      "applicationDeadline": "2025-10-15",
+      "applicationUrl": "/academy/mastermind/bewerbung?cohort=q4-2025",
+      "status": "planned",
+      "highlights": [
+        "5 Tage Intensiv-Format",
+        "Exklusiv für Geschäftsführer",
+        "Strategischer KI-Fokus"
+      ]
+    }
+  ],
+  "defaults": {
+    "seatsTotal": 12,
+    "pricePerSeat": 5900,
+    "currency": "EUR",
+    "includesVAT": false
+  }
+}

@@ -9,6 +9,8 @@ interface Props {
 
 const { title, description = "Synclaro - Wir befähigen für den Eintritt ins KI-Zeitalter. Coaching, Mastermind und individuelle Software-Lösungen für den Mittelstand." } = Astro.props;
 
+const currentPath = Astro.url.pathname;
+
 const navLinks = [
   { text: 'Überblick', href: '/' },
   { text: 'Academy', href: '/academy' },
@@ -16,6 +18,14 @@ const navLinks = [
   { text: 'Advisory', href: '/advisory' },
   { text: 'Kontakt', href: '/kontakt' },
 ];
+
+// Check if a nav link is active (exact match for home, startsWith for others)
+const isActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+};
 ---
 
 <!doctype html>
@@ -47,15 +57,29 @@ const navLinks = [
           {navLinks.slice(0, -1).map((link) => (
             <a
               href={link.href}
-              class="font-medium text-gray-700 hover:text-swiss-orange transition-colors relative group/link"
+              class={`font-medium transition-colors relative group/link ${
+                isActive(link.href)
+                  ? 'bg-swiss-orange text-white px-3 py-1 rounded-lg'
+                  : 'text-gray-700 hover:text-swiss-orange'
+              }`}
             >
-              <span class="text-swiss-orange font-bold">{link.text.charAt(0)}</span>{link.text.slice(1)}
-              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-swiss-orange group-hover/link:w-full transition-all duration-300"></span>
+              {isActive(link.href) ? (
+                <span>{link.text}</span>
+              ) : (
+                <>
+                  <span class="text-swiss-orange font-bold">{link.text.charAt(0)}</span>{link.text.slice(1)}
+                  <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-swiss-orange group-hover/link:w-full transition-all duration-300"></span>
+                </>
+              )}
             </a>
           ))}
           <a
             href="/kontakt"
-            class="bg-swiss-orange text-white px-6 py-2 font-bold rounded-lg hover:bg-black transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/25"
+            class={`px-6 py-2 font-bold rounded-lg transition-all duration-300 ${
+              isActive('/kontakt')
+                ? 'bg-black text-white'
+                : 'bg-swiss-orange text-white hover:bg-black hover:shadow-lg hover:shadow-swiss-orange/25'
+            }`}
           >
             Kontakt
           </a>
@@ -79,7 +103,11 @@ const navLinks = [
           {navLinks.map((link) => (
             <a
               href={link.href}
-              class="block font-medium text-gray-700 hover:text-swiss-orange hover:bg-gray-50 transition-all py-3 px-3 rounded-lg"
+              class={`block font-medium transition-all py-3 px-3 rounded-lg ${
+                isActive(link.href)
+                  ? 'bg-swiss-orange text-white'
+                  : 'text-gray-700 hover:text-swiss-orange hover:bg-gray-50'
+              }`}
             >
               {link.text}
             </a>

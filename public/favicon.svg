@@ -2,8 +2,8 @@
   <!-- Black circle background -->
   <circle cx="50" cy="50" r="50" fill="#000000"/>
 
-  <!-- White 'S' from Synclaro -->
-  <text x="50" y="72" font-family="Arial Black, Arial, sans-serif" font-size="60" font-weight="900" text-anchor="middle" fill="#FFFFFF">
+  <!-- Orange 'S' from Synclaro (swiss-orange) -->
+  <text x="50" y="72" font-family="Arial Black, Arial, sans-serif" font-size="60" font-weight="900" text-anchor="middle" fill="#FF4F00">
     S
   </text>
 </svg>

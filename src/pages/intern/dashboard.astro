@@ -36,6 +36,14 @@ const tools = [
     url: 'https://assistant.synclaro.de',
     color: 'blue-600',
     features: ['Chat', 'Knowledge Base', 'Briefings', 'Trend-Analyse']
+  },
+  {
+    name: 'Plaud Aufnahmen',
+    description: 'Transkribierte Aufnahmen der Plaud-Geräte',
+    icon: '🎙️',
+    url: 'https://app.plaud.ai/',
+    color: 'green-600',
+    features: ['Meeting-Aufnahmen', 'Automatische Transkription', 'AI-Zusammenfassungen', 'Export & Teilen']
   }
 ];
 ---
@@ -65,7 +73,7 @@ const tools = [
       </div>
 
       <!-- Tool Cards Grid -->
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {tools.map((tool) => (
           <a
             href={tool.url}

@@ -2,8 +2,8 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-// Simple password for intern access - change this to a secure password
-const INTERN_PASSWORD = process.env.INTERN_PASSWORD || 'synclaro2024';
+// Fixed password for intern access - hardcoded to prevent changes
+const INTERN_PASSWORD = 'snclaro';
 
 export const POST: APIRoute = async ({ request, cookies }) => {
   try {

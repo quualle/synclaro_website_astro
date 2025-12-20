@@ -1,6 +1,9 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
+const title = "Mastermind Retreat für Geschäftsführer | KI-Strategie in 3 Tagen";
+const description = "3-Tage KI-Retreat für Unternehmer: Von der Überforderung zum konkreten KI-Fahrplan. Max. 10 Teilnehmer, intensive Sessions, messbare Ergebnisse. ➤ Jetzt bewerben";
+
 // Testimonials data
 const testimonials = [
   {
@@ -74,7 +77,7 @@ const valueProps = [
 ];
 ---
 
-<MainLayout title="Mastermind Retreat - Synclaro">
+<MainLayout title={title} description={description}>
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
     <!-- Gradient Background -->

@@ -2,6 +2,8 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import InsightsCarousel from '../components/InsightsCarousel';
 
+export const prerender = true;
+
 // EXACT Testimonial Texts from Hero.tsx LiveTypingFlow
 const testimonials = [
   { text: "Marco holt mich genau da ab, wo ich stehe - endlich auf Augenhöhe", type: "testimonial" },
@@ -94,25 +96,29 @@ const mainServices = [
     id: 'coaching-11',
     title: '1:1 Coaching',
     subtitle: 'Individuelle Begleitung auf Ihrer Reise',
-    description: 'Persönliche Einzelsessions, maßgeschneidert auf Ihre Situation. Von KI-Grundlagen bis zur eigenständigen Entwicklung komplexer Automationen.'
+    description: 'Persönliche Einzelsessions, maßgeschneidert auf Ihre Situation. Von KI-Grundlagen bis zur eigenständigen Entwicklung komplexer Automationen.',
+    href: '/academy/coaching'
   },
   {
     id: 'group-coaching',
     title: 'Gruppencoaching',
     subtitle: '6 Monate KI-Intensivtraining für Macher',
-    description: 'Für Selbstständige und Selbstmacher, die auf die KI-Überholspur wollen. 6 Monate, 2h pro Woche: Agent-Coding, n8n, Webseiten-Bau, Hosting, GitHub, Supabase, Bild- & Video-KI. Werden Sie zu den Top 0,1% der KI-Nutzer.'
+    description: 'Für Selbstständige und Selbstmacher, die auf die KI-Überholspur wollen. 6 Monate, 2h pro Woche: Agent-Coding, n8n, Webseiten-Bau, Hosting, GitHub, Supabase, Bild- & Video-KI. Werden Sie zu den Top 0,1% der KI-Nutzer.',
+    href: '/academy/coaching'
   },
   {
     id: 'mastermind',
     title: 'Mastermind',
     subtitle: '3-Tage-Retreat + Online-Vorbereitung',
-    description: 'Vom ChatGPT-Nutzer zum KI-Strategen. Vorbereitende Online-Events + 3 intensive Tage vor Ort mit konkreten Umsetzungsprojekten und individuellem 90-Tage-Plan.'
+    description: 'Vom ChatGPT-Nutzer zum KI-Strategen. Vorbereitende Online-Events + 3 intensive Tage vor Ort mit konkreten Umsetzungsprojekten und individuellem 90-Tage-Plan.',
+    href: '/mastermind'
   },
   {
     id: 'done-for-you',
     title: 'Done-For-You',
     subtitle: 'Wir setzen Ihre Projekte um',
-    description: 'Von der Idee zur fertigen Lösung. Wir übernehmen Konzeption, Entwicklung und Implementierung Ihrer KI- und Automatisierungsprojekte.'
+    description: 'Von der Idee zur fertigen Lösung. Wir übernehmen Konzeption, Entwicklung und Implementierung Ihrer KI- und Automatisierungsprojekte.',
+    href: '/individuelle-loesungen'
   }
 ];
 
@@ -447,8 +453,9 @@ const faqs = [
       <!-- Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {mainServices.map((service, index) => (
-          <div
-            class="group cursor-pointer reveal"
+          <a
+            href={service.href}
+            class="group cursor-pointer reveal block"
             data-reveal
             style={`transition-delay: ${index * 0.1}s;`}
           >
@@ -472,7 +479,7 @@ const faqs = [
                 </svg>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

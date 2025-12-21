@@ -2,10 +2,10 @@
 import '../../styles/global.css';
 import LPUserBehaviorTracker from '../../components/LPUserBehaviorTracker';
 
-const title = "KI-Ausbildung für Macher | Synclaro Academy";
-const description = "Werde zum KI-Profi: In 6 Monaten lernst du, was andere in Jahren nicht schaffen. Bewirb dich jetzt fürs Gruppen-Coaching.";
+const title = "Executive KI-Mastermind | Synclaro Academy";
+const description = "Für Geschäftsführer: KI strategisch verstehen und delegieren. 6 Monate Mastermind mit Top-Entscheidern.";
 
-// Testimonials - fokussiert auf Macher/Selbstständige
+// Testimonials - fokussiert auf Führungskräfte/GFs
 const testimonials = [
   {
     name: 'Sara Wietritschowski',
@@ -14,45 +14,35 @@ const testimonials = [
     initials: 'SW',
   },
   {
-    name: 'Evelyn Biesinger',
-    role: 'Familienbetrieb Handwerk & Coaching',
-    quote: 'Jetzt habe ich einen guten Überblick über die Möglichkeiten, kann komplexere Tools anwenden und baue sogar eigene Programme.',
-    initials: 'EB',
-  },
-  {
     name: 'Philip Kempter',
     role: 'Selbstständiger Berater',
     quote: 'Das Coaching hat mir ermöglicht, eigene KI-Automatisierungen zu bauen, die mir täglich Stunden sparen.',
     initials: 'PK',
   },
+  {
+    name: 'Evelyn Biesinger',
+    role: 'Familienbetrieb Handwerk & Coaching',
+    quote: 'Jetzt habe ich einen guten Überblick über die Möglichkeiten, kann komplexere Tools anwenden und baue sogar eigene Programme.',
+    initials: 'EB',
+  },
 ];
 
-// Gruppen-Coaching Workflow
-const gruppenCoachingSteps = [
-  { num: '01', title: 'Kick-off & Setup', desc: 'Gemeinsamer Start, Tool-Einrichtung, Entwicklungsumgebung aufsetzen' },
-  { num: '02', title: 'Wöchentliche Sessions', desc: '6 Monate, 2h/Woche: Agent-Coding, n8n, Webseiten, Hosting' },
-  { num: '03', title: 'Hands-on Projekte', desc: 'Eigene Webseiten, KI-Agents, Automatisierungen, Datenbanken' },
-  { num: '04', title: 'Multimodale KI', desc: 'Bild- & Videogenerierung, neueste KI-Tools für Alltag & Beruf' },
-];
-
-// Was du lernst - detaillierte Liste
-const learningOutcomes = [
-  { icon: 'code', title: 'KI-Agents programmieren', desc: 'Baue eigene Assistenten, die für dich arbeiten' },
-  { icon: 'workflow', title: 'Automatisierungen mit n8n', desc: 'Verbinde Tools und automatisiere Workflows' },
-  { icon: 'globe', title: 'Webseiten entwickeln', desc: 'Von der Idee zur fertigen Website' },
-  { icon: 'database', title: 'Datenbanken verstehen', desc: 'Strukturiere und nutze deine Daten effektiv' },
-  { icon: 'image', title: 'Bild- & Videogenerierung', desc: 'Erstelle visuelle Inhalte mit KI' },
-  { icon: 'brain', title: 'Prompting & LLMs', desc: 'Hole das Maximum aus ChatGPT, Claude & Co.' },
+// Mastermind Ablauf
+const mastermindSteps = [
+  { num: '01', title: 'Kick-off & Assessment', desc: 'Wo steht dein Unternehmen? Welche KI-Potenziale gibt es?' },
+  { num: '02', title: 'Monatliche Mastermind', desc: '6 Monate, exklusive Runde mit max. 6 Geschäftsführern' },
+  { num: '03', title: 'Strategische Roadmap', desc: 'Konkrete Implementierungspläne für dein Team' },
+  { num: '04', title: '1:1 Sparring', desc: 'Individuelle Sessions für deine spezifischen Herausforderungen' },
 ];
 
 // Problem icons (SVG paths)
 const problemIcons = [
-  // Puzzle/Confusion icon
-  `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />`,
-  // Clock icon
-  `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />`,
-  // Target icon
+  // Target/Strategy icon
   `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+  // Users/Team icon
+  `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />`,
+  // Trending up icon
+  `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />`,
 ];
 ---
 
@@ -73,7 +63,7 @@ const problemIcons = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://synclaro.de/lp/coaching" />
+    <meta property="og:url" content="https://synclaro.de/lp/mastermind" />
   </head>
 
   <body class="min-h-screen bg-white text-gray-900">
@@ -94,38 +84,32 @@ const problemIcons = [
     </header>
 
     <!-- HERO SECTION -->
-    <section data-section-id="hero" data-section-name="Hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-gray-50 via-white to-orange-50">
+    <section data-section-id="hero" data-section-name="Hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <!-- Animated Grid Background -->
-      <div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(rgba(255,79,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-
-      <!-- Animated Geometric Shapes -->
-      <div class="absolute top-20 left-10 w-20 h-20 border-2 border-swiss-orange/20 rotate-45 animate-float-slow"></div>
-      <div class="absolute top-40 right-20 w-32 h-32 border-2 border-swiss-orange/10 rounded-full animate-float-medium"></div>
-      <div class="absolute bottom-40 left-20 w-16 h-16 bg-swiss-orange/5 rotate-12 animate-float-fast"></div>
-      <div class="absolute bottom-20 right-10 w-24 h-24 border-2 border-swiss-orange/15 animate-spin-very-slow"></div>
+      <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,79,0,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.2) 1px, transparent 1px); background-size: 60px 60px;"></div>
 
       <!-- Gradient Orbs -->
-      <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-br from-swiss-orange/10 to-transparent rounded-full blur-3xl translate-x-1/3 animate-pulse-slow"></div>
-      <div class="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-orange-200/20 to-transparent rounded-full blur-3xl -translate-x-1/3 animate-pulse-slower"></div>
+      <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-br from-swiss-orange/20 to-transparent rounded-full blur-3xl translate-x-1/3 animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/10 to-transparent rounded-full blur-3xl -translate-x-1/3 animate-pulse-slower"></div>
 
       <div class="relative z-10 text-center px-4 max-w-5xl mx-auto py-20">
         <!-- Badge -->
         <div class="mb-8 opacity-0 animate-slide-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
-          <span class="inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-swiss-orange/30 text-swiss-orange font-mono text-sm uppercase tracking-widest shadow-lg">
+          <span class="inline-flex items-center gap-3 px-6 py-3 bg-gray-800 border-2 border-swiss-orange/50 text-swiss-orange font-mono text-sm uppercase tracking-widest shadow-lg">
             <span class="relative flex h-3 w-3">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-swiss-orange opacity-75"></span>
               <span class="relative inline-flex rounded-full h-3 w-3 bg-swiss-orange"></span>
             </span>
-            GRUPPEN-COACHING
+            EXECUTIVE MASTERMIND
           </span>
         </div>
 
         <!-- Main Headline -->
         <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-8">
-          <span class="block text-gray-900 opacity-0 animate-slide-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">Werde zum</span>
+          <span class="block text-white opacity-0 animate-slide-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">KI verstehen.</span>
           <span class="block relative opacity-0 animate-slide-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
-            <span class="bg-gradient-to-r from-swiss-orange via-orange-500 to-swiss-orange bg-clip-text text-transparent animate-gradient-x">
-              KI-Profi.
+            <span class="bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange bg-clip-text text-transparent animate-gradient-x">
+              Delegieren.
             </span>
             <svg class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-48 h-3 text-swiss-orange/30" viewBox="0 0 200 12" fill="currentColor">
               <path d="M0,6 Q50,0 100,6 T200,6" stroke="currentColor" stroke-width="3" fill="none" class="animate-draw-line"/>
@@ -134,39 +118,39 @@ const problemIcons = [
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10 opacity-0 animate-slide-up" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
-          In 6 Monaten lernst du, was andere in Jahren nicht schaffen.
-          <span class="text-gray-900 font-bold relative">
-            Eigene KI-Tools bauen, automatisieren, umsetzen.
+        <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 opacity-0 animate-slide-up" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
+          Für Geschäftsführer, die KI strategisch einsetzen wollen –
+          <span class="text-white font-bold relative">
+            ohne selbst zum Entwickler zu werden.
             <span class="absolute bottom-0 left-0 w-full h-1 bg-swiss-orange/30"></span>
           </span>
         </p>
 
         <!-- Value Props -->
         <div class="flex flex-wrap justify-center gap-8 mb-12 opacity-0 animate-slide-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
-          <div class="flex items-center gap-3 text-gray-700 group">
-            <div class="w-10 h-10 rounded-full bg-swiss-orange/10 flex items-center justify-center group-hover:bg-swiss-orange/20 transition-colors">
+          <div class="flex items-center gap-3 text-gray-400 group">
+            <div class="w-10 h-10 rounded-full bg-swiss-orange/20 flex items-center justify-center group-hover:bg-swiss-orange/30 transition-colors">
               <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <span class="font-medium">6 Monate Intensiv</span>
+            <span class="font-medium text-gray-300">6 Monate Programm</span>
           </div>
-          <div class="flex items-center gap-3 text-gray-700 group">
-            <div class="w-10 h-10 rounded-full bg-swiss-orange/10 flex items-center justify-center group-hover:bg-swiss-orange/20 transition-colors">
+          <div class="flex items-center gap-3 text-gray-400 group">
+            <div class="w-10 h-10 rounded-full bg-swiss-orange/20 flex items-center justify-center group-hover:bg-swiss-orange/30 transition-colors">
               <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </div>
-            <span class="font-medium">Kleine Gruppen</span>
+            <span class="font-medium text-gray-300">Max. 6 Teilnehmer</span>
           </div>
-          <div class="flex items-center gap-3 text-gray-700 group">
-            <div class="w-10 h-10 rounded-full bg-swiss-orange/10 flex items-center justify-center group-hover:bg-swiss-orange/20 transition-colors">
+          <div class="flex items-center gap-3 text-gray-400 group">
+            <div class="w-10 h-10 rounded-full bg-swiss-orange/20 flex items-center justify-center group-hover:bg-swiss-orange/30 transition-colors">
               <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <span class="font-medium">Hands-on Projekte</span>
+            <span class="font-medium text-gray-300">Strategischer Fokus</span>
           </div>
         </div>
 
@@ -174,7 +158,7 @@ const problemIcons = [
         <div class="opacity-0 animate-slide-up" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
           <a
             href="#bewerbung"
-            class="group inline-flex items-center gap-3 bg-swiss-orange text-white font-bold px-10 py-5 text-xl border-2 border-swiss-orange shadow-[0_4px_20px_rgba(255,79,0,0.3)] hover:shadow-[0_8px_40px_rgba(255,79,0,0.4)] hover:bg-white hover:text-swiss-orange hover:-translate-y-1 transition-all duration-300"
+            class="group inline-flex items-center gap-3 bg-swiss-orange text-white font-bold px-10 py-5 text-xl border-2 border-swiss-orange shadow-[0_4px_20px_rgba(255,79,0,0.4)] hover:shadow-[0_8px_40px_rgba(255,79,0,0.5)] hover:bg-white hover:text-swiss-orange hover:-translate-y-1 transition-all duration-300"
           >
             Jetzt bewerben
             <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,23 +167,23 @@ const problemIcons = [
           </a>
         </div>
 
-        <!-- Mastermind Breakout Link -->
+        <!-- Gruppen-Coaching Breakout Link -->
         <div class="mt-8 opacity-0 animate-slide-up" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
           <a
-            href="/lp/mastermind"
+            href="/lp/coaching"
             class="inline-flex items-center gap-2 text-gray-500 hover:text-swiss-orange transition-colors text-sm"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-            Du bist Geschäftsführer und willst KI strategisch delegieren statt selbst bauen?
-            <span class="font-medium underline">Zur Executive Mastermind</span>
+            Du willst selbst alles können und hands-on lernen?
+            <span class="font-medium underline">Zum Gruppen-Coaching</span>
           </a>
         </div>
 
         <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style="animation-delay: 1s; animation-fill-mode: forwards;">
-          <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-1">
+          <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex items-start justify-center p-1">
             <div class="w-1.5 h-3 bg-swiss-orange rounded-full animate-scroll-indicator"></div>
           </div>
         </div>
@@ -216,7 +200,7 @@ const problemIcons = [
             Das Problem
           </span>
           <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">
-            KI verändert <span class="text-swiss-orange">alles</span> – aber wie fängst du an?
+            Als GF fehlt dir der <span class="text-swiss-orange">strategische Durchblick</span>
           </h2>
         </div>
 
@@ -225,31 +209,31 @@ const problemIcons = [
             <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-swiss-orange/20 transition-all duration-300">
               <svg class="w-8 h-8 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={problemIcons[0]} />
             </div>
-            <h3 class="text-xl font-black mb-3 text-gray-900">Überfordert von Tools</h3>
-            <p class="text-gray-600">ChatGPT, Claude, Midjourney, n8n... Jeden Tag neue Tools. Welche brauchst du wirklich?</p>
+            <h3 class="text-xl font-black mb-3 text-gray-900">Keine Zeit für Details</h3>
+            <p class="text-gray-600">Du brauchst strategisches Verständnis – nicht 100 Stunden Tutorials über Prompt Engineering.</p>
           </div>
 
           <div class="scroll-reveal bg-gray-50 border-2 border-gray-200 p-8 hover:border-swiss-orange/50 hover:shadow-xl transition-all duration-500 group" style="animation-delay: 0.2s;">
             <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-swiss-orange/20 transition-all duration-300">
               <svg class="w-8 h-8 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={problemIcons[1]} />
             </div>
-            <h3 class="text-xl font-black mb-3 text-gray-900">Keine Zeit für Trial & Error</h3>
-            <p class="text-gray-600">Du hast ein Business zu führen. Stundenlange YouTube-Tutorials sind keine Option.</p>
+            <h3 class="text-xl font-black mb-3 text-gray-900">Dein Team braucht Führung</h3>
+            <p class="text-gray-600">Du kannst nicht delegieren, was du nicht verstehst. Aber du musst auch nicht alles selbst machen.</p>
           </div>
 
           <div class="scroll-reveal bg-gray-50 border-2 border-gray-200 p-8 hover:border-swiss-orange/50 hover:shadow-xl transition-all duration-500 group" style="animation-delay: 0.3s;">
             <div class="w-16 h-16 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-swiss-orange/20 transition-all duration-300">
               <svg class="w-8 h-8 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={problemIcons[2]} />
             </div>
-            <h3 class="text-xl font-black mb-3 text-gray-900">Wissen ≠ Können</h3>
-            <p class="text-gray-600">Du liest viel über KI – aber du kannst nichts selbst bauen. Das muss sich ändern.</p>
+            <h3 class="text-xl font-black mb-3 text-gray-900">KI verändert alles</h3>
+            <p class="text-gray-600">Deine Konkurrenz setzt bereits KI ein. Wer jetzt nicht handelt, verliert den Anschluss.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SOLUTION SECTION - Gruppen-Coaching Details -->
-    <section data-section-id="solution" data-section-name="Das Coaching" class="py-24 bg-gray-50 relative overflow-hidden">
+    <!-- SOLUTION SECTION - Mastermind Details -->
+    <section data-section-id="solution" data-section-name="Die Mastermind" class="py-24 bg-gray-50 relative overflow-hidden">
       <!-- Decorative elements -->
       <div class="absolute top-20 right-10 w-40 h-40 border-2 border-swiss-orange/10 rounded-full animate-float-slow"></div>
       <div class="absolute bottom-20 left-10 w-24 h-24 bg-swiss-orange/5 rotate-45 animate-float-medium"></div>
@@ -257,36 +241,22 @@ const problemIcons = [
       <div class="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <div class="text-center mb-16 scroll-reveal">
           <span class="inline-block px-4 py-2 bg-white border-2 border-swiss-orange/30 text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6 shadow-sm">
-            Das Coaching
+            Die Mastermind
           </span>
           <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">
-            So wirst du zum <span class="text-swiss-orange">KI-Profi</span>
+            Strategisches <span class="text-swiss-orange">KI-Know-how</span> für Entscheider
           </h2>
           <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            6 Monate intensives Training. Kleine Gruppen. Echte Projekte. Am Ende kannst du, was andere nur davon träumen.
+            6 Monate exklusiver Austausch mit maximal 6 anderen Geschäftsführern. Strategisch denken, smart delegieren.
           </p>
         </div>
 
         <!-- Main Content Card -->
         <div class="scroll-reveal bg-white border-2 border-gray-200 p-8 md:p-12 shadow-lg mb-12">
-          <!-- Video Preview -->
-          <div class="relative mb-10 overflow-hidden border-2 border-gray-200 max-w-3xl mx-auto">
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              class="w-full h-64 md:h-80 object-cover"
-            >
-              <source src="/groupcoaching.mp4" type="video/mp4" />
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-          </div>
-
           <!-- Der Ablauf -->
-          <h3 class="text-2xl font-black text-gray-900 mb-8 text-center">Der Ablauf</h3>
+          <h3 class="text-2xl font-black text-gray-900 mb-8 text-center">So läuft die Mastermind ab</h3>
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {gruppenCoachingSteps.map((step) => (
+            {mastermindSteps.map((step) => (
               <div class="scroll-reveal bg-gray-50 border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group">
                 <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange flex items-center justify-center text-swiss-orange font-black text-lg mb-4 group-hover:bg-swiss-orange group-hover:text-white transition-colors">
                   {step.num}
@@ -297,73 +267,65 @@ const problemIcons = [
             ))}
           </div>
 
-          <!-- Ergebnis Box -->
-          <div class="bg-swiss-orange/5 border-2 border-swiss-orange/30 p-6 md:p-8 text-center max-w-3xl mx-auto">
-            <p class="text-lg text-gray-800">
-              <span class="text-swiss-orange font-bold text-xl">Ergebnis:</span><br/>
-              Du gehörst zu den <span class="font-bold">Top 0,1% der KI-Nutzer</span> und kannst selbstständig automatisieren, bauen und umsetzen.
-            </p>
-          </div>
-        </div>
+          <!-- Was du bekommst -->
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 border-2 border-gray-200 p-6">
+              <h4 class="font-black text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Das bekommst du
+              </h4>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start gap-3">
+                  <span class="text-swiss-orange font-bold">+</span>
+                  Monatliche Mastermind-Sessions (3h)
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-swiss-orange font-bold">+</span>
+                  Individuelle 1:1 Sparring-Calls
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-swiss-orange font-bold">+</span>
+                  KI-Strategie-Roadmap für dein Unternehmen
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-swiss-orange font-bold">+</span>
+                  Exklusives Netzwerk mit anderen GFs
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-swiss-orange font-bold">+</span>
+                  Direkte Slack-Kommunikation
+                </li>
+              </ul>
+            </div>
 
-        <!-- Was du lernst Grid -->
-        <div class="text-center mb-10 scroll-reveal">
-          <h3 class="text-2xl font-black text-gray-900">Was du konkret lernst</h3>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="scroll-reveal bg-white border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group">
-            <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-4 group-hover:border-swiss-orange transition-colors">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
+            <div class="bg-swiss-orange/5 border-2 border-swiss-orange/30 p-6">
+              <h4 class="font-black text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Das Ergebnis
+              </h4>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 font-bold">&#10003;</span>
+                  Du verstehst, welche KI-Projekte Sinn machen
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 font-bold">&#10003;</span>
+                  Du kannst KI-Aufgaben kompetent delegieren
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 font-bold">&#10003;</span>
+                  Du erkennst Bullshit vs. echte Opportunitäten
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 font-bold">&#10003;</span>
+                  Du hast eine klare Roadmap für die nächsten 12 Monate
+                </li>
+              </ul>
             </div>
-            <h4 class="font-bold text-gray-900 mb-2">KI-Agents programmieren</h4>
-            <p class="text-sm text-gray-600">Baue eigene Assistenten, die für dich arbeiten</p>
-          </div>
-          <div class="scroll-reveal bg-white border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group" style="animation-delay: 0.1s;">
-            <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-4 group-hover:border-swiss-orange transition-colors">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-            </div>
-            <h4 class="font-bold text-gray-900 mb-2">Automatisierungen mit n8n</h4>
-            <p class="text-sm text-gray-600">Verbinde Tools und automatisiere Workflows</p>
-          </div>
-          <div class="scroll-reveal bg-white border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group" style="animation-delay: 0.2s;">
-            <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-4 group-hover:border-swiss-orange transition-colors">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-            </div>
-            <h4 class="font-bold text-gray-900 mb-2">Webseiten entwickeln</h4>
-            <p class="text-sm text-gray-600">Von der Idee zur fertigen Website</p>
-          </div>
-          <div class="scroll-reveal bg-white border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group" style="animation-delay: 0.3s;">
-            <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-4 group-hover:border-swiss-orange transition-colors">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-              </svg>
-            </div>
-            <h4 class="font-bold text-gray-900 mb-2">Datenbanken verstehen</h4>
-            <p class="text-sm text-gray-600">Strukturiere und nutze deine Daten effektiv</p>
-          </div>
-          <div class="scroll-reveal bg-white border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group" style="animation-delay: 0.4s;">
-            <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-4 group-hover:border-swiss-orange transition-colors">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h4 class="font-bold text-gray-900 mb-2">Bild- & Videogenerierung</h4>
-            <p class="text-sm text-gray-600">Erstelle visuelle Inhalte mit KI</p>
-          </div>
-          <div class="scroll-reveal bg-white border-2 border-gray-200 p-6 hover:border-swiss-orange/50 hover:shadow-lg transition-all duration-300 group" style="animation-delay: 0.5s;">
-            <div class="w-12 h-12 bg-swiss-orange/10 border-2 border-swiss-orange/30 flex items-center justify-center mb-4 group-hover:border-swiss-orange transition-colors">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <h4 class="font-bold text-gray-900 mb-2">Prompting & LLMs</h4>
-            <p class="text-sm text-gray-600">Hole das Maximum aus ChatGPT, Claude & Co.</p>
           </div>
         </div>
 
@@ -390,7 +352,7 @@ const problemIcons = [
             Für wen ist das?
           </span>
           <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">
-            Perfekt für <span class="text-swiss-orange">Macher</span>
+            Perfekt für <span class="text-swiss-orange">Entscheider</span>
           </h2>
         </div>
 
@@ -407,19 +369,19 @@ const problemIcons = [
               <ul class="space-y-4">
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span class="text-gray-700">Du bist <span class="font-bold text-gray-900">Selbstständig, Freelancer oder Unternehmer</span></span>
+                  <span class="text-gray-700">Du bist <span class="font-bold text-gray-900">Geschäftsführer oder C-Level</span></span>
                 </li>
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span class="text-gray-700">Du willst <span class="font-bold text-gray-900">selbst alles können</span>, nicht delegieren</span>
+                  <span class="text-gray-700">Du hast ein <span class="font-bold text-gray-900">Team, das umsetzt</span></span>
                 </li>
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span class="text-gray-700">Du kannst <span class="font-bold text-gray-900">4-6 Stunden pro Woche</span> investieren</span>
+                  <span class="text-gray-700">Du willst <span class="font-bold text-gray-900">strategisch verstehen</span>, nicht selbst coden</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span class="text-gray-700">Du willst <span class="font-bold text-gray-900">echte Skills</span> entwickeln, nicht nur Theorie</span>
+                  <span class="text-gray-700">Du schätzt <span class="font-bold text-gray-900">exklusiven Austausch</span> auf Augenhöhe</span>
                 </li>
               </ul>
             </div>
@@ -435,25 +397,25 @@ const problemIcons = [
               <ul class="space-y-4 text-gray-500">
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-gray-300 rounded-full mt-2 flex-shrink-0"></div>
-                  <span>Du suchst eine "schnelle Lösung" ohne Aufwand</span>
+                  <span>Du willst alles selbst hands-on lernen und bauen</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-gray-300 rounded-full mt-2 flex-shrink-0"></div>
-                  <span>Du willst nur "verstehen", nicht selbst machen</span>
+                  <span>Du suchst ein günstiges Einsteiger-Programm</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <div class="w-2 h-2 bg-gray-300 rounded-full mt-2 flex-shrink-0"></div>
-                  <span>Du hast keine Zeit für wöchentliches Lernen</span>
+                  <span>Du hast kein Team für die Umsetzung</span>
                 </li>
               </ul>
 
-              <!-- Mastermind Hinweis -->
+              <!-- Gruppen-Coaching Hinweis -->
               <div class="mt-8 p-4 bg-white border-2 border-gray-200">
                 <p class="text-sm text-gray-600">
-                  <span class="font-bold text-gray-900">Du bist Geschäftsführer</span> und willst KI strategisch verstehen & delegieren?
+                  <span class="font-bold text-gray-900">Du willst selbst alles können</span> und hands-on lernen?
                 </p>
-                <a href="/lp/mastermind" class="inline-flex items-center gap-2 text-swiss-orange font-medium text-sm mt-2 hover:underline">
-                  Zur Executive Mastermind
+                <a href="/lp/coaching" class="inline-flex items-center gap-2 text-swiss-orange font-medium text-sm mt-2 hover:underline">
+                  Zum Gruppen-Coaching
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -517,7 +479,7 @@ const problemIcons = [
 
           <div class="scroll-reveal" style="animation-delay: 0.2s;">
             <span class="inline-block px-4 py-2 bg-swiss-orange/10 border-2 border-swiss-orange/30 text-swiss-orange font-mono text-xs uppercase tracking-widest mb-6">
-              Dein Coach
+              Dein Sparringspartner
             </span>
             <h2 class="text-3xl md:text-4xl font-black mb-6 text-gray-900">
               Marco Heer
@@ -527,10 +489,10 @@ const problemIcons = [
                 3 Jahre habe ich Tag und Nacht KI studiert und angewendet, um meinem und anderen Unternehmen echten Nutzen zu erschaffen.
               </p>
               <p>
-                Kein theoretisches Wissen aus Büchern – sondern <span class="text-gray-900 font-bold">praktische Erfahrung</span> aus hunderten Projekten und tausenden Stunden Coaching.
+                Ich spreche die Sprache der <span class="text-gray-900 font-bold">Entscheider</span> – und übersetze KI-Komplexität in strategische Klarheit.
               </p>
               <p>
-                Mein Ziel: Dir das beibringen, was wirklich funktioniert. Ohne Bullshit, ohne leere Versprechen – nur echte Skills.
+                In der Mastermind geht es nicht darum, dich zum Entwickler zu machen. Sondern darum, dass du KI <span class="text-gray-900 font-bold">verstehst, bewertest und delegierst</span>.
               </p>
             </div>
           </div>
@@ -539,7 +501,7 @@ const problemIcons = [
     </section>
 
     <!-- APPLICATION FORM -->
-    <section id="bewerbung" data-section-id="application" data-section-name="Bewerbungsformular" class="py-24 bg-gray-50 relative overflow-hidden">
+    <section id="bewerbung" data-section-id="application" data-section-name="Bewerbungsformular" class="py-24 bg-gray-900 relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-swiss-orange/30 to-transparent"></div>
 
       <!-- Decorative shapes -->
@@ -548,24 +510,24 @@ const problemIcons = [
 
       <div class="container mx-auto px-4 md:px-8 max-w-3xl relative z-10">
         <div class="text-center mb-12 scroll-reveal">
-          <span class="inline-flex items-center gap-3 px-5 py-3 bg-white border-2 border-swiss-orange/30 text-swiss-orange font-mono text-sm uppercase tracking-widest mb-6 shadow-lg">
+          <span class="inline-flex items-center gap-3 px-5 py-3 bg-gray-800 border-2 border-swiss-orange/30 text-swiss-orange font-mono text-sm uppercase tracking-widest mb-6 shadow-lg">
             <span class="relative flex h-3 w-3">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-swiss-orange opacity-75"></span>
               <span class="relative inline-flex rounded-full h-3 w-3 bg-swiss-orange"></span>
             </span>
             JETZT BEWERBEN
           </span>
-          <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900">
-            Bewerbung für die <span class="text-swiss-orange">Synclaro Academy</span>
+          <h2 class="text-4xl md:text-5xl font-black mb-4 text-white">
+            Bewerbung für die <span class="text-swiss-orange">Executive Mastermind</span>
           </h2>
-          <p class="text-gray-600">
+          <p class="text-gray-400">
             Fülle das Formular aus. Wir melden uns innerhalb von 48 Stunden bei dir.
           </p>
         </div>
 
         <form id="application-form" class="scroll-reveal bg-white border-2 border-gray-200 p-8 shadow-[8px_8px_0px_0px_rgba(255,79,0,1)]">
-          <!-- Hidden program field - always gruppen_coaching -->
-          <input type="hidden" name="program" value="gruppen_coaching" />
+          <!-- Hidden program field - always mastermind -->
+          <input type="hidden" name="program" value="mastermind" />
 
           <!-- Personal Info -->
           <div class="mb-8 pb-8 border-b border-gray-200">
@@ -595,7 +557,27 @@ const problemIcons = [
             </div>
           </div>
 
-          <!-- Questionnaire - always visible -->
+          <!-- Company Info -->
+          <div class="mb-8 pb-8 border-b border-gray-200">
+            <h3 class="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Über dein Unternehmen
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Unternehmen</label>
+                <input type="text" name="company" class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:bg-white focus:outline-none transition-all" placeholder="Firma GmbH" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Position</label>
+                <input type="text" name="position" class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:bg-white focus:outline-none transition-all" placeholder="Geschäftsführer" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Questionnaire -->
           <div class="mb-8 pb-8 border-b border-gray-200">
             <h3 class="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
               <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -608,20 +590,20 @@ const problemIcons = [
               <!-- Question 1 -->
               <div class="bg-gray-50 border-2 border-gray-200 p-4">
                 <p class="text-gray-900 font-medium mb-3">
-                  Bist du bereit, 6 Monate lang jede Woche 4-6 Stunden zu investieren?
+                  Wie groß ist dein Team?
                 </p>
                 <div class="flex flex-wrap gap-4">
                   <label class="flex items-center gap-2 cursor-pointer group">
-                    <input type="radio" name="q_time_commitment" value="ja" class="w-5 h-5 accent-swiss-orange" />
-                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Ja, definitiv</span>
+                    <input type="radio" name="q_team_size" value="1-5" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">1-5 Mitarbeiter</span>
                   </label>
                   <label class="flex items-center gap-2 cursor-pointer group">
-                    <input type="radio" name="q_time_commitment" value="vielleicht" class="w-5 h-5 accent-swiss-orange" />
-                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Ich muss schauen</span>
+                    <input type="radio" name="q_team_size" value="6-20" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">6-20 Mitarbeiter</span>
                   </label>
                   <label class="flex items-center gap-2 cursor-pointer group">
-                    <input type="radio" name="q_time_commitment" value="nein" class="w-5 h-5 accent-swiss-orange" />
-                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Eher nicht</span>
+                    <input type="radio" name="q_team_size" value="20+" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">20+ Mitarbeiter</span>
                   </label>
                 </div>
               </div>
@@ -629,20 +611,24 @@ const problemIcons = [
               <!-- Question 2 -->
               <div class="bg-gray-50 border-2 border-gray-200 p-4">
                 <p class="text-gray-900 font-medium mb-3">
-                  Hast du bereits Erfahrung mit ChatGPT oder anderen KI-Tools?
+                  Wie weit seid ihr mit KI im Unternehmen?
                 </p>
-                <div class="flex flex-wrap gap-4">
+                <div class="space-y-2">
                   <label class="flex items-center gap-2 cursor-pointer group">
-                    <input type="radio" name="q_ai_experience" value="viel" class="w-5 h-5 accent-swiss-orange" />
-                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Ja, regelmäßig</span>
+                    <input type="radio" name="q_ai_status" value="noch_nicht" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Noch gar nicht angefangen</span>
                   </label>
                   <label class="flex items-center gap-2 cursor-pointer group">
-                    <input type="radio" name="q_ai_experience" value="etwas" class="w-5 h-5 accent-swiss-orange" />
-                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Etwas ausprobiert</span>
+                    <input type="radio" name="q_ai_status" value="erste_versuche" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Erste Versuche mit ChatGPT etc.</span>
                   </label>
                   <label class="flex items-center gap-2 cursor-pointer group">
-                    <input type="radio" name="q_ai_experience" value="wenig" class="w-5 h-5 accent-swiss-orange" />
-                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Kaum / Nein</span>
+                    <input type="radio" name="q_ai_status" value="erste_projekte" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Erste konkrete KI-Projekte</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="q_ai_status" value="fortgeschritten" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">KI ist bereits Teil der Strategie</span>
                   </label>
                 </div>
               </div>
@@ -650,26 +636,24 @@ const problemIcons = [
               <!-- Question 3 -->
               <div class="bg-gray-50 border-2 border-gray-200 p-4">
                 <p class="text-gray-900 font-medium mb-3">
-                  Was ist dein aktueller Status?
+                  Was ist dein Hauptziel?
                 </p>
-                <div class="space-y-3">
-                  <label class="flex items-start gap-3 cursor-pointer p-3 border-2 border-gray-200 hover:border-swiss-orange/50 bg-white transition-colors">
-                    <input type="radio" name="q_status" value="selbststaendig" class="w-5 h-5 accent-swiss-orange mt-0.5" />
-                    <div>
-                      <span class="text-gray-900 font-medium">Selbstständig / Freelancer</span>
-                    </div>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="q_goal" value="strategie" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">KI-Strategie entwickeln</span>
                   </label>
-                  <label class="flex items-start gap-3 cursor-pointer p-3 border-2 border-gray-200 hover:border-swiss-orange/50 bg-white transition-colors">
-                    <input type="radio" name="q_status" value="unternehmer" class="w-5 h-5 accent-swiss-orange mt-0.5" />
-                    <div>
-                      <span class="text-gray-900 font-medium">Unternehmer mit Team</span>
-                    </div>
+                  <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="q_goal" value="delegation" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">KI-Projekte besser delegieren</span>
                   </label>
-                  <label class="flex items-start gap-3 cursor-pointer p-3 border-2 border-gray-200 hover:border-swiss-orange/50 bg-white transition-colors">
-                    <input type="radio" name="q_status" value="angestellt" class="w-5 h-5 accent-swiss-orange mt-0.5" />
-                    <div>
-                      <span class="text-gray-900 font-medium">Angestellt / In Transition</span>
-                    </div>
+                  <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="q_goal" value="netzwerk" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Austausch mit anderen GFs</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="q_goal" value="alles" class="w-5 h-5 accent-swiss-orange" />
+                    <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Alles davon</span>
                   </label>
                 </div>
               </div>
@@ -684,7 +668,7 @@ const problemIcons = [
               </svg>
               Noch etwas, das wir wissen sollten? (optional)
             </h3>
-            <textarea name="motivation" rows="4" class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:bg-white focus:outline-none transition-all resize-none" placeholder="Erzähl uns kurz, was du erreichen möchtest oder welche Fragen du hast..."></textarea>
+            <textarea name="motivation" rows="4" class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:bg-white focus:outline-none transition-all resize-none" placeholder="Erzähl uns kurz über dein Unternehmen und deine KI-Ziele..."></textarea>
           </div>
 
           <!-- Submit -->
@@ -717,31 +701,31 @@ const problemIcons = [
             </svg>
           </div>
           <h3 class="text-2xl font-black text-gray-900 mb-4">Bewerbung eingegangen!</h3>
-          <p class="text-gray-600">Vielen Dank für deine Bewerbung. Wir melden uns innerhalb von 48 Stunden bei dir.</p>
+          <p class="text-gray-600">Vielen Dank für deine Bewerbung zur Executive Mastermind. Wir melden uns innerhalb von 48 Stunden bei dir.</p>
         </div>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-white border-t border-gray-200 py-8">
+    <footer class="bg-gray-900 border-t border-gray-800 py-8">
       <div class="container mx-auto px-4 md:px-8 max-w-6xl">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <a href="/" class="text-xl font-black text-gray-900">
+          <a href="/" class="text-xl font-black text-white">
             SYN<span class="text-swiss-orange">C</span>LARO
           </a>
-          <div class="flex gap-6 text-sm text-gray-500">
+          <div class="flex gap-6 text-sm text-gray-400">
             <a href="/impressum" class="hover:text-swiss-orange transition-colors">Impressum</a>
             <a href="/datenschutz" class="hover:text-swiss-orange transition-colors">Datenschutz</a>
             <a href="/agb" class="hover:text-swiss-orange transition-colors">AGB</a>
           </div>
-          <p class="text-sm text-gray-400">&copy; {new Date().getFullYear()} Synclaro</p>
+          <p class="text-sm text-gray-500">&copy; {new Date().getFullYear()} Synclaro</p>
         </div>
       </div>
     </footer>
 
     <!-- LP User Behavior Tracker -->
     <LPUserBehaviorTracker
-      pagePath="/lp/coaching"
+      pagePath="/lp/mastermind"
       client:load
     />
 
@@ -766,7 +750,7 @@ const problemIcons = [
 
         // Collect questionnaire answers
         const questionnaireAnswers: Record<string, string> = {};
-        ['q_time_commitment', 'q_ai_experience', 'q_status'].forEach(key => {
+        ['q_team_size', 'q_ai_status', 'q_goal'].forEach(key => {
           const value = formData.get(key);
           if (value) questionnaireAnswers[key] = value as string;
         });
@@ -776,8 +760,8 @@ const problemIcons = [
           lastName: formData.get('lastName'),
           email: formData.get('email'),
           phone: formData.get('phone'),
-          company: null,
-          position: null,
+          company: formData.get('company') || null,
+          position: formData.get('position') || null,
           program: formData.get('program'),
           questionnaireAnswers,
           motivation: formData.get('motivation') || null,
@@ -878,16 +862,6 @@ const problemIcons = [
 
       .animate-float-fast {
         animation: float-fast 4s ease-in-out infinite;
-      }
-
-      /* Spin animation */
-      @keyframes spin-very-slow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      .animate-spin-very-slow {
-        animation: spin-very-slow 30s linear infinite;
       }
 
       /* Pulse animations */

@@ -42,11 +42,11 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Get environment variables
+    // Get environment variables - use anon key (RLS allows public inserts)
     const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
-    if (!supabaseUrl || !supabaseServiceKey) {
+    if (!supabaseUrl || !supabaseKey) {
       console.error('[LP Application API] Missing Supabase environment variables');
       return new Response(
         JSON.stringify({ error: 'Server configuration error' }),
@@ -85,8 +85,8 @@ export const POST: APIRoute = async ({ request }) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': supabaseServiceKey,
-        'Authorization': `Bearer ${supabaseServiceKey}`,
+        'apikey': supabaseKey,
+        'Authorization': `Bearer ${supabaseKey}`,
         'Prefer': 'return=representation',
       },
       body: JSON.stringify(applicationPayload),

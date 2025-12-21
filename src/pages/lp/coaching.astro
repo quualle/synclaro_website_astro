@@ -11,12 +11,12 @@ const testimonials = [
 ];
 
 const skills = [
-  { title: 'KI-Agents', desc: 'Eigene Assistenten bauen' },
-  { title: 'n8n Workflows', desc: 'Automatisierungen erstellen' },
-  { title: 'Webseiten', desc: 'Von Idee zur Website' },
-  { title: 'Datenbanken', desc: 'Daten strukturieren' },
-  { title: 'Bild & Video', desc: 'KI-generierte Inhalte' },
-  { title: 'Prompting', desc: 'ChatGPT & Claude meistern' },
+  { title: 'Agentic Coding', desc: 'KI schreibt Code für dich', outcome: 'Komplexe Programme ohne Coding-Erfahrung' },
+  { title: 'Datenbanken', desc: 'Supabase & PostgreSQL', outcome: 'Eigene Apps mit echten Daten' },
+  { title: 'Webseiten', desc: 'Astro, React, Hosting', outcome: 'Professionelle Sites live schalten' },
+  { title: 'n8n Workflows', desc: 'Automatisierungen bauen', outcome: 'Stundenlange Arbeit auf Knopfdruck' },
+  { title: 'Git & GitHub', desc: 'Versionierung meistern', outcome: 'Code sicher verwalten wie ein Profi' },
+  { title: 'Bild & Video', desc: 'Midjourney, Sora & Co.', outcome: 'Einzigartige Inhalte generieren' },
 ];
 
 const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
@@ -168,7 +168,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
         <div class="order-2 md:order-1">
           <div class="inline-flex items-center gap-2 bg-gray-900 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-full mb-5">
             <span class="relative w-2 h-2 bg-orange-500 rounded-full pulse-ring"></span>
-            Nächster Start: Januar 2025
+            Nächster Start: 12. Januar 2026
           </div>
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] tracking-tight mb-5">
@@ -186,12 +186,12 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
               <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Monate</div>
             </div>
             <div class="stat-card text-center py-4 border-b border-gray-200">
-              <div class="text-3xl md:text-4xl font-black gradient-text">48+</div>
+              <div class="text-3xl md:text-4xl font-black gradient-text">25+</div>
               <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Sessions</div>
             </div>
             <div class="stat-card text-center py-4 border-b border-gray-200">
-              <div class="text-3xl md:text-4xl font-black gradient-text">100%</div>
-              <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Hands-on</div>
+              <div class="text-3xl md:text-4xl font-black gradient-text">20h</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Video</div>
             </div>
           </div>
 
@@ -224,7 +224,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
               </div>
               <div>
                 <p class="text-white text-sm font-medium">Live aus dem Gruppen-Coaching</p>
-                <p class="text-white/60 text-xs">48+ Sessions pro Durchgang</p>
+                <p class="text-white/60 text-xs">25+ Live-Sessions + 20h Video</p>
               </div>
             </div>
           </div>
@@ -245,7 +245,6 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
               </div>
             </div>
           ))}
-          <div class="text-sm text-gray-400 font-medium">+15 weitere</div>
         </div>
       </div>
     </div>
@@ -259,29 +258,56 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
         <h2 class="text-2xl md:text-3xl font-black tracking-tight">
           KI verändert alles – <span class="gradient-text">aber wie fängst du an?</span>
         </h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Die Wahrheit: Um KI wirklich produktiv zu nutzen, brauchst du mehr als nur ChatGPT.
+          Du brauchst ein ganzes Ökosystem aus Tools, Workflows und technischem Know-how.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-4">
+      <div class="grid md:grid-cols-3 gap-4 mb-8">
         <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 card-hover">
           <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Überfordert von Tools</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">ChatGPT, Claude, Midjourney, n8n... Welche brauchst du wirklich?</p>
+          <p class="text-sm text-gray-600 leading-relaxed">ChatGPT, Claude, Midjourney, n8n, Cursor, Supabase... Welche brauchst du wirklich – und wie spielen sie zusammen?</p>
         </div>
         <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 card-hover">
           <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Keine Zeit für Trial & Error</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Du hast ein Business. Stundenlange Tutorials sind keine Option.</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Du hast ein Business. Monate mit YouTube-Tutorials verschwenden ist keine Option.</p>
         </div>
         <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 card-hover">
           <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Wissen ≠ Können</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">Du liest viel – aber kannst nichts selbst bauen.</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Du liest viel über KI – aber wenn's drauf ankommt, kannst du nichts selbst bauen.</p>
+        </div>
+      </div>
+
+      <!-- Was wirklich dazugehört -->
+      <div class="bg-gray-900 text-white p-6 md:p-8 rounded-2xl">
+        <h3 class="font-bold text-lg mb-4 text-center">Was wirklich dazugehört, um KI produktiv zu nutzen:</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+          <div class="bg-white/5 p-4 rounded-xl">
+            <div class="text-orange-400 font-semibold mb-2">Prompting & Agents</div>
+            <p class="text-gray-400">Fortgeschrittenes Prompting, Agentic Coding mit Claude/Cursor, autonome KI-Workflows</p>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl">
+            <div class="text-orange-400 font-semibold mb-2">Datenbanken</div>
+            <p class="text-gray-400">Supabase, PostgreSQL, Datenmodellierung, APIs – alles was du für echte Apps brauchst</p>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl">
+            <div class="text-orange-400 font-semibold mb-2">Entwicklung</div>
+            <p class="text-gray-400">Git, GitHub, Versionierung, Hosting auf Netlify/Vercel, Domain-Setup</p>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl">
+            <div class="text-orange-400 font-semibold mb-2">Automatisierung</div>
+            <p class="text-gray-400">n8n Workflows, Webhooks, API-Integrationen, Background Jobs</p>
+          </div>
         </div>
       </div>
     </div>
@@ -292,19 +318,68 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-8">
         <div class="accent-line mx-auto mb-4"></div>
-        <h2 class="text-2xl md:text-3xl font-black tracking-tight">Was du in 6 Monaten <span class="gradient-text">lernst</span></h2>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">Was du in 6 Monaten <span class="gradient-text">lernst & kannst</span></h2>
+        <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Theorie UND Praxis – du baust echte Projekte, die du sofort einsetzen kannst.</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {skills.map((skill, i) => (
-          <div class="bg-white p-4 rounded-xl border border-gray-200 text-center card-hover group">
-            <div class="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center mb-3 group-hover:from-orange-500/10 group-hover:to-orange-500/5 transition-colors">
-              <span class="text-2xl font-black text-gray-300 group-hover:text-orange-500 transition-colors">{String(i + 1).padStart(2, '0')}</span>
+          <div class="bg-white p-5 rounded-xl border border-gray-200 card-hover group">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 flex-shrink-0 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center group-hover:from-orange-500/10 group-hover:to-orange-500/5 transition-colors">
+                <span class="text-xl font-black text-gray-300 group-hover:text-orange-500 transition-colors">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">{skill.title}</h3>
+                <p class="text-sm text-gray-500">{skill.desc}</p>
+                <p class="text-sm text-orange-600 mt-2 font-medium">{skill.outcome}</p>
+              </div>
             </div>
-            <h3 class="font-bold text-sm text-gray-900">{skill.title}</h3>
-            <p class="text-xs text-gray-500 mt-1">{skill.desc}</p>
           </div>
         ))}
+      </div>
+
+      <!-- Was du danach KANNST -->
+      <div class="mt-10">
+        <h3 class="text-xl font-bold text-center mb-6">Was du danach <span class="gradient-text">wirklich kannst</span>:</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white p-5 rounded-xl border border-gray-200 flex items-start gap-4">
+            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Eigene Web-Apps bauen</h4>
+              <p class="text-sm text-gray-600">Von der Idee zur fertigen App mit Datenbank, Authentifizierung und Hosting – ohne klassisches Programmieren.</p>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-gray-200 flex items-start gap-4">
+            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">KI-Agents für dich arbeiten lassen</h4>
+              <p class="text-sm text-gray-600">Claude Code, Cursor und andere KI-Assistenten so nutzen, dass sie komplexe Aufgaben autonom erledigen.</p>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-gray-200 flex items-start gap-4">
+            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Prozesse komplett automatisieren</h4>
+              <p class="text-sm text-gray-600">n8n-Workflows bauen, die E-Mails, CRM, Social Media und mehr miteinander verbinden.</p>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-gray-200 flex items-start gap-4">
+            <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-green-500/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Technisch unabhängig sein</h4>
+              <p class="text-sm text-gray-600">GitHub, Hosting, Domains – du verstehst das ganze Ökosystem und brauchst keinen teuren Entwickler mehr.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Result -->
@@ -312,7 +387,7 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
         <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 via-transparent to-orange-500/20"></div>
         <div class="relative">
           <p class="text-base md:text-lg">
-            <span class="font-semibold text-orange-400">Ergebnis:</span> Du gehörst zu den <span class="font-bold">Top 0,1% der KI-Nutzer</span> und kannst selbstständig automatisieren, bauen und umsetzen.
+            <span class="font-semibold text-orange-400">Das Ergebnis:</span> Du gehörst zu den <span class="font-bold">Top 0,1% der KI-Nutzer</span> – und kannst selbstständig bauen, was andere nur konsumieren.
           </p>
         </div>
       </div>
@@ -329,10 +404,10 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
       <div class="space-y-4">
         {[
-          { num: '01', title: 'Kick-off & Setup', desc: 'Gemeinsamer Start, Tool-Einrichtung, Entwicklungsumgebung' },
-          { num: '02', title: 'Wöchentliche Sessions', desc: '6 Monate, 2h/Woche: Agent-Coding, n8n, Webseiten, Hosting' },
-          { num: '03', title: 'Hands-on Projekte', desc: 'Eigene Webseiten, KI-Agents, Automatisierungen, Datenbanken' },
-          { num: '04', title: 'Multimodale KI', desc: 'Bild- & Videogenerierung, neueste KI-Tools für Alltag & Beruf' },
+          { num: '01', title: 'Kick-off & Setup', desc: 'Cursor, Claude, VS Code, GitHub, Supabase – alles einrichten und verstehen' },
+          { num: '02', title: 'Wöchentliche Live-Sessions', desc: '25+ Sessions über 6 Monate, plus 20h Videomaterial zum Vertiefen' },
+          { num: '03', title: 'Agentic Coding lernen', desc: 'KI-Assistenten Code schreiben lassen, Reviews, Debugging, echte Projekte' },
+          { num: '04', title: 'Eigene Projekte bauen', desc: 'Webseiten, Datenbanken, Automatisierungen – live deployen und nutzen' },
         ].map((step) => (
           <div class="flex gap-5 items-start p-4 rounded-xl hover:bg-gray-50 transition-colors group">
             <div class="w-12 h-12 bg-gray-900 text-white font-bold flex items-center justify-center flex-shrink-0 rounded-xl group-hover:bg-orange-500 transition-colors">

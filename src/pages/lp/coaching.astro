@@ -568,33 +568,33 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
         <div class="space-y-3 mb-5">
           <div class="bg-gray-50 p-4 rounded-xl">
-            <p class="text-sm font-semibold text-gray-900 mb-3">4-6h/Woche für 6 Monate?</p>
+            <p class="text-sm font-semibold text-gray-900 mb-3">Kannst du für die nächsten 6 Monate 4-6 Stunden pro Woche für deine KI-Weiterbildung aufbringen?</p>
             <div class="flex flex-wrap gap-3">
-              {['Ja', 'Vielleicht', 'Nein'].map((opt) => (
+              {['Ja, definitiv', 'Ich muss schauen', 'Eher nicht'].map((opt, i) => (
                 <label class="flex items-center gap-2 cursor-pointer text-sm group">
-                  <input type="radio" name="q_time" value={opt.toLowerCase()} class="w-4 h-4 accent-orange-500" />
+                  <input type="radio" name="q_time" value={['ja', 'vielleicht', 'nein'][i]} class="w-4 h-4 accent-orange-500" />
                   <span class="text-gray-600 group-hover:text-gray-900 transition-colors">{opt}</span>
                 </label>
               ))}
             </div>
           </div>
           <div class="bg-gray-50 p-4 rounded-xl">
-            <p class="text-sm font-semibold text-gray-900 mb-3">KI-Erfahrung?</p>
+            <p class="text-sm font-semibold text-gray-900 mb-3">Wie viel Erfahrung hast du bereits mit KI-Tools wie ChatGPT, Claude oder Midjourney?</p>
             <div class="flex flex-wrap gap-3">
-              {['Viel', 'Etwas', 'Wenig'].map((opt) => (
+              {['Nutze ich regelmäßig', 'Habe ich ausprobiert', 'Kaum bis keine'].map((opt, i) => (
                 <label class="flex items-center gap-2 cursor-pointer text-sm group">
-                  <input type="radio" name="q_exp" value={opt.toLowerCase()} class="w-4 h-4 accent-orange-500" />
+                  <input type="radio" name="q_exp" value={['viel', 'etwas', 'wenig'][i]} class="w-4 h-4 accent-orange-500" />
                   <span class="text-gray-600 group-hover:text-gray-900 transition-colors">{opt}</span>
                 </label>
               ))}
             </div>
           </div>
           <div class="bg-gray-50 p-4 rounded-xl">
-            <p class="text-sm font-semibold text-gray-900 mb-3">Dein Status?</p>
+            <p class="text-sm font-semibold text-gray-900 mb-3">Was beschreibt deine berufliche Situation am besten?</p>
             <div class="flex flex-wrap gap-3">
-              {['Selbstständig', 'Unternehmer', 'Angestellt'].map((opt) => (
+              {['Selbstständig / Freelancer', 'Unternehmer / Geschäftsführer', 'Angestellt'].map((opt, i) => (
                 <label class="flex items-center gap-2 cursor-pointer text-sm group">
-                  <input type="radio" name="q_status" value={opt.toLowerCase()} class="w-4 h-4 accent-orange-500" />
+                  <input type="radio" name="q_status" value={['selbstständig', 'unternehmer', 'angestellt'][i]} class="w-4 h-4 accent-orange-500" />
                   <span class="text-gray-600 group-hover:text-gray-900 transition-colors">{opt}</span>
                 </label>
               ))}

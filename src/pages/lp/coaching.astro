@@ -11,12 +11,12 @@ const testimonials = [
 ];
 
 const skills = [
-  { icon: '🤖', title: 'KI-Agents', desc: 'Eigene Assistenten bauen' },
-  { icon: '⚡', title: 'n8n Workflows', desc: 'Automatisierungen erstellen' },
-  { icon: '🌐', title: 'Webseiten', desc: 'Von Idee zur Website' },
-  { icon: '🗄️', title: 'Datenbanken', desc: 'Daten strukturieren' },
-  { icon: '🎨', title: 'Bild & Video', desc: 'KI-generierte Inhalte' },
-  { icon: '💬', title: 'Prompting', desc: 'ChatGPT & Claude meistern' },
+  { title: 'KI-Agents', desc: 'Eigene Assistenten bauen' },
+  { title: 'n8n Workflows', desc: 'Automatisierungen erstellen' },
+  { title: 'Webseiten', desc: 'Von Idee zur Website' },
+  { title: 'Datenbanken', desc: 'Daten strukturieren' },
+  { title: 'Bild & Video', desc: 'KI-generierte Inhalte' },
+  { title: 'Prompting', desc: 'ChatGPT & Claude meistern' },
 ];
 
 const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
@@ -33,270 +33,418 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
+  <style>
+    :root {
+      --accent: #f97316;
+      --accent-dark: #ea580c;
+      --dark: #0a0a0a;
+      --gray-50: #fafafa;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-400: #a1a1aa;
+      --gray-500: #71717a;
+      --gray-600: #52525b;
+      --gray-800: #27272a;
+      --gray-900: #18181b;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .glass-dark {
+      background: rgba(10,10,10,0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px -12px rgba(249,115,22,0.25);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .accent-line {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .stat-card {
+      position: relative;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .stat-card:hover::after {
+      width: 100%;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    .pulse-ring::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .scroll-horizontal::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll-horizontal {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
 
-<body class="bg-white text-gray-900 font-sans">
-  <!-- STICKY HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+<body class="bg-white text-gray-900 font-['Inter']">
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50">
     <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="/" class="text-xl font-black">SYN<span class="text-orange-500">C</span>LARO</a>
-      <a href="#bewerbung" class="bg-orange-500 text-white px-4 py-2 text-sm font-bold hover:bg-orange-600 transition-colors">
-        Jetzt bewerben
+      <a href="/" class="text-xl font-black tracking-tight">SYN<span class="gradient-text">C</span>LARO</a>
+      <a href="#bewerbung" class="btn-primary text-white px-5 py-2.5 text-sm font-semibold rounded-full">
+        <span>Jetzt bewerben</span>
       </a>
     </nav>
   </header>
 
-  <!-- HERO - Kompakt & Impactful -->
-  <section class="pt-16 pb-8 md:pt-20 md:pb-12 bg-gradient-to-b from-orange-50 to-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <!-- Mobile: Stack, Desktop: Side by side -->
-      <div class="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
-        <!-- Text Content -->
+  <!-- HERO -->
+  <section class="pt-20 pb-10 md:pt-24 md:pb-14 bg-gradient-to-b from-gray-50 via-white to-white relative overflow-hidden">
+    <!-- Subtle grid pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><rect width=%2240%22 height=%2240%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%220.5%22/></svg>');"></div>
+
+    <div class="max-w-6xl mx-auto px-4 relative">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <!-- Text -->
         <div class="order-2 md:order-1">
-          <div class="inline-flex items-center gap-2 bg-orange-100 text-orange-600 px-3 py-1 text-xs font-bold uppercase tracking-wide mb-4">
-            <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 bg-gray-900 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-full mb-5">
+            <span class="relative w-2 h-2 bg-orange-500 rounded-full pulse-ring"></span>
             Nächster Start: Januar 2025
           </div>
 
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4">
-            Werde zum <span class="text-orange-500">KI-Profi</span> in 6 Monaten
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] tracking-tight mb-5">
+            Werde zum<br/><span class="gradient-text">KI-Profi</span> in 6 Monaten
           </h1>
 
-          <p class="text-gray-600 text-base md:text-lg mb-6">
-            Eigene KI-Tools bauen, automatisieren, umsetzen. Was andere in Jahren nicht schaffen.
+          <p class="text-gray-600 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+            Eigene KI-Tools bauen, automatisieren, umsetzen – was andere in Jahren nicht schaffen.
           </p>
 
-          <!-- Stats Row -->
-          <div class="grid grid-cols-3 gap-4 mb-6 py-4 border-y border-gray-200">
-            <div class="text-center">
-              <div class="text-2xl md:text-3xl font-black text-orange-500">6</div>
-              <div class="text-xs text-gray-500">Monate</div>
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-6 mb-8">
+            <div class="stat-card text-center py-4 border-b border-gray-200">
+              <div class="text-3xl md:text-4xl font-black gradient-text">6</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Monate</div>
             </div>
-            <div class="text-center border-x border-gray-200">
-              <div class="text-2xl md:text-3xl font-black text-orange-500">48+</div>
-              <div class="text-xs text-gray-500">Sessions</div>
+            <div class="stat-card text-center py-4 border-b border-gray-200">
+              <div class="text-3xl md:text-4xl font-black gradient-text">48+</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Sessions</div>
             </div>
-            <div class="text-center">
-              <div class="text-2xl md:text-3xl font-black text-orange-500">100%</div>
-              <div class="text-xs text-gray-500">Hands-on</div>
+            <div class="stat-card text-center py-4 border-b border-gray-200">
+              <div class="text-3xl md:text-4xl font-black gradient-text">100%</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Hands-on</div>
             </div>
           </div>
 
-          <!-- CTA Buttons -->
+          <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-3">
-            <a href="#bewerbung" class="bg-orange-500 text-white px-6 py-3 font-bold text-center hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
-              Jetzt bewerben
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <a href="#bewerbung" class="btn-primary text-white px-8 py-4 font-semibold text-center rounded-full flex items-center justify-center gap-2 group">
+              <span>Jetzt bewerben</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <a href="#ablauf" class="border-2 border-gray-300 px-6 py-3 font-bold text-center hover:border-orange-500 hover:text-orange-500 transition-colors">
+            <a href="#ablauf" class="border border-gray-300 px-8 py-4 font-semibold text-center rounded-full hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all">
               Mehr erfahren
             </a>
           </div>
 
-          <!-- GF Breakout -->
-          <p class="mt-4 text-xs text-gray-500">
-            Geschäftsführer? <a href="/lp/mastermind" class="text-orange-500 hover:underline">→ Executive Mastermind</a>
+          <p class="mt-5 text-sm text-gray-500">
+            Geschäftsführer? <a href="/lp/mastermind" class="text-orange-500 hover:underline font-medium">Executive Mastermind →</a>
           </p>
         </div>
 
-        <!-- Video/Image -->
+        <!-- Video -->
         <div class="order-1 md:order-2">
-          <div class="relative aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-2xl">
+          <div class="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl shadow-gray-900/20 ring-1 ring-gray-900/5">
             <video autoplay muted loop playsinline class="w-full h-full object-cover">
               <source src="/groupcoaching.mp4" type="video/mp4" />
             </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            <div class="absolute bottom-3 left-3 right-3">
-              <p class="text-white text-sm font-medium">Live aus dem Gruppen-Coaching</p>
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium">Live aus dem Gruppen-Coaching</p>
+                <p class="text-white/60 text-xs">48+ Sessions pro Durchgang</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Social Proof Bar -->
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-8 py-4 border-t border-gray-200">
-        {testimonials.map((t) => (
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 font-bold text-xs">
-              {t.initials}
+      <!-- Social Proof -->
+      <div class="mt-10 pt-8 border-t border-gray-200">
+        <div class="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          {testimonials.map((t) => (
+            <div class="flex items-center gap-3 group">
+              <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-lg shadow-orange-500/25">
+                {t.initials}
+              </div>
+              <div>
+                <span class="font-semibold text-gray-900 text-sm">{t.name}</span>
+                <span class="text-gray-400 text-sm hidden sm:inline"> · {t.role}</span>
+              </div>
             </div>
-            <div class="text-xs">
-              <span class="font-medium text-gray-900">{t.name}</span>
-              <span class="text-gray-400 hidden sm:inline"> • {t.role}</span>
-            </div>
-          </div>
-        ))}
-        <div class="text-xs text-gray-400">+15 weitere Teilnehmer</div>
+          ))}
+          <div class="text-sm text-gray-400 font-medium">+15 weitere</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROBLEM - Horizontal Cards -->
-  <section class="py-8 md:py-12 bg-white">
+  <!-- PROBLEM -->
+  <section class="py-10 md:py-14 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-xl md:text-2xl font-black text-center mb-6">
-        KI verändert alles – <span class="text-orange-500">aber wie fängst du an?</span>
-      </h2>
+      <div class="text-center mb-8">
+        <div class="accent-line mx-auto mb-4"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">
+          KI verändert alles – <span class="gradient-text">aber wie fängst du an?</span>
+        </h2>
+      </div>
 
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="bg-gray-50 p-4 border-l-4 border-orange-500">
-          <h3 class="font-bold mb-1">Überfordert von Tools</h3>
-          <p class="text-sm text-gray-600">ChatGPT, Claude, Midjourney, n8n... Welche brauchst du wirklich?</p>
+        <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 card-hover">
+          <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Überfordert von Tools</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">ChatGPT, Claude, Midjourney, n8n... Welche brauchst du wirklich?</p>
         </div>
-        <div class="bg-gray-50 p-4 border-l-4 border-orange-500">
-          <h3 class="font-bold mb-1">Keine Zeit für Trial & Error</h3>
-          <p class="text-sm text-gray-600">Du hast ein Business. Stundenlange Tutorials sind keine Option.</p>
+        <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 card-hover">
+          <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Keine Zeit für Trial & Error</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Du hast ein Business. Stundenlange Tutorials sind keine Option.</p>
         </div>
-        <div class="bg-gray-50 p-4 border-l-4 border-orange-500">
-          <h3 class="font-bold mb-1">Wissen ≠ Können</h3>
-          <p class="text-sm text-gray-600">Du liest viel – aber kannst nichts selbst bauen.</p>
+        <div class="bg-gray-50 p-5 rounded-xl border border-gray-100 card-hover">
+          <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Wissen ≠ Können</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Du liest viel – aber kannst nichts selbst bauen.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS GRID - Kompakt -->
-  <section id="ablauf" class="py-8 md:py-12 bg-gray-50">
+  <!-- SKILLS -->
+  <section id="ablauf" class="py-10 md:py-14 bg-gray-50">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-6">
-        <h2 class="text-xl md:text-2xl font-black">Was du in 6 Monaten <span class="text-orange-500">lernst</span></h2>
+      <div class="text-center mb-8">
+        <div class="accent-line mx-auto mb-4"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">Was du in 6 Monaten <span class="gradient-text">lernst</span></h2>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        {skills.map((skill) => (
-          <div class="bg-white p-4 text-center border border-gray-200 hover:border-orange-500 hover:shadow-md transition-all">
-            <div class="text-2xl mb-2">{skill.icon}</div>
-            <h3 class="font-bold text-sm">{skill.title}</h3>
+        {skills.map((skill, i) => (
+          <div class="bg-white p-4 rounded-xl border border-gray-200 text-center card-hover group">
+            <div class="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center mb-3 group-hover:from-orange-500/10 group-hover:to-orange-500/5 transition-colors">
+              <span class="text-2xl font-black text-gray-300 group-hover:text-orange-500 transition-colors">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h3 class="font-bold text-sm text-gray-900">{skill.title}</h3>
             <p class="text-xs text-gray-500 mt-1">{skill.desc}</p>
           </div>
         ))}
       </div>
 
-      <!-- Result Box -->
-      <div class="mt-6 bg-orange-500 text-white p-4 md:p-6 text-center">
-        <p class="text-sm md:text-base">
-          <span class="font-bold">Ergebnis:</span> Du gehörst zu den <span class="font-bold">Top 0,1% der KI-Nutzer</span> und kannst selbstständig automatisieren, bauen und umsetzen.
-        </p>
+      <!-- Result -->
+      <div class="mt-8 bg-gray-900 text-white p-6 md:p-8 rounded-2xl text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 via-transparent to-orange-500/20"></div>
+        <div class="relative">
+          <p class="text-base md:text-lg">
+            <span class="font-semibold text-orange-400">Ergebnis:</span> Du gehörst zu den <span class="font-bold">Top 0,1% der KI-Nutzer</span> und kannst selbstständig automatisieren, bauen und umsetzen.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ABLAUF - Timeline -->
-  <section class="py-8 md:py-12 bg-white">
+  <!-- ABLAUF -->
+  <section class="py-10 md:py-14 bg-white">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl md:text-2xl font-black text-center mb-6">So läuft das <span class="text-orange-500">Coaching</span> ab</h2>
+      <div class="text-center mb-8">
+        <div class="accent-line mx-auto mb-4"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">So läuft das <span class="gradient-text">Coaching</span> ab</h2>
+      </div>
 
       <div class="space-y-4">
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 bg-orange-500 text-white font-bold flex items-center justify-center flex-shrink-0">01</div>
-          <div>
-            <h3 class="font-bold">Kick-off & Setup</h3>
-            <p class="text-sm text-gray-600">Gemeinsamer Start, Tool-Einrichtung, Entwicklungsumgebung</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 bg-orange-500 text-white font-bold flex items-center justify-center flex-shrink-0">02</div>
-          <div>
-            <h3 class="font-bold">Wöchentliche Sessions</h3>
-            <p class="text-sm text-gray-600">6 Monate, 2h/Woche: Agent-Coding, n8n, Webseiten, Hosting</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 bg-orange-500 text-white font-bold flex items-center justify-center flex-shrink-0">03</div>
-          <div>
-            <h3 class="font-bold">Hands-on Projekte</h3>
-            <p class="text-sm text-gray-600">Eigene Webseiten, KI-Agents, Automatisierungen, Datenbanken</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 bg-orange-500 text-white font-bold flex items-center justify-center flex-shrink-0">04</div>
-          <div>
-            <h3 class="font-bold">Multimodale KI</h3>
-            <p class="text-sm text-gray-600">Bild- & Videogenerierung, neueste KI-Tools für Alltag & Beruf</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FÜR WEN - Side by Side -->
-  <section class="py-8 md:py-12 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl md:text-2xl font-black text-center mb-6">Perfekt für <span class="text-orange-500">Macher</span></h2>
-
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-white p-5 border-2 border-green-500">
-          <h3 class="font-bold text-green-600 mb-3 flex items-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-            Das bist du
-          </h3>
-          <ul class="space-y-2 text-sm">
-            <li>✓ Selbstständig, Freelancer oder Unternehmer</li>
-            <li>✓ Du willst <strong>selbst alles können</strong></li>
-            <li>✓ 4-6 Stunden/Woche Zeit</li>
-            <li>✓ Echte Skills, nicht nur Theorie</li>
-          </ul>
-        </div>
-        <div class="bg-white p-5 border-2 border-gray-300">
-          <h3 class="font-bold text-gray-400 mb-3 flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            Das bist du nicht
-          </h3>
-          <ul class="space-y-2 text-sm text-gray-500">
-            <li>✗ Schnelle Lösung ohne Aufwand</li>
-            <li>✗ Nur verstehen, nicht machen</li>
-            <li>✗ Keine Zeit fürs Lernen</li>
-          </ul>
-          <div class="mt-4 pt-3 border-t border-gray-200">
-            <p class="text-xs text-gray-500">GF? <a href="/lp/mastermind" class="text-orange-500 hover:underline">→ Executive Mastermind</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS - Horizontal Scroll Mobile -->
-  <section class="py-8 md:py-12 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-xl md:text-2xl font-black text-center mb-6">Was Teilnehmer <span class="text-orange-500">sagen</span></h2>
-
-      <div class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory">
-        {testimonials.map((t) => (
-          <div class="min-w-[280px] md:min-w-0 bg-gray-50 p-4 border border-gray-200 snap-start">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 font-bold">
-                {t.initials}
-              </div>
-              <div>
-                <div class="font-bold text-sm">{t.name}</div>
-                <div class="text-xs text-gray-500">{t.role}</div>
-              </div>
+        {[
+          { num: '01', title: 'Kick-off & Setup', desc: 'Gemeinsamer Start, Tool-Einrichtung, Entwicklungsumgebung' },
+          { num: '02', title: 'Wöchentliche Sessions', desc: '6 Monate, 2h/Woche: Agent-Coding, n8n, Webseiten, Hosting' },
+          { num: '03', title: 'Hands-on Projekte', desc: 'Eigene Webseiten, KI-Agents, Automatisierungen, Datenbanken' },
+          { num: '04', title: 'Multimodale KI', desc: 'Bild- & Videogenerierung, neueste KI-Tools für Alltag & Beruf' },
+        ].map((step) => (
+          <div class="flex gap-5 items-start p-4 rounded-xl hover:bg-gray-50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-900 text-white font-bold flex items-center justify-center flex-shrink-0 rounded-xl group-hover:bg-orange-500 transition-colors">
+              {step.num}
             </div>
-            <p class="text-sm text-gray-600 italic">"{t.quote}"</p>
+            <div class="pt-1">
+              <h3 class="font-bold text-gray-900">{step.title}</h3>
+              <p class="text-sm text-gray-600 mt-0.5">{step.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- COACH - Kompakt -->
-  <section class="py-8 md:py-12 bg-gray-50">
+  <!-- FÜR WEN -->
+  <section class="py-10 md:py-14 bg-gray-50">
     <div class="max-w-4xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row gap-6 items-center">
-        <div class="w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
-          <img src="/images/marco_compressed.jpg" alt="Marco Heer" class="w-full h-full object-cover rounded-full border-4 border-orange-500" />
+      <div class="text-center mb-8">
+        <div class="accent-line mx-auto mb-4"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">Perfekt für <span class="gradient-text">Macher</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white p-6 rounded-2xl border-2 border-gray-900 relative">
+          <div class="absolute -top-3 left-6 bg-gray-900 text-white px-3 py-1 rounded-full text-xs font-semibold">Für dich</div>
+          <ul class="space-y-3 text-sm mt-2">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Selbstständig, Freelancer oder Unternehmer</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Du willst <strong>selbst alles können</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>4-6 Stunden/Woche Zeit</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Echte Skills, nicht nur Theorie</span>
+            </li>
+          </ul>
         </div>
-        <div>
-          <div class="text-xs text-orange-500 font-bold uppercase tracking-wide mb-1">Dein Coach</div>
-          <h2 class="text-xl md:text-2xl font-black mb-2">Marco Heer</h2>
-          <p class="text-sm text-gray-600 mb-3">
+        <div class="bg-white p-6 rounded-2xl border border-gray-200 relative">
+          <div class="absolute -top-3 left-6 bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-xs font-semibold">Nicht für dich</div>
+          <ul class="space-y-3 text-sm text-gray-500 mt-2">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Schnelle Lösung ohne Aufwand</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Nur verstehen, nicht machen</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Keine Zeit fürs Lernen</span>
+            </li>
+          </ul>
+          <div class="mt-4 pt-4 border-t border-gray-100">
+            <p class="text-xs text-gray-500">Geschäftsführer? <a href="/lp/mastermind" class="text-orange-500 hover:underline font-medium">Executive Mastermind →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-10 md:py-14 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <div class="accent-line mx-auto mb-4"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">Was Teilnehmer <span class="gradient-text">sagen</span></h2>
+      </div>
+
+      <div class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto pb-4 md:pb-0 scroll-horizontal snap-x snap-mandatory">
+        {testimonials.map((t) => (
+          <div class="min-w-[300px] md:min-w-0 bg-gray-50 p-5 rounded-2xl border border-gray-100 snap-start">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
+                {t.initials}
+              </div>
+              <div>
+                <div class="font-bold text-gray-900">{t.name}</div>
+                <div class="text-xs text-gray-500">{t.role}</div>
+              </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">"{t.quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COACH -->
+  <section class="py-10 md:py-14 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8 items-center bg-white p-6 md:p-8 rounded-2xl border border-gray-200">
+        <div class="w-32 h-32 md:w-40 md:h-40 flex-shrink-0 relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full blur-lg opacity-30"></div>
+          <img src="/images/marco_compressed.jpg" alt="Marco Heer" class="relative w-full h-full object-cover rounded-full ring-4 ring-white shadow-xl" />
+        </div>
+        <div class="text-center md:text-left">
+          <div class="inline-block text-xs text-orange-500 font-semibold uppercase tracking-wider mb-2 bg-orange-500/10 px-3 py-1 rounded-full">Dein Coach</div>
+          <h2 class="text-2xl md:text-3xl font-black tracking-tight mb-3">Marco Heer</h2>
+          <p class="text-gray-600 mb-4 leading-relaxed">
             3 Jahre Tag und Nacht KI studiert und angewendet. Hunderte Projekte, tausende Stunden Coaching.
-            <strong>Praktische Erfahrung</strong>, kein Bullshit.
+            <strong class="text-gray-900">Praktische Erfahrung</strong>, kein Bullshit.
           </p>
-          <a href="#bewerbung" class="inline-flex items-center gap-2 text-orange-500 font-bold text-sm hover:underline">
+          <a href="#bewerbung" class="inline-flex items-center gap-2 text-orange-500 font-semibold hover:gap-3 transition-all">
             Jetzt bewerben <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
@@ -304,113 +452,120 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
     </div>
   </section>
 
-  <!-- BEWERBUNG - Formular -->
-  <section id="bewerbung" class="py-8 md:py-12 bg-gray-900 text-white">
-    <div class="max-w-2xl mx-auto px-4">
-      <div class="text-center mb-6">
-        <div class="inline-flex items-center gap-2 bg-orange-500 text-white px-3 py-1 text-xs font-bold uppercase tracking-wide mb-3">
-          <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+  <!-- BEWERBUNG -->
+  <section id="bewerbung" class="py-10 md:py-14 bg-gray-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent"></div>
+
+    <div class="max-w-2xl mx-auto px-4 relative">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-1.5 text-xs font-medium uppercase tracking-wider rounded-full mb-4">
+          <span class="relative w-2 h-2 bg-white rounded-full pulse-ring"></span>
           Jetzt bewerben
         </div>
-        <h2 class="text-2xl md:text-3xl font-black">Bewerbung für die <span class="text-orange-500">Academy</span></h2>
-        <p class="text-gray-400 text-sm mt-2">Wir melden uns innerhalb von 48h bei dir.</p>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight">Bewerbung für die <span class="gradient-text">Academy</span></h2>
+        <p class="text-gray-400 mt-3">Wir melden uns innerhalb von 48h bei dir.</p>
       </div>
 
-      <form id="application-form" class="bg-white text-gray-900 p-5 md:p-6">
+      <form id="application-form" class="bg-white text-gray-900 p-6 md:p-8 rounded-2xl shadow-2xl">
         <input type="hidden" name="program" value="gruppen_coaching" />
 
-        <!-- Name -->
-        <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="grid grid-cols-2 gap-4 mb-5">
           <div>
-            <label class="block text-xs font-medium text-gray-600 mb-1">Vorname *</label>
-            <input type="text" name="firstName" required class="w-full px-3 py-2 border border-gray-300 text-sm focus:border-orange-500 focus:outline-none" placeholder="Max" />
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Vorname</label>
+            <input type="text" name="firstName" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-all" placeholder="Max" />
           </div>
           <div>
-            <label class="block text-xs font-medium text-gray-600 mb-1">Nachname *</label>
-            <input type="text" name="lastName" required class="w-full px-3 py-2 border border-gray-300 text-sm focus:border-orange-500 focus:outline-none" placeholder="Mustermann" />
-          </div>
-        </div>
-
-        <!-- Email & Phone -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-          <div>
-            <label class="block text-xs font-medium text-gray-600 mb-1">E-Mail *</label>
-            <input type="email" name="email" required class="w-full px-3 py-2 border border-gray-300 text-sm focus:border-orange-500 focus:outline-none" placeholder="max@beispiel.de" />
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-gray-600 mb-1">Telefon *</label>
-            <input type="tel" name="phone" required class="w-full px-3 py-2 border border-gray-300 text-sm focus:border-orange-500 focus:outline-none" placeholder="+49 123 456789" />
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Nachname</label>
+            <input type="text" name="lastName" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-all" placeholder="Mustermann" />
           </div>
         </div>
 
-        <!-- Quick Questions -->
-        <div class="space-y-3 mb-4">
-          <div class="bg-gray-50 p-3">
-            <p class="text-sm font-medium mb-2">4-6h/Woche für 6 Monate?</p>
-            <div class="flex flex-wrap gap-3 text-sm">
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_time" value="ja" class="accent-orange-500" /> Ja</label>
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_time" value="vielleicht" class="accent-orange-500" /> Vielleicht</label>
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_time" value="nein" class="accent-orange-500" /> Nein</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">E-Mail</label>
+            <input type="email" name="email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-all" placeholder="max@beispiel.de" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Telefon</label>
+            <input type="tel" name="phone" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-all" placeholder="+49 123 456789" />
+          </div>
+        </div>
+
+        <div class="space-y-3 mb-5">
+          <div class="bg-gray-50 p-4 rounded-xl">
+            <p class="text-sm font-semibold text-gray-900 mb-3">4-6h/Woche für 6 Monate?</p>
+            <div class="flex flex-wrap gap-3">
+              {['Ja', 'Vielleicht', 'Nein'].map((opt) => (
+                <label class="flex items-center gap-2 cursor-pointer text-sm group">
+                  <input type="radio" name="q_time" value={opt.toLowerCase()} class="w-4 h-4 accent-orange-500" />
+                  <span class="text-gray-600 group-hover:text-gray-900 transition-colors">{opt}</span>
+                </label>
+              ))}
             </div>
           </div>
-          <div class="bg-gray-50 p-3">
-            <p class="text-sm font-medium mb-2">KI-Erfahrung?</p>
-            <div class="flex flex-wrap gap-3 text-sm">
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_exp" value="viel" class="accent-orange-500" /> Viel</label>
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_exp" value="etwas" class="accent-orange-500" /> Etwas</label>
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_exp" value="wenig" class="accent-orange-500" /> Wenig</label>
+          <div class="bg-gray-50 p-4 rounded-xl">
+            <p class="text-sm font-semibold text-gray-900 mb-3">KI-Erfahrung?</p>
+            <div class="flex flex-wrap gap-3">
+              {['Viel', 'Etwas', 'Wenig'].map((opt) => (
+                <label class="flex items-center gap-2 cursor-pointer text-sm group">
+                  <input type="radio" name="q_exp" value={opt.toLowerCase()} class="w-4 h-4 accent-orange-500" />
+                  <span class="text-gray-600 group-hover:text-gray-900 transition-colors">{opt}</span>
+                </label>
+              ))}
             </div>
           </div>
-          <div class="bg-gray-50 p-3">
-            <p class="text-sm font-medium mb-2">Dein Status?</p>
-            <div class="flex flex-wrap gap-3 text-sm">
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_status" value="selbststaendig" class="accent-orange-500" /> Selbstständig</label>
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_status" value="unternehmer" class="accent-orange-500" /> Unternehmer</label>
-              <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="q_status" value="angestellt" class="accent-orange-500" /> Angestellt</label>
+          <div class="bg-gray-50 p-4 rounded-xl">
+            <p class="text-sm font-semibold text-gray-900 mb-3">Dein Status?</p>
+            <div class="flex flex-wrap gap-3">
+              {['Selbstständig', 'Unternehmer', 'Angestellt'].map((opt) => (
+                <label class="flex items-center gap-2 cursor-pointer text-sm group">
+                  <input type="radio" name="q_status" value={opt.toLowerCase()} class="w-4 h-4 accent-orange-500" />
+                  <span class="text-gray-600 group-hover:text-gray-900 transition-colors">{opt}</span>
+                </label>
+              ))}
             </div>
           </div>
         </div>
 
-        <!-- Optional -->
-        <div class="mb-4">
-          <label class="block text-xs font-medium text-gray-600 mb-1">Noch etwas? (optional)</label>
-          <textarea name="motivation" rows="2" class="w-full px-3 py-2 border border-gray-300 text-sm focus:border-orange-500 focus:outline-none resize-none" placeholder="Was willst du erreichen?"></textarea>
+        <div class="mb-6">
+          <label class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Noch etwas? (optional)</label>
+          <textarea name="motivation" rows="2" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-all resize-none" placeholder="Was willst du erreichen?"></textarea>
         </div>
 
-        <!-- Submit -->
-        <button type="submit" id="submit-btn" class="w-full bg-orange-500 text-white py-3 font-bold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+        <button type="submit" id="submit-btn" class="w-full btn-primary text-white py-4 font-semibold rounded-xl flex items-center justify-center gap-2 group">
           <span id="submit-text">Bewerbung absenden</span>
           <span id="submit-loading" class="hidden">Wird gesendet...</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </button>
-        <p class="text-xs text-gray-400 text-center mt-3">
-          <a href="/datenschutz" class="hover:text-orange-500">Datenschutz</a>
+        <p class="text-xs text-gray-400 text-center mt-4">
+          Mit dem Absenden akzeptierst du unsere <a href="/datenschutz" class="text-orange-500 hover:underline">Datenschutzerklärung</a>
         </p>
       </form>
 
-      <!-- Success -->
-      <div id="success-message" class="hidden bg-green-500 text-white p-6 text-center">
-        <div class="text-3xl mb-2">✓</div>
-        <h3 class="text-xl font-bold mb-2">Bewerbung eingegangen!</h3>
-        <p class="text-sm">Wir melden uns innerhalb von 48h.</p>
+      <div id="success-message" class="hidden bg-gradient-to-br from-green-500 to-green-600 text-white p-8 rounded-2xl text-center shadow-2xl">
+        <div class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Bewerbung eingegangen!</h3>
+        <p class="text-white/80">Wir melden uns innerhalb von 48h.</p>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-400 py-6 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-      <a href="/" class="text-white font-black">SYN<span class="text-orange-500">C</span>LARO</a>
-      <div class="flex gap-4">
-        <a href="/impressum" class="hover:text-white">Impressum</a>
-        <a href="/datenschutz" class="hover:text-white">Datenschutz</a>
-        <a href="/agb" class="hover:text-white">AGB</a>
+  <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+      <a href="/" class="text-white font-black tracking-tight">SYN<span class="gradient-text">C</span>LARO</a>
+      <div class="flex gap-6">
+        <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+        <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+        <a href="/agb" class="hover:text-white transition-colors">AGB</a>
       </div>
-      <span>© {new Date().getFullYear()} Synclaro</span>
+      <span class="text-gray-500">© {new Date().getFullYear()} Synclaro</span>
     </div>
   </footer>
 
-  <!-- TRACKING & FORM SCRIPT -->
+  <!-- SCRIPTS -->
   <script define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
     // User Behavior Tracking
     const sessionId = crypto.randomUUID();
@@ -418,14 +573,12 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
     let scrollDepth = 0;
     let interactions = [];
 
-    // Track scroll depth
     window.addEventListener('scroll', () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const currentScroll = Math.round((window.scrollY / docHeight) * 100);
       if (currentScroll > scrollDepth) scrollDepth = currentScroll;
     });
 
-    // Track clicks
     document.addEventListener('click', (e) => {
       const target = e.target.closest('a, button');
       if (target) {
@@ -438,7 +591,6 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
       }
     });
 
-    // Track section views
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -453,10 +605,8 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
     document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-    // Send tracking data
     async function sendTracking(eventType) {
       if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
-
       try {
         await fetch(`${SUPABASE_URL}/rest/v1/lp_user_behavior`, {
           method: 'POST',
@@ -477,18 +627,13 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
             user_agent: navigator.userAgent
           })
         });
-      } catch (e) {
-        console.error('Tracking error:', e);
-      }
+      } catch (e) {}
     }
 
-    // Send on page unload
     window.addEventListener('beforeunload', () => sendTracking('page_exit'));
-
-    // Send after 30s
     setTimeout(() => sendTracking('engaged'), 30000);
 
-    // Form submission
+    // Form
     const form = document.getElementById('application-form');
     const submitBtn = document.getElementById('submit-btn');
     const submitText = document.getElementById('submit-text');
@@ -497,7 +642,6 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       submitBtn.disabled = true;
       submitText.classList.add('hidden');
       submitLoading.classList.remove('hidden');
@@ -509,21 +653,19 @@ const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
         if (val) questionnaireAnswers[key] = val;
       });
 
-      const data = {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        program: formData.get('program'),
-        questionnaireAnswers,
-        motivation: formData.get('motivation') || null
-      };
-
       try {
         const response = await fetch('/api/lp-application', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify({
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            program: formData.get('program'),
+            questionnaireAnswers,
+            motivation: formData.get('motivation') || null
+          })
         });
 
         if (response.ok) {

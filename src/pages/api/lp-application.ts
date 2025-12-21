@@ -10,8 +10,9 @@ interface LPApplicationFormData {
   company?: string | null;
   position?: string | null;
   program: 'gruppen_coaching' | 'mastermind' | 'beide';
-  questionnaireAnswers: Record<string, string>;
+  questionnaireAnswers: Record<string, unknown>;
   motivation?: string | null;
+  source?: string | null;
 }
 
 const WEBHOOK_URL = 'https://quualle.app.n8n.cloud/webhook/7db9cded-9fef-4e36-a3c5-75c46739789f';
@@ -73,7 +74,7 @@ export const POST: APIRoute = async ({ request }) => {
       program_interest: data.program,
       questionnaire_answers: data.questionnaireAnswers || {},
       motivation: data.motivation || null,
-      source: 'lp_coaching',
+      source: data.source || 'lp_coaching',
       utm_source: utmSource,
       utm_medium: utmMedium,
       utm_campaign: utmCampaign,
@@ -121,7 +122,7 @@ export const POST: APIRoute = async ({ request }) => {
           program: data.program,
           questionnaire_answers: data.questionnaireAnswers,
           motivation: data.motivation,
-          source: 'lp_coaching',
+          source: data.source || 'lp_coaching',
           utm_source: utmSource,
           utm_medium: utmMedium,
           utm_campaign: utmCampaign,

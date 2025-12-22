@@ -45,45 +45,56 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
       <!-- Main Content -->
       <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
-        <!-- Mobile: Side-by-side header with image -->
-        <div class="flex sm:hidden items-center gap-4 mb-6">
-          <div class="flex-1">
-            <div class="mb-3">
-              <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-swiss-orange/40 backdrop-blur-sm">
-                <span class="relative flex h-1.5 w-1.5">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-swiss-orange opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-swiss-orange"></span>
-                </span>
-                <span class="font-mono text-[9px] tracking-[0.2em] text-swiss-orange uppercase">Coaching 2026</span>
+        <!-- Mobile: Optimized for Conversion -->
+        <div class="sm:hidden">
+          <!-- Row 1: Badge + Marco Image -->
+          <div class="flex items-start justify-between gap-3 mb-4">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-swiss-orange/40 backdrop-blur-sm">
+              <span class="relative flex h-1.5 w-1.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-swiss-orange opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-swiss-orange"></span>
               </span>
+              <span class="font-mono text-[9px] tracking-[0.2em] text-swiss-orange uppercase">Coaching 2026</span>
+            </span>
+            <div class="w-16 h-16 flex-shrink-0 relative rounded-full overflow-hidden border-2 border-swiss-orange/40">
+              <img src="/images/marco_new.png" alt="Marco Heer" class="w-full h-full object-cover grayscale-[20%] contrast-[1.1]" />
             </div>
-            <h1 class="text-2xl font-black leading-[0.95] tracking-tight">
-              Ein Mensch.<br/>Ein Computer.<br/>
-              <span class="bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange bg-clip-text text-transparent">Stunden</span>
-              <span class="text-gray-500"> statt Wochen.</span>
-            </h1>
           </div>
-          <div class="w-28 h-28 flex-shrink-0 relative">
-            <div class="absolute -inset-1 border border-swiss-orange/30"></div>
-            <img src="/images/marco_new.png" alt="Marco Heer" class="w-full h-full object-cover grayscale-[20%] contrast-[1.1]" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          </div>
-        </div>
 
-        <!-- Mobile: Subheadline and CTA -->
-        <div class="sm:hidden mb-8">
-          <p class="text-base text-gray-400 mb-6 leading-relaxed">
-            KI ist kein Gadget. Es ist ein Zeitalter, in dem du mit dem richtigen Wissen Dinge erreichst, die vor Jahren undenkbar waren.
-          </p>
+          <!-- Row 2: Large Headline (44px) -->
+          <h1 class="text-[2.75rem] font-black leading-[0.88] tracking-tight mb-5">
+            Ein Mensch.<br/>Ein Computer.<br/>
+            <span class="bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange bg-clip-text text-transparent">Stunden</span>
+            <span class="text-gray-500"> statt Wochen.</span>
+          </h1>
+
+          <!-- Row 3: PRIMARY CTA (before subtext!) -->
           <button
             id="open-modal-hero-mobile"
-            class="group w-full inline-flex items-center justify-center gap-3 bg-swiss-orange text-white font-bold px-6 py-4 text-base overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,79,0,0.5)]"
+            class="group w-full inline-flex items-center justify-center gap-3 bg-swiss-orange text-white font-bold px-6 py-5 text-lg overflow-hidden transition-all duration-300 active:scale-[0.98] shadow-[0_0_30px_rgba(255,79,0,0.3)] mb-4"
           >
             <span>Jetzt bewerben</span>
             <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
+
+          <!-- Row 4: Social Proof + Urgency -->
+          <div class="flex items-center justify-center gap-2 text-sm text-gray-400 mb-5">
+            <div class="flex -space-x-2">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-[10px] font-bold">M</div>
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-[10px] font-bold">S</div>
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-[10px] font-bold">T</div>
+            </div>
+            <span><span class="text-white font-semibold">12 Teilnehmer</span> bereits dabei</span>
+            <span class="text-swiss-orange">•</span>
+            <span class="text-swiss-orange font-semibold">8 Plätze frei</span>
+          </div>
+
+          <!-- Row 5: Subtext (after CTA) -->
+          <p class="text-base text-gray-400 leading-relaxed">
+            KI ist kein Gadget. Es ist ein Zeitalter, in dem du mit dem richtigen Wissen Dinge erreichst, die vor Jahren undenkbar waren.
+          </p>
         </div>
 
         <!-- Desktop Grid -->
@@ -790,6 +801,25 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
 
     <!-- ============================================
+         STICKY MOBILE CTA
+         ============================================ -->
+    <div id="sticky-cta" class="sm:hidden fixed bottom-0 left-0 right-0 z-40 translate-y-full transition-transform duration-300 ease-out">
+      <div class="bg-black/95 backdrop-blur-md border-t border-swiss-orange/30 px-4 py-3 safe-area-padding">
+        <button
+          id="open-modal-sticky"
+          class="w-full bg-swiss-orange text-white font-bold py-4 text-base active:scale-[0.98] transition-transform duration-150 shadow-[0_0_40px_rgba(255,79,0,0.4)] flex items-center justify-center gap-2"
+        >
+          <span>Platz sichern</span>
+          <span class="text-orange-200 text-sm font-normal">(nur 8 frei)</span>
+          <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ============================================
          APPLICATION MODAL
          ============================================ -->
     <div id="application-modal" class="fixed inset-0 z-50 hidden">
@@ -899,9 +929,11 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                   <span id="submit-loading" class="hidden">Wird gesendet...</span>
                 </button>
 
-                <p class="text-[10px] sm:text-xs text-gray-600 text-center">
-                  Mit dem Absenden stimmst du zu, dass wir dich kontaktieren.
-                  <a href="/datenschutz" class="text-swiss-orange hover:underline">Datenschutz</a>
+                <p class="text-[10px] sm:text-xs text-gray-500 text-center flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Deine Daten sind DSGVO-konform geschützt. <a href="/datenschutz" class="text-swiss-orange hover:underline">Datenschutz</a></span>
                 </p>
               </form>
 
@@ -940,11 +972,33 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         'open-modal-hero-mobile',
         'open-modal-agents',
         'open-modal-program',
-        'open-modal-final'
+        'open-modal-final',
+        'open-modal-sticky'
       ].map(id => document.getElementById(id)).filter(Boolean);
+
+      // Sticky CTA visibility
+      const stickyCTA = document.getElementById('sticky-cta');
+      let lastScrollY = 0;
+
+      function updateStickyCTA() {
+        const scrollY = window.scrollY;
+        const heroHeight = window.innerHeight * 0.6;
+        const isModalOpen = !modal?.classList.contains('hidden');
+
+        if (scrollY > heroHeight && !isModalOpen) {
+          stickyCTA?.classList.remove('translate-y-full');
+        } else {
+          stickyCTA?.classList.add('translate-y-full');
+        }
+        lastScrollY = scrollY;
+      }
+
+      window.addEventListener('scroll', updateStickyCTA, { passive: true });
+      updateStickyCTA();
 
       function showModal() {
         modal?.classList.remove('hidden');
+        stickyCTA?.classList.add('translate-y-full'); // Hide sticky when modal opens
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
           modalContent?.classList.remove('scale-95', 'opacity-0');
@@ -1275,11 +1329,50 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       }
 
       /* ============================================
+         REDUCED MOTION & ACCESSIBILITY
+         ============================================ */
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* ============================================
          MOBILE-FIRST RESPONSIVE OVERRIDES
          ============================================ */
 
       /* Base Mobile Styles (< 640px) */
       @media (max-width: 639px) {
+        /* Disable heavy background animations for performance */
+        .animate-orb-float,
+        .animate-orb-float-delayed,
+        .animate-section-glow,
+        .animate-float-particle,
+        .animate-spin-slow,
+        .animate-spin-reverse {
+          animation: none !important;
+        }
+
+        /* Reduce blur for performance */
+        .blur-3xl {
+          filter: blur(40px) !important;
+        }
+
+        .blur-\\[120px\\],
+        .blur-\\[100px\\] {
+          filter: blur(60px) !important;
+        }
+
+        /* Reduce opacity for performance */
+        .bg-gradient-radial {
+          opacity: 0.15 !important;
+        }
         /* Hero Section */
         .hero-headline {
           font-size: 2.5rem !important;

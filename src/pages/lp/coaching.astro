@@ -106,16 +106,16 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             </svg>
           </button>
 
-          <!-- Row 6: Social Proof -->
+          <!-- Row 6: Social Proof (Dynamic) -->
           <div class="flex items-center justify-center gap-2 text-sm text-gray-400">
             <div class="flex -space-x-2">
               <div class="w-7 h-7 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-[10px] font-bold">M</div>
               <div class="w-7 h-7 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-[10px] font-bold">S</div>
               <div class="w-7 h-7 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-[10px] font-bold">T</div>
             </div>
-            <span><span class="text-white font-semibold">12 Teilnehmer</span> bereits dabei</span>
+            <span><span class="text-white font-semibold participant-count">10 Teilnehmer</span> bereits dabei</span>
             <span class="text-swiss-orange">•</span>
-            <span class="text-swiss-orange font-semibold">8 Plätze frei</span>
+            <span class="text-swiss-orange font-semibold spots-free">10 Plätze frei</span>
           </div>
         </div>
 
@@ -190,7 +190,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                 <span class="absolute inset-0 border-2 border-swiss-orange"></span>
               </button>
               <p class="text-sm text-gray-500 mt-4">
-                <span class="text-white font-semibold">12 Teilnehmer</span> bereits dabei • <span class="text-swiss-orange font-semibold">nur 8 Plätze frei</span>
+                <span class="text-white font-semibold participant-count">10 Teilnehmer</span> bereits dabei • <span class="text-swiss-orange font-semibold spots-free">nur 10 Plätze frei</span>
               </p>
             </div>
           </div>
@@ -877,7 +877,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           class="w-full bg-swiss-orange text-white font-bold py-4 text-base active:scale-[0.98] transition-transform duration-150 shadow-[0_0_40px_rgba(255,79,0,0.4)] flex items-center justify-center gap-2"
         >
           <span>Platz sichern</span>
-          <span class="text-orange-200 text-sm font-normal">(nur 8 frei)</span>
+          <span class="text-orange-200 text-sm font-normal spots-free-sticky">(nur 10 frei)</span>
           <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -1026,6 +1026,63 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
          SCRIPTS
          ============================================ -->
     <script>
+      // ============================================
+      // DYNAMIC PARTICIPANT COUNTER
+      // Start: 10 participants, 10 spots free
+      // Every week: +2 participants
+      // After 5 weeks: full (20/20)
+      // ============================================
+      (function() {
+        const START_DATE = new Date('2025-12-23'); // Montag KW52
+        const START_PARTICIPANTS = 10;
+        const TOTAL_SPOTS = 20;
+        const INCREASE_PER_WEEK = 2;
+
+        function getWeeksSinceStart() {
+          const now = new Date();
+          const diffTime = now.getTime() - START_DATE.getTime();
+          const diffDays = diffTime / (1000 * 60 * 60 * 24);
+          return Math.floor(diffDays / 7);
+        }
+
+        function updateCounters() {
+          const weeksPassed = Math.max(0, getWeeksSinceStart());
+          const participants = Math.min(TOTAL_SPOTS, START_PARTICIPANTS + (weeksPassed * INCREASE_PER_WEEK));
+          const spotsFree = Math.max(0, TOTAL_SPOTS - participants);
+
+          // Update all participant count elements
+          document.querySelectorAll('.participant-count').forEach(el => {
+            el.textContent = `${participants} Teilnehmer`;
+          });
+
+          // Update all spots free elements
+          document.querySelectorAll('.spots-free').forEach(el => {
+            if (spotsFree === 0) {
+              el.textContent = 'Ausgebucht!';
+              el.classList.add('text-red-500');
+            } else if (spotsFree <= 3) {
+              el.textContent = `nur ${spotsFree} ${spotsFree === 1 ? 'Platz' : 'Plätze'} frei`;
+            } else {
+              el.textContent = `${spotsFree} Plätze frei`;
+            }
+          });
+
+          // Update sticky CTA
+          document.querySelectorAll('.spots-free-sticky').forEach(el => {
+            if (spotsFree === 0) {
+              el.textContent = '(Ausgebucht!)';
+            } else if (spotsFree <= 3) {
+              el.textContent = `(nur ${spotsFree} frei!)`;
+            } else {
+              el.textContent = `(nur ${spotsFree} frei)`;
+            }
+          });
+        }
+
+        // Run on page load
+        updateCounters();
+      })();
+
       // Modal functionality
       const modal = document.getElementById('application-modal');
       const modalContent = document.getElementById('modal-content');

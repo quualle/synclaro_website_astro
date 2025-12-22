@@ -940,10 +940,10 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                   <input type="tel" name="phone" required class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors text-base" placeholder="+49 123 456789" />
                 </div>
 
-                <!-- Time Commitment -->
+                <!-- Q1: Time Commitment -->
                 <div class="bg-black/50 border border-white/5 p-4 sm:p-6">
                   <p class="text-white font-medium mb-3 sm:mb-4 text-sm sm:text-base">
-                    Bist du bereit, 6 Monate lang 4-6 Stunden pro Woche in deine Weiterbildung zu investieren? *
+                    Wir benötigen für sechs Monate 4-6 Stunden pro Woche deiner Zeit. Kannst du das realistisch investieren? *
                   </p>
                   <div class="flex flex-col sm:flex-row gap-3 sm:gap-6">
                     <label class="flex items-center gap-2 cursor-pointer">
@@ -957,7 +957,48 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                   </div>
                 </div>
 
-                <!-- Goals -->
+                <!-- Q2: Existing Knowledge -->
+                <div class="bg-black/50 border border-white/5 p-4 sm:p-6">
+                  <p class="text-white font-medium mb-3 sm:mb-4 text-sm sm:text-base">
+                    Welche KI-Kenntnisse hast du bereits? (Mehrfachauswahl möglich)
+                  </p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="assistenten" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">KI-Assistenten im Alltag</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="programmierung" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Programmierung mit KI</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="automatisierung" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Workflow-Automatisierung</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="websites" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Website-Erstellung</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="recherche" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Tiefgehende Recherche</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="content" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Content-Erstellung</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="daten" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Datenanalyse</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                      <input type="checkbox" name="q_knowledge" value="keine" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
+                      <span class="text-gray-300 text-sm sm:text-base">Noch keine Erfahrung</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Q3: Goals -->
                 <div class="bg-black/50 border border-white/5 p-4 sm:p-6">
                   <p class="text-white font-medium mb-3 sm:mb-4 text-sm sm:text-base">
                     Was ist dein Hauptziel? *
@@ -980,14 +1021,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                       <span class="text-gray-300 text-sm sm:text-base">Karriere-Boost durch KI-Skills</span>
                     </label>
                   </div>
-                </div>
-
-                <!-- Situation (optional) -->
-                <div>
-                  <label class="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2">
-                    Erzähl kurz von deiner Situation und deinen Plänen (optional)
-                  </label>
-                  <textarea name="motivation" rows="3" class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors resize-none text-base" placeholder="Wo stehst du gerade? Was erhoffst du dir von KI & Automatisierung?"></textarea>
                 </div>
 
                 <!-- Submit -->

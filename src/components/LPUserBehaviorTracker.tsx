@@ -63,8 +63,17 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
     sectionName: string
     timestamp: string
   }>>([])
+  const formFieldsRef = useRef<Array<{
+    fieldName: string
+    fieldType: string
+    action: 'focus' | 'blur' | 'input' | 'filled'
+    valueLength?: number
+    timestamp: string
+  }>>([])
+  const formSubmittedRef = useRef<boolean>(false)
   const webhookSentRef = useRef<boolean>(false)
   const durationIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const lpBehaviorSentRef = useRef<boolean>(false)
 
   // Send webhook for page visit via server-side proxy to avoid CORS
   const sendPageVisitWebhook = useCallback(async () => {
@@ -153,6 +162,54 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
       })
     } catch (error) {
       console.error('[LPTracker] Error sending session update:', error)
+    }
+  }, [pagePath])
+
+  // Send LP behavior data (with form interactions) to lp_user_behavior table
+  const sendLPBehaviorData = useCallback(async (eventType: string = 'session_end') => {
+    if (!sessionRef.current) return
+
+    const session = sessionRef.current
+    const now = new Date()
+    const durationSeconds = Math.floor((now.getTime() - session.entryTime.getTime()) / 1000)
+
+    try {
+      await fetch('/api/lp-behavior', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: session.sessionId,
+          page_path: pagePath,
+          event_type: eventType,
+          scroll_depth: session.maxScrollDepth,
+          time_on_page: durationSeconds,
+          interactions: {
+            clicks: clicksRef.current.map(c => ({
+              element_id: c.elementId,
+              element_type: c.elementType,
+              element_label: c.elementLabel,
+              section_id: c.sectionId,
+              is_cta: c.isCta,
+              timestamp: c.timestamp
+            })),
+            form_fields: formFieldsRef.current.map(f => ({
+              field_name: f.fieldName,
+              field_type: f.fieldType,
+              action: f.action,
+              value_length: f.valueLength,
+              timestamp: f.timestamp
+            })),
+            sections_viewed: Array.from(session.sectionsViewed),
+            form_submitted: formSubmittedRef.current,
+            form_submission_time: formSubmittedRef.current ? new Date().toISOString() : undefined
+          },
+          device_type: getDeviceType(),
+          referrer: document.referrer || null,
+          user_agent: navigator.userAgent
+        })
+      })
+    } catch (error) {
+      console.error('[LPTracker] Error sending LP behavior data:', error)
     }
   }, [pagePath])
 
@@ -300,6 +357,76 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
 
     window.addEventListener('scroll', handleScroll, { passive: true })
 
+    // Track form field interactions
+    const trackFormField = (e: Event, action: 'focus' | 'blur' | 'input') => {
+      const target = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      if (!target.name && !target.id) return // Skip fields without identifiers
+
+      const fieldName = target.name || target.id || 'unknown'
+      const fieldType = target.type || target.tagName.toLowerCase()
+
+      // For 'input' events, only track significant changes (debounced by checking if value changed)
+      if (action === 'input') {
+        const lastField = formFieldsRef.current[formFieldsRef.current.length - 1]
+        if (lastField?.fieldName === fieldName && lastField?.action === 'input') {
+          // Update the last entry instead of adding new one
+          lastField.valueLength = target.value?.length || 0
+          lastField.timestamp = new Date().toISOString()
+          return
+        }
+      }
+
+      formFieldsRef.current.push({
+        fieldName,
+        fieldType,
+        action,
+        valueLength: target.value?.length || 0,
+        timestamp: new Date().toISOString()
+      })
+
+      // If field has content on blur, mark as 'filled'
+      if (action === 'blur' && target.value?.length > 0) {
+        formFieldsRef.current.push({
+          fieldName,
+          fieldType,
+          action: 'filled',
+          valueLength: target.value.length,
+          timestamp: new Date().toISOString()
+        })
+      }
+    }
+
+    const handleFormFocus = (e: FocusEvent) => trackFormField(e, 'focus')
+    const handleFormBlur = (e: FocusEvent) => trackFormField(e, 'blur')
+    const handleFormInput = (e: Event) => trackFormField(e, 'input')
+
+    // Track form submissions
+    const handleFormSubmit = (e: Event) => {
+      formSubmittedRef.current = true
+      // Send LP behavior data immediately on form submit
+      sendLPBehaviorData('form_submit')
+    }
+
+    // Add form listeners to all form elements
+    const setupFormTracking = () => {
+      const forms = document.querySelectorAll('form')
+      const inputs = document.querySelectorAll('input, textarea, select')
+
+      forms.forEach(form => {
+        form.addEventListener('submit', handleFormSubmit)
+      })
+
+      inputs.forEach(input => {
+        input.addEventListener('focus', handleFormFocus)
+        input.addEventListener('blur', handleFormBlur)
+        input.addEventListener('input', handleFormInput)
+      })
+    }
+
+    setupFormTracking()
+    // Re-setup after a delay for dynamically loaded forms
+    setTimeout(setupFormTracking, 2000)
+
     // Update duration periodically
     durationIntervalRef.current = setInterval(() => {
       if (sessionRef.current) {
@@ -313,12 +440,29 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
     // Send session update every 30 seconds
     const updateInterval = setInterval(sendSessionUpdate, 30000)
 
+    // Send LP behavior data every 60 seconds (captures form progress)
+    const lpBehaviorInterval = setInterval(() => {
+      if (formFieldsRef.current.length > 0 || clicksRef.current.length > 0) {
+        sendLPBehaviorData('interaction')
+      }
+    }, 60000)
+
     // Send final update before page unload
     const handleBeforeUnload = () => {
       sendSessionUpdate()
+      sendLPBehaviorData('session_end')
     }
 
     window.addEventListener('beforeunload', handleBeforeUnload)
+
+    // Also track visibility changes (tab switch, minimize)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        sendLPBehaviorData('session_end')
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
 
     // Cleanup
     return () => {
@@ -326,10 +470,22 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
       document.removeEventListener('click', handleClick)
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('beforeunload', handleBeforeUnload)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
       if (durationIntervalRef.current) clearInterval(durationIntervalRef.current)
       clearInterval(updateInterval)
+      clearInterval(lpBehaviorInterval)
+
+      // Remove form listeners
+      document.querySelectorAll('form').forEach(form => {
+        form.removeEventListener('submit', handleFormSubmit)
+      })
+      document.querySelectorAll('input, textarea, select').forEach(input => {
+        input.removeEventListener('focus', handleFormFocus)
+        input.removeEventListener('blur', handleFormBlur)
+        input.removeEventListener('input', handleFormInput)
+      })
     }
-  }, [initializeSession, trackSectionView, sendTrackingData, sendSessionUpdate])
+  }, [initializeSession, trackSectionView, sendTrackingData, sendSessionUpdate, sendLPBehaviorData])
 
   return null // This component doesn't render anything
 }

@@ -249,7 +249,10 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
 
     // Send webhook for page visit
     sendPageVisitWebhook()
-  }, [pagePath, sendTrackingData, sendPageVisitWebhook])
+
+    // Send initial LP behavior data immediately
+    setTimeout(() => sendLPBehaviorData('page_view'), 1000)
+  }, [pagePath, sendTrackingData, sendPageVisitWebhook, sendLPBehaviorData])
 
   // Track section visibility
   const trackSectionView = useCallback((sectionId: string, sectionName: string) => {
@@ -439,17 +442,38 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
     // Send session update every 30 seconds
     const updateInterval = setInterval(sendSessionUpdate, 30000)
 
-    // Send LP behavior data every 60 seconds (captures form progress)
+    // Send LP behavior data every 30 seconds (always, for reliable tracking)
     const lpBehaviorInterval = setInterval(() => {
-      if (formFieldsRef.current.length > 0 || clicksRef.current.length > 0) {
-        sendLPBehaviorData('interaction')
-      }
-    }, 60000)
+      sendLPBehaviorData('heartbeat')
+    }, 30000)
 
-    // Send final update before page unload
+    // Send final update before page unload (use sendBeacon for reliability)
     const handleBeforeUnload = () => {
-      sendSessionUpdate()
-      sendLPBehaviorData('session_end')
+      if (!sessionRef.current) return
+
+      const session = sessionRef.current
+      const now = new Date()
+      const durationSeconds = Math.floor((now.getTime() - session.entryTime.getTime()) / 1000)
+
+      // Use sendBeacon for reliable delivery on page close
+      const data = JSON.stringify({
+        session_id: session.sessionId,
+        page_path: pagePath,
+        event_type: 'session_end',
+        scroll_depth: session.maxScrollDepth,
+        time_on_page: durationSeconds,
+        interactions: {
+          clicks: clicksRef.current,
+          form_fields: formFieldsRef.current,
+          sections_viewed: Array.from(session.sectionsViewed),
+          form_submitted: formSubmittedRef.current
+        },
+        device_type: getDeviceType(),
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent
+      })
+
+      navigator.sendBeacon('/api/lp-behavior', new Blob([data], { type: 'application/json' }))
     }
 
     window.addEventListener('beforeunload', handleBeforeUnload)

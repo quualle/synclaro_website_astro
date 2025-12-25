@@ -73,7 +73,6 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
   const formSubmittedRef = useRef<boolean>(false)
   const webhookSentRef = useRef<boolean>(false)
   const durationIntervalRef = useRef<NodeJS.Timeout | null>(null)
-  const lpBehaviorSentRef = useRef<boolean>(false)
 
   // Send webhook for page visit via server-side proxy to avoid CORS
   const sendPageVisitWebhook = useCallback(async () => {
@@ -396,8 +395,8 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
       }
     }
 
-    const handleFormFocus = (e: FocusEvent) => trackFormField(e, 'focus')
-    const handleFormBlur = (e: FocusEvent) => trackFormField(e, 'blur')
+    const handleFormFocus = (e: Event) => trackFormField(e, 'focus')
+    const handleFormBlur = (e: Event) => trackFormField(e, 'blur')
     const handleFormInput = (e: Event) => trackFormField(e, 'input')
 
     // Track form submissions
@@ -410,7 +409,7 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
     // Add form listeners to all form elements
     const setupFormTracking = () => {
       const forms = document.querySelectorAll('form')
-      const inputs = document.querySelectorAll('input, textarea, select')
+      const inputs = document.querySelectorAll('input, textarea, select') as NodeListOf<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
 
       forms.forEach(form => {
         form.addEventListener('submit', handleFormSubmit)
@@ -479,7 +478,7 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
       document.querySelectorAll('form').forEach(form => {
         form.removeEventListener('submit', handleFormSubmit)
       })
-      document.querySelectorAll('input, textarea, select').forEach(input => {
+      ;(document.querySelectorAll('input, textarea, select') as NodeListOf<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>).forEach(input => {
         input.removeEventListener('focus', handleFormFocus)
         input.removeEventListener('blur', handleFormBlur)
         input.removeEventListener('input', handleFormInput)

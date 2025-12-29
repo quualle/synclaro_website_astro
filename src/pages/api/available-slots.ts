@@ -138,6 +138,40 @@ async function getCalendarEvents(
   return data.items || [];
 }
 
+// Timezone configuration - Europe/Zurich (CET/CEST)
+const TIMEZONE = 'Europe/Zurich';
+
+// Helper: Get timezone offset in minutes for a given date in Europe/Zurich
+function getZurichOffset(date: Date): number {
+  // Create a date string in Zurich timezone and parse it back
+  const zurichStr = date.toLocaleString('en-US', { timeZone: TIMEZONE });
+  const zurichDate = new Date(zurichStr);
+  const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+  return (zurichDate.getTime() - utcDate.getTime()) / 60000;
+}
+
+// Helper: Create a Date object for a specific time in Europe/Zurich
+function createZurichDate(year: number, month: number, day: number, hour: number, minute: number): Date {
+  // Create date in UTC first
+  const utcDate = new Date(Date.UTC(year, month, day, hour, minute, 0, 0));
+  // Get the offset for this date in Zurich
+  const offset = getZurichOffset(utcDate);
+  // Subtract the offset to get the correct UTC time for Zurich local time
+  return new Date(utcDate.getTime() - offset * 60000);
+}
+
+// Helper: Format date as YYYY-MM-DD in Zurich timezone
+function formatDateZurich(date: Date): string {
+  return date.toLocaleDateString('sv-SE', { timeZone: TIMEZONE });
+}
+
+// Helper: Get day of week in Zurich timezone (0=Sunday, 1=Monday, etc.)
+function getDayOfWeekZurich(date: Date): number {
+  const zurichStr = date.toLocaleDateString('en-US', { timeZone: TIMEZONE, weekday: 'short' });
+  const dayMap: Record<string, number> = { 'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6 };
+  return dayMap[zurichStr] ?? 0;
+}
+
 // Generate available time slots
 function generateTimeSlots(
   startDate: Date,
@@ -145,37 +179,39 @@ function generateTimeSlots(
   busyPeriods: Array<{ start: Date; end: Date }>
 ): TimeSlot[] {
   const slots: TimeSlot[] = [];
-  const current = new Date(startDate);
 
   // Slot configuration
   const SLOT_DURATION_MINUTES = 15;
   const START_HOUR = 9;
   const END_HOUR = 17;
 
-  while (current <= endDate) {
-    const dayOfWeek = current.getDay();
+  // Get start date in Zurich timezone
+  const startDateStr = formatDateZurich(startDate);
+  const endDateStr = formatDateZurich(endDate);
+
+  // Parse start date components
+  let [year, month, day] = startDateStr.split('-').map(Number);
+  const [endYear, endMonth, endDay] = endDateStr.split('-').map(Number);
+
+  // Iterate through each day
+  while (year < endYear || (year === endYear && (month < endMonth || (month === endMonth && day <= endDay)))) {
+    // Create a date for this day to check day of week
+    const checkDate = createZurichDate(year, month - 1, day, 12, 0);
+    const dayOfWeek = getDayOfWeekZurich(checkDate);
 
     // Only Monday (1) to Friday (5)
     if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-      const dateStr = current.toISOString().split('T')[0];
+      const dateStr = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
       // Generate slots from 9:00 to 16:45 (last slot that ends by 17:00)
       for (let hour = START_HOUR; hour < END_HOUR; hour++) {
         for (let minute = 0; minute < 60; minute += SLOT_DURATION_MINUTES) {
-          const slotStart = new Date(current);
-          slotStart.setHours(hour, minute, 0, 0);
+          // Create slot times in Zurich timezone
+          const slotStart = createZurichDate(year, month - 1, day, hour, minute);
+          const slotEnd = new Date(slotStart.getTime() + SLOT_DURATION_MINUTES * 60000);
 
-          const slotEnd = new Date(slotStart);
-          slotEnd.setMinutes(slotEnd.getMinutes() + SLOT_DURATION_MINUTES);
-
-          // Skip if slot ends after END_HOUR
-          if (slotEnd.getHours() > END_HOUR ||
-              (slotEnd.getHours() === END_HOUR && slotEnd.getMinutes() > 0)) {
-            continue;
-          }
-
-          // Skip past slots
-          if (slotStart < new Date()) {
+          // Skip past slots (compare with current time)
+          if (slotStart <= new Date()) {
             continue;
           }
 
@@ -197,8 +233,16 @@ function generateTimeSlots(
     }
 
     // Move to next day
-    current.setDate(current.getDate() + 1);
-    current.setHours(0, 0, 0, 0);
+    day++;
+    const daysInMonth = new Date(year, month, 0).getDate();
+    if (day > daysInMonth) {
+      day = 1;
+      month++;
+      if (month > 12) {
+        month = 1;
+        year++;
+      }
+    }
   }
 
   return slots;

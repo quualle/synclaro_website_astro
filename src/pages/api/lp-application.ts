@@ -195,9 +195,9 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Get environment variables - use anon key (RLS allows public inserts)
-    const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-    const supabaseKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+    // Get environment variables - use CRM Supabase (where lp_coaching_applications lives)
+    const supabaseUrl = import.meta.env.CRM_SUPABASE_URL || 'https://xmlrqsyzmnuidjsxghco.supabase.co';
+    const supabaseKey = import.meta.env.CRM_SUPABASE_SERVICE_ROLE_KEY;
 
     if (!supabaseUrl || !supabaseKey) {
       console.error('[LP Application API] Missing Supabase environment variables');

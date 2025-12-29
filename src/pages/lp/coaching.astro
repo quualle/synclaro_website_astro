@@ -1623,8 +1623,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
           if (response.ok && result.success) {
             // Track: Calendar booked
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
+            (window as any).dataLayer = (window as any).dataLayer || [];
+            (window as any).dataLayer.push({
               event: 'calendar_booked',
               application_id: currentApplicationId,
               appointment_datetime: result.appointment.datetime
@@ -1720,8 +1720,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             currentApplicationId = result.id;
 
             // Track: Application submitted
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
+            (window as any).dataLayer = (window as any).dataLayer || [];
+            (window as any).dataLayer.push({
               event: 'apply_submit',
               application_id: result.id
             });
@@ -1730,7 +1730,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             calendarBookingStep?.classList.remove('hidden');
 
             // Track: Calendar view
-            window.dataLayer.push({
+            (window as any).dataLayer.push({
               event: 'calendar_view',
               application_id: result.id
             });

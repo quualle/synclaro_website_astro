@@ -292,13 +292,21 @@ export const GET: APIRoute = async ({ request }) => {
 
     console.log(`[Available Slots] Found ${events.length} calendar events`);
 
-    // Extract busy periods from events
+    // Extract busy periods from events with 15-minute buffer before and after
+    // This ensures a gap between calendar events and bookable slots
+    const BUFFER_MINUTES = 15;
     const busyPeriods = events
       .filter(event => event.start?.dateTime && event.end?.dateTime)
-      .map(event => ({
-        start: new Date(event.start.dateTime!),
-        end: new Date(event.end.dateTime!),
-      }));
+      .map(event => {
+        const eventStart = new Date(event.start.dateTime!);
+        const eventEnd = new Date(event.end.dateTime!);
+        return {
+          // Subtract buffer from start (blocks slot before the event)
+          start: new Date(eventStart.getTime() - BUFFER_MINUTES * 60000),
+          // Add buffer to end (blocks slot after the event)
+          end: new Date(eventEnd.getTime() + BUFFER_MINUTES * 60000),
+        };
+      });
 
     // Generate available slots
     const allSlots = generateTimeSlots(startDate, endDate, busyPeriods);

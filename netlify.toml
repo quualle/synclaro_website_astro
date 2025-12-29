@@ -8,3 +8,10 @@
 [functions]
   directory = ".netlify/functions"
   included_files = [".netlify/functions/**"]
+
+# Redirects
+[[redirects]]
+  from = "/mastermind"
+  to = "/academy/mastermind"
+  status = 301
+  force = true

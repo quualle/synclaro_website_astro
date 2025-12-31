@@ -1,6 +1,7 @@
 ---
 import '../../styles/global.css';
 import LPUserBehaviorTracker from '../../components/LPUserBehaviorTracker';
+import MetaPixelTracker from '../../components/MetaPixelTracker';
 
 const title = "KI-Coaching | Marco Heer | Synclaro";
 const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mit KI und Automatisierung in Stunden schafft, was andere Wochen brauchen.";
@@ -1630,6 +1631,14 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
               appointment_datetime: result.appointment.datetime
             });
 
+            // Meta Pixel: Schedule Event
+            window.dispatchEvent(new CustomEvent('meta_schedule', {
+              detail: {
+                applicationId: currentApplicationId,
+                appointmentDatetime: result.appointment.datetime
+              }
+            }));
+
             // Show confirmation
             calendarBookingStep?.classList.add('hidden');
             bookingConfirmed?.classList.remove('hidden');
@@ -1708,9 +1717,25 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         };
 
         try {
+          // Get tracking data from sessionStorage
+          const sessionId = sessionStorage.getItem('meta_session_id') || sessionStorage.getItem('lp_session_id');
+          const utmSource = sessionStorage.getItem('utm_source');
+          const utmMedium = sessionStorage.getItem('utm_medium');
+          const utmCampaign = sessionStorage.getItem('utm_campaign');
+          const fbclid = sessionStorage.getItem('fbclid');
+
+          const headers: Record<string, string> = {
+            'Content-Type': 'application/json'
+          };
+          if (sessionId) headers['x-session-id'] = sessionId;
+          if (utmSource) headers['x-utm-source'] = utmSource;
+          if (utmMedium) headers['x-utm-medium'] = utmMedium;
+          if (utmCampaign) headers['x-utm-campaign'] = utmCampaign;
+          if (fbclid) headers['x-fbclid'] = fbclid;
+
           const response = await fetch('/api/lp-application', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers,
             body: JSON.stringify(data)
           });
 
@@ -1725,6 +1750,11 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
               event: 'apply_submit',
               application_id: result.id
             });
+
+            // Meta Pixel: Lead Event
+            window.dispatchEvent(new CustomEvent('meta_lead', {
+              detail: { applicationId: result.id }
+            }));
 
             form.classList.add('hidden');
             calendarBookingStep?.classList.remove('hidden');
@@ -2235,5 +2265,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
     <!-- User Behavior Tracking -->
     <LPUserBehaviorTracker pagePath="/lp/coaching" client:load />
+
+    <!-- Meta Pixel Tracking -->
+    <MetaPixelTracker pagePath="/lp/coaching" client:load />
   </body>
 </html>

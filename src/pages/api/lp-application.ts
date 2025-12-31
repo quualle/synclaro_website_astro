@@ -114,8 +114,8 @@ function generateConfirmationEmail(firstName: string, program: string): string {
                               </td>
                               <td style="padding-left: 16px;">
                                 <p style="margin: 0; font-size: 15px; color: #FFFFFF; line-height: 1.5;">
-                                  <strong>Persönliches Gespräch</strong><br>
-                                  <span style="color: #999999;">Wir melden uns in den nächsten Tagen telefonisch bei dir, um alles zu besprechen.</span>
+                                  <strong>Dein Termin wartet</strong><br>
+                                  <span style="color: #999999;">Hast du schon deinen 15-Minuten-Call gebucht? Wähle jetzt deinen Wunschtermin im Kalender.</span>
                                 </p>
                               </td>
                             </tr>
@@ -127,7 +127,7 @@ function generateConfirmationEmail(firstName: string, program: string): string {
                     <!-- Promise Box -->
                     <div style="background-color: #1A1A1A; padding: 24px; border-radius: 8px; text-align: center; border: 1px solid #333333;">
                       <p style="margin: 0; font-size: 15px; color: #CCCCCC; line-height: 1.6;">
-                        📞 <strong style="color: #FFFFFF;">Wir rufen dich an</strong> – in der Regel innerhalb von 48 Stunden.
+                        📅 <strong style="color: #FFFFFF;">Vergiss nicht, deinen Termin zu wählen</strong> – direkt nach der Bewerbung im Kalender.
                       </p>
                     </div>
 
@@ -215,6 +215,9 @@ export const POST: APIRoute = async ({ request }) => {
     const utmMedium = request.headers.get('x-utm-medium') || null;
     const utmCampaign = request.headers.get('x-utm-campaign') || null;
 
+    // Get Facebook Click ID for attribution
+    const fbclid = request.headers.get('x-fbclid') || null;
+
     // Insert into lp_coaching_applications table
     const applicationPayload = {
       first_name: data.firstName,
@@ -230,6 +233,7 @@ export const POST: APIRoute = async ({ request }) => {
       utm_source: utmSource,
       utm_medium: utmMedium,
       utm_campaign: utmCampaign,
+      fbclid: fbclid,
       session_id: sessionId,
       status: 'pending',
     };
@@ -270,7 +274,7 @@ export const POST: APIRoute = async ({ request }) => {
           replyTo: 'marcoheer@synclaro.de',
           subject: `${data.firstName}, deine Bewerbung ist eingegangen`,
           html: emailHtml,
-          text: `Hallo ${data.firstName},\n\ndeine Bewerbung für das ${programNames[data.program] || data.program} ist bei uns eingegangen.\n\nWie geht es weiter?\n1. Wir prüfen deine Bewerbung\n2. Wir melden uns in den nächsten Tagen telefonisch bei dir\n\nWir rufen dich an – in der Regel innerhalb von 48 Stunden.\n\nDu hast Fragen? Antworte einfach auf diese E-Mail.\n\nSynclaro Academy\nKI-Ausbildung für Macher`
+          text: `Hallo ${data.firstName},\n\ndeine Bewerbung für das ${programNames[data.program] || data.program} ist bei uns eingegangen.\n\nWie geht es weiter?\n1. Wir prüfen deine Bewerbung\n2. Wähle deinen Kennenlern-Termin im Kalender\n\nVergiss nicht, deinen Termin direkt nach der Bewerbung zu wählen!\n\nDu hast Fragen? Antworte einfach auf diese E-Mail.\n\nSynclaro Academy\nKI-Ausbildung für Macher`
         });
 
         if (emailError) {
@@ -306,6 +310,8 @@ export const POST: APIRoute = async ({ request }) => {
           utm_source: utmSource,
           utm_medium: utmMedium,
           utm_campaign: utmCampaign,
+          fbclid: fbclid,
+          session_id: sessionId,
           timestamp: new Date().toISOString()
         })
       });

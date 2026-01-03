@@ -122,7 +122,90 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           </button>
 
           <!-- Row 6: Call Info -->
-          <p class="text-center text-xs text-gray-500">Im gemeinsamen 15min Call stellen wir fest ob das Coaching zu dir passt.</p>
+          <p class="text-center text-xs text-gray-500 mb-6">Im gemeinsamen 15min Call stellen wir fest ob das Coaching zu dir passt.</p>
+
+          <!-- Row 7: Mobile Testimonials -->
+          <div class="mt-2">
+            <!-- Header -->
+            <div class="flex items-center justify-center gap-2 mb-3">
+              <div class="flex -space-x-1.5">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-[10px] font-bold border border-black">K</div>
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-[10px] font-bold border border-black">E</div>
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-[10px] font-bold border border-black">D</div>
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-[10px] font-bold border border-black">H</div>
+              </div>
+              <p class="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Stimmen aus dem Coaching</p>
+            </div>
+
+            <!-- Mobile Testimonial Carousel -->
+            <div class="relative bg-white/[0.02] border border-white/10 overflow-hidden" id="testimonial-carousel-mobile">
+              <div class="relative min-h-[220px]">
+                <!-- Mobile Testimonial 1: Karl -->
+                <div class="testimonial-slide-mobile absolute inset-0 p-4 transition-all duration-500 opacity-100" data-index="0">
+                  <p class="text-xs text-gray-300 leading-relaxed mb-3 italic">
+                    „Es ist unglaublich, wie Claude Code meinen Alltag an Stellen, die ich vorher nicht kannte, jetzt mit Automatisierungen, aber auch dem Einsatz von KI erleichtert. Ich dachte immer, man könnte hier nur mit ChatGPT mal ein Gespräch hier oder da führen. Mir war aber nie klar, dass KI wirklich so eine aktive Rolle in meiner Firma spielen könnte und dabei echte Aufgaben übernimmt, wie sie vorher nur von Mitarbeitern getätigt werden konnten."
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center font-bold text-[10px]">K</div>
+                    <div>
+                      <p class="font-semibold text-white text-xs">Karl</p>
+                      <p class="text-[10px] text-gray-500">Spenglerei im Süden Münchens</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mobile Testimonial 2: Evelyn -->
+                <div class="testimonial-slide-mobile absolute inset-0 p-4 transition-all duration-500 opacity-0 translate-x-4" data-index="1">
+                  <p class="text-xs text-gray-300 leading-relaxed mb-3 italic">
+                    „Du bist der Erste, der vernünftig mit mir kommuniziert hat. Ich bin zwar erst seit ein paar Stunden im Coaching, kann aber jetzt schon ein mir sehr wichtiges privates Projekt mindestens zehn Mal schneller und auch um ein Vielfaches besser erledigen. Der Möbel-Design-Vertrieb meines Mannes profitiert auch bereits von den ersten gebauten Automatisierungen in seinem Geschäft."
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-[10px]">E</div>
+                    <div>
+                      <p class="font-semibold text-white text-xs">Evelyn</p>
+                      <p class="text-[10px] text-gray-500">Selbstständig, Baden-Württemberg</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mobile Testimonial 3: Daniela -->
+                <div class="testimonial-slide-mobile absolute inset-0 p-4 transition-all duration-500 opacity-0 translate-x-4" data-index="2">
+                  <p class="text-xs text-gray-300 leading-relaxed mb-3 italic">
+                    „Es ist wirklich unglaublich, dass ich hier vor meinem Rechner sitze und KI für mich auf mein ERP zugreift, Daten analysiert, von denen ich gar nicht wusste, dass ich sie hatte. Rechnungen und Zahlungserinnerungen schreibt und rausschickt und mit mir diskutiert, welche weitere Automatisierungsstrategie wir in den nächsten Wochen für meinen Betrieb fahren sollten. Vielen Dank."
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold text-[10px]">D</div>
+                    <div>
+                      <p class="font-semibold text-white text-xs">Daniela</p>
+                      <p class="text-[10px] text-gray-500">Holzbau-Geschäftsführerin, südl. Baden-Württemberg</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mobile Testimonial 4: Holger -->
+                <div class="testimonial-slide-mobile absolute inset-0 p-4 transition-all duration-500 opacity-0 translate-x-4" data-index="3">
+                  <p class="text-xs text-gray-300 leading-relaxed mb-3 italic">
+                    „Ich hatte schon vor dem Gruppencoaching mit Marco im Rahmen eines Done-For-You-Services zusammengearbeitet – damals eine umfassende KI-Integration mit VoiceBot, die meinen Ingenieuren seit Wochen hilft, ihren Job besser zu machen. Das Gruppencoaching trägt jetzt massiv dazu bei, dass ich so etwas in Zukunft einfach autonom selber machen kann. Das Ganze erreicht einen Tiefgang, den ich mir im Traum nicht hätte ausmalen können."
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center font-bold text-[10px]">H</div>
+                    <div>
+                      <p class="font-semibold text-white text-xs">Holger</p>
+                      <p class="text-[10px] text-gray-500">Bauunternehmen-GF, Nordrhein-Westfalen</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Progress Dots -->
+              <div class="flex justify-center gap-1.5 pb-3">
+                <button class="testimonial-dot-mobile w-1.5 h-1.5 rounded-full bg-swiss-orange transition-all duration-300" data-index="0"></button>
+                <button class="testimonial-dot-mobile w-1.5 h-1.5 rounded-full bg-white/20 transition-all duration-300" data-index="1"></button>
+                <button class="testimonial-dot-mobile w-1.5 h-1.5 rounded-full bg-white/20 transition-all duration-300" data-index="2"></button>
+                <button class="testimonial-dot-mobile w-1.5 h-1.5 rounded-full bg-white/20 transition-all duration-300" data-index="3"></button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Desktop Grid -->
@@ -199,37 +282,131 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             </div>
           </div>
 
-          <!-- Right: Marco Image -->
-          <div class="order-1 lg:order-2 relative opacity-0 animate-hero-fade-in" style="animation-delay: 0.4s;">
-            <!-- Decorative Frame -->
-            <div class="absolute -inset-4 border border-swiss-orange/20 -z-10 animate-frame-pulse"></div>
-            <div class="absolute -inset-8 border border-swiss-orange/10 -z-20"></div>
+          <!-- Right: Marco Image + Testimonials -->
+          <div class="order-1 lg:order-2 relative opacity-0 animate-hero-fade-in flex flex-col gap-6" style="animation-delay: 0.4s;">
 
-            <!-- Corner Accents -->
-            <div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-swiss-orange"></div>
-            <div class="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-swiss-orange"></div>
-            <div class="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-swiss-orange"></div>
-            <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-swiss-orange"></div>
+            <!-- Image Container (Reduced Height) -->
+            <div class="relative">
+              <!-- Decorative Frame -->
+              <div class="absolute -inset-3 border border-swiss-orange/20 -z-10 animate-frame-pulse"></div>
 
-            <!-- Image Container -->
-            <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-black">
-              <img
-                src="/images/marco_new.png"
-                alt="Marco Heer"
-                class="w-full h-auto object-cover grayscale-[20%] contrast-[1.1]"
-              />
-              <!-- Gradient Overlay -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-              <div class="absolute inset-0 bg-gradient-to-r from-swiss-orange/10 to-transparent mix-blend-overlay"></div>
+              <!-- Corner Accents -->
+              <div class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-swiss-orange"></div>
+              <div class="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-swiss-orange"></div>
+              <div class="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-swiss-orange"></div>
+              <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-swiss-orange"></div>
 
-              <!-- Name Tag -->
-              <div class="absolute bottom-6 left-6 right-6">
-                <div class="flex items-center gap-4 bg-black/80 backdrop-blur-sm border border-white/10 p-4">
-                  <div class="w-2 h-12 bg-swiss-orange"></div>
-                  <div>
-                    <p class="font-black text-2xl">Marco Heer</p>
-                    <p class="text-gray-400 font-mono text-sm">Unternehmer, Ingenieur und Coach</p>
+              <!-- Image -->
+              <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-black max-h-[320px]">
+                <img
+                  src="/images/marco_new.png"
+                  alt="Marco Heer"
+                  class="w-full h-auto object-cover object-top grayscale-[20%] contrast-[1.1]"
+                />
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-swiss-orange/10 to-transparent mix-blend-overlay"></div>
+
+                <!-- Name Tag -->
+                <div class="absolute bottom-4 left-4 right-4">
+                  <div class="flex items-center gap-3 bg-black/80 backdrop-blur-sm border border-white/10 p-3">
+                    <div class="w-1.5 h-10 bg-swiss-orange"></div>
+                    <div>
+                      <p class="font-black text-xl">Marco Heer</p>
+                      <p class="text-gray-400 font-mono text-xs">Unternehmer, Ingenieur und Coach</p>
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="relative opacity-0 animate-hero-fade-in" style="animation-delay: 0.8s;">
+              <!-- Header -->
+              <div class="flex items-center gap-3 mb-4">
+                <div class="flex -space-x-2">
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-xs font-bold border-2 border-black">K</div>
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-xs font-bold border-2 border-black">E</div>
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-xs font-bold border-2 border-black">D</div>
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-xs font-bold border-2 border-black">H</div>
+                </div>
+                <p class="text-xs font-mono text-gray-500 uppercase tracking-wider">Stimmen aus dem Coaching</p>
+              </div>
+
+              <!-- Testimonial Carousel -->
+              <div class="relative bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 backdrop-blur-sm overflow-hidden" id="testimonial-carousel">
+                <!-- Quote Icon -->
+                <div class="absolute top-4 right-4 text-swiss-orange/20">
+                  <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+
+                <!-- Testimonials Container -->
+                <div class="relative min-h-[200px]">
+                  <!-- Testimonial 1: Karl -->
+                  <div class="testimonial-slide absolute inset-0 p-5 transition-all duration-700 opacity-100" data-index="0">
+                    <p class="text-sm text-gray-300 leading-relaxed mb-4 italic">
+                      „Es ist unglaublich, wie Claude Code meinen Alltag an Stellen, die ich vorher nicht kannte, jetzt mit Automatisierungen erleichtert. Ich dachte immer, man könnte hier nur mit ChatGPT mal ein Gespräch führen. Mir war nie klar, dass KI wirklich so eine aktive Rolle in meiner Firma spielen könnte und dabei echte Aufgaben übernimmt, wie sie vorher nur von Mitarbeitern getätigt werden konnten."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center font-bold text-sm">K</div>
+                      <div>
+                        <p class="font-semibold text-white text-sm">Karl</p>
+                        <p class="text-xs text-gray-500">Spenglerei im Süden Münchens</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Testimonial 2: Evelyn -->
+                  <div class="testimonial-slide absolute inset-0 p-5 transition-all duration-700 opacity-0 translate-x-4" data-index="1">
+                    <p class="text-sm text-gray-300 leading-relaxed mb-4 italic">
+                      „Du bist der Erste, der vernünftig mit mir kommuniziert hat. Ich bin zwar erst seit ein paar Stunden im Coaching, kann aber jetzt schon ein mir sehr wichtiges privates Projekt mindestens zehn Mal schneller und auch um ein Vielfaches besser erledigen. Der Möbel-Design-Vertrieb meines Mannes profitiert auch bereits von den ersten gebauten Automatisierungen."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold text-sm">E</div>
+                      <div>
+                        <p class="font-semibold text-white text-sm">Evelyn</p>
+                        <p class="text-xs text-gray-500">Selbstständig, Baden-Württemberg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Testimonial 3: Daniela -->
+                  <div class="testimonial-slide absolute inset-0 p-5 transition-all duration-700 opacity-0 translate-x-4" data-index="2">
+                    <p class="text-sm text-gray-300 leading-relaxed mb-4 italic">
+                      „Es ist wirklich unglaublich, dass ich hier vor meinem Rechner sitze und KI für mich auf mein ERP zugreift, Daten analysiert, von denen ich gar nicht wusste, dass ich sie hatte. Rechnungen und Zahlungserinnerungen schreibt und rausschickt und mit mir diskutiert, welche weitere Automatisierungsstrategie wir in den nächsten Wochen für meinen Betrieb fahren sollten. Vielen Dank."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold text-sm">D</div>
+                      <div>
+                        <p class="font-semibold text-white text-sm">Daniela</p>
+                        <p class="text-xs text-gray-500">Holzbau-Geschäftsführerin, südl. Baden-Württemberg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Testimonial 4: Holger -->
+                  <div class="testimonial-slide absolute inset-0 p-5 transition-all duration-700 opacity-0 translate-x-4" data-index="3">
+                    <p class="text-sm text-gray-300 leading-relaxed mb-4 italic">
+                      „Ich hatte schon vor dem Gruppencoaching mit Marco im Rahmen eines Done-For-You-Services zusammengearbeitet – damals eine umfassende KI-Integration mit VoiceBot, die meinen Ingenieuren seit Wochen hilft, ihren Job besser zu machen. Das Gruppencoaching trägt jetzt massiv dazu bei, dass ich so etwas in Zukunft autonom selber machen kann. Das Ganze erreicht einen Tiefgang, den ich mir im Traum nicht hätte ausmalen können."
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center font-bold text-sm">H</div>
+                      <div>
+                        <p class="font-semibold text-white text-sm">Holger</p>
+                        <p class="text-xs text-gray-500">Bauunternehmen-GF, Nordrhein-Westfalen</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Progress Dots -->
+                <div class="flex justify-center gap-2 pb-4">
+                  <button class="testimonial-dot w-2 h-2 rounded-full bg-swiss-orange transition-all duration-300" data-index="0"></button>
+                  <button class="testimonial-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300" data-index="1"></button>
+                  <button class="testimonial-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300" data-index="2"></button>
+                  <button class="testimonial-dot w-2 h-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300" data-index="3"></button>
                 </div>
               </div>
             </div>
@@ -1349,6 +1526,136 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
         // Run on page load
         updateCounters();
+      })();
+
+      // ============================================
+      // TESTIMONIAL CAROUSEL
+      // Auto-rotates every 6 seconds with fade animation
+      // ============================================
+      (function() {
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentIndex = 0;
+        let intervalId = null;
+        const INTERVAL_MS = 6000; // 6 seconds per testimonial
+
+        function showSlide(index) {
+          // Hide all slides
+          slides.forEach((slide, i) => {
+            if (i === index) {
+              slide.classList.remove('opacity-0', 'translate-x-4', '-translate-x-4');
+              slide.classList.add('opacity-100');
+            } else {
+              slide.classList.remove('opacity-100');
+              slide.classList.add('opacity-0', i < index ? '-translate-x-4' : 'translate-x-4');
+            }
+          });
+
+          // Update dots
+          dots.forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.remove('bg-white/20');
+              dot.classList.add('bg-swiss-orange');
+            } else {
+              dot.classList.remove('bg-swiss-orange');
+              dot.classList.add('bg-white/20');
+            }
+          });
+
+          currentIndex = index;
+        }
+
+        function nextSlide() {
+          const nextIndex = (currentIndex + 1) % slides.length;
+          showSlide(nextIndex);
+        }
+
+        function startAutoRotate() {
+          if (intervalId) clearInterval(intervalId);
+          intervalId = setInterval(nextSlide, INTERVAL_MS);
+        }
+
+        function stopAutoRotate() {
+          if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+          }
+        }
+
+        // Click handlers for dots
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            showSlide(index);
+            // Reset the auto-rotate timer
+            startAutoRotate();
+          });
+        });
+
+        // Pause on hover
+        const carousel = document.getElementById('testimonial-carousel');
+        if (carousel) {
+          carousel.addEventListener('mouseenter', stopAutoRotate);
+          carousel.addEventListener('mouseleave', startAutoRotate);
+        }
+
+        // Start auto-rotation
+        startAutoRotate();
+      })();
+
+      // ============================================
+      // MOBILE TESTIMONIAL CAROUSEL
+      // Same logic but for mobile version
+      // ============================================
+      (function() {
+        const slides = document.querySelectorAll('.testimonial-slide-mobile');
+        const dots = document.querySelectorAll('.testimonial-dot-mobile');
+        let currentIndex = 0;
+        let intervalId = null;
+        const INTERVAL_MS = 5000; // 5 seconds per testimonial (slightly faster for mobile)
+
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            if (i === index) {
+              slide.classList.remove('opacity-0', 'translate-x-4', '-translate-x-4');
+              slide.classList.add('opacity-100');
+            } else {
+              slide.classList.remove('opacity-100');
+              slide.classList.add('opacity-0', i < index ? '-translate-x-4' : 'translate-x-4');
+            }
+          });
+
+          dots.forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.remove('bg-white/20');
+              dot.classList.add('bg-swiss-orange');
+            } else {
+              dot.classList.remove('bg-swiss-orange');
+              dot.classList.add('bg-white/20');
+            }
+          });
+
+          currentIndex = index;
+        }
+
+        function nextSlide() {
+          const nextIndex = (currentIndex + 1) % slides.length;
+          showSlide(nextIndex);
+        }
+
+        function startAutoRotate() {
+          if (intervalId) clearInterval(intervalId);
+          intervalId = setInterval(nextSlide, INTERVAL_MS);
+        }
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            showSlide(index);
+            startAutoRotate();
+          });
+        });
+
+        // Start auto-rotation for mobile
+        startAutoRotate();
       })();
 
       // Modal functionality

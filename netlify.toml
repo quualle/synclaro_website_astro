@@ -15,3 +15,22 @@
   to = "/academy/mastermind"
   status = 301
   force = true
+
+# Social Media Bio Links (Tracking)
+[[redirects]]
+  from = "/ig"
+  to = "/lp/coaching?utm_source=instagram&utm_medium=bio&utm_campaign=organic"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tt"
+  to = "/lp/coaching?utm_source=tiktok&utm_medium=bio&utm_campaign=organic"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mc"
+  to = "/lp/coaching?utm_source=manychat&utm_medium=dm&utm_campaign=generic"
+  status = 301
+  force = true

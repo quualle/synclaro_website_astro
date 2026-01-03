@@ -51,6 +51,34 @@ async function hashValue(value: string): Promise<string> {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
+// Check if this is internal/test traffic that should not be tracked
+function isInternalTraffic(): boolean {
+  if (typeof window === 'undefined') return false
+
+  const urlParams = new URLSearchParams(window.location.search)
+
+  // Check URL params first - allow toggling
+  if (urlParams.get('notrack') === '1' || urlParams.get('internal') === '1') {
+    localStorage.setItem('synclaro_notrack', '1')
+    console.log('[MetaPixel] Internal traffic flag SET - tracking disabled')
+    return true
+  }
+
+  if (urlParams.get('track') === '1') {
+    localStorage.removeItem('synclaro_notrack')
+    console.log('[MetaPixel] Internal traffic flag REMOVED - tracking enabled')
+    return false
+  }
+
+  // Check persistent flag
+  if (localStorage.getItem('synclaro_notrack') === '1') {
+    console.log('[MetaPixel] Internal traffic detected - tracking disabled')
+    return true
+  }
+
+  return false
+}
+
 export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
   const initializedRef = useRef(false)
   const sessionIdRef = useRef<string | null>(null)
@@ -137,6 +165,13 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
   // Initialize Meta Pixel
   useEffect(() => {
     if (initializedRef.current || typeof window === 'undefined') return
+
+    // Skip ALL tracking for internal traffic
+    if (isInternalTraffic()) {
+      initializedRef.current = true
+      return // Don't initialize pixel, don't track anything
+    }
+
     initializedRef.current = true
 
     // Initialize session

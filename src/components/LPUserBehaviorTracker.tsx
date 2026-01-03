@@ -48,6 +48,34 @@ function getBrowser(): string {
   return 'Other'
 }
 
+// Check if this is internal/test traffic that should not be tracked
+function isInternalTraffic(): boolean {
+  if (typeof window === 'undefined') return false
+
+  const urlParams = new URLSearchParams(window.location.search)
+
+  // Check URL params first - allow toggling
+  if (urlParams.get('notrack') === '1' || urlParams.get('internal') === '1') {
+    localStorage.setItem('synclaro_notrack', '1')
+    console.log('[LPTracker] Internal traffic flag SET - tracking disabled')
+    return true
+  }
+
+  if (urlParams.get('track') === '1') {
+    localStorage.removeItem('synclaro_notrack')
+    console.log('[LPTracker] Internal traffic flag REMOVED - tracking enabled')
+    return false
+  }
+
+  // Check persistent flag
+  if (localStorage.getItem('synclaro_notrack') === '1') {
+    console.log('[LPTracker] Internal traffic detected - tracking disabled')
+    return true
+  }
+
+  return false
+}
+
 export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTrackerProps) {
   const sessionRef = useRef<SessionData | null>(null)
   const clicksRef = useRef<Array<{
@@ -275,6 +303,11 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
 
   // Initialize tracking on mount
   useEffect(() => {
+    // Skip ALL tracking for internal traffic
+    if (isInternalTraffic()) {
+      return // Don't initialize session, don't track anything
+    }
+
     initializeSession()
 
     // Setup intersection observer for sections

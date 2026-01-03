@@ -37,37 +37,25 @@ const testimonials = [
   },
 ];
 
-// 5-Day Program
+// 3-Day Retreat Program (plus 4x120min Online-Vorbereitung)
 const phases = [
   {
     id: 1,
-    title: 'TAG 1 – Verstehen, was geht',
+    title: 'TAG 1 – Verstehen & Analysieren',
     main: 'Die Welt der KI verstehen.',
-    detail: 'Sie sehen, was modernste Konzerne und Silicon Valley-Unternehmen bereits mit KI und Automatisierung realisieren. Nach diesem Tag wissen Sie, wo die Welt mit KI wirklich steht – und was möglich ist.',
+    detail: 'Sie sehen, was modernste Konzerne bereits mit KI realisieren. Dann: Detaillierte Analyse Ihrer individuellen Unternehmenssituation – wo liegen die Potenziale?',
   },
   {
     id: 2,
-    title: 'TAG 2 – Status-Quo-Analyse',
-    main: 'Ihre Firma unter der Lupe.',
-    detail: 'Detaillierte Analyse Ihrer individuellen Unternehmenssituation. Wo liegen die Probleme? Wo verlieren Sie Mitarbeitermotivation, Geld und Zeit?',
+    title: 'TAG 2 – Strategie & Befähigung',
+    main: 'Strategisches KI-Wissen.',
+    detail: 'Sie erhalten das strategische Wissen für Ihre KI-Transformation: Anbieter, Tools, Wissensmanagement. In Einzel-Sessions entwickeln Sie Ihre individuelle Strategie.',
   },
   {
     id: 3,
-    title: 'TAG 3 – Grundlagen-Befähigung',
-    main: 'Strategisches KI-Wissen.',
-    detail: 'Sie erhalten das strategische Wissen für Ihre KI-Transformation: Anbieter, Tools, Wissensmanagement und Implementierung.',
-  },
-  {
-    id: 4,
-    title: 'TAG 4 – Fahrplanaufstellung',
-    main: 'Ihr individueller KI-Fahrplan.',
-    detail: 'In Einzel-Sessions mit Marco und Gruppendiskussionen entwickeln Sie Ihre individuelle Strategie. Sie bauen ein Company GPT – ein Wissensmanagement-System.',
-  },
-  {
-    id: 5,
-    title: 'TAG 5 – Finalisierung',
+    title: 'TAG 3 – Fahrplan & Umsetzung',
     main: 'Ihr KI-Fahrplan fertig.',
-    detail: 'Sie verlassen das Retreat mit Ihrem individuellen KI-Fahrplan, dem nötigen Wissen und konkreten nächsten Schritten.',
+    detail: 'Sie verlassen das Retreat mit Ihrem individuellen KI-Fahrplan, dem nötigen Wissen und konkreten nächsten Schritten für die Umsetzung.',
   },
 ];
 
@@ -140,7 +128,7 @@ const valueProps = [
 
         <p class="text-gray-400 text-sm mt-8 italic flex items-center justify-center gap-2">
           <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          10 Plätze. 27. – 29. Februar 2025. Vorbereitende Online-Events inklusive.
+          10 Plätze. 25. – 27. Februar 2026. 4×120min Online-Vorbereitung inklusive.
         </p>
       </div>
     </div>
@@ -361,11 +349,11 @@ const valueProps = [
           BEWERBUNG
         </span>
         <h2 class="text-4xl sm:text-5xl font-black text-white mb-4">
-          Bewerbung für <span class="text-swiss-orange">Q1 2025</span>
+          Bewerbung für <span class="text-swiss-orange">Q1 2026</span>
         </h2>
         <p class="text-gray-400 flex items-center justify-center gap-2">
           <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          27. – 29. Februar 2025 • 10 Plätze • Vorbereitende Online-Events
+          25. – 27. Februar 2026 • 4×120min Online-Vorbereitung • 10 Plätze
         </p>
       </div>
 
@@ -541,7 +529,7 @@ const valueProps = [
         </h2>
         <p class="text-xl text-gray-400 mb-10 flex items-center justify-center gap-3">
           <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          10 Plätze • 27. – 29. Februar 2025 • Vorbereitende Online-Events inklusive
+          10 Plätze • 25. – 27. Februar 2026 • 4×120min Online-Vorbereitung inklusive
         </p>
         <a
           href="#bewerbung"
@@ -562,7 +550,7 @@ const valueProps = [
             <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            5 intensive Tage
+            3 Tage Retreat
           </span>
           <span class="flex items-center gap-2">
             <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -595,7 +583,7 @@ const valueProps = [
       email: formData.get('email'),
       company: formData.get('company'),
       revenue: position, // Use position as revenue placeholder since form doesn't have revenue field
-      goals: `Herausforderungen: ${currentChallenges}\n\nZiele: ${goals}\n\nSeminar: Q1 2025 (25.02.-01.03.2025)`
+      goals: `Herausforderungen: ${currentChallenges}\n\nZiele: ${goals}\n\nSeminar: Q1 2026 (25.-27.02.2026)`
     };
 
     try {
@@ -608,7 +596,7 @@ const valueProps = [
       });
 
       if (response.ok) {
-        alert('Vielen Dank für Ihre Bewerbung! Wir melden uns innerhalb von 48 Stunden bei Ihnen.');
+        alert('Vielen Dank für Ihre Bewerbung! Buchen Sie jetzt Ihren Kennenlern-Call.');
         form.reset();
       } else {
         throw new Error('Server error');

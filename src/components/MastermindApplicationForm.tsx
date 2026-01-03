@@ -40,7 +40,7 @@ export default function MastermindApplicationForm() {
         },
         body: JSON.stringify({
           ...formData,
-          seminarDate: 'Q1 2026 (25.02.-01.03.2025)'
+          seminarDate: 'Q1 2026 (25.-27.02.2026)'
         })
       });
 
@@ -79,14 +79,14 @@ export default function MastermindApplicationForm() {
           <h3 className="text-3xl font-black mb-4">Bewerbung eingegangen!</h3>
           <p className="text-gray-600 mb-6">
             Vielen Dank für Ihre Bewerbung zum Mastermind-Retreat.
-            Wir prüfen Ihre Bewerbung und melden uns innerhalb von <strong className="text-black">48 Stunden</strong> bei Ihnen zurück.
+            Buchen Sie jetzt Ihren Kennenlern-Call, um den nächsten Schritt zu gehen.
           </p>
           <div className="bg-gray-50 p-6 text-left mb-6">
             <h4 className="font-bold mb-3">Wie geht es weiter?</h4>
             <ol className="space-y-2 text-gray-600">
               <li className="flex items-start gap-2">
                 <span className="text-swiss-orange font-bold">1.</span>
-                <span>Wir prüfen Ihre Bewerbung und melden uns per E-Mail</span>
+                <span>Wir prüfen Ihre Bewerbung</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-swiss-orange font-bold">2.</span>
@@ -115,7 +115,7 @@ export default function MastermindApplicationForm() {
         <h3 className="text-2xl font-black mb-2">Ihre Bewerbung</h3>
         <p className="text-gray-600">
           Füllen Sie das Formular aus, um sich für das Mastermind-Retreat zu bewerben.
-          Wir melden uns innerhalb von 48 Stunden bei Ihnen.
+          Wählen Sie direkt Ihren Wunschtermin.
         </p>
       </div>
 

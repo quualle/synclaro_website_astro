@@ -1536,10 +1536,10 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         const slides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.testimonial-dot');
         let currentIndex = 0;
-        let intervalId = null;
+        let intervalId: number | null = null;
         const INTERVAL_MS = 6000; // 6 seconds per testimonial
 
-        function showSlide(index) {
+        function showSlide(index: number) {
           // Hide all slides
           slides.forEach((slide, i) => {
             if (i === index) {
@@ -1610,10 +1610,10 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         const slides = document.querySelectorAll('.testimonial-slide-mobile');
         const dots = document.querySelectorAll('.testimonial-dot-mobile');
         let currentIndex = 0;
-        let intervalId = null;
+        let intervalId: number | null = null;
         const INTERVAL_MS = 5000; // 5 seconds per testimonial (slightly faster for mobile)
 
-        function showSlide(index) {
+        function showSlide(index: number) {
           slides.forEach((slide, i) => {
             if (i === index) {
               slide.classList.remove('opacity-0', 'translate-x-4', '-translate-x-4');

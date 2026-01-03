@@ -1571,13 +1571,13 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         }
 
         function startAutoRotate() {
-          if (intervalId) clearInterval(intervalId);
-          intervalId = setInterval(nextSlide, INTERVAL_MS);
+          if (intervalId) window.clearInterval(intervalId);
+          intervalId = window.setInterval(nextSlide, INTERVAL_MS);
         }
 
         function stopAutoRotate() {
           if (intervalId) {
-            clearInterval(intervalId);
+            window.clearInterval(intervalId);
             intervalId = null;
           }
         }
@@ -1643,8 +1643,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         }
 
         function startAutoRotate() {
-          if (intervalId) clearInterval(intervalId);
-          intervalId = setInterval(nextSlide, INTERVAL_MS);
+          if (intervalId) window.clearInterval(intervalId);
+          intervalId = window.setInterval(nextSlide, INTERVAL_MS);
         }
 
         dots.forEach((dot, index) => {

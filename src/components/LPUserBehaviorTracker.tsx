@@ -442,6 +442,34 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
       sendLPBehaviorData('form_submit')
     }
 
+    // Track multi-step form progress
+    const handleFormStepProgress = (e: CustomEvent) => {
+      const { step, stepLabel, action, totalSteps, filledFieldsCount, filledFields } = e.detail || {}
+
+      // Add step progress to form fields tracking
+      formFieldsRef.current.push({
+        fieldName: `step_${step}_${action}`,
+        fieldType: 'form_step',
+        action: action === 'complete' ? 'filled' : action === 'abandon' ? 'blur' : 'focus',
+        valueLength: filledFieldsCount || 0,
+        timestamp: new Date().toISOString()
+      })
+
+      // Send immediate update on step abandon (user left form)
+      if (action === 'abandon') {
+        sendLPBehaviorData('form_abandon')
+      }
+
+      // Send update on step complete (for tracking conversion funnel)
+      if (action === 'complete' && step === totalSteps) {
+        // This is the final step before submit - track separately
+        sendLPBehaviorData('form_step_complete')
+      }
+    }
+
+    // Listen for form step progress events
+    window.addEventListener('form_step_progress' as any, handleFormStepProgress)
+
     // Add form listeners to all form elements
     const setupFormTracking = () => {
       const forms = document.querySelectorAll('form')
@@ -527,6 +555,7 @@ export default function LPUserBehaviorTracker({ pagePath }: LPUserBehaviorTracke
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('beforeunload', handleBeforeUnload)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('form_step_progress' as any, handleFormStepProgress)
       if (durationIntervalRef.current) clearInterval(durationIntervalRef.current)
       clearInterval(updateInterval)
       clearInterval(lpBehaviorInterval)

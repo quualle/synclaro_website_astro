@@ -1311,148 +1311,291 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             </button>
 
             <!-- Form Content -->
-            <div class="p-5 sm:p-8 lg:p-12 modal-form-mobile safe-area-padding">
-              <div class="mb-6 sm:mb-8">
-                <span class="inline-block px-3 py-1 bg-swiss-orange/10 text-swiss-orange font-mono text-[10px] sm:text-xs tracking-widest mb-3 sm:mb-4">BEWERBUNG</span>
-                <h3 class="text-2xl sm:text-3xl font-black mb-2">Gruppen-Coaching</h3>
-                <p class="text-gray-400 text-sm sm:text-base">Bewirb dich und wähle direkt deinen Kennenlern-Termin (15 Min).</p>
+            <div class="p-6 sm:p-8 lg:p-10 modal-form-mobile safe-area-padding flex flex-col h-full sm:h-auto">
+
+              <!-- Trust Header (Always visible) -->
+              <div class="mb-6 sm:mb-8 pt-8 sm:pt-0">
+                <!-- Badge + Step Counter Row -->
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-swiss-orange/10 border border-swiss-orange/20 text-swiss-orange font-mono text-[10px] tracking-wider rounded-full">
+                    <span class="w-1.5 h-1.5 bg-swiss-orange rounded-full animate-pulse"></span>
+                    BEWERBUNG
+                  </span>
+                  <span class="text-[10px] text-gray-500 flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    60 Sek.
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <h3 class="text-2xl sm:text-3xl font-black mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  Deine Bewerbung
+                </h3>
+                <p class="text-gray-400 text-sm">Keine Zahlung. Wir melden uns innerhalb von 24h.</p>
               </div>
 
-              <form id="application-form" class="space-y-4 sm:space-y-6">
-                <!-- Personal Info -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  <div>
-                    <label class="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2">Vorname *</label>
-                    <input type="text" name="firstName" required class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors text-base" placeholder="Max" />
+              <!-- Progress Bar -->
+              <div class="mb-6 sm:mb-8">
+                <!-- Step Indicators -->
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <div id="step-indicator-1" class="w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-swiss-orange/30">1</div>
+                    <div class="w-8 sm:w-12 h-0.5 bg-white/10" id="step-line-1"></div>
+                    <div id="step-indicator-2" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium text-gray-500">2</div>
+                    <div class="w-8 sm:w-12 h-0.5 bg-white/10" id="step-line-2"></div>
+                    <div id="step-indicator-3" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium text-gray-500">3</div>
                   </div>
-                  <div>
-                    <label class="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2">Nachname *</label>
-                    <input type="text" name="lastName" required class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors text-base" placeholder="Mustermann" />
+                  <span id="step-label" class="text-xs text-swiss-orange font-medium hidden sm:block">Dein Ziel</span>
+                </div>
+                <!-- Mobile Step Label -->
+                <div class="sm:hidden text-center">
+                  <span class="text-xs text-gray-400">Schritt <span id="current-step-num">1</span>/3: </span>
+                  <span id="step-label-mobile" class="text-xs text-swiss-orange font-medium">Dein Ziel</span>
+                </div>
+              </div>
+
+              <form id="application-form" class="flex-1 flex flex-col">
+
+                <!-- ========== STEP 1: Ziel & Zeit ========== -->
+                <div id="form-step-1" class="form-step flex-1 flex flex-col" data-step="1">
+
+                  <!-- Q1: Hauptziel -->
+                  <div class="mb-5">
+                    <p class="text-white font-semibold mb-3 text-sm sm:text-base flex items-center gap-2">
+                      <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">1</span>
+                      Was ist dein Hauptziel?
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_goal" value="unternehmen" required class="sr-only peer" />
+                        <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
+                          <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <div class="flex-1">
+                          <span class="text-white text-sm font-medium block mb-0.5">Unternehmen automatisieren</span>
+                          <span class="text-gray-500 text-xs">Prozesse digitalisieren</span>
+                        </div>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_goal" value="selbststaendigkeit" class="sr-only peer" />
+                        <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
+                          <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <div class="flex-1">
+                          <span class="text-white text-sm font-medium block mb-0.5">Selbstständigkeit effizienter</span>
+                          <span class="text-gray-500 text-xs">Weniger Aufwand, mehr Output</span>
+                        </div>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_goal" value="weiterbildung" class="sr-only peer" />
+                        <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
+                          <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <div class="flex-1">
+                          <span class="text-white text-sm font-medium block mb-0.5">Persönliche Weiterbildung</span>
+                          <span class="text-gray-500 text-xs">KI von Grund auf lernen</span>
+                        </div>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_goal" value="karriere" class="sr-only peer" />
+                        <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
+                          <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <div class="flex-1">
+                          <span class="text-white text-sm font-medium block mb-0.5">Karriere-Boost</span>
+                          <span class="text-gray-500 text-xs">Gefragte KI-Skills aufbauen</span>
+                        </div>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Q2: Zeit Commitment -->
+                  <div class="mb-4">
+                    <p class="text-white font-semibold mb-3 text-sm sm:text-base flex items-center gap-2">
+                      <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">2</span>
+                      Kannst du 4-6h/Woche investieren?
+                    </p>
+                    <div class="flex gap-3">
+                      <label class="flex-1 relative flex items-center justify-center gap-2.5 p-3.5 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_time_commitment" value="yes" required class="sr-only peer" />
+                        <div class="w-4 h-4 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
+                          <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <span class="text-white text-sm font-medium">Ja, definitiv</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="flex-1 relative flex items-center justify-center gap-2.5 p-3.5 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_time_commitment" value="maybe" class="sr-only peer" />
+                        <div class="w-4 h-4 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
+                          <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <span class="text-white text-sm font-medium">Muss ich prüfen</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Trust Element: Preis-Transparenz -->
+                  <div class="mt-auto pt-4">
+                    <div class="flex items-center justify-center gap-2 text-xs text-gray-500 bg-white/[0.02] rounded-lg py-2.5 px-4 border border-white/5">
+                      <svg class="w-4 h-4 text-swiss-orange/70" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                      </svg>
+                      <span>Paketpreis: <span class="text-white font-medium">3.779 EUR</span> (inkl. 4h 1:1)</span>
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <label class="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2">E-Mail *</label>
-                  <input type="email" name="email" required class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors text-base" placeholder="max@beispiel.de" />
-                </div>
+                <!-- ========== STEP 2: Kontaktdaten ========== -->
+                <div id="form-step-2" class="form-step hidden flex-1 flex flex-col" data-step="2">
 
-                <div>
-                  <label class="block text-xs sm:text-sm font-medium text-gray-400 mb-1.5 sm:mb-2">Telefon *</label>
-                  <input type="tel" name="phone" required class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors text-base" placeholder="+49 123 456789" />
-                </div>
-
-                <!-- Q1: Time Commitment -->
-                <div class="bg-black/50 border border-white/5 p-4 sm:p-6">
-                  <p class="text-white font-medium mb-3 sm:mb-4 text-sm sm:text-base">
-                    Wir benötigen für sechs Monate 4-6 Stunden pro Woche deiner Zeit. Kannst du das realistisch investieren? *
+                  <p class="text-gray-400 text-sm mb-5">
+                    Wie können wir dich für das Kennenlerngespräch erreichen?
                   </p>
-                  <div class="flex flex-col sm:flex-row gap-3 sm:gap-6">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="q_time_commitment" value="yes" required class="w-5 h-5 accent-swiss-orange" />
-                      <span class="text-gray-300 text-sm sm:text-base">Ja, definitiv</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="q_time_commitment" value="maybe" class="w-5 h-5 accent-swiss-orange" />
-                      <span class="text-gray-300 text-sm sm:text-base">Muss ich prüfen</span>
-                    </label>
+
+                  <div class="space-y-4">
+                    <!-- Name Row -->
+                    <div class="grid grid-cols-2 gap-3">
+                      <div>
+                        <label class="block text-xs font-medium text-gray-400 mb-2">Vorname</label>
+                        <input type="text" name="firstName" required class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="Max" />
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-gray-400 mb-2">Nachname</label>
+                        <input type="text" name="lastName" required class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="Mustermann" />
+                      </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                      <label class="block text-xs font-medium text-gray-400 mb-2">E-Mail</label>
+                      <input type="email" name="email" required class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="max@beispiel.de" />
+                    </div>
+
+                    <!-- Phone with Input Mask -->
+                    <div>
+                      <label class="block text-xs font-medium text-gray-400 mb-2">Telefon</label>
+                      <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+49</span>
+                        <input
+                          type="tel"
+                          name="phone"
+                          id="phone-input"
+                          required
+                          class="w-full pl-14 pr-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl"
+                          placeholder="123 4567890"
+                          pattern="[0-9\s]{6,15}"
+                          inputmode="tel"
+                        />
+                      </div>
+                      <p id="phone-error" class="hidden text-red-400 text-xs mt-1.5 pl-1">Bitte gib eine gültige Telefonnummer ein</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-auto pt-5">
+                    <div class="flex items-center justify-center gap-2 text-[11px] text-gray-500 bg-green-500/5 border border-green-500/10 rounded-lg py-2.5 px-4">
+                      <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>DSGVO-konform geschützt · <a href="/datenschutz" class="text-swiss-orange hover:underline">Datenschutz</a></span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Q2: Existing Knowledge -->
-                <div class="bg-black/50 border border-white/5 p-4 sm:p-6">
-                  <p class="text-white font-medium mb-3 sm:mb-4 text-sm sm:text-base">
-                    Welche KI-Kenntnisse hast du bereits? (Mehrfachauswahl möglich)
+                <!-- ========== STEP 3: Details (optional) ========== -->
+                <div id="form-step-3" class="form-step hidden flex-1 flex flex-col" data-step="3">
+
+                  <p class="text-gray-400 text-sm mb-5">
+                    Fast geschafft! Noch eine kurze Frage.
                   </p>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="assistenten" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">KI-Assistenten im Alltag</span>
+
+                  <!-- KI-Kenntnisse (vereinfacht: 3 Stufen) -->
+                  <div class="mb-5">
+                    <p class="text-white font-semibold mb-3 text-sm flex items-center gap-2">
+                      <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">?</span>
+                      Wie schätzt du deine KI-Kenntnisse ein?
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                      <label class="relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl text-center">
+                        <input type="radio" name="q_knowledge_level" value="anfaenger" class="sr-only peer" />
+                        <span class="text-2xl">🌱</span>
+                        <span class="text-white text-sm font-medium">Anfänger</span>
+                        <span class="text-gray-500 text-[10px]">Noch wenig Erfahrung</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl text-center">
+                        <input type="radio" name="q_knowledge_level" value="fortgeschritten" class="sr-only peer" />
+                        <span class="text-2xl">🚀</span>
+                        <span class="text-white text-sm font-medium">Fortgeschritten</span>
+                        <span class="text-gray-500 text-[10px]">Nutze KI regelmäßig</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="relative flex flex-col items-center gap-2 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl text-center">
+                        <input type="radio" name="q_knowledge_level" value="profi" class="sr-only peer" />
+                        <span class="text-2xl">⚡</span>
+                        <span class="text-white text-sm font-medium">Profi</span>
+                        <span class="text-gray-500 text-[10px]">Baue eigene Lösungen</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Optional: Motivation -->
+                  <div class="mb-4">
+                    <label class="block text-xs font-medium text-gray-400 mb-2">
+                      Noch etwas mitteilen? <span class="text-gray-600">(optional)</span>
                     </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="programmierung" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Programmierung mit KI</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="automatisierung" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Workflow-Automatisierung</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="websites" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Website-Erstellung</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="recherche" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Tiefgehende Recherche</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="content" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Content-Erstellung</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="daten" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Datenanalyse</span>
-                    </label>
-                    <label class="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_knowledge" value="keine" class="w-5 h-5 accent-swiss-orange flex-shrink-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Noch keine Erfahrung</span>
-                    </label>
+                    <textarea
+                      name="motivation"
+                      rows="2"
+                      class="w-full px-4 py-3 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-sm resize-none rounded-xl"
+                      placeholder="z.B. Fragen, besondere Umstände..."
+                    ></textarea>
+                  </div>
+
+                  <div class="mt-auto"></div>
+                </div>
+
+                <!-- ========== STICKY FOOTER mit Navigation ========== -->
+                <div class="sticky bottom-0 bg-gradient-to-t from-gray-950 via-gray-950 to-gray-950/95 pt-6 pb-4 mt-6 border-t border-white/5">
+                  <div class="flex gap-3">
+                    <!-- Back Button (hidden on step 1) -->
+                    <button
+                      type="button"
+                      id="prev-step-btn"
+                      class="hidden w-12 h-12 border border-white/20 text-white font-medium hover:bg-white/5 hover:border-white/30 transition-all rounded-xl flex items-center justify-center"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+
+                    <!-- Next/Submit Button -->
+                    <button
+                      type="button"
+                      id="next-step-btn"
+                      class="flex-1 bg-gradient-to-r from-swiss-orange to-orange-500 text-white font-bold py-4 text-base hover:from-orange-500 hover:to-swiss-orange transition-all disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-swiss-orange/25 hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      <span id="next-btn-text">Weiter</span>
+                      <svg id="next-btn-arrow" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                      <span id="submit-loading" class="hidden">
+                        <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                      </span>
+                    </button>
                   </div>
                 </div>
 
-                <!-- Q3: Goals -->
-                <div class="bg-black/50 border border-white/5 p-4 sm:p-6">
-                  <p class="text-white font-medium mb-3 sm:mb-4 text-sm sm:text-base">
-                    Was ist dein Hauptziel? *
-                  </p>
-                  <div class="space-y-3">
-                    <label class="flex items-start sm:items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_goals" value="weiterbildung" class="w-5 h-5 accent-swiss-orange flex-shrink-0 mt-0.5 sm:mt-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Persönliche Weiterbildung in KI & Automatisierung</span>
-                    </label>
-                    <label class="flex items-start sm:items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_goals" value="unternehmen" class="w-5 h-5 accent-swiss-orange flex-shrink-0 mt-0.5 sm:mt-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Mein Unternehmen automatisieren & digitalisieren</span>
-                    </label>
-                    <label class="flex items-start sm:items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_goals" value="selbststaendigkeit" class="w-5 h-5 accent-swiss-orange flex-shrink-0 mt-0.5 sm:mt-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Meine Selbstständigkeit effizienter gestalten</span>
-                    </label>
-                    <label class="flex items-start sm:items-center gap-3 cursor-pointer">
-                      <input type="checkbox" name="q_goals" value="karriere" class="w-5 h-5 accent-swiss-orange flex-shrink-0 mt-0.5 sm:mt-0" />
-                      <span class="text-gray-300 text-sm sm:text-base">Karriere-Boost durch KI-Skills</span>
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Optional: Additional Message -->
-                <div class="space-y-2">
-                  <label class="block text-xs sm:text-sm font-medium text-gray-400">
-                    Möchtest du uns für deine Bewerbung sonst noch etwas mitteilen? <span class="text-gray-600">(optional)</span>
-                  </label>
-                  <textarea
-                    name="motivation"
-                    rows="3"
-                    class="w-full px-3 sm:px-4 py-3 bg-black border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:outline-none transition-colors text-base resize-none"
-                    placeholder="z.B. besondere Umstände, Fragen oder was dich motiviert..."
-                  ></textarea>
-                </div>
-
-                <!-- Submit -->
-                <button
-                  type="submit"
-                  id="submit-btn"
-                  class="w-full bg-swiss-orange text-white font-bold py-4 sm:py-5 text-base sm:text-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <span id="submit-text">Bewerbung absenden</span>
-                  <span id="submit-loading" class="hidden">Wird gesendet...</span>
-                </button>
-
-                <p class="text-[10px] sm:text-xs text-gray-500 text-center flex items-center justify-center gap-2">
-                  <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Deine Daten sind DSGVO-konform geschützt. <a href="/datenschutz" class="text-swiss-orange hover:underline">Datenschutz</a></span>
-                </p>
               </form>
 
               <!-- Success: Step 2 - Calendar Booking -->
@@ -1763,18 +1906,257 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       });
 
       // ============================================
+      // MULTI-STEP FORM WIZARD
+      // ============================================
+      let currentStep = 1;
+      const totalSteps = 3;
+      const stepLabels = ['Dein Ziel', 'Kontaktdaten', 'Details'];
+
+      // Form elements
+      const form = document.getElementById('application-form') as HTMLFormElement;
+      const nextStepBtn = document.getElementById('next-step-btn');
+      const prevStepBtn = document.getElementById('prev-step-btn');
+      const nextBtnText = document.getElementById('next-btn-text');
+      const nextBtnArrow = document.getElementById('next-btn-arrow');
+      const submitLoading = document.getElementById('submit-loading');
+      const progressBar = document.getElementById('progress-bar');
+      const currentStepNum = document.getElementById('current-step-num');
+      const stepLabel = document.getElementById('step-label');
+      const phoneInput = document.getElementById('phone-input') as HTMLInputElement;
+      const phoneError = document.getElementById('phone-error');
+
+      // Step elements
+      const formSteps = [
+        document.getElementById('form-step-1'),
+        document.getElementById('form-step-2'),
+        document.getElementById('form-step-3')
+      ];
+
+      // Track form progress for analytics
+      function trackFormProgress(step: number, action: 'view' | 'complete' | 'abandon') {
+        const filledFields = getFilledFieldsCount();
+        window.dispatchEvent(new CustomEvent('form_step_progress', {
+          detail: {
+            step,
+            stepLabel: stepLabels[step - 1],
+            action,
+            totalSteps,
+            filledFieldsCount: filledFields.count,
+            filledFields: filledFields.fields
+          }
+        }));
+      }
+
+      // Count filled fields for tracking
+      function getFilledFieldsCount(): { count: number; fields: string[] } {
+        const fields: string[] = [];
+        const formData = new FormData(form);
+
+        // Check each field
+        if (formData.get('q_goal')) fields.push('goal');
+        if (formData.get('q_time_commitment')) fields.push('time_commitment');
+        if (formData.get('firstName')) fields.push('firstName');
+        if (formData.get('lastName')) fields.push('lastName');
+        if (formData.get('email')) fields.push('email');
+        if (formData.get('phone')) fields.push('phone');
+        if (formData.get('q_knowledge_level')) fields.push('knowledge_level');
+        if (formData.get('motivation')) fields.push('motivation');
+
+        return { count: fields.length, fields };
+      }
+
+      // Validate current step
+      function validateStep(step: number): boolean {
+        if (step === 1) {
+          const goal = form.querySelector('input[name="q_goal"]:checked');
+          const time = form.querySelector('input[name="q_time_commitment"]:checked');
+          return !!(goal && time);
+        } else if (step === 2) {
+          const firstName = (form.querySelector('input[name="firstName"]') as HTMLInputElement)?.value?.trim();
+          const lastName = (form.querySelector('input[name="lastName"]') as HTMLInputElement)?.value?.trim();
+          const email = (form.querySelector('input[name="email"]') as HTMLInputElement)?.value?.trim();
+          const phone = phoneInput?.value?.trim();
+
+          // Basic email validation
+          const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+          // Phone validation (at least 6 digits)
+          const phoneDigits = phone?.replace(/\D/g, '') || '';
+          const phoneValid = phoneDigits.length >= 6;
+
+          if (!phoneValid && phone) {
+            phoneError?.classList.remove('hidden');
+          } else {
+            phoneError?.classList.add('hidden');
+          }
+
+          return !!(firstName && lastName && emailValid && phoneValid);
+        } else if (step === 3) {
+          // Step 3 is optional, always valid
+          return true;
+        }
+        return true;
+      }
+
+      // Update UI for current step
+      function updateStepUI() {
+        // Update step number and labels
+        if (currentStepNum) currentStepNum.textContent = String(currentStep);
+        if (stepLabel) stepLabel.textContent = stepLabels[currentStep - 1];
+
+        // Update mobile step label
+        const stepLabelMobile = document.getElementById('step-label-mobile');
+        if (stepLabelMobile) stepLabelMobile.textContent = stepLabels[currentStep - 1];
+
+        // Update step indicators (circles)
+        for (let i = 1; i <= totalSteps; i++) {
+          const indicator = document.getElementById(`step-indicator-${i}`);
+          if (indicator) {
+            if (i < currentStep) {
+              // Completed step
+              indicator.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold text-white';
+              indicator.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>';
+            } else if (i === currentStep) {
+              // Current step
+              indicator.className = 'w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-swiss-orange/30';
+              indicator.innerHTML = String(i);
+            } else {
+              // Future step
+              indicator.className = 'w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium text-gray-500';
+              indicator.innerHTML = String(i);
+            }
+          }
+
+          // Update connecting lines
+          if (i < totalSteps) {
+            const line = document.getElementById(`step-line-${i}`);
+            if (line) {
+              if (i < currentStep) {
+                line.className = 'w-8 sm:w-12 h-0.5 bg-green-500 transition-colors';
+              } else {
+                line.className = 'w-8 sm:w-12 h-0.5 bg-white/10 transition-colors';
+              }
+            }
+          }
+        }
+
+        // Show/hide steps
+        formSteps.forEach((stepEl, index) => {
+          if (stepEl) {
+            if (index + 1 === currentStep) {
+              stepEl.classList.remove('hidden');
+            } else {
+              stepEl.classList.add('hidden');
+            }
+          }
+        });
+
+        // Show/hide back button
+        if (prevStepBtn) {
+          if (currentStep === 1) {
+            prevStepBtn.classList.add('hidden');
+          } else {
+            prevStepBtn.classList.remove('hidden');
+          }
+        }
+
+        // Update next button text
+        if (nextBtnText && nextBtnArrow) {
+          if (currentStep === totalSteps) {
+            nextBtnText.textContent = 'Bewerbung absenden';
+            nextBtnArrow.classList.add('hidden');
+          } else {
+            nextBtnText.textContent = 'Weiter';
+            nextBtnArrow.classList.remove('hidden');
+          }
+        }
+
+        // Track step view
+        trackFormProgress(currentStep, 'view');
+      }
+
+      // Go to next step
+      function goToNextStep() {
+        if (!validateStep(currentStep)) {
+          // Shake button to indicate error
+          nextStepBtn?.classList.add('animate-shake');
+          setTimeout(() => nextStepBtn?.classList.remove('animate-shake'), 500);
+          return;
+        }
+
+        // Track step completion
+        trackFormProgress(currentStep, 'complete');
+
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateStepUI();
+        } else {
+          // Submit the form
+          submitForm();
+        }
+      }
+
+      // Go to previous step
+      function goToPrevStep() {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStepUI();
+        }
+      }
+
+      // Phone input formatting
+      if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+          let value = (e.target as HTMLInputElement).value;
+          // Remove non-digits except spaces
+          value = value.replace(/[^\d\s]/g, '');
+          // Limit length
+          if (value.replace(/\s/g, '').length > 15) {
+            value = value.slice(0, -1);
+          }
+          (e.target as HTMLInputElement).value = value;
+          phoneError?.classList.add('hidden');
+        });
+      }
+
+      // Event listeners for step navigation
+      nextStepBtn?.addEventListener('click', goToNextStep);
+      prevStepBtn?.addEventListener('click', goToPrevStep);
+
+      // Track form abandonment on modal close
+      function resetFormAndTrack() {
+        if (currentStep > 0 && !form.classList.contains('hidden')) {
+          trackFormProgress(currentStep, 'abandon');
+        }
+        // Reset form state
+        currentStep = 1;
+        updateStepUI();
+        form.reset();
+        form.classList.remove('hidden');
+      }
+
+      // Override close modal button to also reset form
+      const closeModalBtn = document.getElementById('close-modal');
+      closeModalBtn?.addEventListener('click', resetFormAndTrack);
+
+      // Also track on backdrop click and escape key (already handled by hideModal)
+      modalBackdrop?.addEventListener('click', resetFormAndTrack);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+          resetFormAndTrack();
+        }
+      });
+
+      // Initialize step UI
+      updateStepUI();
+
+      // ============================================
       // CALENDAR BOOKING SYSTEM
       // ============================================
       let currentApplicationId: string | null = null;
       let availableSlots: Record<string, Array<{date: string, time: string, datetime: string}>> = {};
       let selectedSlot: {date: string, time: string, datetime: string} | null = null;
       let currentWeekOffset = 0;
-
-      // Form elements
-      const form = document.getElementById('application-form') as HTMLFormElement;
-      const submitBtn = document.getElementById('submit-btn');
-      const submitText = document.getElementById('submit-text');
-      const submitLoading = document.getElementById('submit-loading');
 
       // Calendar elements
       const calendarBookingStep = document.getElementById('calendar-booking-step');
@@ -2011,39 +2393,39 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       confirmBooking?.addEventListener('click', confirmBookingHandler);
       retryCalendar?.addEventListener('click', loadAvailableSlots);
 
-      // Form submission
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        if (submitBtn) submitBtn.setAttribute('disabled', 'true');
-        submitText?.classList.add('hidden');
+      // Form submission function (called from goToNextStep on step 3)
+      async function submitForm() {
+        // Disable button and show loading
+        if (nextStepBtn) nextStepBtn.setAttribute('disabled', 'true');
+        if (nextBtnText) nextBtnText.classList.add('hidden');
+        if (nextBtnArrow) nextBtnArrow.classList.add('hidden');
         submitLoading?.classList.remove('hidden');
 
         const formData = new FormData(form);
 
-        // Collect knowledge checkboxes
-        const knowledge: string[] = [];
-        formData.getAll('q_knowledge').forEach(k => knowledge.push(k as string));
-
-        // Collect goals checkboxes
-        const goals: string[] = [];
-        formData.getAll('q_goals').forEach(g => goals.push(g as string));
-
+        // Build questionnaire answers with new schema
         const questionnaireAnswers = {
-          time_commitment: formData.get('q_time_commitment'),
-          knowledge: knowledge,
-          goals: goals
+          goal: formData.get('q_goal'),                         // Single goal (Radio)
+          time_commitment: formData.get('q_time_commitment'),   // yes/maybe
+          knowledge_level: formData.get('q_knowledge_level') || 'anfaenger' // anfaenger/fortgeschritten/profi
         };
+
+        // Format phone with +49 prefix
+        let phone = formData.get('phone') as string;
+        if (phone && !phone.startsWith('+')) {
+          phone = '+49 ' + phone.replace(/^0+/, '');
+        }
 
         const data = {
           firstName: formData.get('firstName'),
           lastName: formData.get('lastName'),
           email: formData.get('email'),
-          phone: formData.get('phone'),
+          phone: phone,
           program: 'gruppen_coaching',
           questionnaireAnswers,
           motivation: formData.get('motivation') || null,
-          source: 'lp_coaching'
+          source: 'lp_coaching',
+          formVersion: 'v2_multistep'  // Track which form version was used
         };
 
         try {
@@ -2101,10 +2483,17 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           }
         } catch (error) {
           alert('Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.');
-          if (submitBtn) submitBtn.removeAttribute('disabled');
-          submitText?.classList.remove('hidden');
+          // Re-enable button
+          if (nextStepBtn) nextStepBtn.removeAttribute('disabled');
+          if (nextBtnText) nextBtnText.classList.remove('hidden');
+          if (nextBtnArrow) nextBtnArrow.classList.add('hidden'); // Keep hidden for submit button
           submitLoading?.classList.add('hidden');
         }
+      }
+
+      // Prevent default form submission (we handle it via button click)
+      form?.addEventListener('submit', (e) => {
+        e.preventDefault();
       });
 
       // Scroll reveal
@@ -2135,6 +2524,17 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       /* Gradient Radial */
       .bg-gradient-radial {
         background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
+      }
+
+      /* Shake Animation for validation errors */
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+        20%, 40%, 60%, 80% { transform: translateX(4px); }
+      }
+
+      .animate-shake {
+        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       }
 
       /* Hero Fade In */

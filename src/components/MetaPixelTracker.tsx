@@ -5,6 +5,11 @@ import { useEffect, useRef, useCallback } from 'react'
 // Meta Pixel ID
 const PIXEL_ID = '1497847851628194'
 
+// Tracking Configuration
+const HEARTBEAT_INTERVAL_MS = 10000 // Send heartbeat every 10 seconds
+const BOUNCE_THRESHOLD_SECONDS = 5 // Less than 5s = bounce
+const VIEW_CONTENT_THRESHOLD_SECONDS = 10 // ViewContent fires at 10s (was 30s)
+
 interface MetaPixelTrackerProps {
   pagePath: string
 }
@@ -42,15 +47,6 @@ function getBrowser(): string {
   return 'Other'
 }
 
-// Hash function for IP (simple hash for privacy)
-async function hashValue(value: string): Promise<string> {
-  const encoder = new TextEncoder()
-  const data = encoder.encode(value)
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data)
-  const hashArray = Array.from(new Uint8Array(hashBuffer))
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
-}
-
 // Check if this is internal/test traffic that should not be tracked
 function isInternalTraffic(): boolean {
   if (typeof window === 'undefined') return false
@@ -60,19 +56,19 @@ function isInternalTraffic(): boolean {
   // Check URL params first - allow toggling
   if (urlParams.get('notrack') === '1' || urlParams.get('internal') === '1') {
     localStorage.setItem('synclaro_notrack', '1')
-    console.log('[MetaPixel] Internal traffic flag SET - tracking disabled')
+    console.log('[Tracking] Internal traffic flag SET - tracking disabled')
     return true
   }
 
   if (urlParams.get('track') === '1') {
     localStorage.removeItem('synclaro_notrack')
-    console.log('[MetaPixel] Internal traffic flag REMOVED - tracking enabled')
+    console.log('[Tracking] Internal traffic flag REMOVED - tracking enabled')
     return false
   }
 
   // Check persistent flag
   if (localStorage.getItem('synclaro_notrack') === '1') {
-    console.log('[MetaPixel] Internal traffic detected - tracking disabled')
+    console.log('[Tracking] Internal traffic detected - tracking disabled')
     return true
   }
 
@@ -91,12 +87,56 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     content: string | null
     term: string | null
   }>({ source: null, medium: null, campaign: null, content: null, term: null })
+
+  // Meta Pixel state
   const viewContentSentRef = useRef(false)
+
+  // Granular tracking state
   const scrollDepthRef = useRef(0)
   const timeOnPageRef = useRef(0)
   const entryTimeRef = useRef<number>(Date.now())
+  const lastHeartbeatRef = useRef<number>(0)
+  const sessionCreatedRef = useRef(false)
 
-  // Track event to Supabase
+  // ========== GRANULAR SESSION TRACKING (NEW) ==========
+
+  const trackSession = useCallback(async (
+    action: 'create' | 'heartbeat' | 'form_open' | 'form_submit' | 'end'
+  ) => {
+    if (!sessionIdRef.current) return
+
+    try {
+      await fetch('/api/lp-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action,
+          session_id: sessionIdRef.current,
+          visitor_id: visitorIdRef.current,
+          page_path: pagePath,
+          page_url: window.location.href,
+          device_type: getDeviceType(),
+          browser: getBrowser(),
+          user_agent: navigator.userAgent,
+          utm_source: utmParamsRef.current.source,
+          utm_medium: utmParamsRef.current.medium,
+          utm_campaign: utmParamsRef.current.campaign,
+          utm_content: utmParamsRef.current.content,
+          utm_term: utmParamsRef.current.term,
+          fbclid: fbclidRef.current,
+          referrer: document.referrer || null,
+          time_on_page_seconds: timeOnPageRef.current,
+          max_scroll_depth: scrollDepthRef.current,
+        })
+      })
+      console.log(`[Session] ${action}: ${timeOnPageRef.current}s, ${scrollDepthRef.current}% scroll`)
+    } catch (error) {
+      console.error('[Session] Error:', error)
+    }
+  }, [pagePath])
+
+  // ========== META PIXEL TRACKING (EXISTING) ==========
+
   const trackToSupabase = useCallback(async (
     eventName: string,
     eventId: string,
@@ -133,7 +173,6 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     }
   }, [pagePath])
 
-  // Track Meta Pixel event (client-side)
   const trackPixelEvent = useCallback((
     eventName: string,
     eventId: string,
@@ -145,31 +184,26 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     }
   }, [])
 
-  // Combined tracking function
   const trackEvent = useCallback((
     eventName: string,
     pixelParams: Record<string, any> = {},
     supabaseData: Record<string, any> = {}
   ) => {
     const eventId = generateEventId()
-
-    // Track to Meta Pixel (client-side)
     trackPixelEvent(eventName, eventId, pixelParams)
-
-    // Track to Supabase (for CVL analysis)
     trackToSupabase(eventName, eventId, supabaseData)
-
     return eventId
   }, [trackPixelEvent, trackToSupabase])
 
-  // Initialize Meta Pixel
+  // ========== INITIALIZATION ==========
+
   useEffect(() => {
     if (initializedRef.current || typeof window === 'undefined') return
 
     // Skip ALL tracking for internal traffic
     if (isInternalTraffic()) {
       initializedRef.current = true
-      return // Don't initialize pixel, don't track anything
+      return
     }
 
     initializedRef.current = true
@@ -190,7 +224,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     // Extract URL parameters
     const urlParams = new URLSearchParams(window.location.search)
 
-    // Get fbclid (Facebook Click ID) - critical for attribution
+    // Get fbclid (Facebook Click ID)
     const fbclid = urlParams.get('fbclid')
     if (fbclid) {
       fbclidRef.current = fbclid
@@ -221,7 +255,8 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       term: utmTerm
     }
 
-    // Initialize Meta Pixel
+    // ========== META PIXEL INIT ==========
+
     if (!window.fbq) {
       const n = (window.fbq = function() {
         n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
@@ -232,43 +267,58 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       n.version = '2.0'
       n.queue = []
 
-      // Load pixel script
       const script = document.createElement('script')
       script.async = true
       script.src = 'https://connect.facebook.net/en_US/fbevents.js'
       document.head.appendChild(script)
     }
 
-    // Initialize pixel with advanced matching
     window.fbq('init', PIXEL_ID)
 
-    // Track PageView
+    // Track PageView (Meta Pixel)
     const pageViewEventId = generateEventId()
     window.fbq('track', 'PageView', {}, { eventID: pageViewEventId })
     trackToSupabase('PageView', pageViewEventId)
 
-    // Entry time for time on page calculation
+    // ========== GRANULAR SESSION TRACKING ==========
+
     entryTimeRef.current = Date.now()
 
-    // Update time on page every second
-    const timeInterval = setInterval(() => {
+    // Create session in new tracking table
+    if (!sessionCreatedRef.current) {
+      sessionCreatedRef.current = true
+      trackSession('create')
+    }
+
+    // Update time every second (for accurate tracking)
+    const timeInterval = window.setInterval(() => {
       timeOnPageRef.current = Math.floor((Date.now() - entryTimeRef.current) / 1000)
     }, 1000)
 
-    // Track scroll depth
+    // Send heartbeat every 10 seconds
+    const heartbeatInterval = window.setInterval(() => {
+      const now = Date.now()
+      if (now - lastHeartbeatRef.current >= HEARTBEAT_INTERVAL_MS) {
+        lastHeartbeatRef.current = now
+        trackSession('heartbeat')
+      }
+    }, HEARTBEAT_INTERVAL_MS)
+
+    // Track scroll depth continuously
     const handleScroll = () => {
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollPercent = Math.round((scrollTop / docHeight) * 100)
-
-      if (scrollPercent > scrollDepthRef.current) {
-        scrollDepthRef.current = scrollPercent
+      if (docHeight > 0) {
+        const scrollPercent = Math.round((scrollTop / docHeight) * 100)
+        if (scrollPercent > scrollDepthRef.current) {
+          scrollDepthRef.current = scrollPercent
+        }
       }
 
-      // ViewContent: 30s + 50% scroll (Engaged Visitor)
+      // ViewContent: 10s + 50% scroll (for Meta Pixel optimization)
       if (!viewContentSentRef.current &&
           scrollDepthRef.current >= 50 &&
-          timeOnPageRef.current >= 30) {
+          timeOnPageRef.current >= VIEW_CONTENT_THRESHOLD_SECONDS) {
         viewContentSentRef.current = true
         trackEvent('ViewContent', {
           content_name: 'KI-Coaching Landing Page',
@@ -284,10 +334,10 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     // Also check ViewContent criteria periodically
-    const viewContentInterval = setInterval(() => {
+    const viewContentInterval = window.setInterval(() => {
       if (!viewContentSentRef.current &&
           scrollDepthRef.current >= 50 &&
-          timeOnPageRef.current >= 30) {
+          timeOnPageRef.current >= VIEW_CONTENT_THRESHOLD_SECONDS) {
         viewContentSentRef.current = true
         trackEvent('ViewContent', {
           content_name: 'KI-Coaching Landing Page',
@@ -299,16 +349,50 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
         })
         clearInterval(viewContentInterval)
       }
-    }, 5000)
+    }, 2000)
 
-    // Listen for custom events from form submission
+    // ========== PAGE LEAVE TRACKING ==========
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        // Send final heartbeat when tab becomes hidden
+        trackSession('heartbeat')
+      }
+    }
+
+    const handleBeforeUnload = () => {
+      // Send end session signal
+      // Using sendBeacon for reliability during page unload
+      const data = JSON.stringify({
+        action: 'end',
+        session_id: sessionIdRef.current,
+        time_on_page_seconds: timeOnPageRef.current,
+        max_scroll_depth: scrollDepthRef.current,
+      })
+      navigator.sendBeacon('/api/lp-session', data)
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    // ========== FORM EVENTS ==========
+
+    const handleFormOpen = () => {
+      trackSession('form_open')
+    }
+
     const handleLeadEvent = (e: CustomEvent) => {
       const { applicationId } = e.detail || {}
+
+      // Track to granular session
+      trackSession('form_submit')
+
+      // Track to Meta Pixel (existing)
       trackEvent('Lead', {
         content_name: 'KI-Coaching Bewerbung',
         content_category: 'coaching',
         currency: 'EUR',
-        value: 0 // Lead value for ROAS tracking
+        value: 0
       }, {
         application_id: applicationId,
         scroll_depth: scrollDepthRef.current,
@@ -322,7 +406,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
         content_name: 'KI-Coaching Termin',
         content_category: 'coaching',
         currency: 'EUR',
-        value: 0 // Can be set to estimated value
+        value: 0
       }, {
         application_id: applicationId,
         appointment_date: appointmentDatetime,
@@ -331,23 +415,29 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       })
     }
 
+    window.addEventListener('form_modal_open' as any, handleFormOpen)
     window.addEventListener('meta_lead' as any, handleLeadEvent)
     window.addEventListener('meta_schedule' as any, handleScheduleEvent)
 
-    // Cleanup
+    // ========== CLEANUP ==========
+
     return () => {
       clearInterval(timeInterval)
+      clearInterval(heartbeatInterval)
       clearInterval(viewContentInterval)
       window.removeEventListener('scroll', handleScroll)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+      window.removeEventListener('form_modal_open' as any, handleFormOpen)
       window.removeEventListener('meta_lead' as any, handleLeadEvent)
       window.removeEventListener('meta_schedule' as any, handleScheduleEvent)
     }
-  }, [trackEvent, trackToSupabase])
+  }, [trackEvent, trackToSupabase, trackSession])
 
-  return null // This component doesn't render anything
+  return null
 }
 
-// Export helper function to trigger events from other components
+// Export helper functions for triggering events from other components
 export function triggerMetaLeadEvent(applicationId: string) {
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new CustomEvent('meta_lead', {
@@ -361,5 +451,11 @@ export function triggerMetaScheduleEvent(applicationId: string, appointmentDatet
     window.dispatchEvent(new CustomEvent('meta_schedule', {
       detail: { applicationId, appointmentDatetime }
     }))
+  }
+}
+
+export function triggerFormModalOpen() {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('form_modal_open'))
   }
 }

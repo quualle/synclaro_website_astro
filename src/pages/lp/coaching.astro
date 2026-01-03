@@ -1736,6 +1736,9 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           modalContent?.classList.remove('scale-95', 'opacity-0');
           modalContent?.classList.add('scale-100', 'opacity-100');
         }, 10);
+
+        // Track form modal open for granular analytics
+        window.dispatchEvent(new CustomEvent('form_modal_open'));
       }
 
       function hideModal() {

@@ -6,6 +6,34 @@ interface UserBehaviorTrackerProps {
   websiteDomain: 'synclaro.de' | 'academy.synclaro.de' | 'solutions.synclaro.de' | 'advisory.synclaro.de'
 }
 
+// Check if this is internal/test traffic that should not be tracked
+function isInternalTraffic(): boolean {
+  if (typeof window === 'undefined') return false
+
+  const urlParams = new URLSearchParams(window.location.search)
+
+  // Check URL params first - allow toggling
+  if (urlParams.get('notrack') === '1' || urlParams.get('internal') === '1') {
+    localStorage.setItem('synclaro_notrack', '1')
+    console.log('[UserBehavior] Internal traffic flag SET - tracking disabled')
+    return true
+  }
+
+  if (urlParams.get('track') === '1') {
+    localStorage.removeItem('synclaro_notrack')
+    console.log('[UserBehavior] Internal traffic flag REMOVED - tracking enabled')
+    return false
+  }
+
+  // Check persistent flag
+  if (localStorage.getItem('synclaro_notrack') === '1') {
+    console.log('[UserBehavior] Internal traffic detected - tracking disabled')
+    return true
+  }
+
+  return false
+}
+
 interface SessionData {
   sessionId: string
   websiteDomain: string
@@ -177,6 +205,11 @@ export default function UserBehaviorTracker({ websiteDomain }: UserBehaviorTrack
 
   // Initialize tracking on mount
   useEffect(() => {
+    // Skip ALL tracking for internal traffic
+    if (isInternalTraffic()) {
+      return // Don't initialize session, don't track anything
+    }
+
     initializeSession()
 
     // Initial observation

@@ -1882,6 +1882,9 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
         // Track form modal open for granular analytics
         window.dispatchEvent(new CustomEvent('form_modal_open'));
+
+        // Start granular form tracking
+        formTracking.onFormOpen();
       }
 
       function hideModal() {
@@ -1911,6 +1914,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       let currentStep = 1;
       const totalSteps = 3;
       const stepLabels = ['Dein Ziel', 'Kontaktdaten', 'Details'];
+      const stepNames = ['goal', 'contact', 'details'];
 
       // Form elements
       const form = document.getElementById('application-form') as HTMLFormElement;
@@ -1932,7 +1936,263 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         document.getElementById('form-step-3')
       ];
 
-      // Track form progress for analytics
+      // ============================================
+      // GRANULAR FORM TRACKING SYSTEM
+      // ============================================
+      const formTracking = {
+        formOpenTime: 0,
+        stepEnterTime: 0,
+        stepTimes: { 1: 0, 2: 0, 3: 0 } as Record<number, number>,
+        filledFields: [] as string[],
+        maxStepReached: 0,
+        stepsCompleted: { 1: false, 2: false, 3: false } as Record<number, boolean>,
+        isFormOpen: false,
+
+        // Get session info from sessionStorage (set by MetaPixelTracker)
+        getSessionInfo() {
+          return {
+            session_id: sessionStorage.getItem('meta_session_id') || '',
+            visitor_id: localStorage.getItem('meta_visitor_id') || '',
+            device_type: window.innerWidth < 768 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop',
+            utm_source: sessionStorage.getItem('utm_source') || null,
+            utm_medium: sessionStorage.getItem('utm_medium') || null,
+          };
+        },
+
+        // Send event to API
+        async sendEvent(eventData: Record<string, any>) {
+          try {
+            const sessionInfo = this.getSessionInfo();
+            await fetch('/api/lp-form-event', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                ...sessionInfo,
+                ...eventData,
+                time_since_form_open_ms: this.formOpenTime > 0 ? Date.now() - this.formOpenTime : 0,
+              })
+            });
+            console.log(`[FormTracking] ${eventData.event_type}: step=${eventData.step_number || '-'}, field=${eventData.field_name || '-'}`);
+          } catch (e) {
+            console.error('[FormTracking] Error:', e);
+          }
+        },
+
+        // Called when form modal opens
+        onFormOpen() {
+          this.formOpenTime = Date.now();
+          this.stepEnterTime = Date.now();
+          this.isFormOpen = true;
+          this.maxStepReached = 1;
+
+          this.sendEvent({
+            event_type: 'step_enter',
+            step_number: 1,
+            step_name: stepNames[0],
+            time_on_current_step_ms: 0,
+          });
+        },
+
+        // Called when entering a new step
+        onStepEnter(step: number) {
+          // Record time spent on previous step
+          if (this.stepEnterTime > 0 && currentStep !== step) {
+            const timeOnPrevStep = Date.now() - this.stepEnterTime;
+            this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnPrevStep;
+
+            this.sendEvent({
+              event_type: 'step_exit',
+              step_number: currentStep,
+              step_name: stepNames[currentStep - 1],
+              time_on_current_step_ms: timeOnPrevStep,
+            });
+          }
+
+          // Start timing new step
+          this.stepEnterTime = Date.now();
+          if (step > this.maxStepReached) {
+            this.maxStepReached = step;
+          }
+
+          this.sendEvent({
+            event_type: 'step_enter',
+            step_number: step,
+            step_name: stepNames[step - 1],
+            time_on_current_step_ms: 0,
+          });
+        },
+
+        // Called when completing a step (clicking Weiter)
+        onStepComplete(step: number) {
+          const timeOnStep = Date.now() - this.stepEnterTime;
+          this.stepTimes[step] = (this.stepTimes[step] || 0) + timeOnStep;
+          this.stepsCompleted[step] = true;
+
+          this.sendEvent({
+            event_type: 'step_complete',
+            step_number: step,
+            step_name: stepNames[step - 1],
+            time_on_current_step_ms: timeOnStep,
+            update_session_summary: true,
+            form_max_step_reached: this.maxStepReached,
+            form_step_1_completed: this.stepsCompleted[1],
+            form_step_2_completed: this.stepsCompleted[2],
+            form_step_3_completed: this.stepsCompleted[3],
+            form_time_step_1_ms: this.stepTimes[1],
+            form_time_step_2_ms: this.stepTimes[2],
+            form_time_step_3_ms: this.stepTimes[3],
+            form_total_time_ms: Date.now() - this.formOpenTime,
+            form_fields_filled: this.filledFields,
+          });
+        },
+
+        // Called when field receives focus
+        onFieldFocus(fieldName: string, fieldType: string) {
+          this.sendEvent({
+            event_type: 'field_focus',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            field_name: fieldName,
+            field_type: fieldType,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
+          });
+        },
+
+        // Called when field loses focus
+        onFieldBlur(fieldName: string, fieldType: string, value: string) {
+          const isFilled = value.trim().length > 0;
+
+          if (isFilled && !this.filledFields.includes(fieldName)) {
+            this.filledFields.push(fieldName);
+          }
+
+          this.sendEvent({
+            event_type: 'field_blur',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            field_name: fieldName,
+            field_type: fieldType,
+            field_filled: isFilled,
+            field_value_length: value.length,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
+          });
+        },
+
+        // Called when radio/checkbox is selected
+        onFieldChange(fieldName: string, fieldType: string, value: string) {
+          if (!this.filledFields.includes(fieldName)) {
+            this.filledFields.push(fieldName);
+          }
+
+          this.sendEvent({
+            event_type: 'field_change',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            field_name: fieldName,
+            field_type: fieldType,
+            field_filled: true,
+            field_value_length: value.length,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
+          });
+        },
+
+        // Called when form is abandoned (modal closed without submit)
+        onFormAbandon() {
+          if (!this.isFormOpen) return;
+
+          const timeOnCurrentStep = Date.now() - this.stepEnterTime;
+          this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnCurrentStep;
+
+          this.sendEvent({
+            event_type: 'form_abandon',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            time_on_current_step_ms: timeOnCurrentStep,
+            update_session_summary: true,
+            form_max_step_reached: this.maxStepReached,
+            form_abandonment_step: currentStep,
+            form_step_1_completed: this.stepsCompleted[1],
+            form_step_2_completed: this.stepsCompleted[2],
+            form_step_3_completed: this.stepsCompleted[3],
+            form_time_step_1_ms: this.stepTimes[1],
+            form_time_step_2_ms: this.stepTimes[2],
+            form_time_step_3_ms: this.stepTimes[3],
+            form_total_time_ms: Date.now() - this.formOpenTime,
+            form_fields_filled: this.filledFields,
+          });
+
+          this.reset();
+        },
+
+        // Called when form is submitted
+        onFormSubmit() {
+          const timeOnCurrentStep = Date.now() - this.stepEnterTime;
+          this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnCurrentStep;
+          this.stepsCompleted[3] = true;
+
+          this.sendEvent({
+            event_type: 'form_submit',
+            step_number: 3,
+            step_name: stepNames[2],
+            time_on_current_step_ms: timeOnCurrentStep,
+            update_session_summary: true,
+            form_max_step_reached: 3,
+            form_step_1_completed: true,
+            form_step_2_completed: true,
+            form_step_3_completed: true,
+            form_time_step_1_ms: this.stepTimes[1],
+            form_time_step_2_ms: this.stepTimes[2],
+            form_time_step_3_ms: this.stepTimes[3],
+            form_total_time_ms: Date.now() - this.formOpenTime,
+            form_fields_filled: this.filledFields,
+          });
+
+          this.reset();
+        },
+
+        // Reset tracking state
+        reset() {
+          this.formOpenTime = 0;
+          this.stepEnterTime = 0;
+          this.stepTimes = { 1: 0, 2: 0, 3: 0 };
+          this.filledFields = [];
+          this.maxStepReached = 0;
+          this.stepsCompleted = { 1: false, 2: false, 3: false };
+          this.isFormOpen = false;
+        }
+      };
+
+      // ============================================
+      // ATTACH FIELD TRACKING LISTENERS
+      // ============================================
+      function attachFieldListeners() {
+        // Text inputs (firstName, lastName, email, phone, motivation)
+        const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+        textInputs.forEach((input) => {
+          const el = input as HTMLInputElement | HTMLTextAreaElement;
+          const fieldName = el.name;
+          const fieldType = el.type || 'textarea';
+
+          el.addEventListener('focus', () => formTracking.onFieldFocus(fieldName, fieldType));
+          el.addEventListener('blur', () => formTracking.onFieldBlur(fieldName, fieldType, el.value));
+        });
+
+        // Radio buttons
+        const radioInputs = form.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach((input) => {
+          const el = input as HTMLInputElement;
+          el.addEventListener('change', () => {
+            if (el.checked) {
+              formTracking.onFieldChange(el.name, 'radio', el.value);
+            }
+          });
+        });
+      }
+
+      // Attach listeners after DOM ready
+      attachFieldListeners();
+
+      // Track form progress for analytics (legacy event for LPUserBehaviorTracker)
       function trackFormProgress(step: number, action: 'view' | 'complete' | 'abandon') {
         const filledFields = getFilledFieldsCount();
         window.dispatchEvent(new CustomEvent('form_step_progress', {
@@ -2084,11 +2344,14 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           return;
         }
 
-        // Track step completion
+        // Track step completion (legacy + granular)
         trackFormProgress(currentStep, 'complete');
+        formTracking.onStepComplete(currentStep);
 
         if (currentStep < totalSteps) {
-          currentStep++;
+          const nextStep = currentStep + 1;
+          formTracking.onStepEnter(nextStep);
+          currentStep = nextStep;
           updateStepUI();
         } else {
           // Submit the form
@@ -2099,6 +2362,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       // Go to previous step
       function goToPrevStep() {
         if (currentStep > 1) {
+          formTracking.onStepEnter(currentStep - 1);
           currentStep--;
           updateStepUI();
         }
@@ -2127,6 +2391,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       function resetFormAndTrack() {
         if (currentStep > 0 && !form.classList.contains('hidden')) {
           trackFormProgress(currentStep, 'abandon');
+          // Granular abandon tracking
+          formTracking.onFormAbandon();
         }
         // Reset form state
         currentStep = 1;
@@ -2395,6 +2661,9 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
       // Form submission function (called from goToNextStep on step 3)
       async function submitForm() {
+        // Track form submission (granular)
+        formTracking.onFormSubmit();
+
         // Disable button and show loading
         if (nextStepBtn) nextStepBtn.setAttribute('disabled', 'true');
         if (nextBtnText) nextBtnText.classList.add('hidden');

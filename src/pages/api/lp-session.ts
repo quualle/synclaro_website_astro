@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 interface SessionPayload {
-  action: 'create' | 'heartbeat' | 'form_open' | 'form_submit' | 'end';
+  action: 'create' | 'heartbeat' | 'form_open' | 'form_submit' | 'end' | 'cta_click' | 'modal_rendered' | 'first_interaction' | 'client_error' | 'modal_timeout';
   session_id: string;
   visitor_id?: string;
   page_path?: string;
@@ -20,6 +20,14 @@ interface SessionPayload {
   referrer?: string;
   time_on_page_seconds?: number;
   max_scroll_depth?: number;
+  // Forensic tracking fields
+  viewport_height?: number;
+  modal_height?: number;
+  first_visible_field_y?: number;
+  modal_render_time_ms?: number;
+  error_message?: string;
+  error_type?: string;
+  interaction_type?: string; // 'field_focus' | 'field_change' | 'tap' | 'selection'
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -159,6 +167,103 @@ export const POST: APIRoute = async ({ request }) => {
           body: JSON.stringify(update),
         }
       );
+
+    // ============================================
+    // FORENSIC TRACKING ACTIONS (P0)
+    // ============================================
+
+    } else if (data.action === 'cta_click') {
+      // Track CTA button click (BEFORE modal renders)
+      const update = {
+        cta_clicked_at: now,
+        viewport_height: data.viewport_height || null,
+        last_heartbeat: now,
+      };
+
+      await fetch(
+        `${supabaseUrl}/rest/v1/lp_session_tracking?session_id=eq.${encodeURIComponent(data.session_id)}`,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify(update),
+        }
+      );
+      console.log(`[LP Session] cta_click: session=${data.session_id}`);
+
+    } else if (data.action === 'modal_rendered') {
+      // Track when modal is actually visible and interactable
+      const update = {
+        modal_rendered_at: now,
+        form_opened: true,
+        form_opened_at: now,
+        modal_render_time_ms: data.modal_render_time_ms || null,
+        modal_height: data.modal_height || null,
+        first_visible_field_y: data.first_visible_field_y || null,
+        last_heartbeat: now,
+      };
+
+      await fetch(
+        `${supabaseUrl}/rest/v1/lp_session_tracking?session_id=eq.${encodeURIComponent(data.session_id)}`,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify(update),
+        }
+      );
+      console.log(`[LP Session] modal_rendered: session=${data.session_id}, render_time=${data.modal_render_time_ms}ms`);
+
+    } else if (data.action === 'first_interaction') {
+      // Track first real user interaction in modal
+      const update = {
+        first_interaction_at: now,
+        last_heartbeat: now,
+      };
+
+      await fetch(
+        `${supabaseUrl}/rest/v1/lp_session_tracking?session_id=eq.${encodeURIComponent(data.session_id)}`,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify(update),
+        }
+      );
+      console.log(`[LP Session] first_interaction: session=${data.session_id}, type=${data.interaction_type}`);
+
+    } else if (data.action === 'client_error') {
+      // Track JS errors during modal open
+      const update = {
+        has_client_error: true,
+        client_error_message: data.error_message ? data.error_message.substring(0, 500) : null,
+        last_heartbeat: now,
+      };
+
+      await fetch(
+        `${supabaseUrl}/rest/v1/lp_session_tracking?session_id=eq.${encodeURIComponent(data.session_id)}`,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify(update),
+        }
+      );
+      console.log(`[LP Session] client_error: session=${data.session_id}, error=${data.error_message}`);
+
+    } else if (data.action === 'modal_timeout') {
+      // Track when modal didn't render within 2000ms
+      const update = {
+        has_client_error: true,
+        client_error_message: 'form_open_timeout: Modal did not render within 2000ms',
+        last_heartbeat: now,
+      };
+
+      await fetch(
+        `${supabaseUrl}/rest/v1/lp_session_tracking?session_id=eq.${encodeURIComponent(data.session_id)}`,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify(update),
+        }
+      );
+      console.log(`[LP Session] modal_timeout: session=${data.session_id}`);
     }
 
     return new Response(JSON.stringify({ success: true }), {

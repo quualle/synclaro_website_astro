@@ -1871,20 +1871,162 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       window.addEventListener('scroll', updateStickyCTA, { passive: true });
       updateStickyCTA();
 
+      // ============================================
+      // FORENSIC TRACKING SYSTEM (P0)
+      // ============================================
+      const forensicTracking = {
+        ctaClickTime: 0,
+        modalRenderedTime: 0,
+        firstInteractionTracked: false,
+        modalTimeoutId: null as ReturnType<typeof setTimeout> | null,
+        errorHandler: null as ((event: ErrorEvent) => void) | null,
+        rejectionHandler: null as ((event: PromiseRejectionEvent) => void) | null,
+
+        getSessionId() {
+          return sessionStorage.getItem('meta_session_id') || '';
+        },
+
+        async sendAction(action: string, extraData: Record<string, any> = {}) {
+          try {
+            await fetch('/api/lp-session', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action,
+                session_id: this.getSessionId(),
+                ...extraData,
+              }),
+            });
+            console.log(`[Forensic] ${action}:`, extraData);
+          } catch (e) {
+            console.error(`[Forensic] Failed to send ${action}:`, e);
+          }
+        },
+
+        // Called when CTA button is clicked (BEFORE modal shows)
+        onCtaClick() {
+          this.ctaClickTime = Date.now();
+          this.firstInteractionTracked = false;
+
+          // Install error handlers
+          this.installErrorHandlers();
+
+          // Set timeout for modal render
+          this.modalTimeoutId = setTimeout(() => {
+            if (!this.modalRenderedTime) {
+              this.sendAction('modal_timeout');
+              console.warn('[Forensic] Modal did not render within 2000ms');
+            }
+          }, 2000);
+
+          // Send cta_click event
+          this.sendAction('cta_click', {
+            viewport_height: window.innerHeight,
+          });
+        },
+
+        // Called when modal is actually visible and interactable
+        onModalRendered() {
+          this.modalRenderedTime = Date.now();
+          const renderTime = this.ctaClickTime ? this.modalRenderedTime - this.ctaClickTime : 0;
+
+          // Clear timeout
+          if (this.modalTimeoutId) {
+            clearTimeout(this.modalTimeoutId);
+            this.modalTimeoutId = null;
+          }
+
+          // Get modal measurements
+          const modalEl = document.getElementById('modal-content');
+          const firstField = document.querySelector('#form-step-1 input, #form-step-1 button[type="button"]') as HTMLElement;
+
+          this.sendAction('modal_rendered', {
+            modal_render_time_ms: renderTime,
+            modal_height: modalEl?.offsetHeight || null,
+            first_visible_field_y: firstField?.getBoundingClientRect().top || null,
+          });
+
+          // Dispatch legacy event for MetaPixelTracker compatibility
+          window.dispatchEvent(new CustomEvent('form_modal_open'));
+        },
+
+        // Called on first user interaction in modal
+        onFirstInteraction(interactionType: string) {
+          if (this.firstInteractionTracked) return;
+          this.firstInteractionTracked = true;
+
+          this.sendAction('first_interaction', {
+            interaction_type: interactionType,
+          });
+        },
+
+        // Install error handlers during modal open
+        installErrorHandlers() {
+          this.errorHandler = (event: ErrorEvent) => {
+            this.sendAction('client_error', {
+              error_message: `${event.message} at ${event.filename}:${event.lineno}`,
+              error_type: 'window.onerror',
+            });
+          };
+          this.rejectionHandler = (event: PromiseRejectionEvent) => {
+            this.sendAction('client_error', {
+              error_message: String(event.reason).substring(0, 500),
+              error_type: 'unhandledrejection',
+            });
+          };
+          window.addEventListener('error', this.errorHandler);
+          window.addEventListener('unhandledrejection', this.rejectionHandler);
+        },
+
+        // Remove error handlers
+        removeErrorHandlers() {
+          if (this.errorHandler) {
+            window.removeEventListener('error', this.errorHandler);
+            this.errorHandler = null;
+          }
+          if (this.rejectionHandler) {
+            window.removeEventListener('unhandledrejection', this.rejectionHandler);
+            this.rejectionHandler = null;
+          }
+        },
+
+        // Reset state
+        reset() {
+          this.ctaClickTime = 0;
+          this.modalRenderedTime = 0;
+          this.firstInteractionTracked = false;
+          if (this.modalTimeoutId) {
+            clearTimeout(this.modalTimeoutId);
+            this.modalTimeoutId = null;
+          }
+          this.removeErrorHandlers();
+        },
+      };
+
       function showModal() {
+        // STEP 1: Track CTA click BEFORE any DOM changes
+        forensicTracking.onCtaClick();
+
+        // STEP 2: Start showing modal
         modal?.classList.remove('hidden');
         stickyCTA?.classList.add('translate-y-full'); // Hide sticky when modal opens
         document.body.style.overflow = 'hidden';
+
+        // STEP 3: Animate modal in
         setTimeout(() => {
           modalContent?.classList.remove('scale-95', 'opacity-0');
           modalContent?.classList.add('scale-100', 'opacity-100');
+
+          // STEP 4: After animation, confirm modal is rendered
+          // Use requestAnimationFrame to ensure paint is complete
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              forensicTracking.onModalRendered();
+              // Start granular form tracking
+              formTracking.onFormOpen();
+            });
+          });
         }, 10);
-
-        // Track form modal open for granular analytics
-        window.dispatchEvent(new CustomEvent('form_modal_open'));
-
-        // Start granular form tracking
-        formTracking.onFormOpen();
       }
 
       function hideModal() {
@@ -1894,12 +2036,23 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           modal?.classList.add('hidden');
           document.body.style.overflow = '';
         }, 300);
+        // Reset forensic tracking state
+        forensicTracking.reset();
       }
 
       openButtons.forEach(btn => btn?.addEventListener('click', showModal));
       closeModal?.addEventListener('click', hideModal);
       closeSuccess?.addEventListener('click', hideModal);
       modalBackdrop?.addEventListener('click', hideModal);
+
+      // Track any tap/click inside modal as first interaction
+      // Note: forensicTracking.onFirstInteraction() handles de-duplication internally
+      modalContent?.addEventListener('touchstart', () => {
+        forensicTracking.onFirstInteraction('tap');
+      }, { passive: true });
+      modalContent?.addEventListener('mousedown', () => {
+        forensicTracking.onFirstInteraction('tap');
+      });
 
       // Close on Escape
       document.addEventListener('keydown', (e) => {
@@ -2173,7 +2326,10 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           const fieldName = el.name;
           const fieldType = el.type || 'textarea';
 
-          el.addEventListener('focus', () => formTracking.onFieldFocus(fieldName, fieldType));
+          el.addEventListener('focus', () => {
+            forensicTracking.onFirstInteraction('field_focus');
+            formTracking.onFieldFocus(fieldName, fieldType);
+          });
           el.addEventListener('blur', () => formTracking.onFieldBlur(fieldName, fieldType, el.value));
         });
 
@@ -2183,6 +2339,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           const el = input as HTMLInputElement;
           el.addEventListener('change', () => {
             if (el.checked) {
+              forensicTracking.onFirstInteraction('selection');
               formTracking.onFieldChange(el.name, 'radio', el.value);
             }
           });

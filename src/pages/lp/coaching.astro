@@ -1236,6 +1236,33 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           });
         },
 
+        onFieldFocus(fieldName: string, fieldType: string) {
+          this.sendEvent({
+            event_type: 'field_focus',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            field_name: fieldName,
+            field_type: fieldType,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
+          });
+        },
+
+        onFieldBlur(fieldName: string, fieldType: string, value: string) {
+          const isFilled = value && value.trim().length > 0;
+          if (isFilled && !this.filledFields.includes(fieldName)) {
+            this.filledFields.push(fieldName);
+          }
+          this.sendEvent({
+            event_type: 'field_blur',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            field_name: fieldName,
+            field_type: fieldType,
+            field_filled: isFilled,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
+          });
+        },
+
         onFieldChange(fieldName: string, fieldType: string, value: string) {
           if (!this.filledFields.includes(fieldName)) {
             this.filledFields.push(fieldName);
@@ -1302,6 +1329,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
       // Attach field listeners
       function attachFieldListeners() {
+        // Radio inputs
         const radioInputs = form.querySelectorAll('input[type="radio"]');
         radioInputs.forEach((input) => {
           const el = input as HTMLInputElement;
@@ -1310,6 +1338,23 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               forensicTracking.onFirstInteraction('selection');
               formTracking.onFieldChange(el.name, 'radio', el.value);
             }
+          });
+        });
+
+        // Text/Email/Tel inputs - Focus & Blur tracking
+        const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+        textInputs.forEach((input) => {
+          const el = input as HTMLInputElement;
+          const fieldName = el.name || el.id || 'unknown';
+          const fieldType = el.type || 'text';
+
+          el.addEventListener('focus', () => {
+            forensicTracking.onFirstInteraction('field_focus');
+            formTracking.onFieldFocus(fieldName, fieldType);
+          });
+
+          el.addEventListener('blur', () => {
+            formTracking.onFieldBlur(fieldName, fieldType, el.value);
           });
         });
       }

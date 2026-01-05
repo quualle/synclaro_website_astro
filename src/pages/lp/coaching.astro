@@ -3,8 +3,8 @@ import '../../styles/global.css';
 import LPUserBehaviorTracker from '../../components/LPUserBehaviorTracker';
 import MetaPixelTracker from '../../components/MetaPixelTracker';
 
-const title = "KI-Coaching | Marco Heer | Synclaro";
-const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mit KI und Automatisierung in Stunden schafft, was andere Wochen brauchen.";
+const title = "KI-Automatisierung für KMU | Marco Heer | Synclaro";
+const description = "Automatisiere in 90 Tagen die Arbeit, für die dein Team heute noch Stunden braucht. Für Selbstständige & KMU.";
 ---
 
 <!doctype html>
@@ -18,1234 +18,564 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://synclaro.de/lp/coaching" />
+    <meta property="og:url" content="https://synclaro.de/lp/coaching-v2" />
   </head>
 
   <body class="min-h-screen bg-black text-white overflow-x-hidden">
 
     <!-- ============================================
-         HERO SECTION - BOLD & FUTURISTIC
+         HERO SECTION - OUTCOME FIRST (Chef-KI Vorgabe)
+         Prinzip: Outcome → Proof → Action → KEIN PREIS
          ============================================ -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-section-mobile">
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
 
-      <!-- Animated Background Grid -->
-      <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,79,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.15) 1px, transparent 1px); background-size: 80px 80px;"></div>
+      <!-- Subtle Background -->
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-black"></div>
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,79,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
       </div>
 
-      <!-- Floating Orbs -->
-      <div class="absolute top-1/4 right-0 w-[800px] h-[800px] bg-gradient-radial from-swiss-orange/30 via-swiss-orange/5 to-transparent rounded-full blur-3xl translate-x-1/2 animate-orb-float"></div>
-      <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-radial from-orange-600/20 via-transparent to-transparent rounded-full blur-3xl -translate-x-1/3 animate-orb-float-delayed"></div>
-
-      <!-- Scanlines -->
-      <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px);"></div>
+      <!-- Single Accent Orb -->
+      <div class="absolute top-1/3 right-0 w-[400px] h-[400px] bg-gradient-radial from-swiss-orange/20 via-swiss-orange/5 to-transparent rounded-full blur-3xl translate-x-1/2"></div>
 
       <!-- Main Content -->
-      <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20">
-        <!-- Mobile: ULTRA-DENSE Information -->
-        <div class="sm:hidden">
+      <div class="relative z-10 container mx-auto px-5 py-12 max-w-3xl">
 
-          <!-- Row 1: Headline -->
-          <h1 class="text-[1.5rem] font-black leading-[0.95] tracking-tight mb-3">
-            KI ist kein Tool.<br/>
-            <span class="bg-gradient-to-r from-swiss-orange to-orange-400 bg-clip-text text-transparent">Es ist ein Zeitalter!</span>
+        <!-- MOBILE HERO -->
+        <div class="sm:hidden text-center">
+
+          <!-- 1. HEADLINE - Konkretes Ergebnis (Chef-KI Vorgabe) -->
+          <h1 class="text-[1.6rem] font-black leading-[1.1] tracking-tight mb-5">
+            Automatisiere in 90 Tagen die Arbeit,
+            <span class="block mt-1 bg-gradient-to-r from-swiss-orange to-orange-400 bg-clip-text text-transparent">
+              für die dein Team heute noch Stunden braucht.
+            </span>
           </h1>
 
-          <!-- Row 2: Marco Image + Text -->
-          <div class="flex gap-3 mb-3">
-            <div class="w-[90px] h-[110px] flex-shrink-0 overflow-hidden border border-swiss-orange/40">
-              <img src="/images/marco_new.png" alt="Marco Heer" class="w-full h-full object-cover object-top" />
-            </div>
-            <div class="flex-1 flex flex-col justify-center">
-              <p class="text-[13px] text-gray-300 leading-snug">
-                Lerne in 6 Monaten aus meiner jahrelangen Praxiserfahrung, wie du KI gewinnbringend für dich und dein Unternehmen einsetzt – für weniger Routinearbeit, mehr Produktivität und messbar höhere Erträge.
-              </p>
-              <p class="text-[11px] text-gray-500 mt-1.5">Mit Marco Heer</p>
-            </div>
-          </div>
-
-          <!-- Row 4: Value Box + Price (combined) -->
-          <div class="mb-3 p-3 bg-white/5 border border-swiss-orange/30">
-            <p class="text-[11px] text-swiss-orange font-bold uppercase tracking-wider mb-2">Was du im Gruppencoaching bekommst:</p>
-            <div class="grid grid-cols-1 gap-y-1.5 text-[12px] mb-3">
-              <div class="flex items-center gap-2">
-                <span class="text-swiss-orange font-bold">✓</span>
-                <span class="text-white font-medium">6 Monate persönliche Begleitung</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-swiss-orange font-bold">✓</span>
-                <span class="text-white font-medium">Wöchentliche Live-Sessions (2h)</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-swiss-orange font-bold">✓</span>
-                <span class="text-white font-medium">4 Stunden 1:1 mit Marco am Ende</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-swiss-orange font-bold">✓</span>
-                <span class="text-white font-medium">Eigene Automatisierungen bauen</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-swiss-orange font-bold">✓</span>
-                <span class="text-white font-medium">Täglicher Chat-Support</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-swiss-orange font-bold">✓</span>
-                <span class="text-white font-medium">Alle Aufzeichnungen dauerhaft</span>
-              </div>
-            </div>
-            <div class="pt-2 border-t border-white/10 text-right">
-              <span class="text-xs text-gray-500">Paketpreis: 3.779 €</span>
-            </div>
-          </div>
-
-          <!-- Row 5: Mini Proof -->
-          <div class="mb-3 flex items-center gap-2 text-[11px]">
-            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-[10px] font-bold flex-shrink-0">K</div>
-            <p class="text-gray-400 italic">„KI übernimmt jetzt echte Aufgaben in meiner Firma."</p>
-            <span class="text-gray-600">– Karl</span>
-          </div>
-
-          <!-- Row 7: CTA -->
-          <button
-            id="open-modal-hero-mobile"
-            class="group w-full inline-flex flex-col items-center justify-center bg-swiss-orange text-white font-bold px-5 py-3 overflow-hidden transition-all duration-300 active:scale-[0.98] shadow-[0_0_30px_rgba(255,79,0,0.3)]"
-          >
-            <span class="flex items-center gap-2">
-              <span>Unverbindlich bewerben</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
-            <span class="text-[10px] font-normal opacity-80 mt-0.5">Die Bewerbung ist kostenfrei</span>
-          </button>
-
-          <!-- Row 8: Trust -->
-          <p class="mt-2 text-center text-[10px] text-gray-500">
-            Wir melden uns bei dir
+          <!-- 1b. KLARSTELLUNG - 90 Tage vs 6 Monate (Chef-KI Feedback) -->
+          <p class="text-xs text-swiss-orange/80 tracking-wide mb-4">
+            Erste Automationen in 90 Tagen. Begleitung über 6 Monate.
           </p>
 
-          <!-- Row 9: Scroll Hint - SEHR DEUTLICH -->
-          <div class="mt-8 pt-5 border-t border-swiss-orange/30">
-            <p class="text-sm font-bold text-white text-center mb-2">Weiter unten findest du:</p>
-            <div class="flex justify-center gap-3 text-[13px] mb-4">
-              <span class="text-swiss-orange font-semibold">Das Programm</span>
-              <span class="text-white/50">•</span>
-              <span class="text-swiss-orange font-semibold">Die Ergebnisse</span>
-              <span class="text-white/50">•</span>
-              <span class="text-swiss-orange font-semibold">Über Marco</span>
-            </div>
-            <!-- Scroll indicator at bottom -->
-            <div class="flex justify-center items-center gap-2 animate-bounce">
-              <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-              <span class="text-sm text-swiss-orange font-semibold">Scrollen</span>
-              <svg class="w-5 h-5 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </div>
-          </div>
+          <!-- 2. SUBHEADLINE - Zielgruppe klar (Chef-KI Vorgabe) -->
+          <p class="text-[15px] text-gray-300 leading-relaxed mb-6">
+            Für Selbstständige & KMU, die KI <span class="text-white font-semibold">endlich produktiv</span> einsetzen wollen – ohne Tool-Chaos, Spielerei oder Agenturabhängigkeit.
+          </p>
 
-        </div>
-
-        <!-- Desktop Grid -->
-        <div class="hidden sm:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start min-h-[90vh] py-8">
-
-          <!-- Left: Text Content -->
-          <div class="order-2 lg:order-1">
-
-            <!-- Row 1: Headline -->
-            <h1 class="mb-4 opacity-0 animate-hero-fade-in" style="animation-delay: 0.3s;">
-              <span class="block text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight">
-                KI ist kein Tool.
-              </span>
-              <span class="block text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight mt-1">
-                <span class="bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange bg-clip-text text-transparent">Es ist ein Zeitalter!</span>
-              </span>
-            </h1>
-
-            <!-- Row 3: One-liner -->
-            <p class="text-lg lg:text-xl text-gray-300 mb-5 opacity-0 animate-hero-fade-in" style="animation-delay: 0.4s;">
-              Lerne in 6 Monaten aus meiner jahrelangen Praxiserfahrung, wie du KI gewinnbringend für dich und dein Unternehmen einsetzt – für weniger Routinearbeit, mehr Produktivität und messbar höhere Erträge.
+          <!-- 3. PROOF - Kurz, faktisch (Chef-KI Vorgabe) -->
+          <div class="mb-8 py-3 px-4 bg-white/5 border-l-2 border-swiss-orange">
+            <p class="text-sm text-gray-400">
+              <span class="text-white font-semibold">40+ Unternehmen</span> haben mit uns interne KI-Workflows aufgebaut – statt neue Mitarbeiter einzustellen.
             </p>
-
-            <!-- Row 4: Value Box + Price (combined) -->
-            <div class="mb-5 p-5 bg-white/5 border border-swiss-orange/30 opacity-0 animate-hero-fade-in" style="animation-delay: 0.5s;">
-              <p class="text-sm text-swiss-orange font-bold uppercase tracking-wider mb-4">Was du im Gruppencoaching bekommst:</p>
-              <div class="grid grid-cols-2 gap-x-6 gap-y-2.5 text-base mb-4">
-                <div class="flex items-center gap-2.5">
-                  <span class="text-swiss-orange font-bold text-lg">✓</span>
-                  <span class="text-white font-medium">6 Monate persönliche Begleitung</span>
-                </div>
-                <div class="flex items-center gap-2.5">
-                  <span class="text-swiss-orange font-bold text-lg">✓</span>
-                  <span class="text-white font-medium">Wöchentliche Live-Sessions (2h)</span>
-                </div>
-                <div class="flex items-center gap-2.5">
-                  <span class="text-swiss-orange font-bold text-lg">✓</span>
-                  <span class="text-white font-medium">4 Stunden 1:1 mit Marco am Ende</span>
-                </div>
-                <div class="flex items-center gap-2.5">
-                  <span class="text-swiss-orange font-bold text-lg">✓</span>
-                  <span class="text-white font-medium">Eigene Automatisierungen bauen</span>
-                </div>
-                <div class="flex items-center gap-2.5">
-                  <span class="text-swiss-orange font-bold text-lg">✓</span>
-                  <span class="text-white font-medium">Täglicher Chat-Support</span>
-                </div>
-                <div class="flex items-center gap-2.5">
-                  <span class="text-swiss-orange font-bold text-lg">✓</span>
-                  <span class="text-white font-medium">Alle Aufzeichnungen dauerhaft</span>
-                </div>
-              </div>
-              <div class="pt-3 border-t border-white/10 text-right">
-                <span class="text-sm text-gray-500">Paketpreis: 3.779 €</span>
-              </div>
-            </div>
-
-            <!-- Row 5: Mini Proof -->
-            <div class="mb-5 flex items-center gap-3 opacity-0 animate-hero-fade-in" style="animation-delay: 0.6s;">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center font-bold flex-shrink-0">K</div>
-              <p class="text-sm text-gray-400 italic">„KI übernimmt jetzt echte Aufgaben, die vorher nur Mitarbeiter machen konnten."</p>
-              <span class="text-sm text-gray-600">– Karl, Spenglerei München</span>
-            </div>
-
-            <!-- Row 7: CTA + Trust -->
-            <div class="opacity-0 animate-hero-fade-in" style="animation-delay: 0.65s;">
-              <button
-                id="open-modal-hero"
-                class="group relative inline-flex flex-col items-center bg-swiss-orange text-white font-bold px-10 py-4 text-lg overflow-hidden transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,79,0,0.5)]"
-              >
-                <span class="absolute inset-0 bg-gradient-to-r from-orange-600 to-swiss-orange opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                <span class="relative z-10 flex items-center gap-3">
-                  <span>Unverbindlich bewerben</span>
-                  <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-                <span class="relative z-10 text-xs font-normal opacity-80 mt-1">Die Bewerbung ist kostenfrei</span>
-                <span class="absolute inset-0 border-2 border-swiss-orange"></span>
-              </button>
-
-              <p class="mt-3 text-sm text-gray-500">
-                Wir melden uns bei dir
-              </p>
-
-              <!-- Scroll Hint - SEHR DEUTLICH -->
-              <div class="mt-10 pt-6 border-t border-swiss-orange/30">
-                <p class="text-lg font-bold text-white mb-3">Weiter unten findest du:</p>
-                <div class="flex gap-4 text-base mb-5">
-                  <span class="text-swiss-orange font-semibold">Das Programm</span>
-                  <span class="text-white/50">•</span>
-                  <span class="text-swiss-orange font-semibold">Die Ergebnisse</span>
-                  <span class="text-white/50">•</span>
-                  <span class="text-swiss-orange font-semibold">Über Marco</span>
-                </div>
-                <!-- Scroll indicator -->
-                <div class="flex items-center gap-2 animate-bounce">
-                  <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                  <span class="text-base text-swiss-orange font-semibold">Scrollen</span>
-                  <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <!-- Right: Marco Image + Testimonials -->
-          <div class="order-1 lg:order-2 relative opacity-0 animate-hero-fade-in flex flex-col gap-6" style="animation-delay: 0.4s;">
+          <!-- 4. CTA - Kein "Bewerben", kein Risiko (Chef-KI Vorgabe) -->
+          <button
+            id="open-modal-hero-mobile"
+            class="w-full bg-swiss-orange text-white font-bold py-4 px-6 text-base transition-all duration-300 active:scale-[0.98] shadow-[0_0_40px_rgba(255,79,0,0.3)]"
+          >
+            <span class="block">Kostenlos prüfen lassen</span>
+            <span class="block text-xs font-normal opacity-80 mt-1">2–3 Minuten · Unverbindliches Kennenlernen</span>
+          </button>
 
-            <!-- Image Container (Reduced Height) -->
-            <div class="relative">
-              <!-- Decorative Frame -->
-              <div class="absolute -inset-3 border border-swiss-orange/20 -z-10 animate-frame-pulse"></div>
-
-              <!-- Corner Accents -->
-              <div class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-swiss-orange"></div>
-              <div class="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-swiss-orange"></div>
-              <div class="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-swiss-orange"></div>
-              <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-swiss-orange"></div>
-
-              <!-- Image -->
-              <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-black">
-                <img
-                  src="/images/marco_new.png"
-                  alt="Marco Heer"
-                  class="w-full h-auto max-h-[400px] object-contain grayscale-[20%] contrast-[1.1]"
-                />
-                <!-- Gradient Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                <div class="absolute inset-0 bg-gradient-to-r from-swiss-orange/10 to-transparent mix-blend-overlay"></div>
-
-                <!-- Name Tag -->
-                <div class="absolute bottom-4 left-4 right-4">
-                  <div class="flex items-center gap-3 bg-black/80 backdrop-blur-sm border border-white/10 p-3">
-                    <div class="w-1.5 h-10 bg-swiss-orange"></div>
-                    <div>
-                      <p class="font-black text-xl">Marco Heer</p>
-                      <p class="text-gray-400 font-mono text-xs">Unternehmer, Ingenieur und Coach</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          <!-- Scroll Indicator -->
+          <div class="mt-12 flex flex-col items-center gap-2 text-gray-500">
+            <span class="text-xs tracking-wider uppercase">Mehr erfahren</span>
+            <svg class="w-5 h-5 animate-bounce text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </div>
+
         </div>
-      </div>
 
+        <!-- DESKTOP HERO -->
+        <div class="hidden sm:block text-center">
+
+          <!-- 1. HEADLINE -->
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight mb-6">
+            Automatisiere in 90 Tagen die Arbeit,
+            <span class="block mt-2 bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange bg-clip-text text-transparent">
+              für die dein Team heute noch Stunden braucht.
+            </span>
+          </h1>
+
+          <!-- 1b. KLARSTELLUNG - 90 Tage vs 6 Monate (Chef-KI Feedback) -->
+          <p class="text-sm text-swiss-orange/80 tracking-wide mb-5">
+            Erste Automationen in 90 Tagen. Begleitung über 6 Monate.
+          </p>
+
+          <!-- 2. SUBHEADLINE -->
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+            Für Selbstständige & KMU, die KI <span class="text-white font-semibold">endlich produktiv</span> einsetzen wollen – ohne Tool-Chaos, Spielerei oder Agenturabhängigkeit.
+          </p>
+
+          <!-- 3. PROOF -->
+          <div class="mb-10 inline-block py-3 px-6 bg-white/5 border-l-2 border-swiss-orange">
+            <p class="text-base text-gray-400">
+              <span class="text-white font-semibold">40+ Unternehmen</span> haben mit uns interne KI-Workflows aufgebaut – statt neue Mitarbeiter einzustellen.
+            </p>
+          </div>
+
+          <!-- 4. CTA -->
+          <div>
+            <button
+              id="open-modal-hero"
+              class="group inline-flex flex-col items-center bg-swiss-orange text-white font-bold py-5 px-12 text-lg transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,79,0,0.4)]"
+            >
+              <span class="flex items-center gap-3">
+                <span>Kostenlos prüfen lassen</span>
+                <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+              <span class="text-sm font-normal opacity-80 mt-1">2–3 Minuten · Unverbindliches Kennenlernen</span>
+            </button>
+          </div>
+
+          <!-- Scroll Indicator -->
+          <div class="mt-16 flex flex-col items-center gap-3 text-gray-500">
+            <span class="text-xs tracking-[0.3em] uppercase">Mehr erfahren</span>
+            <div class="w-8 h-14 border-2 border-gray-700 rounded-full flex justify-center">
+              <div class="w-1.5 h-3 bg-swiss-orange rounded-full mt-2 animate-bounce"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </section>
-
-    <!-- Scroll Indicator - Positioned clearly between sections -->
-    <div class="relative z-20 -mt-8 mb-8 hidden lg:flex justify-center opacity-0 animate-hero-fade-in" style="animation-delay: 1.2s;">
-      <div class="flex flex-col items-center gap-3 text-gray-500 hover:text-swiss-orange transition-colors cursor-pointer group" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
-        <span class="font-mono text-xs tracking-[0.3em] uppercase group-hover:text-swiss-orange transition-colors">Entdecken</span>
-        <div class="w-8 h-14 border-2 border-gray-700 group-hover:border-swiss-orange rounded-full flex justify-center transition-colors">
-          <div class="w-1.5 h-3 bg-swiss-orange rounded-full mt-2 animate-scroll-bounce"></div>
-        </div>
-      </div>
-    </div>
 
 
     <!-- ============================================
-         TESTIMONIALS SECTION
+         SOCIAL PROOF SECTION - PROMINENT (Chef-KI Vorgabe)
+         Kommt DIREKT nach Hero, BEVOR irgendwelche Details
          ============================================ -->
-    <section class="relative py-10 sm:py-20 lg:py-24 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
-      <!-- Background accent -->
+    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+
+      <!-- Background -->
       <div class="absolute inset-0">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-swiss-orange/5 to-transparent rounded-full"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-swiss-orange/5 to-transparent rounded-full"></div>
       </div>
 
-      <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl relative z-10">
+      <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
 
-        <!-- MOBILE: Collapsible Testimonials -->
-        <div class="md:hidden">
-          <!-- Collapsed Header (always visible) -->
-          <button
-            id="testimonials-toggle"
-            class="w-full flex items-center justify-between p-4 bg-white/5 border border-swiss-orange/40 rounded-lg mb-2 active:bg-white/10 transition-colors"
-          >
-            <div class="flex items-center gap-3">
-              <div class="flex -space-x-2">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-xs font-bold border-2 border-black">K</div>
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-xs font-bold border-2 border-black">E</div>
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-xs font-bold border-2 border-black">D</div>
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-xs font-bold border-2 border-black">H</div>
-              </div>
-              <div class="text-left">
-                <p class="text-sm font-semibold text-white">Teilnehmerberichte</p>
-                <p class="text-xs text-gray-400">Zitate von Teilnehmern</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span id="testimonials-hint" class="text-[10px] text-swiss-orange/70 animate-pulse">Antippen</span>
-              <svg id="testimonials-chevron" class="w-5 h-5 text-swiss-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </button>
-
-          <!-- Expandable Content -->
-          <div id="testimonials-content" class="hidden space-y-3 overflow-hidden">
-            <!-- Mobile Testimonial 1: Karl -->
-            <div class="p-4 bg-white/[0.03] border border-white/10 rounded-lg">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center font-bold">K</div>
-                <div>
-                  <p class="font-semibold text-white text-sm">Karl</p>
-                  <p class="text-xs text-gray-500">Spenglerei, München</p>
-                </div>
-              </div>
-              <p class="text-sm text-gray-300 leading-relaxed">
-                „Es ist unglaublich, wie Claude Code meinen Alltag an Stellen, die ich vorher nicht kannte, jetzt mit Automatisierungen erleichtert. Mir war nie klar, dass KI wirklich so eine aktive Rolle in meiner Firma spielen könnte."
-              </p>
-            </div>
-
-            <!-- Mobile Testimonial 2: Evelyn -->
-            <div class="p-4 bg-white/[0.03] border border-white/10 rounded-lg">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center font-bold">E</div>
-                <div>
-                  <p class="font-semibold text-white text-sm">Evelyn</p>
-                  <p class="text-xs text-gray-500">Selbstständig, Baden-Württemberg</p>
-                </div>
-              </div>
-              <p class="text-sm text-gray-300 leading-relaxed">
-                „Ich bin zwar erst seit ein paar Stunden im Coaching, kann aber jetzt schon ein wichtiges Projekt zehn Mal schneller erledigen. Der Möbel-Design-Vertrieb meines Mannes profitiert auch bereits."
-              </p>
-            </div>
-
-            <!-- Mobile Testimonial 3: Daniela -->
-            <div class="p-4 bg-white/[0.03] border border-white/10 rounded-lg">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold">D</div>
-                <div>
-                  <p class="font-semibold text-white text-sm">Daniela</p>
-                  <p class="text-xs text-gray-500">Holzbau-GF, Baden-Württemberg</p>
-                </div>
-              </div>
-              <p class="text-sm text-gray-300 leading-relaxed">
-                „KI greift für mich auf mein ERP zu, analysiert Daten, schreibt Rechnungen und Zahlungserinnerungen und diskutiert mit mir die Automatisierungsstrategie für meinen Betrieb."
-              </p>
-            </div>
-
-            <!-- Mobile Testimonial 4: Holger -->
-            <div class="p-4 bg-white/[0.03] border border-white/10 rounded-lg">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center font-bold">H</div>
-                <div>
-                  <p class="font-semibold text-white text-sm">Holger</p>
-                  <p class="text-xs text-gray-500">Bauunternehmen-GF, NRW</p>
-                </div>
-              </div>
-              <p class="text-sm text-gray-300 leading-relaxed">
-                „Das Gruppencoaching trägt massiv dazu bei, dass ich KI-Integrationen in Zukunft autonom selber machen kann. Das Ganze erreicht einen Tiefgang, den ich mir nicht hätte ausmalen können."
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- DESKTOP: Full Section Header -->
-        <div class="hidden md:block text-center mb-10 sm:mb-14 scroll-reveal">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4">
-            Geteilte Meinungen <span class="text-swiss-orange">einiger Teilnehmer</span>
+        <!-- Section Header -->
+        <div class="text-center mb-10 sm:mb-14">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">
+            Was Teilnehmer <span class="text-swiss-orange">berichten</span>
           </h2>
-          <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
-            Echte Zitate von Lernenden, mitten im Prozess
-          </p>
+          <p class="text-gray-400 text-sm sm:text-base">Echte Zitate aus laufenden Projekten</p>
         </div>
 
-        <!-- DESKTOP: Testimonials Grid - 2x2 -->
-        <div class="hidden md:grid md:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
 
           <!-- Testimonial 1: Karl -->
-          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border-2 border-swiss-orange/30 hover:border-swiss-orange/60 rounded-xl p-6 sm:p-8 transition-all duration-300">
-            <!-- Quote Icon -->
-            <div class="absolute top-4 right-4 text-swiss-orange/20 group-hover:text-swiss-orange/40 transition-colors">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
-            </div>
-
-            <!-- Person Info -->
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-xl font-bold shadow-lg shadow-swiss-orange/20">K</div>
+          <div class="group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-swiss-orange/30 p-5 sm:p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-lg font-bold">K</div>
               <div>
-                <p class="font-bold text-white text-lg">Karl</p>
-                <p class="text-sm text-gray-400">Spenglerei im Süden Münchens</p>
+                <p class="font-bold text-white">Karl</p>
+                <p class="text-xs text-gray-500">Spenglerei, München</p>
               </div>
             </div>
-
-            <!-- Quote -->
-            <p class="text-gray-300 leading-relaxed mb-5">
-              „Es ist unglaublich, wie Claude Code meinen Alltag an Stellen, die ich vorher nicht kannte, jetzt mit Automatisierungen erleichtert. Ich dachte immer, man könnte hier nur mit ChatGPT mal ein Gespräch führen. Mir war nie klar, dass KI wirklich so eine aktive Rolle in meiner Firma spielen könnte und dabei echte Aufgaben übernimmt, wie sie vorher nur von Mitarbeitern getätigt werden konnten."
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              „KI übernimmt jetzt <span class="text-white font-medium">echte Aufgaben</span>, die vorher nur Mitarbeiter machen konnten. Mir war nie klar, dass das möglich ist."
             </p>
-
-            <!-- Highlights -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">Automatisierungen im Alltag</span>
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">KI übernimmt echte Aufgaben</span>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">Automatisierung</span>
+              <span class="px-2 py-1 bg-white/5 text-gray-400 text-xs">Handwerk</span>
             </div>
           </div>
 
-          <!-- Testimonial 2: Evelyn -->
-          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border-2 border-swiss-orange/30 hover:border-swiss-orange/60 rounded-xl p-6 sm:p-8 transition-all duration-300">
-            <!-- Quote Icon -->
-            <div class="absolute top-4 right-4 text-swiss-orange/20 group-hover:text-swiss-orange/40 transition-colors">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
-            </div>
-
-            <!-- Person Info -->
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-xl font-bold shadow-lg shadow-orange-500/20">E</div>
+          <!-- Testimonial 2: Daniela -->
+          <div class="group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-swiss-orange/30 p-5 sm:p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-lg font-bold">D</div>
               <div>
-                <p class="font-bold text-white text-lg">Evelyn</p>
-                <p class="text-sm text-gray-400">Selbstständig, Baden-Württemberg</p>
+                <p class="font-bold text-white">Daniela</p>
+                <p class="text-xs text-gray-500">Holzbau-GF, Baden-Württemberg</p>
               </div>
             </div>
-
-            <!-- Quote -->
-            <p class="text-gray-300 leading-relaxed mb-5">
-              „Du bist der Erste, der vernünftig mit mir kommuniziert hat. Ich bin zwar erst seit ein paar Stunden im Coaching, kann aber jetzt schon ein mir sehr wichtiges privates Projekt mindestens zehn Mal schneller und auch um ein Vielfaches besser erledigen. Der Möbel-Design-Vertrieb meines Mannes profitiert auch bereits von den ersten gebauten Automatisierungen."
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              „KI greift auf mein ERP zu, analysiert Daten, <span class="text-white font-medium">schreibt Rechnungen und Zahlungserinnerungen</span> – automatisch."
             </p>
-
-            <!-- Highlights -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">10x schneller</span>
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">Erste Automatisierungen nach Stunden</span>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">ERP-Integration</span>
+              <span class="px-2 py-1 bg-white/5 text-gray-400 text-xs">Baubranche</span>
             </div>
           </div>
 
-          <!-- Testimonial 3: Daniela -->
-          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border-2 border-swiss-orange/30 hover:border-swiss-orange/60 rounded-xl p-6 sm:p-8 transition-all duration-300">
-            <!-- Quote Icon -->
-            <div class="absolute top-4 right-4 text-swiss-orange/20 group-hover:text-swiss-orange/40 transition-colors">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
-            </div>
-
-            <!-- Person Info -->
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-xl font-bold shadow-lg shadow-amber-500/20">D</div>
+          <!-- Testimonial 3: Evelyn -->
+          <div class="group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-swiss-orange/30 p-5 sm:p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-lg font-bold">E</div>
               <div>
-                <p class="font-bold text-white text-lg">Daniela</p>
-                <p class="text-sm text-gray-400">Holzbau-Geschäftsführerin, südl. Baden-Württemberg</p>
+                <p class="font-bold text-white">Evelyn</p>
+                <p class="text-xs text-gray-500">Selbstständig, Baden-Württemberg</p>
               </div>
             </div>
-
-            <!-- Quote -->
-            <p class="text-gray-300 leading-relaxed mb-5">
-              „Es ist wirklich unglaublich, dass ich hier vor meinem Rechner sitze und KI für mich auf mein ERP zugreift, Daten analysiert, von denen ich gar nicht wusste, dass ich sie hatte. Rechnungen und Zahlungserinnerungen schreibt und rausschickt und mit mir diskutiert, welche weitere Automatisierungsstrategie wir in den nächsten Wochen für meinen Betrieb fahren sollten. Vielen Dank."
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              „Nach ein paar Stunden erledige ich Projekte <span class="text-white font-medium">10x schneller</span>. Der Möbel-Vertrieb meines Mannes profitiert auch bereits."
             </p>
-
-            <!-- Highlights -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">ERP-Integration</span>
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">Automatische Rechnungen</span>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">10x schneller</span>
+              <span class="px-2 py-1 bg-white/5 text-gray-400 text-xs">Sofort-Ergebnis</span>
             </div>
           </div>
 
           <!-- Testimonial 4: Holger -->
-          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border-2 border-swiss-orange/30 hover:border-swiss-orange/60 rounded-xl p-6 sm:p-8 transition-all duration-300">
-            <!-- Quote Icon -->
-            <div class="absolute top-4 right-4 text-swiss-orange/20 group-hover:text-swiss-orange/40 transition-colors">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
-            </div>
-
-            <!-- Person Info -->
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-xl font-bold shadow-lg shadow-orange-400/20">H</div>
+          <div class="group relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-swiss-orange/30 p-5 sm:p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-lg font-bold">H</div>
               <div>
-                <p class="font-bold text-white text-lg">Holger</p>
-                <p class="text-sm text-gray-400">Bauunternehmen-GF, Nordrhein-Westfalen</p>
+                <p class="font-bold text-white">Holger</p>
+                <p class="text-xs text-gray-500">Bauunternehmen-GF, NRW</p>
               </div>
             </div>
-
-            <!-- Quote -->
-            <p class="text-gray-300 leading-relaxed mb-5">
-              „Ich hatte schon vor dem Gruppencoaching mit Marco im Rahmen eines Done-For-You-Services zusammengearbeitet – damals eine umfassende KI-Integration mit VoiceBot, die meinen Ingenieuren seit Wochen hilft, ihren Job besser zu machen. Das Gruppencoaching trägt jetzt massiv dazu bei, dass ich so etwas in Zukunft autonom selber machen kann. Das Ganze erreicht einen Tiefgang, den ich mir im Traum nicht hätte ausmalen können."
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              „Der Tiefgang ist unfassbar. Ich kann jetzt <span class="text-white font-medium">KI-Integrationen autonom</span> umsetzen – das hätte ich nie gedacht."
             </p>
-
-            <!-- Highlights -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">VoiceBot-Integration</span>
-              <span class="px-3 py-1 bg-swiss-orange/10 border border-swiss-orange/30 rounded-full text-xs text-swiss-orange font-medium">Autonome Fähigkeiten</span>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">VoiceBot</span>
+              <span class="px-2 py-1 bg-white/5 text-gray-400 text-xs">Baubranche</span>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
 
     <!-- ============================================
-         DAS PROGRAMM SECTION
+         TRANSFORMATION SECTION - Was du erreichen wirst
          ============================================ -->
-    <section class="relative py-16 sm:py-24 lg:py-32 bg-black overflow-hidden mobile-section-padding">
-      <!-- Background -->
+    <section class="relative py-16 sm:py-24 bg-black overflow-hidden">
+
       <div class="absolute inset-0">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] lg:w-[1000px] h-[600px] sm:h-[800px] lg:h-[1000px] bg-gradient-radial from-swiss-orange/5 to-transparent rounded-full"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-swiss-orange/5 to-transparent rounded-full"></div>
       </div>
 
-      <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-6xl relative z-10">
+      <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
+
         <!-- Section Header -->
-        <div class="text-center mb-10 sm:mb-16 lg:mb-20 scroll-reveal">
-          <span class="inline-block px-3 sm:px-4 py-2 bg-white/5 border border-white/10 text-gray-400 font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6">
-            Das Programm
+        <div class="text-center mb-12 sm:mb-16">
+          <span class="inline-block px-3 py-1.5 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-4">
+            Die Transformation
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 px-2">
-            6 Monate. <span class="text-swiss-orange block sm:inline">2 Stunden pro Woche.</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">
+            In 90 Tagen erreichst du
           </h2>
-          <p class="text-base sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-2">
-            Hochverdichtet. Praxisnah. Mit echter Begleitung statt nur Videokursen.
+          <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+            Keine Theorie. Keine Spielerei. Echte Ergebnisse in deinem Unternehmen.
           </p>
         </div>
 
-        <!-- Program Features - Consistent Mobile Design -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
-          <!-- Live Sessions -->
-          <div class="scroll-reveal relative bg-gradient-to-br from-gray-900 to-gray-950 border border-white/10 rounded-lg sm:rounded-none p-5 sm:p-6 lg:p-8">
-            <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <div class="w-12 h-12 sm:w-14 sm:h-14 bg-swiss-orange rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg sm:text-xl lg:text-2xl font-black">Live-Sessions</h3>
-                <p class="text-swiss-orange font-mono text-xs sm:text-sm">2h / Woche</p>
-              </div>
+        <!-- Transformation Points -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
+
+          <div class="flex gap-4">
+            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
+              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
-            <p class="text-sm sm:text-base text-gray-400 mb-4">
-              Kein passives Zuschauen. Echte Interaktion, echte Projekte, echte Fragen. Von den Grundlagen bis zu komplexen Agentenschwärmen.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 sm:px-3 py-1 bg-swiss-orange/10 text-swiss-orange text-xs sm:text-sm font-mono">Live</span>
-              <span class="px-2 sm:px-3 py-1 bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Interaktiv</span>
-              <span class="px-2 sm:px-3 py-1 bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Q&A</span>
+            <div>
+              <h3 class="font-bold text-lg mb-1">80% weniger Routinearbeit</h3>
+              <p class="text-gray-400 text-sm">KI übernimmt wiederkehrende Aufgaben – du fokussierst auf Wertschöpfung.</p>
             </div>
           </div>
 
-          <!-- Video Material -->
-          <div class="scroll-reveal relative bg-gradient-to-br from-gray-900 to-gray-950 border border-white/10 rounded-lg sm:rounded-none p-5 sm:p-6 lg:p-8" style="animation-delay: 0.1s;">
-            <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <div class="w-12 h-12 sm:w-14 sm:h-14 bg-swiss-orange rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg sm:text-xl lg:text-2xl font-black">10h Videomaterial</h3>
-                <p class="text-swiss-orange font-mono text-xs sm:text-sm">On-Demand</p>
-              </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
+              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
             </div>
-            <p class="text-sm sm:text-base text-gray-400 mb-4">
-              Kompaktes Wissen zum Nachschauen – damit alle zu Beginn des Coachings auf dem gleichen Grundlagenstand sind.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 sm:px-3 py-1 bg-swiss-orange/10 text-swiss-orange text-xs sm:text-sm font-mono">Flexibel</span>
-              <span class="px-2 sm:px-3 py-1 bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Strukturiert</span>
-              <span class="px-2 sm:px-3 py-1 bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Praxis</span>
+            <div>
+              <h3 class="font-bold text-lg mb-1">Unabhängigkeit von Agenturen</h3>
+              <p class="text-gray-400 text-sm">Du baust und wartest deine Automatisierungen selbst – keine laufenden Kosten.</p>
             </div>
           </div>
 
-          <!-- 1:1 Sessions -->
-          <div class="scroll-reveal relative bg-gradient-to-br from-gray-900 to-gray-950 border border-white/10 rounded-lg sm:rounded-none p-5 sm:p-6 lg:p-8" style="animation-delay: 0.2s;">
-            <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <div class="w-12 h-12 sm:w-14 sm:h-14 bg-swiss-orange rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg sm:text-xl lg:text-2xl font-black">2x 1:1 mit Marco</h3>
-                <p class="text-swiss-orange font-mono text-xs sm:text-sm">Je 60 Min.</p>
-              </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
+              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
             </div>
-            <p class="text-sm sm:text-base text-gray-400 mb-4">
-              Persönliche Begleitung bei der Anwendung des Gelernten in deiner Situation. Für perfekte Umsetzung und garantierte Ergebnisse.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 sm:px-3 py-1 bg-swiss-orange/10 text-swiss-orange text-xs sm:text-sm font-mono">1:1</span>
-              <span class="px-2 sm:px-3 py-1 bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Persönlich</span>
-              <span class="px-2 sm:px-3 py-1 bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Garantie</span>
+            <div>
+              <h3 class="font-bold text-lg mb-1">Integration in deine Systeme</h3>
+              <p class="text-gray-400 text-sm">ERP, CRM, E-Mail, Buchhaltung – KI greift auf deine bestehenden Tools zu.</p>
             </div>
           </div>
-        </div>
 
-        <!-- Timeline / Lernpfad - Fixed Mobile Layout -->
-        <div class="scroll-reveal bg-gradient-to-r from-swiss-orange/5 via-transparent to-swiss-orange/5 border border-white/5 p-5 sm:p-8 lg:p-12">
-          <h3 class="text-xl sm:text-2xl font-black mb-6 sm:mb-8 text-center">Der Lernpfad</h3>
-          <!-- Mobile: Stack vertically for better readability -->
-          <div class="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            <div class="text-center">
-              <div class="w-12 h-12 bg-swiss-orange text-white font-black flex items-center justify-center mx-auto mb-4">01</div>
-              <h4 class="font-bold text-base mb-2">Grundlagen</h4>
-              <p class="text-sm text-gray-500">Wie KI funktioniert, Fachbegriffe, Termini</p>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
+              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-            <div class="text-center">
-              <div class="w-12 h-12 bg-swiss-orange text-white font-black flex items-center justify-center mx-auto mb-4">02</div>
-              <h4 class="font-bold text-base mb-2">Werkzeuge</h4>
-              <p class="text-sm text-gray-500">n8n, Supabase, GitHub, Netlify</p>
-            </div>
-            <div class="text-center">
-              <div class="w-12 h-12 bg-swiss-orange text-white font-black flex items-center justify-center mx-auto mb-4">03</div>
-              <h4 class="font-bold text-base mb-2">Praxis</h4>
-              <p class="text-sm text-gray-500">Eigene Projekte, Learning by Doing</p>
-            </div>
-            <div class="text-center">
-              <div class="w-12 h-12 bg-swiss-orange text-white font-black flex items-center justify-center mx-auto mb-4">04</div>
-              <h4 class="font-bold text-base mb-2">Ergebnisse</h4>
-              <p class="text-sm text-gray-500">Vollautomatisierung, echte Outcomes</p>
+            <div>
+              <h3 class="font-bold text-lg mb-1">Zeitgewinn ab Woche 1</h3>
+              <p class="text-gray-400 text-sm">Erste Automatisierungen stehen nach Stunden, nicht Monaten.</p>
             </div>
           </div>
-          <!-- Mobile: Horizontal list -->
-          <div class="sm:hidden space-y-4">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-swiss-orange text-white font-black text-sm flex items-center justify-center flex-shrink-0">01</div>
-              <div>
-                <h4 class="font-bold text-sm">Grundlagen</h4>
-                <p class="text-xs text-gray-500">Wie KI funktioniert, Fachbegriffe, Termini</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-swiss-orange text-white font-black text-sm flex items-center justify-center flex-shrink-0">02</div>
-              <div>
-                <h4 class="font-bold text-sm">Werkzeuge</h4>
-                <p class="text-xs text-gray-500">n8n, Supabase, GitHub, Netlify</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-swiss-orange text-white font-black text-sm flex items-center justify-center flex-shrink-0">03</div>
-              <div>
-                <h4 class="font-bold text-sm">Praxis</h4>
-                <p class="text-xs text-gray-500">Eigene Projekte, Learning by Doing</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-swiss-orange text-white font-black text-sm flex items-center justify-center flex-shrink-0">04</div>
-              <div>
-                <h4 class="font-bold text-sm">Ergebnisse</h4>
-                <p class="text-xs text-gray-500">Vollautomatisierung, echte Outcomes</p>
-              </div>
-            </div>
-          </div>
+
         </div>
 
         <!-- CTA -->
-        <div class="text-center mt-10 sm:mt-16 scroll-reveal">
+        <div class="text-center">
           <button
-            id="open-modal-program"
-            class="group inline-flex flex-col items-center bg-swiss-orange text-white font-bold px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-xl hover:bg-orange-600 transition-all duration-300 hover:shadow-[0_0_60px_rgba(255,79,0,0.4)] w-full sm:w-auto justify-center cta-mobile-full"
+            id="open-modal-transformation"
+            class="inline-flex items-center gap-2 bg-white/5 border border-swiss-orange/50 text-white font-semibold py-3 px-6 text-sm hover:bg-swiss-orange/10 transition-all duration-300"
           >
-            <span class="flex items-center gap-3">
-              <span>Unverbindlich bewerben</span>
-              <svg class="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
-            <span class="text-xs font-normal opacity-80 mt-1">Die Bewerbung ist kostenfrei</span>
+            <span>Passt das zu mir?</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </button>
         </div>
+
       </div>
     </section>
 
 
     <!-- ============================================
-         TRANSFORMATION SECTION - DISTINCTIVE DESIGN
+         SO LÄUFT ES AB - Der Prozess
          ============================================ -->
-    <section class="relative py-16 sm:py-24 lg:py-32 overflow-hidden mobile-section-padding" style="background: linear-gradient(180deg, #0a0a0a 0%, #1a0d05 30%, #1a0d05 70%, #0a0a0a 100%);">
-      <!-- Animated Background Glow -->
-      <div class="absolute inset-0 overflow-hidden">
-        <!-- Large glowing orbs -->
-        <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-swiss-orange/10 rounded-full blur-[120px] animate-section-glow"></div>
-        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[100px] animate-section-glow" style="animation-delay: -2s;"></div>
+    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-black to-gray-950 overflow-hidden">
 
-        <!-- Floating particles -->
-        <div class="absolute top-20 left-10 w-2 h-2 bg-swiss-orange/40 rounded-full animate-float-particle"></div>
-        <div class="absolute top-40 right-20 w-1.5 h-1.5 bg-swiss-orange/30 rounded-full animate-float-particle" style="animation-delay: -2s;"></div>
-        <div class="absolute bottom-32 left-1/3 w-2 h-2 bg-orange-400/40 rounded-full animate-float-particle" style="animation-delay: -4s;"></div>
-        <div class="absolute top-1/2 right-10 w-1 h-1 bg-swiss-orange/50 rounded-full animate-float-particle" style="animation-delay: -6s;"></div>
-        <div class="absolute bottom-20 right-1/4 w-2.5 h-2.5 bg-swiss-orange/30 rounded-full animate-float-particle" style="animation-delay: -3s;"></div>
-      </div>
+      <div class="container mx-auto px-5 sm:px-6 max-w-4xl relative z-10">
 
-      <!-- Grid Pattern with orange tint -->
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, #FF4F00 1px, transparent 0); background-size: 40px 40px;"></div>
-
-      <!-- Horizontal glow line -->
-      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-swiss-orange/30 to-transparent"></div>
-      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-swiss-orange/30 to-transparent"></div>
-
-      <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
         <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16 lg:mb-20 scroll-reveal">
-          <span class="inline-block px-3 sm:px-4 py-2 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6">
-            Die Transformation
+        <div class="text-center mb-12 sm:mb-16">
+          <span class="inline-block px-3 py-1.5 bg-white/5 border border-white/10 text-gray-400 text-xs tracking-widest uppercase mb-4">
+            Der Ablauf
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 px-2">
-            In 6 Monaten zum <span class="text-swiss-orange">Projektleiter</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">
+            So funktioniert es
           </h2>
-          <p class="text-base sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-2">
-            Werde einer der ganz wenigen, die KI nicht nur nutzen, sondern orchestrieren. Die nicht nur Tools kennen, sondern ganze Schwärme von Agenten dirigieren.
-          </p>
         </div>
 
-        <!-- Transformation Cards - Consistent Mobile Design -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20" style="perspective: 1000px;">
-          <!-- Card 1: Ergebnisse -->
-          <div class="scroll-reveal transformation-card group relative overflow-hidden border-l-4 border-l-swiss-orange sm:border-l-0" style="animation-delay: 0.1s;">
-            <!-- Animated Border Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm"></div>
-            <div class="absolute inset-[1px] bg-gradient-to-b from-gray-900 to-gray-950 z-10"></div>
+        <!-- Process Steps -->
+        <div class="space-y-6 sm:space-y-8">
 
-            <!-- Glowing Corner Accents (desktop only) -->
-            <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 z-20 hidden sm:block"></div>
-            <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 z-20 hidden sm:block"></div>
-
-            <!-- Card Content -->
-            <div class="relative z-20 p-6 sm:p-8">
-              <!-- Icon Container - Consistent style -->
-              <div class="w-14 h-14 sm:w-20 sm:h-20 mb-4 sm:mb-6 bg-swiss-orange/15 rounded-xl flex items-center justify-center">
-                <svg class="w-7 h-7 sm:w-10 sm:h-10 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-xl sm:text-2xl font-black mb-4 sm:mb-6">Ergebnisse</h3>
-
-              <!-- List Items -->
-              <ul class="space-y-3 sm:space-y-4 text-gray-400 text-sm sm:text-base">
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Eigene Webseiten bauen, komplex und DSGVO-konform</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Individuelle Software, 100% auf dich zugeschnitten</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>KI-Agenten, die Telefonie und Gespräche übernehmen</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>85-90% deiner PC-Arbeit automatisiert</span>
-                </li>
-              </ul>
+          <div class="flex gap-4 sm:gap-6">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">1</div>
             </div>
-
-            <!-- Hover Glow Effect -->
-            <div class="absolute -bottom-20 -right-20 w-40 h-40 bg-swiss-orange/0 group-hover:bg-swiss-orange/20 rounded-full blur-3xl transition-all duration-700 z-0"></div>
+            <div class="pt-1">
+              <h3 class="font-bold text-lg mb-1">Kurzes Kennenlernen (15 Min.)</h3>
+              <p class="text-gray-400 text-sm">Wir prüfen gemeinsam, ob das Programm zu dir und deinem Unternehmen passt – wenn es passt, besprechen wir die nächsten Schritte.</p>
+            </div>
           </div>
 
-          <!-- Card 2: Denkweise -->
-          <div class="scroll-reveal transformation-card group relative overflow-hidden border-l-4 border-l-swiss-orange/70 sm:border-l-0" style="animation-delay: 0.2s;">
-            <!-- Animated Border Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-r from-orange-400 via-swiss-orange to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm"></div>
-            <div class="absolute inset-[1px] bg-gradient-to-b from-gray-900 to-gray-950 z-10"></div>
-
-            <!-- Glowing Corner Accents (desktop only) -->
-            <div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 z-20 hidden sm:block"></div>
-            <div class="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 z-20 hidden sm:block"></div>
-
-            <!-- Card Content -->
-            <div class="relative z-20 p-6 sm:p-8">
-              <!-- Icon Container - Consistent style, slight variation (rounded) -->
-              <div class="w-14 h-14 sm:w-20 sm:h-20 mb-4 sm:mb-6 bg-swiss-orange/15 rounded-full sm:rounded-xl flex items-center justify-center">
-                <svg class="w-7 h-7 sm:w-10 sm:h-10 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-xl sm:text-2xl font-black mb-4 sm:mb-6">Denkweise</h3>
-
-              <!-- List Items -->
-              <ul class="space-y-3 sm:space-y-4 text-gray-400 text-sm sm:text-base">
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Große Ziele in Teilziele zerlegen wie ein Projektleiter</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Ideen manifestieren und iterieren statt ewig planen</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>KI als Zuhörer, Umsetzer und Sparringspartner nutzen</span>
-                </li>
-              </ul>
+          <div class="flex gap-4 sm:gap-6">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">2</div>
             </div>
-
-            <!-- Hover Glow Effect -->
-            <div class="absolute -top-20 -left-20 w-40 h-40 bg-swiss-orange/0 group-hover:bg-swiss-orange/20 rounded-full blur-3xl transition-all duration-700 z-0"></div>
+            <div class="pt-1">
+              <h3 class="font-bold text-lg mb-1">Wöchentliche Live-Sessions (2h)</h3>
+              <p class="text-gray-400 text-sm">Echte Interaktion, echte Projekte, echte Fragen. Von den Grundlagen bis zu komplexen Automatisierungen.</p>
+            </div>
           </div>
 
-          <!-- Card 3: Werkzeuge -->
-          <div class="scroll-reveal transformation-card group relative overflow-hidden border-l-4 border-l-swiss-orange/50 sm:border-l-0" style="animation-delay: 0.3s;">
-            <!-- Animated Border Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-r from-swiss-orange via-orange-400 to-swiss-orange opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm"></div>
-            <div class="absolute inset-[1px] bg-gradient-to-b from-gray-900 to-gray-950 z-10"></div>
-
-            <!-- Glowing Corner Accents (desktop only) -->
-            <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 z-20 hidden sm:block"></div>
-            <div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 delay-100 z-20 hidden sm:block"></div>
-            <div class="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 delay-200 z-20 hidden sm:block"></div>
-            <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-transparent group-hover:border-swiss-orange transition-all duration-500 delay-300 z-20 hidden sm:block"></div>
-
-            <!-- Card Content -->
-            <div class="relative z-20 p-6 sm:p-8">
-              <!-- Icon Container - Consistent style -->
-              <div class="w-14 h-14 sm:w-20 sm:h-20 mb-4 sm:mb-6 bg-swiss-orange/15 rounded-xl flex items-center justify-center">
-                <svg class="w-7 h-7 sm:w-10 sm:h-10 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-xl sm:text-2xl font-black mb-4 sm:mb-6">Werkzeuge</h3>
-
-              <!-- List Items -->
-              <ul class="space-y-3 sm:space-y-4 text-gray-400 text-sm sm:text-base">
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Claude Code, Agentic Coding, Agentenschwärme</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>n8n, Supabase, Netlify, GitHub, Edge Functions</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Bild- und Videogenerierung, Voice Bots</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="text-swiss-orange mt-0.5 sm:mt-1">&#10003;</span>
-                  <span>Browser-Automation, Computer-Steuerung durch KI</span>
-                </li>
-              </ul>
+          <div class="flex gap-4 sm:gap-6">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">3</div>
             </div>
-
-            <!-- Hover Glow Effect -->
-            <div class="absolute -bottom-20 left-1/2 -translate-x-1/2 w-60 h-40 bg-swiss-orange/0 group-hover:bg-swiss-orange/15 rounded-full blur-3xl transition-all duration-700 z-0"></div>
+            <div class="pt-1">
+              <h3 class="font-bold text-lg mb-1">Persönliche 1:1-Begleitung</h3>
+              <p class="text-gray-400 text-sm">Individuelle Unterstützung bei der Umsetzung in deinem konkreten Anwendungsfall.</p>
+            </div>
           </div>
+
+          <div class="flex gap-4 sm:gap-6">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">4</div>
+            </div>
+            <div class="pt-1">
+              <h3 class="font-bold text-lg mb-1">Deine Automatisierungen laufen</h3>
+              <p class="text-gray-400 text-sm">Am Ende hast du funktionierende KI-Workflows in deinem Unternehmen – und das Wissen, sie weiterzuentwickeln.</p>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Big Feature: Agenten & Schwärme -->
-        <div class="scroll-reveal relative bg-gradient-to-r from-swiss-orange/10 via-transparent to-swiss-orange/10 border border-swiss-orange/20 p-8 lg:p-12">
-          <div class="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-swiss-orange/40"></div>
-          <div class="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-swiss-orange/40"></div>
-
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span class="font-mono text-sm text-swiss-orange tracking-widest mb-4 block">KERNKOMPETENZ</span>
-              <h3 class="text-4xl lg:text-5xl font-black mb-6">
-                Agenten &<br/>
-                <span class="text-swiss-orange">Agentenschwärme</span>
-              </h3>
-              <p class="text-xl text-gray-400 mb-6">
-                Das Koordinieren ganzer Schwärme von KI-Agenten. Jeder Agent spezialisiert, zusammen unschlagbar. Das ist die Zukunft der Arbeit – und du lernst, sie gezielt einzusetzen.
-              </p>
-              <button
-                id="open-modal-agents"
-                class="inline-flex items-center gap-3 bg-swiss-orange text-white font-bold px-8 py-4 hover:bg-orange-600 transition-colors"
-              >
-                Mehr erfahren
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
-            </div>
-
-            <!-- Agent Visualization - Meaningful Agent Swarm -->
-            <div class="relative h-80 lg:h-96 flex items-center justify-center hidden lg:flex">
-              <!-- Central Node - You as the orchestrator -->
-              <div class="absolute w-24 h-24 bg-gradient-to-br from-swiss-orange to-orange-600 rounded-full flex flex-col items-center justify-center z-20 shadow-[0_0_40px_rgba(255,79,0,0.4)]">
-                <svg class="w-8 h-8 text-white mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <span class="text-white font-black text-sm tracking-tight">DIRIGENT</span>
-              </div>
-
-              <!-- Orbiting Rings with Data Flow -->
-              <div class="absolute w-72 h-72 border border-dashed border-swiss-orange/20 rounded-full"></div>
-              <div class="absolute w-56 h-56 border border-swiss-orange/10 rounded-full animate-spin-slow" style="animation-duration: 30s;"></div>
-
-              <!-- Agent 1: Research Agent (Top) -->
-              <div class="absolute -top-2 left-1/2 -translate-x-1/2 group">
-                <div class="w-16 h-16 bg-gray-900 border-2 border-blue-500/60 rounded-xl flex flex-col items-center justify-center animate-float-slow shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                  <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                  <span class="text-[8px] font-mono text-blue-400 mt-0.5">RESEARCH</span>
-                </div>
-                <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-gray-900/90 px-2 py-1 rounded text-xs text-gray-300">
-                  Sucht & analysiert
-                </div>
-              </div>
-
-              <!-- Agent 2: Code Agent (Bottom) -->
-              <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 group">
-                <div class="w-16 h-16 bg-gray-900 border-2 border-green-500/60 rounded-xl flex flex-col items-center justify-center animate-float-delayed shadow-[0_0_20px_rgba(34,197,94,0.2)]">
-                  <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                  <span class="text-[8px] font-mono text-green-400 mt-0.5">CODE</span>
-                </div>
-                <div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-gray-900/90 px-2 py-1 rounded text-xs text-gray-300">
-                  Programmiert & baut
-                </div>
-              </div>
-
-              <!-- Agent 3: Data Agent (Left) -->
-              <div class="absolute left-4 top-1/2 -translate-y-1/2 group">
-                <div class="w-16 h-16 bg-gray-900 border-2 border-purple-500/60 rounded-xl flex flex-col items-center justify-center animate-float-slow shadow-[0_0_20px_rgba(168,85,247,0.2)]">
-                  <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                  <span class="text-[8px] font-mono text-purple-400 mt-0.5">DATA</span>
-                </div>
-                <div class="absolute left-full ml-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-gray-900/90 px-2 py-1 rounded text-xs text-gray-300">
-                  Analysiert & optimiert
-                </div>
-              </div>
-
-              <!-- Agent 4: Content Agent (Right) -->
-              <div class="absolute right-4 top-1/2 -translate-y-1/2 group">
-                <div class="w-16 h-16 bg-gray-900 border-2 border-amber-500/60 rounded-xl flex flex-col items-center justify-center animate-float-delayed shadow-[0_0_20px_rgba(245,158,11,0.2)]">
-                  <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                  <span class="text-[8px] font-mono text-amber-400 mt-0.5">CONTENT</span>
-                </div>
-                <div class="absolute right-full mr-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-gray-900/90 px-2 py-1 rounded text-xs text-gray-300">
-                  Erstellt & schreibt
-                </div>
-              </div>
-
-              <!-- Connection Lines with Flow Animation -->
-              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 320 320">
-                <!-- Animated data flow particles on lines -->
-                <defs>
-                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FF4F00" stop-opacity="0"/>
-                    <stop offset="50%" stop-color="#FF4F00" stop-opacity="0.8"/>
-                    <stop offset="100%" stop-color="#FF4F00" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <!-- Lines to each agent -->
-                <line x1="160" y1="160" x2="160" y2="40" stroke="url(#lineGradient)" stroke-width="2" class="animate-pulse-line"/>
-                <line x1="160" y1="160" x2="160" y2="280" stroke="url(#lineGradient)" stroke-width="2" class="animate-pulse-line" style="animation-delay: 0.2s"/>
-                <line x1="160" y1="160" x2="50" y2="160" stroke="url(#lineGradient)" stroke-width="2" class="animate-pulse-line" style="animation-delay: 0.4s"/>
-                <line x1="160" y1="160" x2="270" y2="160" stroke="url(#lineGradient)" stroke-width="2" class="animate-pulse-line" style="animation-delay: 0.6s"/>
-              </svg>
-            </div>
-
-            <!-- Mobile: Simplified Agent Grid -->
-            <div class="lg:hidden grid grid-cols-2 gap-3 mt-6">
-              <div class="bg-gray-900/80 border border-blue-500/30 rounded-lg p-3 flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="font-mono text-[10px] text-blue-400 block">RESEARCH</span>
-                  <span class="text-xs text-gray-400">Sucht & analysiert</span>
-                </div>
-              </div>
-              <div class="bg-gray-900/80 border border-green-500/30 rounded-lg p-3 flex items-center gap-3">
-                <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="font-mono text-[10px] text-green-400 block">CODE</span>
-                  <span class="text-xs text-gray-400">Programmiert & baut</span>
-                </div>
-              </div>
-              <div class="bg-gray-900/80 border border-purple-500/30 rounded-lg p-3 flex items-center gap-3">
-                <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="font-mono text-[10px] text-purple-400 block">DATA</span>
-                  <span class="text-xs text-gray-400">Analysiert & optimiert</span>
-                </div>
-              </div>
-              <div class="bg-gray-900/80 border border-amber-500/30 rounded-lg p-3 flex items-center gap-3">
-                <div class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                </div>
-                <div>
-                  <span class="font-mono text-[10px] text-amber-400 block">CONTENT</span>
-                  <span class="text-xs text-gray-400">Erstellt & schreibt</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
 
     <!-- ============================================
-         SOCIAL PROOF / QUOTE SECTION
+         ÜBER MARCO SECTION
          ============================================ -->
-    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-gray-950 to-black overflow-hidden mobile-section-padding">
-      <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,79,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <section class="relative py-16 sm:py-24 bg-black overflow-hidden">
 
-      <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-4xl relative z-10">
-        <div class="scroll-reveal text-center">
-          <svg class="w-10 h-10 sm:w-16 sm:h-16 text-swiss-orange/30 mx-auto mb-4 sm:mb-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-          </svg>
+      <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
 
-          <blockquote class="text-lg sm:text-2xl lg:text-3xl font-medium text-gray-300 leading-relaxed mb-6 sm:mb-8 italic quote-mobile px-2">
-            Im Laufe meiner zahlreichen Coachings gab es für mich nichts Schöneres als zu sehen, dass die Teilnehmer nicht nur verstanden haben, dass KI unerreichbare Ziele plötzlich erreichbar macht und inzwischen unabdingbar ist – sondern dass sie dabei echte Freude und Begeisterung erlebt haben. Das ist wertvoller als jedes Tool.
-          </blockquote>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
-          <div class="flex items-center justify-center gap-3 sm:gap-4">
-            <div class="w-1 h-10 sm:h-12 bg-swiss-orange"></div>
-            <div class="text-left">
-              <p class="font-black text-white text-sm sm:text-base">Marco Heer</p>
-              <p class="text-gray-500 font-mono text-xs sm:text-sm">Gründer & Coach</p>
+          <!-- Image -->
+          <div class="relative order-1 md:order-1">
+            <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-swiss-orange/20">
+              <img
+                src="/images/marco_new.png"
+                alt="Marco Heer"
+                class="w-full h-auto max-h-[400px] object-contain"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-
-    <!-- ============================================
-         ABOUT MARCO SECTION
-         ============================================ -->
-    <section class="relative py-16 sm:py-24 lg:py-32 bg-black overflow-hidden mobile-section-padding">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl">
-        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          <!-- Text Content -->
-          <div class="scroll-reveal">
-            <span class="inline-block px-3 sm:px-4 py-2 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6">
+          <!-- Text -->
+          <div class="order-2 md:order-2">
+            <span class="inline-block px-3 py-1.5 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-4">
               Über Marco
             </span>
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-black mb-6 sm:mb-8">
-              Vom Vertriebsleiter zum <span class="text-swiss-orange">KI-Projektleiter</span>
+            <h2 class="text-2xl sm:text-3xl font-black mb-4">
+              Ingenieur. Unternehmer. Praktiker.
             </h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
+              Ich entstamme nicht der IT-Welt. Ich habe Wirtschaftsingenieurwesen studiert, dann 7 Jahre Vertriebsteams geleitet. Als ich 2022 anfing, KI produktiv einzusetzen, hat sich alles verändert.
+            </p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+              Nach hunderten Nächten und Projekten weiß ich: KI ist kein Hype. Es ist ein Werkzeug, das jeder lernen kann – wenn man es richtig vermittelt bekommt.
+            </p>
 
-            <div class="space-y-4 sm:space-y-6 text-gray-400 text-base sm:text-lg leading-relaxed">
-              <p>
-                Ich entstamme nicht der IT-Welt. Ich habe Luft- und Raumfahrttechnik studiert, dann Wirtschaftsingenieurwesen abgeschlossen. Danach drei Jahre als Cyber Security Specialist im Vertrieb bei Cisco Systems, dann in der Vertriebsleitung. Dort habe ich KI und Automatisierung für mich entdeckt – nicht aus Spielerei, sondern aus echtem Bedarf.
-              </p>
-              <p>
-                Nach hunderten Nächten, gescheiterten und erfolgreichen Projekten, ist eine Erkenntnis gereift: KI ist der größte Zugewinn meines wirtschaftlichen Lebens. Und ich habe das Skill-Set eines Projektleiters entwickelt, der ganze Schwärme von Agenten orchestriert.
-              </p>
-              <p>
-                Jetzt gebe ich dieses Wissen weiter. Mit der Leidenschaft eines Lehrers, der Direktheit eines Vertrieblers und der Positivität eines Menschen, in dessen Welt es keine Sätze gibt wie <span class="text-white font-medium">"Das geht nicht"</span> oder <span class="text-white font-medium">"Steht in keinem Verhältnis"</span>.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-3 sm:gap-6 mt-6 sm:mt-10 about-stats-mobile">
-              <div class="bg-gray-900 border border-white/10 px-4 sm:px-6 py-3 sm:py-4">
-                <p class="font-mono text-[10px] sm:text-xs text-gray-500 mb-1">Abschluss</p>
-                <p class="font-bold text-sm sm:text-base">Wirtschaftsingenieur</p>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <div class="px-3 py-2 bg-white/5 border border-white/10">
+                <span class="text-gray-500 block text-xs">Hintergrund</span>
+                <span class="text-white font-medium">Wirtschaftsingenieur</span>
               </div>
-              <div class="bg-gray-900 border border-white/10 px-4 sm:px-6 py-3 sm:py-4">
-                <p class="font-mono text-[10px] sm:text-xs text-gray-500 mb-1">Hintergrund</p>
-                <p class="font-bold text-sm sm:text-base">Ingenieur, Unternehmer und Coach</p>
+              <div class="px-3 py-2 bg-white/5 border border-white/10">
+                <span class="text-gray-500 block text-xs">KI-Praxis</span>
+                <span class="text-white font-medium">3+ Jahre</span>
               </div>
-              <div class="bg-gray-900 border border-white/10 px-4 sm:px-6 py-3 sm:py-4">
-                <p class="font-mono text-[10px] sm:text-xs text-gray-500 mb-1">KI-Erfahrung</p>
-                <p class="font-bold text-sm sm:text-base">3+ Jahre Praxis</p>
+              <div class="px-3 py-2 bg-white/5 border border-white/10">
+                <span class="text-gray-500 block text-xs">Unternehmen begleitet</span>
+                <span class="text-white font-medium">40+</span>
               </div>
             </div>
           </div>
 
-          <!-- Visual Element -->
-          <div class="scroll-reveal relative" style="animation-delay: 0.2s;">
-            <div class="relative bg-gradient-to-br from-gray-900 to-black border border-white/10 p-8">
-              <!-- Story Timeline -->
-              <div class="space-y-8">
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 1</p>
-                    <p class="text-gray-300">Studium & Ingenieurswesen</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 2</p>
-                    <p class="text-gray-300">Vertriebsleitung & Führungserfahrung</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 3</p>
-                    <p class="text-gray-300">Entdeckung: KI & Automatisierung</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 4</p>
-                    <p class="text-gray-300">Hunderte Nächte, hunderte Erkenntnisse</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0 animate-pulse"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">HEUTE</p>
-                    <p class="text-white font-bold">Coach & Möglichmacher</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Decorative -->
-              <div class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-swiss-orange/30"></div>
-              <div class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-swiss-orange/30"></div>
-            </div>
-          </div>
         </div>
+
       </div>
     </section>
 
 
     <!-- ============================================
-         FINAL CTA SECTION - DRAMATIC
+         ANGEBOT + PREIS SECTION (Chef-KI: Preis erst hier!)
+         Nach: Transformation, Social Proof, Über Marco
          ============================================ -->
-    <section class="relative py-20 sm:py-32 overflow-hidden" style="background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);">
-      <!-- Animated Background -->
+    <section class="relative py-16 sm:py-24 overflow-hidden" style="background: linear-gradient(180deg, #0a0a0a 0%, #1a0d05 50%, #0a0a0a 100%);">
+
+      <!-- Background Glow -->
       <div class="absolute inset-0">
-        <!-- Main glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-gradient-radial from-swiss-orange/25 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
-
-        <!-- Orbiting rings -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-swiss-orange/10 rounded-full animate-spin-slow hidden sm:block"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-swiss-orange/5 rounded-full animate-spin-reverse hidden lg:block"></div>
-
-        <!-- Floating particles -->
-        <div class="absolute top-1/4 left-1/4 w-3 h-3 bg-swiss-orange/40 rounded-full animate-float-particle"></div>
-        <div class="absolute top-3/4 right-1/4 w-2 h-2 bg-swiss-orange/30 rounded-full animate-float-particle" style="animation-delay: -3s;"></div>
-        <div class="absolute top-1/2 left-10 w-2 h-2 bg-orange-400/40 rounded-full animate-float-particle" style="animation-delay: -5s;"></div>
-        <div class="absolute bottom-1/4 right-10 w-1.5 h-1.5 bg-swiss-orange/50 rounded-full animate-float-particle" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-swiss-orange/10 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div class="container mx-auto px-4 sm:px-6 lg:px-12 max-w-4xl text-center relative z-10">
-        <div class="scroll-reveal">
-          <span class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2 sm:py-3 bg-swiss-orange/10 border border-swiss-orange/30 mb-6 sm:mb-8">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-swiss-orange opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-swiss-orange"></span>
-            </span>
-            <span class="font-mono text-xs sm:text-sm text-swiss-orange tracking-widest">BEGRENZTE PLÄTZE</span>
+      <div class="container mx-auto px-5 sm:px-6 max-w-3xl relative z-10">
+
+        <!-- Section Header -->
+        <div class="text-center mb-10 sm:mb-12">
+          <span class="inline-block px-3 py-1.5 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-4">
+            Das Angebot
           </span>
-
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 px-2">
-            Bereit für die<br/>
-            <span class="text-swiss-orange">Transformation?</span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">
+            6 Monate Intensiv-Begleitung
           </h2>
-
-          <p class="text-base sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
-            In 6 Monaten wirst du Dinge können, die heute noch unmöglich erscheinen. Die Frage ist nicht ob, sondern wann du anfängst.
+          <p class="text-gray-400 text-sm sm:text-base">
+            Alles, was du brauchst, um KI in deinem Unternehmen produktiv einzusetzen.
           </p>
-
-          <button
-            id="open-modal-final"
-            class="group relative inline-flex flex-col items-center justify-center bg-swiss-orange text-white font-bold px-8 sm:px-14 py-5 sm:py-6 text-lg sm:text-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,79,0,0.6)] w-full sm:w-auto"
-          >
-            <span class="absolute inset-0 bg-gradient-to-r from-orange-600 to-swiss-orange opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-            <span class="relative z-10 flex items-center gap-3">
-              <span>Unverbindlich bewerben</span>
-              <svg class="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
-            <span class="relative z-10 text-xs font-normal opacity-80 mt-1">Die Bewerbung ist kostenfrei</span>
-            <span class="absolute inset-0 border-2 border-swiss-orange"></span>
-          </button>
         </div>
+
+        <!-- Offer Box -->
+        <div class="bg-gradient-to-b from-gray-900 to-gray-950 border border-swiss-orange/30 p-6 sm:p-8 mb-8">
+
+          <h3 class="text-lg sm:text-xl font-bold mb-6 text-center">Im Paket enthalten:</h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-center gap-3">
+              <span class="text-swiss-orange text-lg">✓</span>
+              <span class="text-sm sm:text-base">6 Monate Begleitung</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-swiss-orange text-lg">✓</span>
+              <span class="text-sm sm:text-base">Wöchentliche Live-Sessions (2h)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-swiss-orange text-lg">✓</span>
+              <span class="text-sm sm:text-base">4 Stunden 1:1 mit Marco</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-swiss-orange text-lg">✓</span>
+              <span class="text-sm sm:text-base">Eigene Automatisierungen bauen</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-swiss-orange text-lg">✓</span>
+              <span class="text-sm sm:text-base">Täglicher Chat-Support</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-swiss-orange text-lg">✓</span>
+              <span class="text-sm sm:text-base">Alle Aufzeichnungen dauerhaft</span>
+            </div>
+          </div>
+
+          <!-- Price (Chef-KI: Erst hier, nach Value-Etablierung!) -->
+          <div class="text-center pt-6 border-t border-white/10">
+            <p class="text-gray-500 text-sm mb-2">Einmalige Investition</p>
+            <p class="text-3xl sm:text-4xl font-black text-white">3.779 €</p>
+            <p class="text-gray-500 text-xs mt-2">inkl. MwSt. · Ratenzahlung möglich</p>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <button
+            id="open-modal-offer"
+            class="w-full sm:w-auto bg-swiss-orange text-white font-bold py-4 px-8 sm:px-12 text-base sm:text-lg transition-all duration-300 hover:shadow-[0_0_60px_rgba(255,79,0,0.4)]"
+          >
+            <span class="block">Kostenlos prüfen lassen</span>
+            <span class="block text-xs font-normal opacity-80 mt-1">15 Min. Kennenlernen · Unverbindlich</span>
+          </button>
+          <p class="text-gray-500 text-xs mt-4">Wir prüfen gemeinsam, ob das Programm zu dir passt.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         FINAL CTA SECTION
+         ============================================ -->
+    <section class="relative py-16 sm:py-20 bg-black overflow-hidden">
+
+      <div class="container mx-auto px-5 sm:px-6 max-w-2xl relative z-10 text-center">
+
+        <h2 class="text-2xl sm:text-3xl font-black mb-4">
+          Bereit für den nächsten Schritt?
+        </h2>
+        <p class="text-gray-400 text-sm sm:text-base mb-8">
+          In 15 Minuten findest du heraus, ob das Programm zu dir passt. Ohne Verpflichtung.
+        </p>
+
+        <button
+          id="open-modal-final"
+          class="w-full sm:w-auto bg-swiss-orange text-white font-bold py-4 px-8 sm:px-12 text-base sm:text-lg transition-all duration-300 hover:shadow-[0_0_60px_rgba(255,79,0,0.4)]"
+        >
+          <span class="block">Kostenlos Gespräch buchen</span>
+          <span class="block text-xs font-normal opacity-80 mt-1">2–3 Minuten · Kein Risiko</span>
+        </button>
+
       </div>
     </section>
 
@@ -1253,41 +583,33 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
     <!-- ============================================
          FOOTER
          ============================================ -->
-    <footer class="py-12 bg-black border-t border-white/5">
-      <div class="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-          <a href="/" class="text-2xl font-black">
-            SYN<span class="text-swiss-orange">C</span>LARO
+    <footer class="bg-black border-t border-white/5 py-8">
+      <div class="container mx-auto px-5 sm:px-6 max-w-5xl">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <a href="/" class="text-lg font-black tracking-tight">
+            SYN<span class="text-swiss-orange">CLARO</span>
           </a>
-          <div class="flex gap-8 text-sm text-gray-500">
-            <a href="/impressum" class="hover:text-swiss-orange transition-colors">Impressum</a>
-            <a href="/datenschutz" class="hover:text-swiss-orange transition-colors">Datenschutz</a>
-            <a href="/agb" class="hover:text-swiss-orange transition-colors">AGB</a>
+          <div class="flex gap-6 text-sm text-gray-500">
+            <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+            <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+            <a href="/agb" class="hover:text-white transition-colors">AGB</a>
           </div>
-          <p class="text-sm text-gray-600">&copy; 2026 Synclaro</p>
+          <p class="text-xs text-gray-600">© 2026 Synclaro</p>
         </div>
       </div>
     </footer>
 
 
     <!-- ============================================
-         STICKY MOBILE CTA
+         STICKY MOBILE CTA (Optional)
          ============================================ -->
-    <div id="sticky-cta" class="sm:hidden fixed bottom-0 left-0 right-0 z-40 translate-y-full transition-transform duration-300 ease-out">
-      <div class="bg-black/95 backdrop-blur-md border-t border-swiss-orange/30 px-4 py-3 safe-area-padding">
-        <button
-          id="open-modal-sticky"
-          class="w-full bg-swiss-orange text-white font-bold py-2.5 text-sm active:scale-[0.98] transition-transform duration-150 shadow-[0_0_40px_rgba(255,79,0,0.4)] flex flex-col items-center justify-center"
-        >
-          <span class="flex items-center gap-2">
-            <span>Unverbindlich bewerben</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
-          <span class="text-[10px] font-normal opacity-80">Die Bewerbung ist kostenfrei</span>
-        </button>
-      </div>
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-black/95 backdrop-blur-sm border-t border-swiss-orange/20">
+      <button
+        id="open-modal-sticky"
+        class="w-full bg-swiss-orange text-white font-bold py-3 text-sm"
+      >
+        Kostenlos prüfen lassen
+      </button>
     </div>
 
 
@@ -1313,9 +635,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             <!-- Form Content -->
             <div class="p-6 sm:p-8 lg:p-10 modal-form-mobile safe-area-padding flex flex-col h-full sm:h-auto">
 
-              <!-- Trust Header (Always visible) -->
+              <!-- Trust Header -->
               <div class="mb-6 sm:mb-8 pt-8 sm:pt-0">
-                <!-- Badge + Step Counter Row -->
                 <div class="flex items-center gap-3 mb-4">
                   <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-swiss-orange/10 border border-swiss-orange/20 text-swiss-orange font-mono text-[10px] tracking-wider rounded-full">
                     <span class="w-1.5 h-1.5 bg-swiss-orange rounded-full animate-pulse"></span>
@@ -1328,8 +649,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                     60 Sek.
                   </span>
                 </div>
-
-                <!-- Title -->
                 <h3 class="text-2xl sm:text-3xl font-black mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                   Deine Bewerbung
                 </h3>
@@ -1338,7 +657,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
               <!-- Progress Bar -->
               <div class="mb-6 sm:mb-8">
-                <!-- Step Indicators -->
                 <div class="flex items-center justify-between mb-3">
                   <div class="flex items-center gap-2">
                     <div id="step-indicator-1" class="w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-swiss-orange/30">1</div>
@@ -1349,7 +667,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                   </div>
                   <span id="step-label" class="text-xs text-swiss-orange font-medium hidden sm:block">Dein Ziel</span>
                 </div>
-                <!-- Mobile Step Label -->
                 <div class="sm:hidden text-center">
                   <span class="text-xs text-gray-400">Schritt <span id="current-step-num">1</span>/3: </span>
                   <span id="step-label-mobile" class="text-xs text-swiss-orange font-medium">Dein Ziel</span>
@@ -1358,10 +675,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
               <form id="application-form" class="flex-1 flex flex-col">
 
-                <!-- ========== STEP 1: Ziel & Zeit ========== -->
+                <!-- STEP 1: Ziel & Zeit -->
                 <div id="form-step-1" class="form-step flex-1 flex flex-col" data-step="1">
-
-                  <!-- Q1: Hauptziel -->
                   <div class="mb-5">
                     <p class="text-white font-semibold mb-3 text-sm sm:text-base flex items-center gap-2">
                       <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">1</span>
@@ -1415,7 +730,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                     </div>
                   </div>
 
-                  <!-- Q2: Zeit Commitment -->
                   <div class="mb-4">
                     <p class="text-white font-semibold mb-3 text-sm sm:text-base flex items-center gap-2">
                       <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">2</span>
@@ -1441,7 +755,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                     </div>
                   </div>
 
-                  <!-- Trust Element: Preis-Transparenz -->
                   <div class="mt-auto pt-4">
                     <div class="flex items-center justify-center gap-2 text-xs text-gray-500 bg-white/[0.02] rounded-lg py-2.5 px-4 border border-white/5">
                       <svg class="w-4 h-4 text-swiss-orange/70" fill="currentColor" viewBox="0 0 20 20">
@@ -1452,15 +765,12 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                   </div>
                 </div>
 
-                <!-- ========== STEP 2: Kontaktdaten ========== -->
+                <!-- STEP 2: Kontaktdaten -->
                 <div id="form-step-2" class="form-step hidden flex-1 flex flex-col" data-step="2">
-
                   <p class="text-gray-400 text-sm mb-5">
                     Wie können wir dich für das Kennenlerngespräch erreichen?
                   </p>
-
                   <div class="space-y-4">
-                    <!-- Name Row -->
                     <div class="grid grid-cols-2 gap-3">
                       <div>
                         <label class="block text-xs font-medium text-gray-400 mb-2">Vorname</label>
@@ -1471,33 +781,19 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                         <input type="text" name="lastName" required class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="Mustermann" />
                       </div>
                     </div>
-
-                    <!-- Email -->
                     <div>
                       <label class="block text-xs font-medium text-gray-400 mb-2">E-Mail</label>
                       <input type="email" name="email" required class="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="max@beispiel.de" />
                     </div>
-
-                    <!-- Phone with Input Mask -->
                     <div>
                       <label class="block text-xs font-medium text-gray-400 mb-2">Telefon</label>
                       <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+49</span>
-                        <input
-                          type="tel"
-                          name="phone"
-                          id="phone-input"
-                          required
-                          class="w-full pl-14 pr-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl"
-                          placeholder="123 4567890"
-                          pattern="[0-9\s]{6,15}"
-                          inputmode="tel"
-                        />
+                        <input type="tel" name="phone" id="phone-input" required class="w-full pl-14 pr-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="123 4567890" pattern="[0-9\s]{6,15}" inputmode="tel" />
                       </div>
                       <p id="phone-error" class="hidden text-red-400 text-xs mt-1.5 pl-1">Bitte gib eine gültige Telefonnummer ein</p>
                     </div>
                   </div>
-
                   <div class="mt-auto pt-5">
                     <div class="flex items-center justify-center gap-2 text-[11px] text-gray-500 bg-green-500/5 border border-green-500/10 rounded-lg py-2.5 px-4">
                       <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -1508,14 +804,9 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                   </div>
                 </div>
 
-                <!-- ========== STEP 3: Details (optional) ========== -->
+                <!-- STEP 3: Details -->
                 <div id="form-step-3" class="form-step hidden flex-1 flex flex-col" data-step="3">
-
-                  <p class="text-gray-400 text-sm mb-5">
-                    Fast geschafft! Noch eine kurze Frage.
-                  </p>
-
-                  <!-- KI-Kenntnisse (vereinfacht: 3 Stufen) -->
+                  <p class="text-gray-400 text-sm mb-5">Fast geschafft! Noch eine kurze Frage.</p>
                   <div class="mb-5">
                     <p class="text-white font-semibold mb-3 text-sm flex items-center gap-2">
                       <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">?</span>
@@ -1545,43 +836,24 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                       </label>
                     </div>
                   </div>
-
-                  <!-- Optional: Motivation -->
                   <div class="mb-4">
                     <label class="block text-xs font-medium text-gray-400 mb-2">
                       Noch etwas mitteilen? <span class="text-gray-600">(optional)</span>
                     </label>
-                    <textarea
-                      name="motivation"
-                      rows="2"
-                      class="w-full px-4 py-3 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-sm resize-none rounded-xl"
-                      placeholder="z.B. Fragen, besondere Umstände..."
-                    ></textarea>
+                    <textarea name="motivation" rows="2" class="w-full px-4 py-3 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-sm resize-none rounded-xl" placeholder="z.B. Fragen, besondere Umstände..."></textarea>
                   </div>
-
                   <div class="mt-auto"></div>
                 </div>
 
-                <!-- ========== STICKY FOOTER mit Navigation ========== -->
+                <!-- Navigation Footer -->
                 <div class="sticky bottom-0 bg-gradient-to-t from-gray-950 via-gray-950 to-gray-950/95 pt-6 pb-4 mt-6 border-t border-white/5">
                   <div class="flex gap-3">
-                    <!-- Back Button (hidden on step 1) -->
-                    <button
-                      type="button"
-                      id="prev-step-btn"
-                      class="hidden w-12 h-12 border border-white/20 text-white font-medium hover:bg-white/5 hover:border-white/30 transition-all rounded-xl flex items-center justify-center"
-                    >
+                    <button type="button" id="prev-step-btn" class="hidden w-12 h-12 border border-white/20 text-white font-medium hover:bg-white/5 hover:border-white/30 transition-all rounded-xl flex items-center justify-center">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
-
-                    <!-- Next/Submit Button -->
-                    <button
-                      type="button"
-                      id="next-step-btn"
-                      class="flex-1 bg-gradient-to-r from-swiss-orange to-orange-500 text-white font-bold py-4 text-base hover:from-orange-500 hover:to-swiss-orange transition-all disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-swiss-orange/25 hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98]"
-                    >
+                    <button type="button" id="next-step-btn" class="flex-1 bg-gradient-to-r from-swiss-orange to-orange-500 text-white font-bold py-4 text-base hover:from-orange-500 hover:to-swiss-orange transition-all disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-swiss-orange/25 hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98]">
                       <span id="next-btn-text">Weiter</span>
                       <svg id="next-btn-arrow" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -1598,9 +870,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
               </form>
 
-              <!-- Success: Step 2 - Calendar Booking -->
+              <!-- Calendar Booking Step -->
               <div id="calendar-booking-step" class="hidden">
-                <!-- Progress indicator -->
                 <div class="flex items-center justify-center gap-4 mb-6">
                   <div class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
@@ -1618,13 +889,10 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                     <span class="text-white text-sm font-medium">Termin wählen</span>
                   </div>
                 </div>
-
                 <div class="text-center mb-6">
                   <h3 class="text-xl sm:text-2xl font-black mb-2">Fast geschafft!</h3>
                   <p class="text-gray-400 text-sm sm:text-base">Wähle jetzt deinen 15-minütigen Kennenlern-Termin.</p>
                 </div>
-
-                <!-- Was erwartet dich -->
                 <div class="bg-white/5 border border-white/10 p-4 mb-6 text-left">
                   <p class="text-xs font-mono text-gray-500 uppercase tracking-wider mb-3">Was erwartet dich?</p>
                   <ul class="space-y-2">
@@ -1648,16 +916,11 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                     </li>
                   </ul>
                 </div>
-
-                <!-- Loading State -->
                 <div id="calendar-loading" class="text-center py-8">
                   <div class="w-8 h-8 border-2 border-swiss-orange border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                   <p class="text-gray-400">Lade verfügbare Termine...</p>
                 </div>
-
-                <!-- Calendar Widget -->
                 <div id="calendar-widget" class="hidden">
-                  <!-- Date Navigation -->
                   <div class="flex items-center justify-between mb-4">
                     <button id="prev-week" class="p-2 hover:bg-white/5 rounded transition-colors disabled:opacity-30" disabled>
                       <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1671,39 +934,24 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                       </svg>
                     </button>
                   </div>
-
-                  <!-- Days Grid -->
-                  <div id="days-container" class="grid grid-cols-5 gap-2 mb-4">
-                    <!-- Days will be populated by JavaScript -->
-                  </div>
-
-                  <!-- Time Slots -->
+                  <div id="days-container" class="grid grid-cols-5 gap-2 mb-4"></div>
                   <div id="slots-container" class="max-h-48 overflow-y-auto space-y-2">
                     <p id="select-day-hint" class="text-gray-500 text-center text-sm py-4">Wähle einen Tag, um verfügbare Zeiten zu sehen</p>
-                    <!-- Slots will be populated by JavaScript -->
                   </div>
-
-                  <!-- Selected Slot Display -->
                   <div id="selected-slot-display" class="hidden mt-4 p-4 bg-swiss-orange/10 border border-swiss-orange/30 rounded">
                     <div class="flex items-center justify-between">
                       <div>
                         <p class="text-white font-medium" id="selected-slot-text"></p>
                         <p class="text-gray-400 text-sm">15 Minuten Kennenlerngespräch</p>
                       </div>
-                      <button id="confirm-booking" class="px-4 py-2 bg-swiss-orange text-white font-bold hover:bg-orange-600 transition-colors">
-                        Termin buchen
-                      </button>
+                      <button id="confirm-booking" class="px-4 py-2 bg-swiss-orange text-white font-bold hover:bg-orange-600 transition-colors">Termin buchen</button>
                     </div>
                   </div>
-
-                  <!-- Booking Loading -->
                   <div id="booking-loading" class="hidden mt-4 text-center py-4">
                     <div class="w-6 h-6 border-2 border-swiss-orange border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
                     <p class="text-gray-400 text-sm">Termin wird gebucht...</p>
                   </div>
                 </div>
-
-                <!-- Calendar Error -->
                 <div id="calendar-error" class="hidden text-center py-8">
                   <div class="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1715,7 +963,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                 </div>
               </div>
 
-              <!-- Success: Step 3 - Booking Confirmed -->
+              <!-- Booking Confirmed -->
               <div id="booking-confirmed" class="hidden text-center py-8 sm:py-12">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                   <svg class="w-8 h-8 sm:w-10 sm:h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1734,106 +982,15 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
     </div>
 
 
+    <!-- Tracking -->
+    <LPUserBehaviorTracker pagePath="/lp/coaching" client:load />
+    <MetaPixelTracker pagePath="/lp/coaching" client:load />
+
+
     <!-- ============================================
          SCRIPTS
          ============================================ -->
     <script>
-      // ============================================
-      // DYNAMIC PARTICIPANT COUNTER
-      // Start: 10 participants, 10 spots free
-      // Every week: +2 participants
-      // After 5 weeks: full (20/20)
-      // ============================================
-      (function() {
-        const START_DATE = new Date('2025-12-23'); // Montag KW52
-        const START_PARTICIPANTS = 10;
-        const TOTAL_SPOTS = 20;
-        const INCREASE_PER_WEEK = 2;
-
-        function getWeeksSinceStart() {
-          const now = new Date();
-          const diffTime = now.getTime() - START_DATE.getTime();
-          const diffDays = diffTime / (1000 * 60 * 60 * 24);
-          return Math.floor(diffDays / 7);
-        }
-
-        function updateCounters() {
-          const weeksPassed = Math.max(0, getWeeksSinceStart());
-          const participants = Math.min(TOTAL_SPOTS, START_PARTICIPANTS + (weeksPassed * INCREASE_PER_WEEK));
-          const spotsFree = Math.max(0, TOTAL_SPOTS - participants);
-
-          // Update all participant count elements
-          document.querySelectorAll('.participant-count').forEach(el => {
-            el.textContent = `${participants} Teilnehmer`;
-          });
-
-          // Update all spots free elements (desktop)
-          document.querySelectorAll('.spots-free').forEach(el => {
-            if (spotsFree === 0) {
-              el.textContent = 'Ausgebucht!';
-              el.classList.add('text-red-500');
-            } else if (spotsFree <= 3) {
-              el.textContent = `nur ${spotsFree} ${spotsFree === 1 ? 'Platz' : 'Plätze'} frei`;
-            } else {
-              el.textContent = `${spotsFree} Plätze frei`;
-            }
-          });
-
-          // Update mobile spots free
-          document.querySelectorAll('.spots-free-mobile').forEach(el => {
-            if (spotsFree === 0) {
-              el.textContent = 'Ausgebucht!';
-              el.classList.add('text-red-500');
-            } else if (spotsFree <= 3) {
-              el.textContent = `nur ${spotsFree} frei`;
-            } else {
-              el.textContent = `${spotsFree} Plätze frei`;
-            }
-          });
-
-          // Update sticky CTA
-          document.querySelectorAll('.spots-free-sticky').forEach(el => {
-            if (spotsFree === 0) {
-              el.textContent = '(Ausgebucht!)';
-            } else if (spotsFree <= 3) {
-              el.textContent = `(nur ${spotsFree} frei!)`;
-            } else {
-              el.textContent = `(nur ${spotsFree} frei)`;
-            }
-          });
-        }
-
-        // Run on page load
-        updateCounters();
-      })();
-
-      // Testimonials Toggle (Mobile)
-      (function() {
-        const toggle = document.getElementById('testimonials-toggle');
-        const content = document.getElementById('testimonials-content');
-        const chevron = document.getElementById('testimonials-chevron');
-        const hint = document.getElementById('testimonials-hint');
-
-        if (toggle && content && chevron) {
-          toggle.addEventListener('click', () => {
-            const isHidden = content.classList.contains('hidden');
-
-            // Hide the "Antippen" hint after first click
-            if (hint) {
-              hint.classList.add('hidden');
-            }
-
-            if (isHidden) {
-              content.classList.remove('hidden');
-              chevron.classList.add('rotate-180');
-            } else {
-              content.classList.add('hidden');
-              chevron.classList.remove('rotate-180');
-            }
-          });
-        }
-      })();
-
       // Modal functionality
       const modal = document.getElementById('application-modal');
       const modalContent = document.getElementById('modal-content');
@@ -1845,42 +1002,44 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       const openButtons = [
         'open-modal-hero',
         'open-modal-hero-mobile',
-        'open-modal-agents',
-        'open-modal-program',
+        'open-modal-transformation',
+        'open-modal-offer',
         'open-modal-final',
         'open-modal-sticky'
       ].map(id => document.getElementById(id)).filter(Boolean);
 
       // Sticky CTA visibility
-      const stickyCTA = document.getElementById('sticky-cta');
-      let lastScrollY = 0;
+      const stickyCTA = document.querySelector('.fixed.bottom-0');
 
       function updateStickyCTA() {
         const scrollY = window.scrollY;
-        const heroHeight = window.innerHeight * 0.6;
+        const heroHeight = window.innerHeight * 0.8;
         const isModalOpen = !modal?.classList.contains('hidden');
 
-        if (scrollY > heroHeight && !isModalOpen) {
-          stickyCTA?.classList.remove('translate-y-full');
-        } else {
-          stickyCTA?.classList.add('translate-y-full');
+        if (scrollY > heroHeight && !isModalOpen && stickyCTA) {
+          (stickyCTA as HTMLElement).style.transform = 'translateY(0)';
+        } else if (stickyCTA) {
+          (stickyCTA as HTMLElement).style.transform = 'translateY(100%)';
         }
-        lastScrollY = scrollY;
+      }
+
+      // Initial state
+      if (stickyCTA) {
+        (stickyCTA as HTMLElement).style.transform = 'translateY(100%)';
+        (stickyCTA as HTMLElement).style.transition = 'transform 0.3s ease-out';
       }
 
       window.addEventListener('scroll', updateStickyCTA, { passive: true });
       updateStickyCTA();
 
       // ============================================
-      // FORENSIC TRACKING SYSTEM (P0)
+      // FORENSIC TRACKING SYSTEM
       // ============================================
       const forensicTracking = {
         ctaClickTime: 0,
         modalRenderedTime: 0,
         firstInteractionTracked: false,
         modalTimeoutId: null as ReturnType<typeof setTimeout> | null,
-        errorHandler: null as ((event: ErrorEvent) => void) | null,
-        rejectionHandler: null as ((event: PromiseRejectionEvent) => void) | null,
 
         getSessionId() {
           return sessionStorage.getItem('meta_session_id') || '';
@@ -1897,100 +1056,39 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                 ...extraData,
               }),
             });
-            console.log(`[Forensic] ${action}:`, extraData);
           } catch (e) {
             console.error(`[Forensic] Failed to send ${action}:`, e);
           }
         },
 
-        // Called when CTA button is clicked (BEFORE modal shows)
         onCtaClick() {
           this.ctaClickTime = Date.now();
           this.firstInteractionTracked = false;
-
-          // Install error handlers
-          this.installErrorHandlers();
-
-          // Set timeout for modal render
           this.modalTimeoutId = setTimeout(() => {
             if (!this.modalRenderedTime) {
               this.sendAction('modal_timeout');
-              console.warn('[Forensic] Modal did not render within 2000ms');
             }
           }, 2000);
-
-          // Send cta_click event
-          this.sendAction('cta_click', {
-            viewport_height: window.innerHeight,
-          });
+          this.sendAction('cta_click', { viewport_height: window.innerHeight });
         },
 
-        // Called when modal is actually visible and interactable
         onModalRendered() {
           this.modalRenderedTime = Date.now();
           const renderTime = this.ctaClickTime ? this.modalRenderedTime - this.ctaClickTime : 0;
-
-          // Clear timeout
           if (this.modalTimeoutId) {
             clearTimeout(this.modalTimeoutId);
             this.modalTimeoutId = null;
           }
-
-          // Get modal measurements
-          const modalEl = document.getElementById('modal-content');
-          const firstField = document.querySelector('#form-step-1 input, #form-step-1 button[type="button"]') as HTMLElement;
-
-          this.sendAction('modal_rendered', {
-            modal_render_time_ms: renderTime,
-            modal_height: modalEl?.offsetHeight || null,
-            first_visible_field_y: firstField?.getBoundingClientRect().top || null,
-          });
-
-          // Dispatch legacy event for MetaPixelTracker compatibility
+          this.sendAction('modal_rendered', { modal_render_time_ms: renderTime });
           window.dispatchEvent(new CustomEvent('form_modal_open'));
         },
 
-        // Called on first user interaction in modal
         onFirstInteraction(interactionType: string) {
           if (this.firstInteractionTracked) return;
           this.firstInteractionTracked = true;
-
-          this.sendAction('first_interaction', {
-            interaction_type: interactionType,
-          });
+          this.sendAction('first_interaction', { interaction_type: interactionType });
         },
 
-        // Install error handlers during modal open
-        installErrorHandlers() {
-          this.errorHandler = (event: ErrorEvent) => {
-            this.sendAction('client_error', {
-              error_message: `${event.message} at ${event.filename}:${event.lineno}`,
-              error_type: 'window.onerror',
-            });
-          };
-          this.rejectionHandler = (event: PromiseRejectionEvent) => {
-            this.sendAction('client_error', {
-              error_message: String(event.reason).substring(0, 500),
-              error_type: 'unhandledrejection',
-            });
-          };
-          window.addEventListener('error', this.errorHandler);
-          window.addEventListener('unhandledrejection', this.rejectionHandler);
-        },
-
-        // Remove error handlers
-        removeErrorHandlers() {
-          if (this.errorHandler) {
-            window.removeEventListener('error', this.errorHandler);
-            this.errorHandler = null;
-          }
-          if (this.rejectionHandler) {
-            window.removeEventListener('unhandledrejection', this.rejectionHandler);
-            this.rejectionHandler = null;
-          }
-        },
-
-        // Reset state
         reset() {
           this.ctaClickTime = 0;
           this.modalRenderedTime = 0;
@@ -1999,30 +1097,21 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             clearTimeout(this.modalTimeoutId);
             this.modalTimeoutId = null;
           }
-          this.removeErrorHandlers();
         },
       };
 
       function showModal() {
-        // STEP 1: Track CTA click BEFORE any DOM changes
         forensicTracking.onCtaClick();
-
-        // STEP 2: Start showing modal
         modal?.classList.remove('hidden');
-        stickyCTA?.classList.add('translate-y-full'); // Hide sticky when modal opens
+        if (stickyCTA) (stickyCTA as HTMLElement).style.transform = 'translateY(100%)';
         document.body.style.overflow = 'hidden';
 
-        // STEP 3: Animate modal in
         setTimeout(() => {
           modalContent?.classList.remove('scale-95', 'opacity-0');
           modalContent?.classList.add('scale-100', 'opacity-100');
-
-          // STEP 4: After animation, confirm modal is rendered
-          // Use requestAnimationFrame to ensure paint is complete
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               forensicTracking.onModalRendered();
-              // Start granular form tracking
               formTracking.onFormOpen();
             });
           });
@@ -2036,7 +1125,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           modal?.classList.add('hidden');
           document.body.style.overflow = '';
         }, 300);
-        // Reset forensic tracking state
         forensicTracking.reset();
       }
 
@@ -2045,8 +1133,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       closeSuccess?.addEventListener('click', hideModal);
       modalBackdrop?.addEventListener('click', hideModal);
 
-      // Track any tap/click inside modal as first interaction
-      // Note: forensicTracking.onFirstInteraction() handles de-duplication internally
       modalContent?.addEventListener('touchstart', () => {
         forensicTracking.onFirstInteraction('tap');
       }, { passive: true });
@@ -2054,7 +1140,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         forensicTracking.onFirstInteraction('tap');
       });
 
-      // Close on Escape
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
           hideModal();
@@ -2069,20 +1154,17 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       const stepLabels = ['Dein Ziel', 'Kontaktdaten', 'Details'];
       const stepNames = ['goal', 'contact', 'details'];
 
-      // Form elements
       const form = document.getElementById('application-form') as HTMLFormElement;
       const nextStepBtn = document.getElementById('next-step-btn');
       const prevStepBtn = document.getElementById('prev-step-btn');
       const nextBtnText = document.getElementById('next-btn-text');
       const nextBtnArrow = document.getElementById('next-btn-arrow');
       const submitLoading = document.getElementById('submit-loading');
-      const progressBar = document.getElementById('progress-bar');
       const currentStepNum = document.getElementById('current-step-num');
       const stepLabel = document.getElementById('step-label');
       const phoneInput = document.getElementById('phone-input') as HTMLInputElement;
       const phoneError = document.getElementById('phone-error');
 
-      // Step elements
       const formSteps = [
         document.getElementById('form-step-1'),
         document.getElementById('form-step-2'),
@@ -2090,7 +1172,7 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       ];
 
       // ============================================
-      // GRANULAR FORM TRACKING SYSTEM
+      // GRANULAR FORM TRACKING
       // ============================================
       const formTracking = {
         formOpenTime: 0,
@@ -2101,18 +1183,14 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         stepsCompleted: { 1: false, 2: false, 3: false } as Record<number, boolean>,
         isFormOpen: false,
 
-        // Get session info from sessionStorage (set by MetaPixelTracker)
         getSessionInfo() {
           return {
             session_id: sessionStorage.getItem('meta_session_id') || '',
             visitor_id: localStorage.getItem('meta_visitor_id') || '',
             device_type: window.innerWidth < 768 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop',
-            utm_source: sessionStorage.getItem('utm_source') || null,
-            utm_medium: sessionStorage.getItem('utm_medium') || null,
           };
         },
 
-        // Send event to API
         async sendEvent(eventData: Record<string, any>) {
           try {
             const sessionInfo = this.getSessionInfo();
@@ -2125,62 +1203,34 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
                 time_since_form_open_ms: this.formOpenTime > 0 ? Date.now() - this.formOpenTime : 0,
               })
             });
-            console.log(`[FormTracking] ${eventData.event_type}: step=${eventData.step_number || '-'}, field=${eventData.field_name || '-'}`);
           } catch (e) {
             console.error('[FormTracking] Error:', e);
           }
         },
 
-        // Called when form modal opens
         onFormOpen() {
           this.formOpenTime = Date.now();
           this.stepEnterTime = Date.now();
           this.isFormOpen = true;
           this.maxStepReached = 1;
-
-          this.sendEvent({
-            event_type: 'step_enter',
-            step_number: 1,
-            step_name: stepNames[0],
-            time_on_current_step_ms: 0,
-          });
+          this.sendEvent({ event_type: 'step_enter', step_number: 1, step_name: stepNames[0], time_on_current_step_ms: 0 });
         },
 
-        // Called when entering a new step
         onStepEnter(step: number) {
-          // Record time spent on previous step
           if (this.stepEnterTime > 0 && currentStep !== step) {
             const timeOnPrevStep = Date.now() - this.stepEnterTime;
             this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnPrevStep;
-
-            this.sendEvent({
-              event_type: 'step_exit',
-              step_number: currentStep,
-              step_name: stepNames[currentStep - 1],
-              time_on_current_step_ms: timeOnPrevStep,
-            });
+            this.sendEvent({ event_type: 'step_exit', step_number: currentStep, step_name: stepNames[currentStep - 1], time_on_current_step_ms: timeOnPrevStep });
           }
-
-          // Start timing new step
           this.stepEnterTime = Date.now();
-          if (step > this.maxStepReached) {
-            this.maxStepReached = step;
-          }
-
-          this.sendEvent({
-            event_type: 'step_enter',
-            step_number: step,
-            step_name: stepNames[step - 1],
-            time_on_current_step_ms: 0,
-          });
+          if (step > this.maxStepReached) this.maxStepReached = step;
+          this.sendEvent({ event_type: 'step_enter', step_number: step, step_name: stepNames[step - 1], time_on_current_step_ms: 0 });
         },
 
-        // Called when completing a step (clicking Weiter)
         onStepComplete(step: number) {
           const timeOnStep = Date.now() - this.stepEnterTime;
           this.stepTimes[step] = (this.stepTimes[step] || 0) + timeOnStep;
           this.stepsCompleted[step] = true;
-
           this.sendEvent({
             event_type: 'step_complete',
             step_number: step,
@@ -2191,52 +1241,15 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             form_step_1_completed: this.stepsCompleted[1],
             form_step_2_completed: this.stepsCompleted[2],
             form_step_3_completed: this.stepsCompleted[3],
-            form_time_step_1_ms: this.stepTimes[1],
-            form_time_step_2_ms: this.stepTimes[2],
-            form_time_step_3_ms: this.stepTimes[3],
             form_total_time_ms: Date.now() - this.formOpenTime,
             form_fields_filled: this.filledFields,
           });
         },
 
-        // Called when field receives focus
-        onFieldFocus(fieldName: string, fieldType: string) {
-          this.sendEvent({
-            event_type: 'field_focus',
-            step_number: currentStep,
-            step_name: stepNames[currentStep - 1],
-            field_name: fieldName,
-            field_type: fieldType,
-            time_on_current_step_ms: Date.now() - this.stepEnterTime,
-          });
-        },
-
-        // Called when field loses focus
-        onFieldBlur(fieldName: string, fieldType: string, value: string) {
-          const isFilled = value.trim().length > 0;
-
-          if (isFilled && !this.filledFields.includes(fieldName)) {
-            this.filledFields.push(fieldName);
-          }
-
-          this.sendEvent({
-            event_type: 'field_blur',
-            step_number: currentStep,
-            step_name: stepNames[currentStep - 1],
-            field_name: fieldName,
-            field_type: fieldType,
-            field_filled: isFilled,
-            field_value_length: value.length,
-            time_on_current_step_ms: Date.now() - this.stepEnterTime,
-          });
-        },
-
-        // Called when radio/checkbox is selected
         onFieldChange(fieldName: string, fieldType: string, value: string) {
           if (!this.filledFields.includes(fieldName)) {
             this.filledFields.push(fieldName);
           }
-
           this.sendEvent({
             event_type: 'field_change',
             step_number: currentStep,
@@ -2244,18 +1257,14 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             field_name: fieldName,
             field_type: fieldType,
             field_filled: true,
-            field_value_length: value.length,
             time_on_current_step_ms: Date.now() - this.stepEnterTime,
           });
         },
 
-        // Called when form is abandoned (modal closed without submit)
         onFormAbandon() {
           if (!this.isFormOpen) return;
-
           const timeOnCurrentStep = Date.now() - this.stepEnterTime;
           this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnCurrentStep;
-
           this.sendEvent({
             event_type: 'form_abandon',
             step_number: currentStep,
@@ -2264,25 +1273,16 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             update_session_summary: true,
             form_max_step_reached: this.maxStepReached,
             form_abandonment_step: currentStep,
-            form_step_1_completed: this.stepsCompleted[1],
-            form_step_2_completed: this.stepsCompleted[2],
-            form_step_3_completed: this.stepsCompleted[3],
-            form_time_step_1_ms: this.stepTimes[1],
-            form_time_step_2_ms: this.stepTimes[2],
-            form_time_step_3_ms: this.stepTimes[3],
             form_total_time_ms: Date.now() - this.formOpenTime,
             form_fields_filled: this.filledFields,
           });
-
           this.reset();
         },
 
-        // Called when form is submitted
         onFormSubmit() {
           const timeOnCurrentStep = Date.now() - this.stepEnterTime;
           this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnCurrentStep;
           this.stepsCompleted[3] = true;
-
           this.sendEvent({
             event_type: 'form_submit',
             step_number: 3,
@@ -2293,17 +1293,12 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             form_step_1_completed: true,
             form_step_2_completed: true,
             form_step_3_completed: true,
-            form_time_step_1_ms: this.stepTimes[1],
-            form_time_step_2_ms: this.stepTimes[2],
-            form_time_step_3_ms: this.stepTimes[3],
             form_total_time_ms: Date.now() - this.formOpenTime,
             form_fields_filled: this.filledFields,
           });
-
           this.reset();
         },
 
-        // Reset tracking state
         reset() {
           this.formOpenTime = 0;
           this.stepEnterTime = 0;
@@ -2315,25 +1310,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         }
       };
 
-      // ============================================
-      // ATTACH FIELD TRACKING LISTENERS
-      // ============================================
+      // Attach field listeners
       function attachFieldListeners() {
-        // Text inputs (firstName, lastName, email, phone, motivation)
-        const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
-        textInputs.forEach((input) => {
-          const el = input as HTMLInputElement | HTMLTextAreaElement;
-          const fieldName = el.name;
-          const fieldType = el.type || 'textarea';
-
-          el.addEventListener('focus', () => {
-            forensicTracking.onFirstInteraction('field_focus');
-            formTracking.onFieldFocus(fieldName, fieldType);
-          });
-          el.addEventListener('blur', () => formTracking.onFieldBlur(fieldName, fieldType, el.value));
-        });
-
-        // Radio buttons
         const radioInputs = form.querySelectorAll('input[type="radio"]');
         radioInputs.forEach((input) => {
           const el = input as HTMLInputElement;
@@ -2345,44 +1323,8 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           });
         });
       }
-
-      // Attach listeners after DOM ready
       attachFieldListeners();
 
-      // Track form progress for analytics (legacy event for LPUserBehaviorTracker)
-      function trackFormProgress(step: number, action: 'view' | 'complete' | 'abandon') {
-        const filledFields = getFilledFieldsCount();
-        window.dispatchEvent(new CustomEvent('form_step_progress', {
-          detail: {
-            step,
-            stepLabel: stepLabels[step - 1],
-            action,
-            totalSteps,
-            filledFieldsCount: filledFields.count,
-            filledFields: filledFields.fields
-          }
-        }));
-      }
-
-      // Count filled fields for tracking
-      function getFilledFieldsCount(): { count: number; fields: string[] } {
-        const fields: string[] = [];
-        const formData = new FormData(form);
-
-        // Check each field
-        if (formData.get('q_goal')) fields.push('goal');
-        if (formData.get('q_time_commitment')) fields.push('time_commitment');
-        if (formData.get('firstName')) fields.push('firstName');
-        if (formData.get('lastName')) fields.push('lastName');
-        if (formData.get('email')) fields.push('email');
-        if (formData.get('phone')) fields.push('phone');
-        if (formData.get('q_knowledge_level')) fields.push('knowledge_level');
-        if (formData.get('motivation')) fields.push('motivation');
-
-        return { count: fields.length, fields };
-      }
-
-      // Validate current step
       function validateStep(step: number): boolean {
         if (step === 1) {
           const goal = form.querySelector('input[name="q_goal"]:checked');
@@ -2393,91 +1335,48 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           const lastName = (form.querySelector('input[name="lastName"]') as HTMLInputElement)?.value?.trim();
           const email = (form.querySelector('input[name="email"]') as HTMLInputElement)?.value?.trim();
           const phone = phoneInput?.value?.trim();
-
-          // Basic email validation
           const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-          // Phone validation (at least 6 digits)
           const phoneDigits = phone?.replace(/\D/g, '') || '';
           const phoneValid = phoneDigits.length >= 6;
-
-          if (!phoneValid && phone) {
-            phoneError?.classList.remove('hidden');
-          } else {
-            phoneError?.classList.add('hidden');
-          }
-
+          if (!phoneValid && phone) phoneError?.classList.remove('hidden');
+          else phoneError?.classList.add('hidden');
           return !!(firstName && lastName && emailValid && phoneValid);
-        } else if (step === 3) {
-          // Step 3 is optional, always valid
-          return true;
         }
         return true;
       }
 
-      // Update UI for current step
       function updateStepUI() {
-        // Update step number and labels
         if (currentStepNum) currentStepNum.textContent = String(currentStep);
         if (stepLabel) stepLabel.textContent = stepLabels[currentStep - 1];
-
-        // Update mobile step label
         const stepLabelMobile = document.getElementById('step-label-mobile');
         if (stepLabelMobile) stepLabelMobile.textContent = stepLabels[currentStep - 1];
 
-        // Update step indicators (circles)
         for (let i = 1; i <= totalSteps; i++) {
           const indicator = document.getElementById(`step-indicator-${i}`);
           if (indicator) {
             if (i < currentStep) {
-              // Completed step
               indicator.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold text-white';
               indicator.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>';
             } else if (i === currentStep) {
-              // Current step
               indicator.className = 'w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-swiss-orange/30';
               indicator.innerHTML = String(i);
             } else {
-              // Future step
               indicator.className = 'w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-medium text-gray-500';
               indicator.innerHTML = String(i);
             }
           }
-
-          // Update connecting lines
           if (i < totalSteps) {
             const line = document.getElementById(`step-line-${i}`);
-            if (line) {
-              if (i < currentStep) {
-                line.className = 'w-8 sm:w-12 h-0.5 bg-green-500 transition-colors';
-              } else {
-                line.className = 'w-8 sm:w-12 h-0.5 bg-white/10 transition-colors';
-              }
-            }
+            if (line) line.className = i < currentStep ? 'w-8 sm:w-12 h-0.5 bg-green-500 transition-colors' : 'w-8 sm:w-12 h-0.5 bg-white/10 transition-colors';
           }
         }
 
-        // Show/hide steps
         formSteps.forEach((stepEl, index) => {
-          if (stepEl) {
-            if (index + 1 === currentStep) {
-              stepEl.classList.remove('hidden');
-            } else {
-              stepEl.classList.add('hidden');
-            }
-          }
+          if (stepEl) stepEl.classList.toggle('hidden', index + 1 !== currentStep);
         });
 
-        // Show/hide back button
-        if (prevStepBtn) {
-          if (currentStep === 1) {
-            prevStepBtn.classList.add('hidden');
-          } else {
-            prevStepBtn.classList.remove('hidden');
-          }
-        }
+        if (prevStepBtn) prevStepBtn.classList.toggle('hidden', currentStep === 1);
 
-        // Update next button text
         if (nextBtnText && nextBtnArrow) {
           if (currentStep === totalSteps) {
             nextBtnText.textContent = 'Bewerbung absenden';
@@ -2487,36 +1386,25 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
             nextBtnArrow.classList.remove('hidden');
           }
         }
-
-        // Track step view
-        trackFormProgress(currentStep, 'view');
       }
 
-      // Go to next step
       function goToNextStep() {
         if (!validateStep(currentStep)) {
-          // Shake button to indicate error
           nextStepBtn?.classList.add('animate-shake');
           setTimeout(() => nextStepBtn?.classList.remove('animate-shake'), 500);
           return;
         }
-
-        // Track step completion (legacy + granular)
-        trackFormProgress(currentStep, 'complete');
         formTracking.onStepComplete(currentStep);
-
         if (currentStep < totalSteps) {
           const nextStep = currentStep + 1;
           formTracking.onStepEnter(nextStep);
           currentStep = nextStep;
           updateStepUI();
         } else {
-          // Submit the form
           submitForm();
         }
       }
 
-      // Go to previous step
       function goToPrevStep() {
         if (currentStep > 1) {
           formTracking.onStepEnter(currentStep - 1);
@@ -2525,63 +1413,42 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         }
       }
 
-      // Phone input formatting
       if (phoneInput) {
         phoneInput.addEventListener('input', (e) => {
           let value = (e.target as HTMLInputElement).value;
-          // Remove non-digits except spaces
           value = value.replace(/[^\d\s]/g, '');
-          // Limit length
-          if (value.replace(/\s/g, '').length > 15) {
-            value = value.slice(0, -1);
-          }
+          if (value.replace(/\s/g, '').length > 15) value = value.slice(0, -1);
           (e.target as HTMLInputElement).value = value;
           phoneError?.classList.add('hidden');
         });
       }
 
-      // Event listeners for step navigation
       nextStepBtn?.addEventListener('click', goToNextStep);
       prevStepBtn?.addEventListener('click', goToPrevStep);
 
-      // Track form abandonment on modal close
       function resetFormAndTrack() {
         if (currentStep > 0 && !form.classList.contains('hidden')) {
-          trackFormProgress(currentStep, 'abandon');
-          // Granular abandon tracking
           formTracking.onFormAbandon();
         }
-        // Reset form state
         currentStep = 1;
         updateStepUI();
         form.reset();
         form.classList.remove('hidden');
       }
 
-      // Override close modal button to also reset form
-      const closeModalBtn = document.getElementById('close-modal');
-      closeModalBtn?.addEventListener('click', resetFormAndTrack);
-
-      // Also track on backdrop click and escape key (already handled by hideModal)
+      closeModal?.addEventListener('click', resetFormAndTrack);
       modalBackdrop?.addEventListener('click', resetFormAndTrack);
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
-          resetFormAndTrack();
-        }
-      });
 
-      // Initialize step UI
       updateStepUI();
 
       // ============================================
-      // CALENDAR BOOKING SYSTEM
+      // CALENDAR BOOKING
       // ============================================
       let currentApplicationId: string | null = null;
       let availableSlots: Record<string, Array<{date: string, time: string, datetime: string}>> = {};
       let selectedSlot: {date: string, time: string, datetime: string} | null = null;
       let currentWeekOffset = 0;
 
-      // Calendar elements
       const calendarBookingStep = document.getElementById('calendar-booking-step');
       const calendarLoading = document.getElementById('calendar-loading');
       const calendarWidget = document.getElementById('calendar-widget');
@@ -2601,65 +1468,41 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
       const prevWeekBtn = document.getElementById('prev-week');
       const nextWeekBtn = document.getElementById('next-week');
 
-      // German day names
       const dayNames = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
       const monthNames = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 
-      // Load available slots from API
       async function loadAvailableSlots() {
         calendarLoading?.classList.remove('hidden');
         calendarWidget?.classList.add('hidden');
         calendarError?.classList.add('hidden');
-
         try {
           const response = await fetch('/api/available-slots?days=14');
           if (!response.ok) throw new Error('Failed to load slots');
-
           const data = await response.json();
           availableSlots = data.slotsByDate || {};
-
           calendarLoading?.classList.add('hidden');
           calendarWidget?.classList.remove('hidden');
-
           renderCalendar();
         } catch (error) {
-          console.error('Error loading slots:', error);
           calendarLoading?.classList.add('hidden');
           calendarError?.classList.remove('hidden');
-          if (calendarErrorText) {
-            calendarErrorText.textContent = 'Termine konnten nicht geladen werden. Bitte versuche es erneut.';
-          }
+          if (calendarErrorText) calendarErrorText.textContent = 'Termine konnten nicht geladen werden.';
         }
       }
 
-      // Render calendar days
       function renderCalendar() {
         if (!daysContainer) return;
-
         const today = new Date();
         const startDate = new Date(today);
         startDate.setDate(startDate.getDate() + (currentWeekOffset * 7));
+        while (startDate.getDay() !== 1) startDate.setDate(startDate.getDate() + 1);
 
-        // Find next Monday if we're not on one
-        while (startDate.getDay() !== 1) {
-          startDate.setDate(startDate.getDate() + 1);
-        }
-
-        // Update week label
         const endDate = new Date(startDate);
         endDate.setDate(endDate.getDate() + 4);
-        if (weekLabel) {
-          weekLabel.textContent = `${startDate.getDate()}. ${monthNames[startDate.getMonth()]} - ${endDate.getDate()}. ${monthNames[endDate.getMonth()]}`;
-        }
-
-        // Update navigation buttons
-        if (prevWeekBtn) {
-          (prevWeekBtn as HTMLButtonElement).disabled = currentWeekOffset === 0;
-        }
+        if (weekLabel) weekLabel.textContent = `${startDate.getDate()}. ${monthNames[startDate.getMonth()]} - ${endDate.getDate()}. ${monthNames[endDate.getMonth()]}`;
+        if (prevWeekBtn) (prevWeekBtn as HTMLButtonElement).disabled = currentWeekOffset === 0;
 
         daysContainer.innerHTML = '';
-
-        // Render Mon-Fri
         for (let i = 0; i < 5; i++) {
           const date = new Date(startDate);
           date.setDate(date.getDate() + i);
@@ -2669,43 +1512,22 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
           const dayBtn = document.createElement('button');
           dayBtn.type = 'button';
-          dayBtn.className = `p-3 border rounded text-center transition-colors ${
-            hasSlots
-              ? 'border-white/10 hover:border-swiss-orange cursor-pointer'
-              : 'border-white/5 opacity-40 cursor-not-allowed'
-          }`;
+          dayBtn.className = `p-3 border rounded text-center transition-colors ${hasSlots ? 'border-white/10 hover:border-swiss-orange cursor-pointer' : 'border-white/5 opacity-40 cursor-not-allowed'}`;
           dayBtn.disabled = !hasSlots;
           dayBtn.dataset.date = dateStr;
-          dayBtn.innerHTML = `
-            <div class="text-xs text-gray-400">${dayNames[date.getDay()]}</div>
-            <div class="text-lg font-bold text-white">${date.getDate()}</div>
-            <div class="text-xs ${hasSlots ? 'text-swiss-orange' : 'text-gray-600'}">${hasSlots ? slotsForDay.length + ' frei' : '-'}</div>
-          `;
-
-          if (hasSlots) {
-            dayBtn.addEventListener('click', () => selectDay(dateStr, dayBtn));
-          }
-
+          dayBtn.innerHTML = `<div class="text-xs text-gray-400">${dayNames[date.getDay()]}</div><div class="text-lg font-bold text-white">${date.getDate()}</div><div class="text-xs ${hasSlots ? 'text-swiss-orange' : 'text-gray-600'}">${hasSlots ? slotsForDay.length + ' frei' : '-'}</div>`;
+          if (hasSlots) dayBtn.addEventListener('click', () => selectDay(dateStr, dayBtn));
           daysContainer.appendChild(dayBtn);
         }
       }
 
-      // Select a day and show time slots
       function selectDay(dateStr: string, btnElement: HTMLElement) {
-        // Update button styles
-        daysContainer?.querySelectorAll('button').forEach(btn => {
-          btn.classList.remove('border-swiss-orange', 'bg-swiss-orange/10');
-        });
+        daysContainer?.querySelectorAll('button').forEach(btn => btn.classList.remove('border-swiss-orange', 'bg-swiss-orange/10'));
         btnElement.classList.add('border-swiss-orange', 'bg-swiss-orange/10');
-
-        // Hide hint, show slots
         selectDayHint?.classList.add('hidden');
-
         const slots = availableSlots[dateStr] || [];
         if (!slotsContainer) return;
-
         slotsContainer.innerHTML = '';
-
         slots.forEach(slot => {
           const slotBtn = document.createElement('button');
           slotBtn.type = 'button';
@@ -2716,81 +1538,45 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         });
       }
 
-      // Select a time slot
       function selectTimeSlot(slot: {date: string, time: string, datetime: string}) {
         selectedSlot = slot;
-
-        // Format display
         const date = new Date(slot.datetime);
         const dayName = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][date.getDay()];
         const displayText = `${dayName}, ${date.getDate()}. ${monthNames[date.getMonth()]} um ${slot.time} Uhr`;
-
         if (selectedSlotText) selectedSlotText.textContent = displayText;
         selectedSlotDisplay?.classList.remove('hidden');
-
-        // Highlight selected slot
         slotsContainer?.querySelectorAll('button').forEach(btn => {
-          if (btn.textContent === slot.time + ' Uhr') {
-            btn.classList.add('border-swiss-orange', 'bg-swiss-orange/10');
-          } else {
-            btn.classList.remove('border-swiss-orange', 'bg-swiss-orange/10');
-          }
+          btn.classList.toggle('border-swiss-orange', btn.textContent === slot.time + ' Uhr');
+          btn.classList.toggle('bg-swiss-orange/10', btn.textContent === slot.time + ' Uhr');
         });
       }
 
-      // Confirm booking
       async function confirmBookingHandler() {
         if (!selectedSlot || !currentApplicationId) return;
-
         selectedSlotDisplay?.classList.add('hidden');
         bookingLoading?.classList.remove('hidden');
-
         try {
           const response = await fetch('/api/book-appointment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              applicationId: currentApplicationId,
-              datetime: selectedSlot.datetime
-            })
+            body: JSON.stringify({ applicationId: currentApplicationId, datetime: selectedSlot.datetime })
           });
-
           const result = await response.json();
-
           if (response.ok && result.success) {
-            // Track: Calendar booked
-            (window as any).dataLayer = (window as any).dataLayer || [];
-            (window as any).dataLayer.push({
-              event: 'calendar_booked',
-              application_id: currentApplicationId,
-              appointment_datetime: result.appointment.datetime
-            });
-
-            // Meta Pixel: Schedule Event
-            window.dispatchEvent(new CustomEvent('meta_schedule', {
-              detail: {
-                applicationId: currentApplicationId,
-                appointmentDatetime: result.appointment.datetime
-              }
-            }));
-
-            // Show confirmation
+            window.dispatchEvent(new CustomEvent('meta_schedule', { detail: { applicationId: currentApplicationId, appointmentDatetime: result.appointment.datetime } }));
             calendarBookingStep?.classList.add('hidden');
             bookingConfirmed?.classList.remove('hidden');
-            if (confirmedDatetime) {
-              confirmedDatetime.textContent = result.appointment.formattedDate + ' um ' + result.appointment.formattedTime + ' Uhr';
-            }
+            if (confirmedDatetime) confirmedDatetime.textContent = result.appointment.formattedDate + ' um ' + result.appointment.formattedTime + ' Uhr';
           } else {
             throw new Error(result.error || 'Booking failed');
           }
         } catch (error: any) {
           bookingLoading?.classList.add('hidden');
           selectedSlotDisplay?.classList.remove('hidden');
-          alert(error.message || 'Fehler beim Buchen. Bitte versuche es erneut.');
+          alert(error.message || 'Fehler beim Buchen.');
         }
       }
 
-      // Event listeners for calendar navigation
       prevWeekBtn?.addEventListener('click', () => {
         if (currentWeekOffset > 0) {
           currentWeekOffset--;
@@ -2798,7 +1584,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           selectedSlotDisplay?.classList.add('hidden');
           selectDayHint?.classList.remove('hidden');
           if (slotsContainer) slotsContainer.innerHTML = '';
-          slotsContainer?.appendChild(selectDayHint!);
           renderCalendar();
         }
       });
@@ -2809,38 +1594,28 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         selectedSlotDisplay?.classList.add('hidden');
         selectDayHint?.classList.remove('hidden');
         if (slotsContainer) slotsContainer.innerHTML = '';
-        slotsContainer?.appendChild(selectDayHint!);
         renderCalendar();
       });
 
       confirmBooking?.addEventListener('click', confirmBookingHandler);
       retryCalendar?.addEventListener('click', loadAvailableSlots);
 
-      // Form submission function (called from goToNextStep on step 3)
       async function submitForm() {
-        // Track form submission (granular)
         formTracking.onFormSubmit();
-
-        // Disable button and show loading
         if (nextStepBtn) nextStepBtn.setAttribute('disabled', 'true');
         if (nextBtnText) nextBtnText.classList.add('hidden');
         if (nextBtnArrow) nextBtnArrow.classList.add('hidden');
         submitLoading?.classList.remove('hidden');
 
         const formData = new FormData(form);
-
-        // Build questionnaire answers with new schema
         const questionnaireAnswers = {
-          goal: formData.get('q_goal'),                         // Single goal (Radio)
-          time_commitment: formData.get('q_time_commitment'),   // yes/maybe
-          knowledge_level: formData.get('q_knowledge_level') || 'anfaenger' // anfaenger/fortgeschritten/profi
+          goal: formData.get('q_goal'),
+          time_commitment: formData.get('q_time_commitment'),
+          knowledge_level: formData.get('q_knowledge_level') || 'anfaenger'
         };
 
-        // Format phone with +49 prefix
         let phone = formData.get('phone') as string;
-        if (phone && !phone.startsWith('+')) {
-          phone = '+49 ' + phone.replace(/^0+/, '');
-        }
+        if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
 
         const data = {
           firstName: formData.get('firstName'),
@@ -2850,96 +1625,36 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           program: 'gruppen_coaching',
           questionnaireAnswers,
           motivation: formData.get('motivation') || null,
-          source: 'lp_coaching',
-          formVersion: 'v2_multistep'  // Track which form version was used
+          source: 'lp_coaching_v2',
+          formVersion: 'v2_multistep'
         };
 
         try {
-          // Get tracking data from sessionStorage
           const sessionId = sessionStorage.getItem('meta_session_id') || sessionStorage.getItem('lp_session_id');
-          const utmSource = sessionStorage.getItem('utm_source');
-          const utmMedium = sessionStorage.getItem('utm_medium');
-          const utmCampaign = sessionStorage.getItem('utm_campaign');
-          const fbclid = sessionStorage.getItem('fbclid');
-
-          const headers: Record<string, string> = {
-            'Content-Type': 'application/json'
-          };
+          const headers: Record<string, string> = { 'Content-Type': 'application/json' };
           if (sessionId) headers['x-session-id'] = sessionId;
-          if (utmSource) headers['x-utm-source'] = utmSource;
-          if (utmMedium) headers['x-utm-medium'] = utmMedium;
-          if (utmCampaign) headers['x-utm-campaign'] = utmCampaign;
-          if (fbclid) headers['x-fbclid'] = fbclid;
 
-          const response = await fetch('/api/lp-application', {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(data)
-          });
-
+          const response = await fetch('/api/lp-application', { method: 'POST', headers, body: JSON.stringify(data) });
           const result = await response.json();
 
           if (response.ok && result.id) {
             currentApplicationId = result.id;
-
-            // Track: Application submitted
-            (window as any).dataLayer = (window as any).dataLayer || [];
-            (window as any).dataLayer.push({
-              event: 'apply_submit',
-              application_id: result.id
-            });
-
-            // Meta Pixel: Lead Event
-            window.dispatchEvent(new CustomEvent('meta_lead', {
-              detail: { applicationId: result.id }
-            }));
-
+            window.dispatchEvent(new CustomEvent('meta_lead', { detail: { applicationId: result.id } }));
             form.classList.add('hidden');
             calendarBookingStep?.classList.remove('hidden');
-
-            // Track: Calendar view
-            (window as any).dataLayer.push({
-              event: 'calendar_view',
-              application_id: result.id
-            });
-
             loadAvailableSlots();
           } else {
             throw new Error(result.error || 'Server error');
           }
         } catch (error) {
           alert('Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.');
-          // Re-enable button
           if (nextStepBtn) nextStepBtn.removeAttribute('disabled');
           if (nextBtnText) nextBtnText.classList.remove('hidden');
-          if (nextBtnArrow) nextBtnArrow.classList.add('hidden'); // Keep hidden for submit button
           submitLoading?.classList.add('hidden');
         }
       }
 
-      // Prevent default form submission (we handle it via button click)
-      form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-      });
-
-      // Scroll reveal
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.scroll-reveal').forEach(el => {
-        observer.observe(el);
-      });
+      form?.addEventListener('submit', (e) => e.preventDefault());
     </script>
 
 
@@ -2947,12 +1662,10 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
          STYLES
          ============================================ -->
     <style>
-      /* Gradient Radial */
       .bg-gradient-radial {
         background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
       }
 
-      /* Shake Animation for validation errors */
       @keyframes shake {
         0%, 100% { transform: translateX(0); }
         10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
@@ -2963,187 +1676,6 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       }
 
-      /* Hero Fade In */
-      @keyframes hero-fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .animate-hero-fade-in {
-        animation: hero-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      /* Gradient Shift */
-      @keyframes gradient-shift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-      }
-
-      .animate-gradient-shift {
-        background-size: 200% 200%;
-        animation: gradient-shift 3s ease infinite;
-      }
-
-      /* Line Draw */
-      @keyframes line-draw {
-        from { transform: scaleX(0); }
-        to { transform: scaleX(1); }
-      }
-
-      .animate-line-draw {
-        transform-origin: left;
-        animation: line-draw 1s ease-out forwards;
-        animation-delay: 0.8s;
-        transform: scaleX(0);
-      }
-
-      /* Orb Float */
-      @keyframes orb-float {
-        0%, 100% { transform: translateX(50%) translateY(0); }
-        50% { transform: translateX(50%) translateY(-30px); }
-      }
-
-      .animate-orb-float {
-        animation: orb-float 8s ease-in-out infinite;
-      }
-
-      .animate-orb-float-delayed {
-        animation: orb-float 10s ease-in-out infinite;
-        animation-delay: -4s;
-      }
-
-      /* Frame Pulse */
-      @keyframes frame-pulse {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-      }
-
-      .animate-frame-pulse {
-        animation: frame-pulse 4s ease-in-out infinite;
-      }
-
-      /* Float Slow */
-      @keyframes float-slow {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-
-      .animate-float-slow {
-        animation: float-slow 4s ease-in-out infinite;
-      }
-
-      .animate-float-delayed {
-        animation: float-slow 4s ease-in-out infinite;
-        animation-delay: -2s;
-      }
-
-      /* Scroll Line */
-      @keyframes scroll-line {
-        0% { transform: scaleY(0); opacity: 1; }
-        50% { transform: scaleY(1); opacity: 1; }
-        100% { transform: scaleY(1); opacity: 0; }
-      }
-
-      .animate-scroll-line {
-        transform-origin: top;
-        animation: scroll-line 2s ease-in-out infinite;
-      }
-
-      /* Spin Slow */
-      @keyframes spin-slow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      .animate-spin-slow {
-        animation: spin-slow 20s linear infinite;
-      }
-
-      .animate-spin-reverse {
-        animation: spin-slow 15s linear infinite reverse;
-      }
-
-      /* Pulse Line */
-      @keyframes pulse-line {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 1; }
-      }
-
-      .animate-pulse-line {
-        animation: pulse-line 2s ease-in-out infinite;
-      }
-
-      /* Pulse Slow */
-      @keyframes pulse-slow {
-        0%, 100% { opacity: 0.5; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.05); }
-      }
-
-      .animate-pulse-slow {
-        animation: pulse-slow 4s ease-in-out infinite;
-      }
-
-      /* Pulse Glow */
-      @keyframes pulse-glow-strong {
-        0%, 100% { box-shadow: 0 0 20px rgba(255, 79, 0, 0.4); }
-        50% { box-shadow: 0 0 40px rgba(255, 79, 0, 0.6); }
-      }
-
-      .animate-pulse-glow {
-        animation: pulse-glow-strong 2s ease-in-out infinite;
-      }
-
-      /* Scroll Bounce for indicator */
-      @keyframes scroll-bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(8px); }
-        60% { transform: translateY(4px); }
-      }
-
-      .animate-scroll-bounce {
-        animation: scroll-bounce 2s ease-in-out infinite;
-      }
-
-      /* Enhanced section glow */
-      @keyframes section-glow {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-      }
-
-      .animate-section-glow {
-        animation: section-glow 4s ease-in-out infinite;
-      }
-
-      /* Floating particles */
-      @keyframes float-particle {
-        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-        25% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
-        50% { transform: translateY(-10px) translateX(-5px); opacity: 0.4; }
-        75% { transform: translateY(-30px) translateX(15px); opacity: 0.5; }
-      }
-
-      .animate-float-particle {
-        animation: float-particle 8s ease-in-out infinite;
-      }
-
-      /* Glow wave */
-      @keyframes glow-wave {
-        0% { transform: translateX(-100%); opacity: 0; }
-        50% { opacity: 0.5; }
-        100% { transform: translateX(100%); opacity: 0; }
-      }
-
-      .animate-glow-wave {
-        animation: glow-wave 4s ease-in-out infinite;
-      }
-
-      /* Scroll Reveal */
       .scroll-reveal {
         opacity: 0;
         transform: translateY(40px);
@@ -3155,274 +1687,19 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
         transform: translateY(0);
       }
 
-      .scroll-reveal[style*="animation-delay: 0.1s"] { transition-delay: 0.1s; }
-      .scroll-reveal[style*="animation-delay: 0.2s"] { transition-delay: 0.2s; }
-      .scroll-reveal[style*="animation-delay: 0.3s"] { transition-delay: 0.3s; }
-
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #000;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 0;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: #FF4F00;
-      }
-
-      /* ============================================
-         REDUCED MOTION & ACCESSIBILITY
-         ============================================ */
-
       @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
         }
       }
 
-      /* ============================================
-         MOBILE-FIRST RESPONSIVE OVERRIDES
-         ============================================ */
-
-      /* Base Mobile Styles (< 640px) */
       @media (max-width: 639px) {
-        /* Disable heavy background animations for performance */
-        .animate-orb-float,
-        .animate-orb-float-delayed,
-        .animate-section-glow,
-        .animate-float-particle,
-        .animate-spin-slow,
-        .animate-spin-reverse {
-          animation: none !important;
-        }
-
-        /* Reduce blur for performance */
-        .blur-3xl {
-          filter: blur(40px) !important;
-        }
-
-        .blur-\\[120px\\],
-        .blur-\\[100px\\] {
-          filter: blur(60px) !important;
-        }
-
-        /* Reduce opacity for performance */
-        .bg-gradient-radial {
-          opacity: 0.15 !important;
-        }
-        /* Hero Section */
-        .hero-headline {
-          font-size: 2.5rem !important;
-          line-height: 0.95 !important;
-        }
-
-        .hero-subheadline {
-          font-size: 1.125rem !important;
-        }
-
-        /* Smaller orbs on mobile */
-        .mobile-orb-small {
-          width: 300px !important;
-          height: 300px !important;
-        }
-
-        /* Hide scroll indicator on mobile */
-        .scroll-indicator-mobile-hide {
-          display: none !important;
-        }
-
-        /* Transformation cards - full width stacking */
-        .transformation-card {
-          margin-bottom: 1rem;
-        }
-
-        /* Smaller icons on mobile */
-        .mobile-icon-container {
-          width: 3.5rem !important;
-          height: 3.5rem !important;
-        }
-
-        .mobile-icon-container svg {
-          width: 1.75rem !important;
-          height: 1.75rem !important;
-        }
-
-        /* Agent visualization - smaller on mobile */
-        .agent-viz-mobile {
-          height: 200px !important;
-        }
-
-        .agent-viz-mobile .central-node {
-          width: 3.5rem !important;
-          height: 3.5rem !important;
-        }
-
-        .agent-viz-mobile .orbit-ring {
-          width: 140px !important;
-          height: 140px !important;
-        }
-
-        .agent-viz-mobile .orbit-ring-inner {
-          width: 100px !important;
-          height: 100px !important;
-        }
-
-        .agent-viz-mobile .agent-node {
-          width: 2rem !important;
-          height: 2rem !important;
-        }
-
-        /* Timeline mobile - vertical layout */
-        .timeline-mobile {
-          gap: 1.5rem !important;
-        }
-
-        .timeline-mobile > div {
-          text-align: left !important;
-          display: flex !important;
-          align-items: center !important;
-          gap: 1rem !important;
-        }
-
-        .timeline-mobile .timeline-number {
-          margin: 0 !important;
-          flex-shrink: 0;
-        }
-
-        /* Quote section mobile */
-        .quote-mobile {
-          font-size: 1.25rem !important;
-          padding: 1.5rem !important;
-        }
-
-        /* About section mobile */
-        .about-stats-mobile {
-          flex-direction: column !important;
-          gap: 0.75rem !important;
-        }
-
-        .about-stats-mobile > div {
-          width: 100% !important;
-        }
-
-        /* Modal mobile - full screen */
-        .modal-content-mobile {
-          width: 100% !important;
-          max-width: 100% !important;
-          height: 100vh !important;
-          max-height: 100vh !important;
-          border-radius: 0 !important;
-          margin: 0 !important;
-        }
-
-        .modal-form-mobile {
-          padding: 1.25rem !important;
-        }
-
-        /* CTA buttons - full width on mobile */
-        .cta-mobile-full {
-          width: 100% !important;
-          justify-content: center !important;
-        }
-
-        /* Reduce animations on mobile for performance */
-        .mobile-reduce-motion {
-          animation-duration: 0.5s !important;
-        }
-
-        /* Touch-friendly tap targets */
-        .mobile-tap-target {
-          min-height: 48px !important;
-          min-width: 48px !important;
-        }
-
-        /* Better spacing on mobile */
-        .mobile-section-padding {
-          padding-top: 4rem !important;
-          padding-bottom: 4rem !important;
-        }
-
-        /* Fix horizontal overflow */
-        .mobile-overflow-hidden {
-          overflow-x: hidden !important;
-        }
-      }
-
-      /* Small tablets (640px - 767px) */
-      @media (min-width: 640px) and (max-width: 767px) {
-        .hero-headline {
-          font-size: 3rem !important;
-        }
-
-        .agent-viz-mobile {
-          height: 250px !important;
-        }
-      }
-
-      /* Tablets (768px - 1023px) */
-      @media (min-width: 768px) and (max-width: 1023px) {
-        .hero-headline {
-          font-size: 3.5rem !important;
-        }
-      }
-
-      /* Touch device optimizations */
-      @media (hover: none) and (pointer: coarse) {
-        /* Disable hover effects that don't work well on touch */
-        .transformation-card:hover {
-          transform: none !important;
-        }
-
-        /* Make hover effects permanent on touch */
-        .transformation-card .absolute.inset-0.bg-gradient-to-r {
-          opacity: 0.3 !important;
-        }
-
-        /* Larger touch targets */
-        button, a {
-          min-height: 44px;
-        }
-      }
-
-      /* Landscape mobile */
-      @media (max-width: 896px) and (orientation: landscape) {
-        .hero-section-mobile {
-          min-height: auto !important;
-          padding-top: 2rem !important;
-          padding-bottom: 2rem !important;
-        }
-
-        .hero-image-landscape {
-          max-height: 50vh !important;
-        }
-      }
-
-      /* Safe area for notched devices */
-      @supports (padding: max(0px)) {
-        .safe-area-padding {
-          padding-left: max(1.5rem, env(safe-area-inset-left));
-          padding-right: max(1.5rem, env(safe-area-inset-right));
-          padding-bottom: max(1rem, env(safe-area-inset-bottom));
-        }
+        .blur-3xl { filter: blur(40px) !important; }
+        .bg-gradient-radial { opacity: 0.15 !important; }
       }
     </style>
 
-    <!-- User Behavior Tracking -->
-    <LPUserBehaviorTracker pagePath="/lp/coaching" client:load />
-
-    <!-- Meta Pixel Tracking -->
-    <MetaPixelTracker pagePath="/lp/coaching" client:load />
   </body>
 </html>

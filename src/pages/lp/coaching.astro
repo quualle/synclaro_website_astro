@@ -24,6 +24,20 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://synclaro.de/lp/coaching-v2" />
+
+    <!-- Logo Carousel Animation -->
+    <style>
+      @keyframes logo-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .logo-carousel {
+        animation: logo-scroll 25s linear infinite;
+      }
+      .logo-carousel:hover {
+        animation-play-state: paused;
+      }
+    </style>
   </head>
 
   <body class="min-h-screen bg-black text-white overflow-x-hidden">
@@ -58,9 +72,101 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           </h1>
 
           <!-- 2. SUBHEADLINE -->
-          <p class="text-[15px] text-gray-300 leading-relaxed mb-6">
+          <p class="text-[15px] text-gray-300 leading-relaxed mb-5">
             Du lernst, moderne KI-Tools sicher zu beherrschen – und sie systematisch in deinem Arbeitsalltag einzusetzen.
           </p>
+
+          <!-- LOGO CAROUSEL -->
+          <div class="mb-5 -mx-5 overflow-hidden">
+            <div class="flex logo-carousel" style="width: max-content;">
+              <!-- First set -->
+              <div class="flex items-center gap-6 px-3">
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.6 8.3829l2.02-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997z"/></svg>
+                  ChatGPT
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5758 5.2832C19.5765 1.9247 15.4588 0 12.0598 0 5.4005 0 0 5.382 0 11.9901c0 6.6082 5.4005 12.0099 12.0598 12.0099 3.3003 0 7.2686-1.7772 9.3672-5.0366l.0986-.1478c2.0986-3.2594.6903-8.0504-.0986-8.7395-.7889-.6892-1.8262-.9861-2.6644-.5416-.8382.4445-1.2819 1.4306-1.0847 2.3675.1972.9369.8875 1.7263 1.7257 2.0233.0493.0493.0493.0986.0493.1479 0 .0493-.0493.0986-.0986.0986-.0493.0493-.0986.0493-.1479.0493h-.0986c-.5423-.0493-1.0354-.2958-1.3816-.6892-.3462-.3934-.5434-.8872-.5434-1.4306v-6.6082c0-.5434.1972-1.0372.5434-1.4306.3462-.3934.8393-.6399 1.3816-.6892h.0986c.0493 0 .0986 0 .1479.0493.0493 0 .0986.0493.0986.0986 0 .0493 0 .0986-.0493.1479-.8382.2958-1.5285 1.0864-1.7257 2.0233-.1972.9369.2465 1.9230 1.0847 2.3675.8382.4445 1.8755.1479 2.6644-.5416.7889-.6892 2.1972-5.4801.0986-8.7395Z"/></svg>
+                  Claude
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.787c-.192.384-.576.576-1.056.576H7.162c-.48 0-.864-.192-1.056-.576-.192-.384-.192-.768 0-1.152l4.838-9.677c.192-.384.576-.576 1.056-.576s.864.192 1.056.576l4.838 9.677c.192.384.192.768 0 1.152z"/></svg>
+                  Gemini
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 2.6h3.68l-8.04 9.19 9.46 12.5h-7.4l-5.8-7.58-6.64 7.58H-1.4l8.6-9.82L-1.7 2.6h7.58l5.24 6.93zm-1.29 19.48h2.04L6.27 4.68H4.08z"/></svg>
+                  Grok
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.005.5c.237 0 .475.062.683.186l9.416 5.436a1.367 1.367 0 0 1 .683 1.183v10.872c0 .488-.262.937-.683 1.183l-9.416 5.436a1.367 1.367 0 0 1-1.366 0L1.906 19.36a1.367 1.367 0 0 1-.683-1.183V7.305c0-.488.262-.937.683-1.183l9.416-5.436A1.366 1.366 0 0 1 12.005.5z"/></svg>
+                  n8n
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z"/></svg>
+                  Supabase
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.094 2.21a1.17 1.17 0 0 0-1.639-.13l-9.143 7.983a1.17 1.17 0 0 0-.006 1.768l9.143 7.976a1.17 1.17 0 0 0 1.538 0l9.144-7.976a1.17 1.17 0 0 0-.006-1.768l-9.143-7.983.112.13zm-.025 1.502.069-.059 7.783 6.798-7.852 6.853-7.852-6.853 7.783-6.798.069.059z"/></svg>
+                  Netlify
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                  Perplexity
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8.804 2h6.392L22 12l-6.804 10H8.804L2 12z"/></svg>
+                  Midjourney
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                  Make
+                </span>
+              </div>
+              <!-- Duplicate for seamless loop -->
+              <div class="flex items-center gap-6 px-3">
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.6 8.3829l2.02-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997z"/></svg>
+                  ChatGPT
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5758 5.2832C19.5765 1.9247 15.4588 0 12.0598 0 5.4005 0 0 5.382 0 11.9901c0 6.6082 5.4005 12.0099 12.0598 12.0099 3.3003 0 7.2686-1.7772 9.3672-5.0366l.0986-.1478c2.0986-3.2594.6903-8.0504-.0986-8.7395-.7889-.6892-1.8262-.9861-2.6644-.5416-.8382.4445-1.2819 1.4306-1.0847 2.3675.1972.9369.8875 1.7263 1.7257 2.0233.0493.0493.0493.0986.0493.1479 0 .0493-.0493.0986-.0986.0986-.0493.0493-.0986.0493-.1479.0493h-.0986c-.5423-.0493-1.0354-.2958-1.3816-.6892-.3462-.3934-.5434-.8872-.5434-1.4306v-6.6082c0-.5434.1972-1.0372.5434-1.4306.3462-.3934.8393-.6399 1.3816-.6892h.0986c.0493 0 .0986 0 .1479.0493.0493 0 .0986.0493.0986.0986 0 .0493 0 .0986-.0493.1479-.8382.2958-1.5285 1.0864-1.7257 2.0233-.1972.9369.2465 1.9230 1.0847 2.3675.8382.4445 1.8755.1479 2.6644-.5416.7889-.6892 2.1972-5.4801.0986-8.7395Z"/></svg>
+                  Claude
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.787c-.192.384-.576.576-1.056.576H7.162c-.48 0-.864-.192-1.056-.576-.192-.384-.192-.768 0-1.152l4.838-9.677c.192-.384.576-.576 1.056-.576s.864.192 1.056.576l4.838 9.677c.192.384.192.768 0 1.152z"/></svg>
+                  Gemini
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 2.6h3.68l-8.04 9.19 9.46 12.5h-7.4l-5.8-7.58-6.64 7.58H-1.4l8.6-9.82L-1.7 2.6h7.58l5.24 6.93zm-1.29 19.48h2.04L6.27 4.68H4.08z"/></svg>
+                  Grok
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.005.5c.237 0 .475.062.683.186l9.416 5.436a1.367 1.367 0 0 1 .683 1.183v10.872c0 .488-.262.937-.683 1.183l-9.416 5.436a1.367 1.367 0 0 1-1.366 0L1.906 19.36a1.367 1.367 0 0 1-.683-1.183V7.305c0-.488.262-.937.683-1.183l9.416-5.436A1.366 1.366 0 0 1 12.005.5z"/></svg>
+                  n8n
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z"/></svg>
+                  Supabase
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.094 2.21a1.17 1.17 0 0 0-1.639-.13l-9.143 7.983a1.17 1.17 0 0 0-.006 1.768l9.143 7.976a1.17 1.17 0 0 0 1.538 0l9.144-7.976a1.17 1.17 0 0 0-.006-1.768l-9.143-7.983.112.13zm-.025 1.502.069-.059 7.783 6.798-7.852 6.853-7.852-6.853 7.783-6.798.069.059z"/></svg>
+                  Netlify
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                  Perplexity
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8.804 2h6.392L22 12l-6.804 10H8.804L2 12z"/></svg>
+                  Midjourney
+                </span>
+                <span class="text-[11px] font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                  Make
+                </span>
+              </div>
+            </div>
+          </div>
 
           <!-- 3. PROOF - Kurz, faktisch (Chef-KI Vorgabe) -->
           <div class="mb-8 py-3 px-4 bg-white/5 border-l-2 border-swiss-orange">
@@ -100,9 +206,100 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           </h1>
 
           <!-- 2. SUBHEADLINE -->
-          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-6 max-w-2xl mx-auto">
             Du lernst, moderne KI-Tools sicher zu beherrschen – und sie systematisch in deinem Arbeitsalltag einzusetzen.
           </p>
+
+          <!-- LOGO CAROUSEL (Desktop) -->
+          <div class="mb-8 overflow-hidden max-w-3xl mx-auto">
+            <div class="flex logo-carousel" style="width: max-content;">
+              <div class="flex items-center gap-8 px-4">
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729z"/></svg>
+                  ChatGPT
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Claude
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.787c-.192.384-.576.576-1.056.576H7.162c-.48 0-.864-.192-1.056-.576-.192-.384-.192-.768 0-1.152l4.838-9.677c.192-.384.576-.576 1.056-.576s.864.192 1.056.576l4.838 9.677c.192.384.192.768 0 1.152z"/></svg>
+                  Gemini
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 2.6h3.68l-8.04 9.19 9.46 12.5h-7.4l-5.8-7.58-6.64 7.58H-1.4l8.6-9.82L-1.7 2.6h7.58l5.24 6.93z"/></svg>
+                  Grok
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.005.5c.237 0 .475.062.683.186l9.416 5.436a1.367 1.367 0 0 1 .683 1.183v10.872c0 .488-.262.937-.683 1.183l-9.416 5.436a1.367 1.367 0 0 1-1.366 0L1.906 19.36a1.367 1.367 0 0 1-.683-1.183V7.305c0-.488.262-.937.683-1.183l9.416-5.436A1.366 1.366 0 0 1 12.005.5z"/></svg>
+                  n8n
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z"/></svg>
+                  Supabase
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.094 2.21a1.17 1.17 0 0 0-1.639-.13l-9.143 7.983a1.17 1.17 0 0 0-.006 1.768l9.143 7.976a1.17 1.17 0 0 0 1.538 0l9.144-7.976a1.17 1.17 0 0 0-.006-1.768l-9.143-7.983z"/></svg>
+                  Netlify
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/></svg>
+                  Perplexity
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.804 2h6.392L22 12l-6.804 10H8.804L2 12z"/></svg>
+                  Midjourney
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Make
+                </span>
+              </div>
+              <!-- Duplicate -->
+              <div class="flex items-center gap-8 px-4">
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729z"/></svg>
+                  ChatGPT
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Claude
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.787c-.192.384-.576.576-1.056.576H7.162c-.48 0-.864-.192-1.056-.576-.192-.384-.192-.768 0-1.152l4.838-9.677c.192-.384.576-.576 1.056-.576s.864.192 1.056.576l4.838 9.677c.192.384.192.768 0 1.152z"/></svg>
+                  Gemini
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 2.6h3.68l-8.04 9.19 9.46 12.5h-7.4l-5.8-7.58-6.64 7.58H-1.4l8.6-9.82L-1.7 2.6h7.58l5.24 6.93z"/></svg>
+                  Grok
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.005.5c.237 0 .475.062.683.186l9.416 5.436a1.367 1.367 0 0 1 .683 1.183v10.872c0 .488-.262.937-.683 1.183l-9.416 5.436a1.367 1.367 0 0 1-1.366 0L1.906 19.36a1.367 1.367 0 0 1-.683-1.183V7.305c0-.488.262-.937.683-1.183l9.416-5.436A1.366 1.366 0 0 1 12.005.5z"/></svg>
+                  n8n
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z"/></svg>
+                  Supabase
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.094 2.21a1.17 1.17 0 0 0-1.639-.13l-9.143 7.983a1.17 1.17 0 0 0-.006 1.768l9.143 7.976a1.17 1.17 0 0 0 1.538 0l9.144-7.976a1.17 1.17 0 0 0-.006-1.768l-9.143-7.983z"/></svg>
+                  Netlify
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/></svg>
+                  Perplexity
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.804 2h6.392L22 12l-6.804 10H8.804L2 12z"/></svg>
+                  Midjourney
+                </span>
+                <span class="text-xs font-medium text-gray-500 tracking-wide whitespace-nowrap flex items-center gap-2">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  Make
+                </span>
+              </div>
+            </div>
+          </div>
 
           <!-- 3. PROOF -->
           <div class="mb-10 inline-block py-3 px-6 bg-white/5 border-l-2 border-swiss-orange">

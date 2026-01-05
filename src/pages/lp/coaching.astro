@@ -646,51 +646,50 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <!-- Visual Element: Story Timeline -->
+          <!-- Visual Element -->
           <div class="relative">
-            <div class="relative bg-gradient-to-br from-gray-900 to-black border border-white/10 p-6 sm:p-8">
-              <!-- Story Timeline -->
-              <div class="space-y-6 sm:space-y-8">
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
+            <!-- Marco Image -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-swiss-orange/20">
+              <img
+                src="/images/marco_new.png"
+                alt="Marco Heer"
+                class="w-full h-auto max-h-[400px] object-contain grayscale-[20%] contrast-[1.1]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+              <div class="absolute inset-0 bg-gradient-to-r from-swiss-orange/10 to-transparent mix-blend-overlay"></div>
+
+              <!-- Name Tag -->
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="flex items-center gap-3 bg-black/80 backdrop-blur-sm border border-white/10 p-3">
+                  <div class="w-1.5 h-10 bg-swiss-orange"></div>
                   <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 1</p>
-                    <p class="text-gray-300 text-sm sm:text-base">Studium & Ingenieurswesen</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 2</p>
-                    <p class="text-gray-300 text-sm sm:text-base">Vertriebsleitung & Führungserfahrung</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 3</p>
-                    <p class="text-gray-300 text-sm sm:text-base">Entdeckung: KI & Automatisierung</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">KAPITEL 4</p>
-                    <p class="text-gray-300 text-sm sm:text-base">Hunderte Nächte, hunderte Erkenntnisse</p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div class="w-3 h-3 bg-swiss-orange rounded-full mt-2 flex-shrink-0 animate-pulse"></div>
-                  <div>
-                    <p class="font-mono text-xs text-swiss-orange mb-1">HEUTE</p>
-                    <p class="text-white font-bold text-sm sm:text-base">Coach & Möglichmacher</p>
+                    <p class="font-black text-lg sm:text-xl">Marco Heer</p>
+                    <p class="text-gray-400 font-mono text-xs">Unternehmer, Ingenieur und Coach</p>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Decorative -->
-              <div class="absolute -top-4 -right-4 w-16 sm:w-24 h-16 sm:h-24 border-t-2 border-r-2 border-swiss-orange/30"></div>
-              <div class="absolute -bottom-4 -left-4 w-16 sm:w-24 h-16 sm:h-24 border-b-2 border-l-2 border-swiss-orange/30"></div>
+            <!-- Story Timeline (Desktop only) -->
+            <div class="hidden lg:block mt-6 bg-gradient-to-br from-gray-900 to-black border border-white/10 p-6">
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 bg-swiss-orange rounded-full flex-shrink-0"></div>
+                  <p class="text-gray-300 text-sm"><span class="text-swiss-orange font-mono text-xs mr-2">01</span>Studium & Ingenieurswesen</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 bg-swiss-orange rounded-full flex-shrink-0"></div>
+                  <p class="text-gray-300 text-sm"><span class="text-swiss-orange font-mono text-xs mr-2">02</span>Vertriebsleitung & Führung</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 bg-swiss-orange rounded-full flex-shrink-0"></div>
+                  <p class="text-gray-300 text-sm"><span class="text-swiss-orange font-mono text-xs mr-2">03</span>Entdeckung: KI & Automatisierung</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2.5 h-2.5 bg-swiss-orange rounded-full flex-shrink-0 animate-pulse"></div>
+                  <p class="text-white font-bold text-sm"><span class="text-swiss-orange font-mono text-xs mr-2">→</span>Heute: Coach & Möglichmacher</p>
+                </div>
+              </div>
             </div>
           </div>
 

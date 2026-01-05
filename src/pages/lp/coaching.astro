@@ -672,48 +672,37 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                       <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">1</span>
                       Was ist dein Hauptziel?
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div class="grid grid-cols-1 gap-2.5">
                       <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_goal" value="unternehmen" required class="sr-only peer" />
+                        <input type="radio" name="q_goal" value="routinearbeit" required class="sr-only peer" />
                         <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
                           <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
                         </div>
                         <div class="flex-1">
-                          <span class="text-white text-sm font-medium block mb-0.5">Unternehmen automatisieren</span>
-                          <span class="text-gray-500 text-xs">Prozesse digitalisieren</span>
+                          <span class="text-white text-sm font-medium block mb-0.5">Routinearbeit reduzieren</span>
+                          <span class="text-gray-500 text-xs">E-Mail, Angebote, Doku, Reporting</span>
                         </div>
                         <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                       </label>
                       <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_goal" value="selbststaendigkeit" class="sr-only peer" />
+                        <input type="radio" name="q_goal" value="prozesse" class="sr-only peer" />
                         <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
                           <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
                         </div>
                         <div class="flex-1">
-                          <span class="text-white text-sm font-medium block mb-0.5">Selbstständigkeit effizienter</span>
-                          <span class="text-gray-500 text-xs">Weniger Aufwand, mehr Output</span>
+                          <span class="text-white text-sm font-medium block mb-0.5">Prozesse automatisieren</span>
+                          <span class="text-gray-500 text-xs">CRM, Abläufe, Admin</span>
                         </div>
                         <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                       </label>
                       <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_goal" value="weiterbildung" class="sr-only peer" />
+                        <input type="radio" name="q_goal" value="sparring" class="sr-only peer" />
                         <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
                           <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
                         </div>
                         <div class="flex-1">
-                          <span class="text-white text-sm font-medium block mb-0.5">Persönliche Weiterbildung</span>
-                          <span class="text-gray-500 text-xs">KI von Grund auf lernen</span>
-                        </div>
-                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
-                      </label>
-                      <label class="goal-option group relative flex items-start gap-3 p-4 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_goal" value="karriere" class="sr-only peer" />
-                        <div class="w-5 h-5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
-                          <div class="w-2 h-2 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
-                        </div>
-                        <div class="flex-1">
-                          <span class="text-white text-sm font-medium block mb-0.5">Karriere-Boost</span>
-                          <span class="text-gray-500 text-xs">Gefragte KI-Skills aufbauen</span>
+                          <span class="text-white text-sm font-medium block mb-0.5">KI als Sparring-Partner</span>
+                          <span class="text-gray-500 text-xs">Entscheidungshilfe im Alltag</span>
                         </div>
                         <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                       </label>
@@ -723,23 +712,39 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                   <div class="mb-4">
                     <p class="text-white font-semibold mb-3 text-sm sm:text-base flex items-center gap-2">
                       <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">2</span>
-                      Kannst du 4-6h/Woche investieren?
+                      Wie viel Zeit kannst du pro Woche einplanen?
                     </p>
-                    <div class="flex gap-3">
-                      <label class="flex-1 relative flex items-center justify-center gap-2.5 p-3.5 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_time_commitment" value="yes" required class="sr-only peer" />
-                        <div class="w-4 h-4 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      <label class="relative flex items-center justify-center gap-2 p-3 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_time_commitment" value="2-3h" required class="sr-only peer" />
+                        <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
                           <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
                         </div>
-                        <span class="text-white text-sm font-medium">Ja, definitiv</span>
+                        <span class="text-white text-sm font-medium">2–3h</span>
                         <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                       </label>
-                      <label class="flex-1 relative flex items-center justify-center gap-2.5 p-3.5 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_time_commitment" value="maybe" class="sr-only peer" />
-                        <div class="w-4 h-4 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
+                      <label class="relative flex items-center justify-center gap-2 p-3 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_time_commitment" value="4-6h" class="sr-only peer" />
+                        <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
                           <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
                         </div>
-                        <span class="text-white text-sm font-medium">Muss ich prüfen</span>
+                        <span class="text-white text-sm font-medium">4–6h</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="relative flex items-center justify-center gap-2 p-3 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_time_commitment" value="6h+" class="sr-only peer" />
+                        <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
+                          <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <span class="text-white text-sm font-medium">6h+</span>
+                        <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      </label>
+                      <label class="relative flex items-center justify-center gap-2 p-3 bg-white/[0.02] border border-white/10 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                        <input type="radio" name="q_time_commitment" value="unsicher" class="sr-only peer" />
+                        <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
+                          <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
+                        </div>
+                        <span class="text-white text-sm font-medium">Unsicher</span>
                         <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
                       </label>
                     </div>
@@ -750,7 +755,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                       <svg class="w-4 h-4 text-swiss-orange/70" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
                       </svg>
-                      <span>Paketpreis: <span class="text-white font-medium">3.779 EUR</span> (inkl. 4h 1:1)</span>
+                      <span>Invest: <span class="text-white font-medium">3.779 €</span> (inkl. 4h 1:1) · Keine Zahlung bei Bewerbung</span>
                     </div>
                   </div>
                 </div>
@@ -779,9 +784,10 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                       <label class="block text-xs font-medium text-gray-400 mb-2">Telefon</label>
                       <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+49</span>
-                        <input type="tel" name="phone" id="phone-input" required class="w-full pl-14 pr-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="123 4567890" pattern="[0-9\s]{6,15}" inputmode="tel" />
+                        <input type="tel" name="phone" id="phone-input" required class="w-full pl-14 pr-4 py-3.5 bg-white/[0.03] border border-white/10 text-white placeholder-gray-600 focus:border-swiss-orange focus:bg-white/[0.05] focus:outline-none transition-all text-base rounded-xl" placeholder="123 4567890" pattern="[0-9\s\-\/]{6,20}" inputmode="tel" />
                       </div>
-                      <p id="phone-error" class="hidden text-red-400 text-xs mt-1.5 pl-1">Bitte gib eine gültige Telefonnummer ein</p>
+                      <p class="text-gray-500 text-[11px] mt-1.5 pl-1">Nur für Terminabstimmung – kein Spam</p>
+                      <p id="phone-error" class="hidden text-red-400 text-xs mt-1 pl-1">Bitte gib eine gültige Telefonnummer ein</p>
                     </div>
                   </div>
                   <div class="mt-auto pt-5">
@@ -1451,8 +1457,9 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       if (phoneInput) {
         phoneInput.addEventListener('input', (e) => {
           let value = (e.target as HTMLInputElement).value;
-          value = value.replace(/[^\d\s]/g, '');
-          if (value.replace(/\s/g, '').length > 15) value = value.slice(0, -1);
+          // Tolerant: allow digits, spaces, dashes, slashes
+          value = value.replace(/[^\d\s\-\/]/g, '');
+          if (value.replace(/[\s\-\/]/g, '').length > 15) value = value.slice(0, -1);
           (e.target as HTMLInputElement).value = value;
           phoneError?.classList.add('hidden');
         });

@@ -17,7 +17,7 @@ let error = null;
 
 try {
   const { data, error: fetchError } = await supabase
-    .from('blog_articles')
+    .from('articles')
     .select('*')
     .eq('slug', slug)
     .eq('status', 'published')
@@ -58,7 +58,7 @@ let relatedArticles: any[] = [];
 if (article && article.tags && article.tags.length > 0) {
   try {
     const { data: related } = await supabase
-      .from('blog_articles')
+      .from('articles')
       .select('id, title, slug, excerpt, featured_image, published_at, reading_time')
       .eq('status', 'published')
       .neq('id', article.id)

@@ -15,7 +15,7 @@ let showComingSoon = false;
 
 try {
   const { data, error: fetchError } = await supabase
-    .from('blog_articles')
+    .from('articles')
     .select('*')
     .eq('status', 'published')
     .order('published_at', { ascending: false })

@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import { createClient } from '@supabase/supabase-js';
+import { marked } from 'marked';
 
 // Initialize Supabase client
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || 'https://ouqhysemcldamthpuqqq.supabase.co';
@@ -59,7 +60,7 @@ if (article && article.tags && article.tags.length > 0) {
   try {
     const { data: related } = await supabase
       .from('articles')
-      .select('id, title, slug, excerpt, featured_image, published_at, reading_time')
+      .select('id, title, slug, meta_description, published_at, reading_time')
       .eq('status', 'published')
       .neq('id', article.id)
       .limit(3);
@@ -148,16 +149,12 @@ if (article && article.tags && article.tags.length > 0) {
           </div>
         </header>
 
-        <!-- Featured Image -->
-        {article.featured_image && (
+        <!-- Topic Banner (ersetzt Featured Image) -->
+        {article.topic && (
           <div class="px-6 lg:px-12 mb-12">
             <div class="container mx-auto max-w-4xl">
-              <div class="border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-                <img
-                  src={article.featured_image}
-                  alt={article.title}
-                  class="w-full h-auto"
-                />
+              <div class="border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden bg-gradient-to-r from-swiss-orange to-orange-600 p-12 text-center">
+                <span class="text-white/80 font-mono text-sm uppercase tracking-widest">{article.topic}</span>
               </div>
             </div>
           </div>
@@ -166,7 +163,7 @@ if (article && article.tags && article.tags.length > 0) {
         <!-- Article Content -->
         <article class="px-6 lg:px-12 pb-16">
           <div class="container mx-auto max-w-4xl">
-            <div class="prose prose-lg max-w-none prose-headings:font-black prose-headings:text-black prose-a:text-swiss-orange prose-a:no-underline hover:prose-a:underline prose-strong:text-black prose-blockquote:border-l-swiss-orange prose-blockquote:bg-gray-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:border-2 prose-blockquote:border-black prose-blockquote:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" set:html={article.content} />
+            <div class="prose prose-lg max-w-none prose-headings:font-black prose-headings:text-black prose-a:text-swiss-orange prose-a:no-underline hover:prose-a:underline prose-strong:text-black prose-blockquote:border-l-swiss-orange prose-blockquote:bg-gray-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:border-2 prose-blockquote:border-black prose-blockquote:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" set:html={marked(article.content || '')} />
           </div>
         </article>
 
@@ -200,21 +197,12 @@ if (article && article.tags && article.tags.length > 0) {
                 {relatedArticles.map((related) => (
                   <a href={`/blog/${related.slug}`} class="group">
                     <article class="h-full bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 overflow-hidden">
-                      {related.featured_image && (
-                        <div class="h-40 overflow-hidden border-b-2 border-black">
-                          <img
-                            src={related.featured_image}
-                            alt={related.title}
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                      )}
                       <div class="p-6">
                         <h3 class="font-black text-lg mb-2 group-hover:text-swiss-orange transition-colors">
                           {related.title}
                         </h3>
                         <p class="text-gray-600 text-sm line-clamp-2">
-                          {related.excerpt}
+                          {related.meta_description}
                         </p>
                       </div>
                     </article>

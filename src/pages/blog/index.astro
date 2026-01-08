@@ -111,23 +111,12 @@ function formatDate(dateString: string | null) {
             {articles.map((article) => (
               <a href={`/blog/${article.slug}`} class="group">
                 <article class="h-full bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 overflow-hidden">
-                  <!-- Featured Image -->
-                  {article.featured_image && (
-                    <div class="h-48 overflow-hidden border-b-2 border-black">
-                      <img
-                        src={article.featured_image}
-                        alt={article.title}
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  {!article.featured_image && (
-                    <div class="h-48 bg-gray-100 border-b-2 border-black flex items-center justify-center">
-                      <svg class="w-16 h-16 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                      </svg>
-                    </div>
-                  )}
+                  <!-- Topic Header -->
+                  <div class="h-24 bg-gradient-to-r from-swiss-orange to-orange-600 border-b-2 border-black flex items-center justify-center">
+                    {article.topic && (
+                      <span class="text-white/90 font-mono text-xs uppercase tracking-widest">{article.topic}</span>
+                    )}
+                  </div>
 
                   <div class="p-6">
                     <!-- Meta -->
@@ -155,7 +144,7 @@ function formatDate(dateString: string | null) {
 
                     <!-- Excerpt -->
                     <p class="text-gray-600 mb-4 line-clamp-3">
-                      {article.excerpt || article.meta_description}
+                      {article.meta_description}
                     </p>
 
                     <!-- Tags -->

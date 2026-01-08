@@ -58,67 +58,87 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       <!-- Main Content -->
       <div class="relative z-10 container mx-auto px-5 py-8 sm:py-12">
 
-        <!-- MOBILE HERO - Visuelle Hierarchie durch verschiedene Backgrounds -->
-        <div class="sm:hidden text-left max-w-lg mx-auto">
+        <!-- MOBILE HERO - Klare visuelle Hierarchie -->
+        <div class="sm:hidden max-w-lg mx-auto">
 
-          <!-- HEADLINE - Groß und dominant -->
-          <h1 class="text-[1.75rem] font-black leading-[1.12] tracking-tight mb-6 text-gray-900">
-            Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI angeht.
-          </h1>
+          <!-- SECTION 1: Hero Core (weißer Hintergrund) -->
+          <div class="text-center mb-8">
 
-          <!-- Quote Card - Eigene visuelle Einheit -->
-          <div class="mb-6 p-4 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl">
-            <p class="text-[15px] font-medium text-gray-800 italic leading-relaxed">
-              „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
-            </p>
-            <p class="text-[12px] text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
+            <!-- HEADLINE - Dominant, zentriert -->
+            <h1 class="text-[1.75rem] font-black leading-[1.12] tracking-tight mb-8 text-gray-900 text-left">
+              Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI angeht.
+            </h1>
+
+            <!-- MARCO - Groß und zentral als Trust-Anker -->
+            <div class="flex flex-col items-center mb-6">
+              <div class="relative mb-3">
+                <img
+                  src="/images/marco_new.png"
+                  alt="Marco Heer"
+                  class="w-24 h-24 rounded-2xl object-cover object-top shadow-lg shadow-gray-200"
+                />
+                <div class="absolute -bottom-1 -right-1 w-7 h-7 bg-swiss-orange rounded-lg flex items-center justify-center shadow-md">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+              <p class="text-base font-bold text-gray-900">Marco Heer</p>
+              <p class="text-sm text-gray-500">KI-Coach & Gründer</p>
+            </div>
+
+            <!-- QUOTE - Direkt unter Marco (gehören zusammen) -->
+            <div class="relative px-4">
+              <svg class="absolute -top-2 left-2 w-6 h-6 text-swiss-orange/30" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+              </svg>
+              <p class="text-[15px] text-gray-700 italic leading-relaxed">
+                Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!
+              </p>
+              <p class="text-[12px] text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
+            </div>
           </div>
 
-          <!-- Marco Strip - Prominent -->
-          <div class="flex items-center gap-4 mb-6 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
-            <img src="/images/marco_new.png" alt="Marco Heer" class="w-16 h-16 rounded-xl object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
-            <div>
-              <p class="text-sm font-bold text-gray-900 mb-0.5">Marco Heer</p>
-              <p class="text-[13px] text-gray-600 leading-snug">
-                Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
+          <!-- SECTION 2: Content (grauer Hintergrund-Block) -->
+          <div class="bg-gray-50 -mx-5 px-5 py-6 mb-6">
+
+            <!-- Subtext -->
+            <p class="text-[13px] text-gray-500 mb-4 text-center">
+              Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
+            </p>
+
+            <!-- Fragen - Kompakt, ohne individuelle Cards -->
+            <div class="space-y-3 mb-5">
+              <p class="text-[14px] text-gray-800 font-semibold flex items-start gap-2.5">
+                <span class="text-swiss-orange font-bold">?</span>
+                Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
+              </p>
+              <p class="text-[14px] text-gray-800 font-semibold flex items-start gap-2.5">
+                <span class="text-swiss-orange font-bold">?</span>
+                Was kann man mit KI eigentlich machen?
+              </p>
+              <p class="text-[14px] text-gray-800 font-semibold flex items-start gap-2.5">
+                <span class="text-swiss-orange font-bold">?</span>
+                Welche Tools kann ich dafür nutzen?
               </p>
             </div>
-          </div>
 
-          <!-- Fragen als Mini-Cards - VOLLER TEXT + FETT -->
-          <div class="mb-5 space-y-2">
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-              <p class="text-[14px] text-gray-700 font-semibold">Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?</p>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-              <p class="text-[14px] text-gray-700 font-semibold">Was kann man mit KI eigentlich machen?</p>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-              <p class="text-[14px] text-gray-700 font-semibold">Welche Tools kann ich dafür nutzen?</p>
+            <!-- Benefits - Inline, kompakter -->
+            <div class="flex flex-wrap gap-1.5 justify-center">
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium">Websites bauen</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium">E-Mails automatisieren</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium">Recherche</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium">Apps programmieren</span>
             </div>
           </div>
 
-          <!-- Benefits als Chips - Kompakt -->
-          <div class="mb-4">
-            <p class="text-[12px] text-swiss-orange font-semibold mb-2.5 uppercase tracking-wide">Nach dem Coaching kannst du:</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Websites bauen</span>
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">E-Mails automatisieren</span>
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Recherche & Entscheidungen</span>
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Apps programmieren</span>
-            </div>
-          </div>
-
-          <!-- CTA - Prominent -->
+          <!-- SECTION 3: CTA (volle Breite, prominent) -->
           <button
             id="open-modal-hero-mobile"
-            class="w-full bg-swiss-orange text-white font-bold py-4 px-6 text-base rounded-lg transition-all duration-300 active:scale-[0.98] shadow-[0_0_40px_rgba(255,79,0,0.3)]"
+            class="w-full bg-swiss-orange text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 active:scale-[0.98] shadow-[0_0_40px_rgba(255,79,0,0.25)]"
           >
             <span class="block text-lg">Jetzt bewerben!</span>
-            <span class="block text-xs font-normal opacity-90 mt-1">2–3 Minuten · Unverbindlich</span>
+            <span class="block text-[11px] font-normal opacity-90 mt-0.5">2–3 Minuten · Unverbindlich</span>
           </button>
 
         </div>

@@ -69,7 +69,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           <!-- Teilnehmer-Zitat -->
           <p class="text-[1rem] font-bold leading-tight mb-4">
             <span class="bg-gradient-to-r from-swiss-orange to-orange-500 bg-clip-text text-transparent">„Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"</span>
-            <span class="text-[11px] text-gray-500 font-normal block mt-1">– Teilnehmer, 12/2025</span>
+            <span class="text-[11px] text-gray-500 font-normal block mt-1">– Coaching Teilnehmer aus 12/2025</span>
           </p>
 
           <!-- Marco + Preheader -->
@@ -140,77 +140,101 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <!-- DESKTOP HERO -->
         <div class="hidden sm:block">
 
-          <!-- Single Column Layout -->
-          <div class="max-w-3xl mx-auto text-left">
+          <!-- Two-Column Layout: Content Left, Marco Right -->
+          <div class="max-w-5xl mx-auto">
+            <div class="grid lg:grid-cols-[1fr,auto] gap-10 lg:gap-16 items-center">
 
-            <!-- HEADLINE -->
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.1] tracking-tight mb-4 text-gray-900">
-              Eine Ausbildung, die dir verständlich erklärt, wie man KI angeht.
-            </h1>
+              <!-- LEFT: Main Content -->
+              <div class="text-left">
 
-            <!-- Teilnehmer-Zitat -->
-            <p class="text-xl md:text-2xl font-bold leading-tight mb-6">
-              <span class="bg-gradient-to-r from-swiss-orange via-orange-500 to-swiss-orange bg-clip-text text-transparent">„Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"</span>
-              <span class="text-sm text-gray-500 font-normal block mt-2">– Teilnehmer, 12/2025</span>
-            </p>
+                <!-- HEADLINE - Bigger, Bolder -->
+                <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight mb-6 text-gray-900">
+                  Eine Ausbildung, die dir<br class="hidden lg:block" />
+                  <span class="text-swiss-orange">verständlich erklärt</span>,<br class="hidden lg:block" />
+                  wie man KI angeht.
+                </h1>
 
-            <!-- Marco + Preheader Strip -->
-            <div class="flex items-center gap-4 mb-8 p-4 bg-gray-50 rounded-xl border border-gray-200 max-w-xl">
-              <img src="/images/marco_new.png" alt="Marco Heer" class="w-20 h-20 rounded-xl object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
-              <div>
-                <p class="text-sm font-semibold text-gray-900 mb-1">Marco Heer</p>
-                <p class="text-sm text-gray-600">
-                  Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
-                </p>
+                <!-- Fragen-Block - Prominent -->
+                <div class="mb-8 space-y-2.5">
+                  <p class="text-lg text-gray-600 flex items-start gap-3">
+                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
+                    Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
+                  </p>
+                  <p class="text-lg text-gray-600 flex items-start gap-3">
+                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
+                    Was kann man mit KI eigentlich machen?
+                  </p>
+                  <p class="text-lg text-gray-600 flex items-start gap-3">
+                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
+                    Welche Tools kann ich dafür nutzen?
+                  </p>
+                </div>
+
+                <!-- Benefits as Chips -->
+                <div class="flex flex-wrap gap-2 mb-8">
+                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
+                    <span class="text-swiss-orange mr-1">+</span> Websites bauen
+                  </span>
+                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
+                    <span class="text-swiss-orange mr-1">+</span> E-Mails automatisieren
+                  </span>
+                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
+                    <span class="text-swiss-orange mr-1">+</span> Recherche & Entscheidungen
+                  </span>
+                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
+                    <span class="text-swiss-orange mr-1">+</span> Apps programmieren
+                  </span>
+                </div>
+
+                <!-- CTA - Bigger, More Prominent -->
+                <button
+                  id="open-modal-hero"
+                  class="group inline-flex flex-col items-start bg-swiss-orange text-white font-bold py-5 px-10 text-xl transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,79,0,0.35)] hover:scale-[1.02]"
+                >
+                  <span class="flex items-center gap-3">
+                    <span>Jetzt bewerben!</span>
+                    <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                  <span class="text-sm font-normal opacity-90 mt-1.5">2–3 Minuten · Unverbindlich</span>
+                </button>
+
               </div>
-            </div>
 
-            <!-- Fragen-Block -->
-            <div class="mb-8 space-y-3">
-              <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
-                <span class="text-swiss-orange text-xl mt-0.5">?</span>
-                Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
-              </p>
-              <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
-                <span class="text-swiss-orange text-xl mt-0.5">?</span>
-                Was kann man mit KI eigentlich machen?
-              </p>
-              <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
-                <span class="text-swiss-orange text-xl mt-0.5">?</span>
-                Welche Tools kann ich dafür nutzen?
-              </p>
-            </div>
+              <!-- RIGHT: Marco Card with Quote -->
+              <div class="hidden lg:block relative">
+                <!-- Marco Image Card -->
+                <div class="relative bg-white rounded-2xl shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100">
+                  <img
+                    src="/images/marco_new.png"
+                    alt="Marco Heer"
+                    class="w-72 h-80 object-cover object-top"
+                  />
+                  <!-- Name Badge -->
+                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-5 pt-12">
+                    <p class="text-white font-bold text-lg">Marco Heer</p>
+                    <p class="text-white/80 text-sm">KI-Coach & Gründer</p>
+                  </div>
+                </div>
 
-            <!-- Two Column: CTA + Benefits -->
-            <div class="grid md:grid-cols-[auto,1fr] gap-8 items-start">
-
-              <!-- CTA -->
-              <button
-                id="open-modal-hero"
-                class="group inline-flex flex-col items-center bg-swiss-orange text-white font-bold py-5 px-12 text-lg transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,79,0,0.3)]"
-              >
-                <span class="flex items-center gap-3">
-                  <span>Jetzt bewerben!</span>
-                  <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-                <span class="text-sm font-normal opacity-90 mt-1">2–3 Minuten · Unverbindliches Kennenlernen</span>
-              </button>
-
-              <!-- Benefit-Block -->
-              <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl">
-                <p class="text-sm text-swiss-orange font-semibold mb-2">
-                  Ohne Vorkenntnisse. Wir starten, wo du stehst.
-                </p>
-                <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-700">
-                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> Websites bauen</span>
-                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> E-Mails automatisieren</span>
-                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> Recherche & Entscheidungen</span>
-                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> Apps programmieren</span>
+                <!-- Quote Card - Overlapping -->
+                <div class="absolute -bottom-6 -left-8 right-4 bg-white rounded-xl shadow-xl border border-swiss-orange/20 p-4">
+                  <p class="text-sm text-gray-700 italic leading-relaxed">
+                    „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
+                  </p>
+                  <p class="text-xs text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
                 </div>
               </div>
 
+            </div>
+
+            <!-- Mobile-only Quote (hidden on lg) -->
+            <div class="lg:hidden mt-10 p-5 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl">
+              <p class="text-lg font-medium text-gray-800 italic leading-relaxed">
+                „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
+              </p>
+              <p class="text-sm text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
             </div>
 
           </div>
@@ -593,50 +617,50 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-swiss-orange/10 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div class="container mx-auto px-5 sm:px-6 max-w-3xl relative z-10">
+      <div class="container mx-auto px-5 sm:px-6 max-w-4xl relative z-10">
 
         <!-- Section Header -->
         <div class="text-center mb-10 sm:mb-12">
-          <span class="inline-block px-3 py-1.5 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-4">
+          <span class="inline-block px-4 py-2 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-5 font-semibold">
             Das Angebot
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-5 text-gray-900">
             6 Monate Intensiv-Begleitung
           </h2>
-          <p class="text-gray-500 text-sm sm:text-base">
+          <p class="text-gray-700 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Alles, was du brauchst, um KI in deinem Unternehmen produktiv einzusetzen.
           </p>
         </div>
 
         <!-- Offer Box -->
-        <div class="bg-gradient-to-b from-gray-50 to-gray-100 border border-swiss-orange/30 p-6 sm:p-8 mb-8">
+        <div class="bg-white border-2 border-swiss-orange/20 rounded-2xl shadow-xl shadow-swiss-orange/5 p-8 sm:p-10 mb-8">
 
-          <h3 class="text-lg sm:text-xl font-bold mb-6 text-center">Im Paket enthalten:</h3>
+          <h3 class="text-xl sm:text-2xl font-bold mb-8 text-center text-gray-900">Im Paket enthalten:</h3>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div class="flex items-center gap-3">
-              <span class="text-swiss-orange text-lg">✓</span>
-              <span class="text-sm sm:text-base">6 Monate Begleitung</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <span class="w-8 h-8 bg-swiss-orange/10 text-swiss-orange rounded-full flex items-center justify-center font-bold">✓</span>
+              <span class="text-base sm:text-lg text-gray-800">6 Monate Begleitung</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-swiss-orange text-lg">✓</span>
-              <span class="text-sm sm:text-base">Wöchentliche Live-Sessions (2h)</span>
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <span class="w-8 h-8 bg-swiss-orange/10 text-swiss-orange rounded-full flex items-center justify-center font-bold">✓</span>
+              <span class="text-base sm:text-lg text-gray-800">Wöchentliche Live-Sessions (2h)</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-swiss-orange text-lg">✓</span>
-              <span class="text-sm sm:text-base">4 Stunden 1:1 mit Marco</span>
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <span class="w-8 h-8 bg-swiss-orange/10 text-swiss-orange rounded-full flex items-center justify-center font-bold">✓</span>
+              <span class="text-base sm:text-lg text-gray-800">4 Stunden 1:1 mit Marco</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-swiss-orange text-lg">✓</span>
-              <span class="text-sm sm:text-base">Eigene Automatisierungen bauen</span>
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <span class="w-8 h-8 bg-swiss-orange/10 text-swiss-orange rounded-full flex items-center justify-center font-bold">✓</span>
+              <span class="text-base sm:text-lg text-gray-800">Eigene Automatisierungen bauen</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-swiss-orange text-lg">✓</span>
-              <span class="text-sm sm:text-base">Täglicher Chat-Support</span>
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <span class="w-8 h-8 bg-swiss-orange/10 text-swiss-orange rounded-full flex items-center justify-center font-bold">✓</span>
+              <span class="text-base sm:text-lg text-gray-800">Täglicher Chat-Support</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-swiss-orange text-lg">✓</span>
-              <span class="text-sm sm:text-base">Alle Aufzeichnungen dauerhaft</span>
+            <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+              <span class="w-8 h-8 bg-swiss-orange/10 text-swiss-orange rounded-full flex items-center justify-center font-bold">✓</span>
+              <span class="text-base sm:text-lg text-gray-800">Alle Aufzeichnungen dauerhaft</span>
             </div>
           </div>
 

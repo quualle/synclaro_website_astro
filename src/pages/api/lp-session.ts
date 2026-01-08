@@ -28,6 +28,8 @@ interface SessionPayload {
   error_message?: string;
   error_type?: string;
   interaction_type?: string; // 'field_focus' | 'field_change' | 'tap' | 'selection'
+  // A/B Test
+  form_variant?: 'v1' | 'v2_short';
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -177,6 +179,7 @@ export const POST: APIRoute = async ({ request }) => {
       const update = {
         cta_clicked_at: now,
         viewport_height: data.viewport_height || null,
+        form_variant: data.form_variant || 'v1',
         last_heartbeat: now,
       };
 

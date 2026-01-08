@@ -32,6 +32,9 @@ interface FormEventPayload {
   utm_source?: string;
   utm_medium?: string;
 
+  // A/B Test
+  form_variant?: 'v1' | 'v2_short';
+
   // Summary Update (for session tracking table)
   update_session_summary?: boolean;
   form_max_step_reached?: number;
@@ -81,6 +84,7 @@ export const POST: APIRoute = async ({ request }) => {
       device_type: data.device_type || null,
       utm_source: data.utm_source || null,
       utm_medium: data.utm_medium || null,
+      form_variant: data.form_variant || 'v1',
       // Validation Error Tracking
       validation_error_field: data.validation_error_field || null,
       validation_error_type: data.validation_error_type || null,

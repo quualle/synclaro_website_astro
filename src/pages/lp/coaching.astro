@@ -61,24 +61,24 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <!-- MOBILE HERO -->
         <div class="sm:hidden text-left">
 
-          <!-- Marco Mini-Bild + Preheader -->
-          <div class="flex items-center gap-3 mb-4">
-            <img src="/images/marco_new.png" alt="Marco Heer" class="w-16 h-16 rounded-lg object-cover object-top border-2 border-swiss-orange/50" />
-            <p class="text-[13px] text-gray-500 leading-snug">
-              Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
-            </p>
-          </div>
-
           <!-- HEADLINE -->
           <h1 class="text-[1.5rem] font-black leading-[1.15] tracking-tight mb-3 text-gray-900">
             Eine Ausbildung, die dir verständlich erklärt, wie man KI angeht.
           </h1>
 
           <!-- Teilnehmer-Zitat -->
-          <p class="text-[1rem] font-bold leading-tight mb-5">
+          <p class="text-[1rem] font-bold leading-tight mb-4">
             <span class="bg-gradient-to-r from-swiss-orange to-orange-500 bg-clip-text text-transparent">„Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"</span>
             <span class="text-[11px] text-gray-500 font-normal block mt-1">– Teilnehmer, 12/2025</span>
           </p>
+
+          <!-- Marco + Preheader -->
+          <div class="flex items-center gap-3 mb-5 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <img src="/images/marco_new.png" alt="Marco Heer" class="w-14 h-14 rounded-lg object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
+            <p class="text-[13px] text-gray-600 leading-snug">
+              Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
+            </p>
+          </div>
 
           <!-- Fragen-Block -->
           <div class="mb-5 space-y-2">
@@ -140,43 +140,49 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <!-- DESKTOP HERO -->
         <div class="hidden sm:block">
 
-          <!-- Two Column Layout -->
-          <div class="grid md:grid-cols-[1fr,auto] gap-10 lg:gap-16 items-start">
+          <!-- Single Column Layout -->
+          <div class="max-w-3xl mx-auto text-left">
 
-            <!-- Left: Content -->
-            <div class="text-left">
+            <!-- HEADLINE -->
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.1] tracking-tight mb-4 text-gray-900">
+              Eine Ausbildung, die dir verständlich erklärt, wie man KI angeht.
+            </h1>
 
-              <!-- Preheader -->
-              <p class="text-sm text-gray-500 mb-4 max-w-lg">
-                Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
-              </p>
+            <!-- Teilnehmer-Zitat -->
+            <p class="text-xl md:text-2xl font-bold leading-tight mb-6">
+              <span class="bg-gradient-to-r from-swiss-orange via-orange-500 to-swiss-orange bg-clip-text text-transparent">„Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"</span>
+              <span class="text-sm text-gray-500 font-normal block mt-2">– Teilnehmer, 12/2025</span>
+            </p>
 
-              <!-- HEADLINE -->
-              <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.1] tracking-tight mb-4 max-w-2xl text-gray-900">
-                Eine Ausbildung, die dir verständlich erklärt, wie man KI angeht.
-              </h1>
-
-              <!-- Teilnehmer-Zitat -->
-              <p class="text-xl md:text-2xl font-bold leading-tight mb-8">
-                <span class="bg-gradient-to-r from-swiss-orange via-orange-500 to-swiss-orange bg-clip-text text-transparent">„Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"</span>
-                <span class="text-sm text-gray-500 font-normal block mt-2">– Teilnehmer, 12/2025</span>
-              </p>
-
-              <!-- Fragen-Block -->
-              <div class="mb-8 space-y-3">
-                <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
-                  <span class="text-swiss-orange text-xl mt-0.5">?</span>
-                  Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
-                </p>
-                <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
-                  <span class="text-swiss-orange text-xl mt-0.5">?</span>
-                  Was kann man mit KI eigentlich machen?
-                </p>
-                <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
-                  <span class="text-swiss-orange text-xl mt-0.5">?</span>
-                  Welche Tools kann ich dafür nutzen?
+            <!-- Marco + Preheader Strip -->
+            <div class="flex items-center gap-4 mb-8 p-4 bg-gray-50 rounded-xl border border-gray-200 max-w-xl">
+              <img src="/images/marco_new.png" alt="Marco Heer" class="w-20 h-20 rounded-xl object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
+              <div>
+                <p class="text-sm font-semibold text-gray-900 mb-1">Marco Heer</p>
+                <p class="text-sm text-gray-600">
+                  Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
                 </p>
               </div>
+            </div>
+
+            <!-- Fragen-Block -->
+            <div class="mb-8 space-y-3">
+              <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
+                <span class="text-swiss-orange text-xl mt-0.5">?</span>
+                Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
+              </p>
+              <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
+                <span class="text-swiss-orange text-xl mt-0.5">?</span>
+                Was kann man mit KI eigentlich machen?
+              </p>
+              <p class="text-base md:text-lg text-gray-700 flex items-start gap-3">
+                <span class="text-swiss-orange text-xl mt-0.5">?</span>
+                Welche Tools kann ich dafür nutzen?
+              </p>
+            </div>
+
+            <!-- Two Column: CTA + Benefits -->
+            <div class="grid md:grid-cols-[auto,1fr] gap-8 items-start">
 
               <!-- CTA -->
               <button
@@ -192,47 +198,17 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                 <span class="text-sm font-normal opacity-90 mt-1">2–3 Minuten · Unverbindliches Kennenlernen</span>
               </button>
 
-            </div>
-
-            <!-- Right: Marco + Benefits -->
-            <div class="flex flex-col items-center gap-6 max-w-xs">
-
-              <!-- Marco Bild -->
-              <div class="relative">
-                <img src="/images/marco_new.png" alt="Marco Heer" class="w-52 h-52 md:w-64 md:h-64 rounded-xl object-cover object-top border-4 border-swiss-orange/30 shadow-2xl shadow-swiss-orange/10" />
-                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white border border-swiss-orange/50 px-3 py-1 rounded-full shadow-md">
-                  <p class="text-xs text-gray-900 font-semibold whitespace-nowrap">Marco Heer</p>
-                </div>
-              </div>
-
               <!-- Benefit-Block -->
-              <div class="p-5 bg-gray-50 border border-gray-200 rounded-xl">
-                <p class="text-sm text-swiss-orange font-semibold mb-3 text-center">
+              <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl">
+                <p class="text-sm text-swiss-orange font-semibold mb-2">
                   Ohne Vorkenntnisse. Wir starten, wo du stehst.
                 </p>
-                <p class="text-xs text-gray-500 mb-3 text-center">Nach meinem Coaching kannst du vieles:</p>
-                <ul class="text-sm text-gray-700 space-y-2">
-                  <li class="flex items-start gap-2">
-                    <span class="text-swiss-orange">+</span>
-                    Eigene Websites bauen
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-swiss-orange">+</span>
-                    E-Mails automatisch verwalten
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-swiss-orange">+</span>
-                    Recherche & Entscheidungen
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-swiss-orange">+</span>
-                    Apps & Anwendungen bauen
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-swiss-orange">+</span>
-                    So, so viel mehr...
-                  </li>
-                </ul>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-700">
+                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> Websites bauen</span>
+                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> E-Mails automatisieren</span>
+                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> Recherche & Entscheidungen</span>
+                  <span class="flex items-center gap-1"><span class="text-swiss-orange">+</span> Apps programmieren</span>
+                </div>
               </div>
 
             </div>
@@ -854,14 +830,15 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                     </div>
                   </div>
 
-                  <div class="mb-4">
+                  <!-- V1 ONLY: Time Commitment -->
+                  <div class="mb-4" data-form-v1-only>
                     <p class="text-gray-900 font-semibold mb-3 text-sm sm:text-base flex items-center gap-2">
                       <span class="w-5 h-5 rounded-full bg-swiss-orange/20 text-swiss-orange text-xs flex items-center justify-center font-bold">2</span>
                       Wie viel Zeit kannst du pro Woche einplanen?
                     </p>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       <label class="relative flex items-center justify-center gap-2 p-3 bg-gray-50 border border-gray-200 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
-                        <input type="radio" name="q_time_commitment" value="2-3h" required class="sr-only peer" />
+                        <input type="radio" name="q_time_commitment" value="2-3h" class="sr-only peer" />
                         <div class="w-3.5 h-3.5 rounded-full border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 flex items-center justify-center transition-all">
                           <div class="w-1.5 h-1.5 rounded-full bg-white scale-0 peer-checked:scale-100 transition-transform"></div>
                         </div>
@@ -895,7 +872,27 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                     </div>
                   </div>
 
-                  <div class="mt-auto pt-4">
+                  <!-- V2 ONLY: Quick Contact Fields -->
+                  <div class="space-y-3" data-form-v2-only style="display: none;">
+                    <div>
+                      <label class="block text-xs font-medium text-gray-500 mb-1.5">E-Mail *</label>
+                      <input type="email" name="email_v2" class="w-full px-4 py-3 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="max@beispiel.de" />
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                      <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1.5">Vorname <span class="text-gray-400">(optional)</span></label>
+                        <input type="text" name="firstName_v2" class="w-full px-4 py-3 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="Max" />
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1.5">Telefon <span class="text-gray-400">(optional)</span></label>
+                        <input type="tel" name="phone_v2" class="w-full px-4 py-3 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="+49 123 456789" />
+                      </div>
+                    </div>
+                    <p class="text-xs text-gray-400 text-center">Für schnelle Rückmeldung Telefon angeben</p>
+                  </div>
+
+                  <!-- V1 ONLY: Price Box -->
+                  <div class="mt-auto pt-4" data-form-v1-only>
                     <div class="flex items-center justify-center gap-2 text-xs text-gray-500 bg-gray-50 rounded-lg py-2.5 px-4 border border-gray-200">
                       <svg class="w-4 h-4 text-swiss-orange/70" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
@@ -903,10 +900,28 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                       <span>Invest: <span class="text-gray-900 font-medium">3.779 € zzgl. MwSt.</span> (inkl. 4h 1:1) · Keine Zahlung bei Bewerbung</span>
                     </div>
                   </div>
+
+                  <!-- V2 ONLY: Trust Signals -->
+                  <div class="mt-auto pt-4" data-form-v2-only style="display: none;">
+                    <div class="flex flex-wrap justify-center gap-4 text-xs text-gray-500">
+                      <span class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        Dauert 10 Sekunden
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        Keine Zahlung
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        Rückmeldung in 24h
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- STEP 2: Kontaktdaten -->
-                <div id="form-step-2" class="form-step hidden flex-1 flex flex-col" data-step="2">
+                <!-- STEP 2: Kontaktdaten (V1 ONLY) -->
+                <div id="form-step-2" class="form-step hidden flex-1 flex flex-col" data-step="2" data-form-v1-only>
                   <p class="text-gray-500 text-sm mb-5">
                     Wie können wir dich für das Kennenlerngespräch erreichen?
                   </p>
@@ -945,8 +960,8 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                   </div>
                 </div>
 
-                <!-- STEP 3: Details -->
-                <div id="form-step-3" class="form-step hidden flex-1 flex flex-col" data-step="3">
+                <!-- STEP 3: Details (V1 ONLY) -->
+                <div id="form-step-3" class="form-step hidden flex-1 flex flex-col" data-step="3" data-form-v1-only>
                   <p class="text-gray-500 text-sm mb-5">Fast geschafft! Noch eine kurze Frage.</p>
                   <div class="mb-5">
                     <p class="text-gray-900 font-semibold mb-3 text-sm flex items-center gap-2">
@@ -1132,6 +1147,43 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
          SCRIPTS
          ============================================ -->
     <script>
+      // ============================================
+      // FORM A/B TEST - Feature Flag
+      // ============================================
+      function getFormVariant(): 'v1' | 'v2_short' {
+        const STORAGE_KEY = 'form_variant';
+        let variant = localStorage.getItem(STORAGE_KEY) as 'v1' | 'v2_short' | null;
+
+        if (!variant) {
+          // 50/50 split based on random, persist for stable experience
+          variant = Math.random() < 0.5 ? 'v1' : 'v2_short';
+          localStorage.setItem(STORAGE_KEY, variant);
+        }
+
+        return variant;
+      }
+
+      const FORM_VARIANT = getFormVariant();
+      console.log('[A/B Test] Form variant:', FORM_VARIANT);
+
+      // Apply variant-specific UI changes on load
+      document.addEventListener('DOMContentLoaded', () => {
+        if (FORM_VARIANT === 'v2_short') {
+          // Hide v1-only elements, show v2-only elements
+          document.querySelectorAll('[data-form-v1-only]').forEach(el => (el as HTMLElement).style.display = 'none');
+          document.querySelectorAll('[data-form-v2-only]').forEach(el => (el as HTMLElement).style.display = '');
+
+          // Update progress bar for 2 steps
+          const stepIndicator3 = document.getElementById('step-indicator-3');
+          const stepLine2 = document.getElementById('step-line-2');
+          if (stepIndicator3) stepIndicator3.style.display = 'none';
+          if (stepLine2) stepLine2.style.display = 'none';
+        } else {
+          // Hide v2-only elements
+          document.querySelectorAll('[data-form-v2-only]').forEach(el => (el as HTMLElement).style.display = 'none');
+        }
+      });
+
       // Modal functionality
       const modal = document.getElementById('application-modal');
       const modalContent = document.getElementById('modal-content');
@@ -1194,6 +1246,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               body: JSON.stringify({
                 action,
                 session_id: this.getSessionId(),
+                form_variant: FORM_VARIANT,
                 ...extraData,
               }),
             });
@@ -1291,9 +1344,10 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       // MULTI-STEP FORM WIZARD
       // ============================================
       let currentStep = 1;
-      const totalSteps = 3;
-      const stepLabels = ['Dein Ziel', 'Kontaktdaten', 'Details'];
-      const stepNames = ['goal', 'contact', 'details'];
+      // V2 Short: Only 1 step (goal + contact combined), then calendar
+      const totalSteps = FORM_VARIANT === 'v2_short' ? 1 : 3;
+      const stepLabels = FORM_VARIANT === 'v2_short' ? ['Bewerbung'] : ['Dein Ziel', 'Kontaktdaten', 'Details'];
+      const stepNames = FORM_VARIANT === 'v2_short' ? ['application'] : ['goal', 'contact', 'details'];
 
       const form = document.getElementById('application-form') as HTMLFormElement;
       const nextStepBtn = document.getElementById('next-step-btn');
@@ -1341,6 +1395,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               body: JSON.stringify({
                 ...sessionInfo,
                 ...eventData,
+                form_variant: FORM_VARIANT,
                 time_since_form_open_ms: this.formOpenTime > 0 ? Date.now() - this.formOpenTime : 0,
               })
             });
@@ -1512,6 +1567,53 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       attachFieldListeners();
 
       function validateStep(step: number): boolean {
+        // V2 Short: Single step with goal + email required
+        if (FORM_VARIANT === 'v2_short' && step === 1) {
+          const goal = form.querySelector('input[name="q_goal"]:checked');
+          const email = (form.querySelector('input[name="email_v2"]') as HTMLInputElement)?.value?.trim();
+          const phone = (form.querySelector('input[name="phone_v2"]') as HTMLInputElement)?.value?.trim();
+
+          // Email validation (tolerant)
+          const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+          // Phone validation only if filled
+          if (phone) {
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 6) {
+              formTracking.sendEvent({
+                event_type: 'field_validation_error',
+                step_number: 1,
+                validation_error_field: 'phone_v2',
+                validation_error_type: 'format',
+                validation_error_message: 'Phone too short'
+              });
+              return false;
+            }
+          }
+
+          if (!goal) {
+            formTracking.sendEvent({
+              event_type: 'field_validation_error',
+              step_number: 1,
+              validation_error_field: 'q_goal',
+              validation_error_type: 'required',
+              validation_error_message: 'Goal not selected'
+            });
+          }
+          if (!emailValid) {
+            formTracking.sendEvent({
+              event_type: 'field_validation_error',
+              step_number: 1,
+              validation_error_field: 'email_v2',
+              validation_error_type: email ? 'format' : 'required',
+              validation_error_message: email ? 'Invalid email format' : 'Email required'
+            });
+          }
+
+          return !!(goal && emailValid);
+        }
+
+        // V1: Original step validation
         if (step === 1) {
           const goal = form.querySelector('input[name="q_goal"]:checked');
           const time = form.querySelector('input[name="q_time_commitment"]:checked');
@@ -1795,26 +1897,53 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         submitLoading?.classList.remove('hidden');
 
         const formData = new FormData(form);
-        const questionnaireAnswers = {
-          goal: formData.get('q_goal'),
-          time_commitment: formData.get('q_time_commitment'),
-          knowledge_level: formData.get('q_knowledge_level') || 'anfaenger'
-        };
+        let data: Record<string, any>;
 
-        let phone = formData.get('phone') as string;
-        if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
+        if (FORM_VARIANT === 'v2_short') {
+          // V2 Short: Minimal fields, nulls for optional data
+          let phone = formData.get('phone_v2') as string;
+          if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
 
-        const data = {
-          firstName: formData.get('firstName'),
-          lastName: formData.get('lastName'),
-          email: formData.get('email'),
-          phone: phone,
-          program: 'gruppen_coaching',
-          questionnaireAnswers,
-          motivation: formData.get('motivation') || null,
-          source: 'lp_coaching_v2',
-          formVersion: 'v2_multistep'
-        };
+          data = {
+            firstName: formData.get('firstName_v2') || null,
+            lastName: null,
+            email: formData.get('email_v2'),
+            phone: phone || null,
+            program: 'gruppen_coaching',
+            questionnaireAnswers: {
+              goal: formData.get('q_goal'),
+              time_commitment: null,
+              knowledge_level: null
+            },
+            motivation: null,
+            source: 'lp_coaching_v2_short',
+            formVersion: 'v2_short',
+            form_variant: FORM_VARIANT
+          };
+        } else {
+          // V1: Original full form
+          const questionnaireAnswers = {
+            goal: formData.get('q_goal'),
+            time_commitment: formData.get('q_time_commitment'),
+            knowledge_level: formData.get('q_knowledge_level') || 'anfaenger'
+          };
+
+          let phone = formData.get('phone') as string;
+          if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
+
+          data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: phone,
+            program: 'gruppen_coaching',
+            questionnaireAnswers,
+            motivation: formData.get('motivation') || null,
+            source: 'lp_coaching_v2',
+            formVersion: 'v2_multistep',
+            form_variant: FORM_VARIANT
+          };
+        }
 
         try {
           const sessionId = sessionStorage.getItem('meta_session_id') || sessionStorage.getItem('lp_session_id');

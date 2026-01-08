@@ -4,16 +4,18 @@ import { Resend } from 'resend';
 export const prerender = false;
 
 interface LPApplicationFormData {
-  firstName: string;
-  lastName: string;
+  firstName: string | null;
+  lastName: string | null;
   email: string;
-  phone: string;
+  phone: string | null;
   company?: string | null;
   position?: string | null;
   program: 'gruppen_coaching' | 'mastermind' | 'beide';
   questionnaireAnswers: Record<string, unknown>;
   motivation?: string | null;
   source?: string | null;
+  formVersion?: string | null;
+  form_variant?: 'v1' | 'v2_short' | null;
 }
 
 const WEBHOOK_URL = 'https://quualle.app.n8n.cloud/webhook/7db9cded-9fef-4e36-a3c5-75c46739789f';
@@ -181,7 +183,10 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    if (!data.firstName || !data.lastName) {
+    // V2 Short: firstName and lastName are optional
+    // V1: firstName and lastName are required
+    const isV2Short = data.form_variant === 'v2_short' || data.formVersion === 'v2_short';
+    if (!isV2Short && (!data.firstName || !data.lastName)) {
       return new Response(
         JSON.stringify({ error: 'Name ist erforderlich' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -220,16 +225,18 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Insert into lp_coaching_applications table
     const applicationPayload = {
-      first_name: data.firstName,
-      last_name: data.lastName,
+      first_name: data.firstName || null,
+      last_name: data.lastName || null,
       email: data.email,
-      phone: data.phone,
+      phone: data.phone || null,
       company: data.company || null,
       position: data.position || null,
       program_interest: data.program,
       questionnaire_answers: data.questionnaireAnswers || {},
       motivation: data.motivation || null,
       source: data.source || 'lp_coaching',
+      form_version: data.formVersion || 'v2_multistep',
+      form_variant: data.form_variant || 'v1',
       utm_source: utmSource,
       utm_medium: utmMedium,
       utm_campaign: utmCampaign,
@@ -266,15 +273,16 @@ export const POST: APIRoute = async ({ request }) => {
     if (resendApiKey) {
       try {
         const resend = new Resend(resendApiKey);
-        const emailHtml = generateConfirmationEmail(data.firstName, data.program);
+        const displayName = data.firstName || 'Interessent';
+        const emailHtml = generateConfirmationEmail(displayName, data.program);
 
         const { error: emailError } = await resend.emails.send({
           from: 'Synclaro Academy <academy@synclaro.de>',
           to: [data.email],
           replyTo: 'marcoheer@synclaro.de',
-          subject: `${data.firstName}, deine Bewerbung ist eingegangen`,
+          subject: `${displayName}, deine Bewerbung ist eingegangen`,
           html: emailHtml,
-          text: `Hallo ${data.firstName},\n\ndeine Bewerbung für das ${programNames[data.program] || data.program} ist bei uns eingegangen.\n\nWie geht es weiter?\n1. Wir prüfen deine Bewerbung\n2. Wähle deinen Kennenlern-Termin im Kalender\n\nVergiss nicht, deinen Termin direkt nach der Bewerbung zu wählen!\n\nDu hast Fragen? Antworte einfach auf diese E-Mail.\n\nSynclaro Academy\nKI-Ausbildung für Macher`
+          text: `Hallo ${displayName},\n\ndeine Bewerbung für das ${programNames[data.program] || data.program} ist bei uns eingegangen.\n\nWie geht es weiter?\n1. Wir prüfen deine Bewerbung\n2. Wähle deinen Kennenlern-Termin im Kalender\n\nVergiss nicht, deinen Termin direkt nach der Bewerbung zu wählen!\n\nDu hast Fragen? Antworte einfach auf diese E-Mail.\n\nSynclaro Academy\nKI-Ausbildung für Macher`
         });
 
         if (emailError) {

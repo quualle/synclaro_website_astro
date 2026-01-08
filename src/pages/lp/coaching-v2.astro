@@ -945,41 +945,41 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               <div id="calendar-booking-step" class="hidden">
                 <div class="flex items-center justify-center gap-4 mb-6">
                   <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-green-500/20 text-green-500 border border-green-500/30 rounded-full flex items-center justify-center">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span class="text-gray-500 text-sm">Bewerbung</span>
+                    <span class="text-gray-400 text-sm">Bewerbung</span>
                   </div>
                   <div class="w-8 h-px bg-swiss-orange"></div>
                   <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-swiss-orange rounded-full flex items-center justify-center">
-                      <span class="text-gray-900 font-bold text-sm">2</span>
+                    <div class="w-8 h-8 bg-swiss-orange rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(255,79,0,0.5)]">
+                      <span class="text-white font-bold text-sm">2</span>
                     </div>
-                    <span class="text-gray-900 text-sm font-medium">Termin wählen</span>
+                    <span class="text-white text-sm font-medium">Termin wählen</span>
                   </div>
                 </div>
                 <div class="text-center mb-6">
-                  <h3 class="text-xl sm:text-2xl font-black mb-2">Fast geschafft!</h3>
-                  <p class="text-gray-500 text-sm sm:text-base">Wähle jetzt deinen 15-minütigen Kennenlern-Termin.</p>
+                  <h3 class="text-xl sm:text-2xl font-black mb-2 text-white">Fast geschafft!</h3>
+                  <p class="text-gray-400 text-sm sm:text-base">Wähle jetzt deinen 15-minütigen Kennenlern-Termin.</p>
                 </div>
-                <div class="bg-gray-50 border border-gray-200 p-4 mb-6 text-left">
+                <div class="bg-[#1a1a1a] border border-white/10 p-4 mb-6 text-left rounded-xl">
                   <p class="text-xs font-mono text-gray-500 uppercase tracking-wider mb-3">Was erwartet dich?</p>
                   <ul class="space-y-2">
-                    <li class="flex items-start gap-2 text-sm text-gray-700">
+                    <li class="flex items-start gap-2 text-sm text-gray-300">
                       <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                       </svg>
                       <span>15-minütiges Kennenlernen mit Marco Heer</span>
                     </li>
-                    <li class="flex items-start gap-2 text-sm text-gray-700">
+                    <li class="flex items-start gap-2 text-sm text-gray-300">
                       <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                       </svg>
                       <span>Gemeinsame Feststellung, ob du zum Coaching passt</span>
                     </li>
-                    <li class="flex items-start gap-2 text-sm text-gray-700">
+                    <li class="flex items-start gap-2 text-sm text-gray-300">
                       <svg class="w-4 h-4 text-swiss-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                       </svg>
@@ -993,29 +993,29 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                 </div>
                 <div id="calendar-widget" class="hidden">
                   <div class="flex items-center justify-between mb-4">
-                    <button id="prev-week" class="p-2 hover:bg-gray-50 rounded transition-colors disabled:opacity-30" disabled>
-                      <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="prev-week" class="p-2 hover:bg-white/5 rounded transition-colors disabled:opacity-30 text-white" disabled>
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
-                    <span id="week-label" class="text-gray-900 font-medium"></span>
-                    <button id="next-week" class="p-2 hover:bg-gray-50 rounded transition-colors">
-                      <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span id="week-label" class="text-white font-medium"></span>
+                    <button id="next-week" class="p-2 hover:bg-white/5 rounded transition-colors text-white">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
                   </div>
                   <div id="days-container" class="grid grid-cols-5 gap-2 mb-4"></div>
-                  <div id="slots-container" class="max-h-48 overflow-y-auto space-y-2">
+                  <div id="slots-container" class="max-h-48 overflow-y-auto space-y-2 pr-2 custom-scrollbar">
                     <p id="select-day-hint" class="text-gray-500 text-center text-sm py-4">Wähle einen Tag, um verfügbare Zeiten zu sehen</p>
                   </div>
-                  <div id="selected-slot-display" class="hidden mt-4 p-4 bg-swiss-orange/10 border border-swiss-orange/30 rounded">
+                  <div id="selected-slot-display" class="hidden mt-4 p-4 bg-swiss-orange/10 border border-swiss-orange/30 rounded-xl">
                     <div class="flex items-center justify-between">
                       <div>
-                        <p class="text-gray-900 font-medium" id="selected-slot-text"></p>
-                        <p class="text-gray-500 text-sm">15 Minuten Kennenlerngespräch</p>
+                        <p class="text-white font-bold" id="selected-slot-text"></p>
+                        <p class="text-swiss-orange text-sm">15 Minuten Kennenlerngespräch</p>
                       </div>
-                      <button id="confirm-booking" class="px-4 py-2 bg-swiss-orange text-white font-bold hover:bg-orange-600 transition-colors">Termin buchen</button>
+                      <button id="confirm-booking" class="px-4 py-2 bg-swiss-orange text-white font-bold hover:bg-orange-600 transition-colors rounded-lg shadow-lg shadow-swiss-orange/20">Termin buchen</button>
                     </div>
                   </div>
                   <div id="booking-loading" class="hidden mt-4 text-center py-4">
@@ -1036,15 +1036,15 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
               <!-- Booking Confirmed -->
               <div id="booking-confirmed" class="hidden text-center py-8 sm:py-12">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
                   <svg class="w-8 h-8 sm:w-10 sm:h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black mb-3 sm:mb-4">Termin gebucht!</h3>
-                <p class="text-gray-900 font-medium mb-2" id="confirmed-datetime"></p>
-                <p class="text-gray-500 mb-4 sm:mb-6 text-sm sm:text-base px-4">Du erhältst in Kürze eine Bestätigung per E-Mail mit allen Details.</p>
-                <button id="close-success" class="text-swiss-orange font-medium hover:underline text-sm sm:text-base">Fenster schließen</button>
+                <h3 class="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-white">Termin gebucht!</h3>
+                <p class="text-swiss-orange font-medium mb-2" id="confirmed-datetime"></p>
+                <p class="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base px-4">Du erhältst in Kürze eine Bestätigung per E-Mail mit allen Details.</p>
+                <button id="close-success" class="text-white hover:text-swiss-orange font-medium hover:underline text-sm sm:text-base transition-colors">Fenster schließen</button>
               </div>
             </div>
           </div>
@@ -1558,19 +1558,19 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           const indicator = document.getElementById(`step-indicator-${i}`);
           if (indicator) {
             if (i < currentStep) {
-              indicator.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold text-gray-900';
+              indicator.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold text-[#050507] shadow-lg shadow-green-500/30';
               indicator.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>';
             } else if (i === currentStep) {
-              indicator.className = 'w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-gray-900 shadow-lg shadow-swiss-orange/30';
+              indicator.className = 'w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-swiss-orange/30 ring-2 ring-swiss-orange/20';
               indicator.innerHTML = String(i);
             } else {
-              indicator.className = 'w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-500';
+              indicator.className = 'w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-sm font-medium text-gray-500 border border-white/10';
               indicator.innerHTML = String(i);
             }
           }
           if (i < totalSteps) {
             const line = document.getElementById(`step-line-${i}`);
-            if (line) line.className = i < currentStep ? 'w-8 sm:w-12 h-0.5 bg-green-500 transition-colors' : 'w-8 sm:w-12 h-0.5 bg-gray-100 transition-colors';
+            if (line) line.className = i < currentStep ? 'w-8 sm:w-12 h-0.5 bg-green-500 transition-colors shadow-[0_0_10px_rgba(34,197,94,0.5)]' : 'w-8 sm:w-12 h-0.5 bg-white/10 transition-colors';
           }
         }
 
@@ -1716,10 +1716,10 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
           const dayBtn = document.createElement('button');
           dayBtn.type = 'button';
-          dayBtn.className = `p-3 border rounded text-center transition-colors ${hasSlots ? 'border-gray-200 hover:border-swiss-orange cursor-pointer' : 'border-gray-200 opacity-40 cursor-not-allowed'}`;
+          dayBtn.className = `p-3 border rounded-xl text-center transition-all ${hasSlots ? 'border-white/10 bg-[#1a1a1a] hover:border-swiss-orange hover:bg-swiss-orange/10 cursor-pointer text-white shadow-sm' : 'border-transparent bg-white/5 text-gray-600 opacity-40 cursor-not-allowed'}`;
           dayBtn.disabled = !hasSlots;
           dayBtn.dataset.date = dateStr;
-          dayBtn.innerHTML = `<div class="text-xs text-gray-500">${dayNames[date.getDay()]}</div><div class="text-lg font-bold text-gray-900">${date.getDate()}</div><div class="text-xs ${hasSlots ? 'text-swiss-orange' : 'text-gray-600'}">${hasSlots ? slotsForDay.length + ' frei' : '-'}</div>`;
+          dayBtn.innerHTML = `<div class="text-xs text-gray-500">${dayNames[date.getDay()]}</div><div class="text-lg font-bold text-white">${date.getDate()}</div><div class="text-xs ${hasSlots ? 'text-swiss-orange' : 'text-gray-600'}">${hasSlots ? slotsForDay.length + ' frei' : '-'}</div>`;
           if (hasSlots) dayBtn.addEventListener('click', () => selectDay(dateStr, dayBtn));
           daysContainer.appendChild(dayBtn);
         }

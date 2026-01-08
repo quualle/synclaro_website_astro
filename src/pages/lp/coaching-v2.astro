@@ -1735,7 +1735,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         slots.forEach(slot => {
           const slotBtn = document.createElement('button');
           slotBtn.type = 'button';
-          slotBtn.className = 'w-full p-3 bg-white border border-gray-200 hover:border-swiss-orange text-gray-900 text-center transition-colors';
+          slotBtn.className = 'w-full p-3 bg-[#1a1a1a] border border-white/10 hover:border-swiss-orange hover:bg-swiss-orange/10 text-white text-center transition-colors rounded-xl';
           slotBtn.textContent = slot.time + ' Uhr';
           slotBtn.addEventListener('click', () => selectTimeSlot(slot));
           slotsContainer.appendChild(slotBtn);

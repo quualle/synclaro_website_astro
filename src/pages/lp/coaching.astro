@@ -773,110 +773,93 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             <!-- Form Content -->
             <div class="p-6 sm:p-8 lg:p-10 modal-form-mobile safe-area-padding flex flex-col h-full sm:h-auto">
 
-              <!-- Trust Header -->
-              <div class="mb-6 sm:mb-8 pt-8 sm:pt-0">
-                <div class="flex items-center gap-3 mb-4">
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-swiss-orange/10 border border-swiss-orange/20 text-swiss-orange font-mono text-[10px] tracking-wider rounded-full">
-                    <span class="w-1.5 h-1.5 bg-swiss-orange rounded-full animate-pulse"></span>
-                    BEWERBUNG
-                  </span>
-                  <span class="text-[10px] text-gray-500 flex items-center gap-1">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    60 Sek.
-                  </span>
+              <!-- Elegant Header -->
+              <div class="mb-8 pt-8 sm:pt-0 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-swiss-orange to-orange-500 rounded-2xl mb-4 shadow-lg shadow-swiss-orange/20">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
                 <h3 class="text-2xl sm:text-3xl font-black mb-2 text-gray-900">
-                  Deine Bewerbung
+                  Kurze Bewerbung
                 </h3>
-                <p class="text-gray-500 text-sm">Keine Zahlung. Wir melden uns innerhalb von 24h.</p>
+                <p class="text-gray-500 text-sm">Unverbindlich · Antwort innerhalb 24h</p>
               </div>
 
-              <!-- SINGLE-PAGE FORM - Kein Multi-Step mehr -->
+              <!-- SINGLE-PAGE FORM -->
               <form id="application-form" class="flex-1 flex flex-col">
 
-                <!-- Situation Question (Checkboxes - Mehrfachauswahl) -->
-                <div class="mb-6">
-                  <p class="text-gray-900 font-semibold mb-4 text-sm sm:text-base">
-                    In welcher Situation befindest du dich? <span class="text-gray-500 font-normal">(Mehrfachauswahl möglich)</span>
+                <!-- Situation Question -->
+                <div class="mb-8">
+                  <p class="text-gray-600 text-sm mb-4">
+                    Wo stehst du gerade? <span class="text-gray-400">(Mehrfachauswahl)</span>
                   </p>
-                  <div class="space-y-2.5">
-                    <label class="situation-option group relative flex items-start gap-3 p-4 bg-white border border-gray-200 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                  <div class="space-y-2">
+                    <label class="group flex items-start gap-3 p-3.5 bg-gray-50/80 hover:bg-gray-100/80 border border-transparent hover:border-gray-200 cursor-pointer transition-all duration-200 rounded-lg">
                       <input type="checkbox" name="q_situation" value="nutze_chatgpt" class="sr-only peer" />
-                      <div class="w-5 h-5 rounded border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
-                        <svg class="w-3 h-3 text-white scale-0 peer-checked:scale-100 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                      <div class="w-5 h-5 rounded-md border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all duration-200">
+                        <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
                           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                         </svg>
                       </div>
-                      <span class="text-gray-900 text-sm">Ich benutze bereits gelegentlich oder häufiger ChatGPT und andere Anbieter</span>
-                      <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      <span class="text-gray-700 text-[13px] leading-relaxed peer-checked:text-gray-900 transition-colors">Ich nutze bereits ChatGPT oder andere KI-Tools</span>
                     </label>
-                    <label class="situation-option group relative flex items-start gap-3 p-4 bg-white border border-gray-200 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                    <label class="group flex items-start gap-3 p-3.5 bg-gray-50/80 hover:bg-gray-100/80 border border-transparent hover:border-gray-200 cursor-pointer transition-all duration-200 rounded-lg">
                       <input type="checkbox" name="q_situation" value="sehe_potenzial" class="sr-only peer" />
-                      <div class="w-5 h-5 rounded border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
-                        <svg class="w-3 h-3 text-white scale-0 peer-checked:scale-100 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                      <div class="w-5 h-5 rounded-md border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all duration-200">
+                        <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
                           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                         </svg>
                       </div>
-                      <span class="text-gray-900 text-sm">Ich sehe viel Potenzial in KI, aber weiß nicht, wie ich das Thema genau angehen soll</span>
-                      <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      <span class="text-gray-700 text-[13px] leading-relaxed peer-checked:text-gray-900 transition-colors">Ich sehe Potenzial, weiß aber nicht wo anfangen</span>
                     </label>
-                    <label class="situation-option group relative flex items-start gap-3 p-4 bg-white border border-gray-200 hover:border-swiss-orange/40 hover:bg-swiss-orange/5 cursor-pointer transition-all rounded-xl">
+                    <label class="group flex items-start gap-3 p-3.5 bg-gray-50/80 hover:bg-gray-100/80 border border-transparent hover:border-gray-200 cursor-pointer transition-all duration-200 rounded-lg">
                       <input type="checkbox" name="q_situation" value="habe_ideen" class="sr-only peer" />
-                      <div class="w-5 h-5 rounded border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all">
-                        <svg class="w-3 h-3 text-white scale-0 peer-checked:scale-100 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                      <div class="w-5 h-5 rounded-md border-2 border-gray-300 peer-checked:border-swiss-orange peer-checked:bg-swiss-orange flex-shrink-0 mt-0.5 flex items-center justify-center transition-all duration-200">
+                        <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
                           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                         </svg>
                       </div>
-                      <span class="text-gray-900 text-sm">Ich habe schon erste Ideen, was ich in meinem Leben automatisiert oder durch KI gestützt erschaffen könnte</span>
-                      <div class="absolute inset-0 rounded-xl border-2 border-swiss-orange opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none"></div>
+                      <span class="text-gray-700 text-[13px] leading-relaxed peer-checked:text-gray-900 transition-colors">Ich habe Ideen, was ich automatisieren möchte</span>
                     </label>
                   </div>
                 </div>
 
-                <!-- Contact Fields -->
+                <!-- Contact Fields - Clean & Modern -->
                 <div class="space-y-4 mb-6">
                   <div class="grid grid-cols-2 gap-3">
                     <div>
-                      <label class="block text-xs font-medium text-gray-500 mb-2">Vorname</label>
-                      <input type="text" name="firstName" required class="w-full px-4 py-3.5 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="Max" />
+                      <input type="text" name="firstName" required class="w-full px-4 py-3 bg-gray-50 border-0 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-swiss-orange/20 transition-all text-[15px] rounded-lg" placeholder="Vorname" />
                     </div>
                     <div>
-                      <label class="block text-xs font-medium text-gray-500 mb-2">Nachname</label>
-                      <input type="text" name="lastName" required class="w-full px-4 py-3.5 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="Mustermann" />
+                      <input type="text" name="lastName" required class="w-full px-4 py-3 bg-gray-50 border-0 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-swiss-orange/20 transition-all text-[15px] rounded-lg" placeholder="Nachname" />
                     </div>
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-gray-500 mb-2">E-Mail</label>
-                    <input type="email" name="email" required class="w-full px-4 py-3.5 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="max@beispiel.de" />
+                    <input type="email" name="email" required class="w-full px-4 py-3 bg-gray-50 border-0 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-swiss-orange/20 transition-all text-[15px] rounded-lg" placeholder="E-Mail-Adresse" />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-gray-500 mb-2">Telefon</label>
                     <div class="relative">
-                      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">+49</span>
-                      <input type="tel" name="phone" id="phone-input" required class="w-full pl-14 pr-4 py-3.5 bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-swiss-orange focus:outline-none transition-all text-base rounded-xl" placeholder="123 4567890" inputmode="tel" />
+                      <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">+49</span>
+                      <input type="tel" name="phone" id="phone-input" required class="w-full pl-12 pr-4 py-3 bg-gray-50 border-0 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-swiss-orange/20 transition-all text-[15px] rounded-lg" placeholder="Telefonnummer" inputmode="tel" />
                     </div>
-                    <p class="text-gray-500 text-[11px] mt-1.5 pl-1">Nur für Terminabstimmung – kein Spam</p>
                   </div>
                 </div>
 
-                <!-- Trust Signals -->
-                <div class="mb-6">
-                  <div class="flex items-center justify-center gap-2 text-[11px] text-gray-500 bg-green-500/5 border border-green-500/10 rounded-lg py-2.5 px-4">
-                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span>DSGVO-konform geschützt · <a href="/datenschutz" class="text-swiss-orange hover:underline">Datenschutz</a></span>
-                  </div>
-                </div>
+                <!-- Trust Signal - Minimal -->
+                <p class="text-center text-[11px] text-gray-400 mb-6">
+                  <svg class="w-3.5 h-3.5 inline-block mr-1 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                  </svg>
+                  Deine Daten sind sicher · <a href="/datenschutz" class="text-gray-500 hover:text-swiss-orange transition-colors">Datenschutz</a>
+                </p>
 
-                <!-- Submit Button -->
-                <div class="sticky bottom-0 bg-gradient-to-t from-gray-50 via-gray-50 to-transparent pt-4 pb-4 mt-auto">
-                  <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-swiss-orange to-orange-500 text-white font-bold py-4 text-base hover:from-orange-500 hover:to-swiss-orange transition-all disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-swiss-orange/25 hover:shadow-swiss-orange/40 hover:scale-[1.02] active:scale-[0.98]">
+                <!-- Submit Button - Elegant -->
+                <div class="mt-auto">
+                  <button type="submit" id="submit-btn" class="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 text-[15px] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl flex items-center justify-center gap-2 active:scale-[0.98]">
                     <span id="submit-btn-text">Bewerbung absenden</span>
-                    <svg id="submit-btn-arrow" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    <svg id="submit-btn-arrow" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                     <span id="submit-loading" class="hidden">
                       <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

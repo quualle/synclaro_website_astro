@@ -77,8 +77,20 @@ if (article) {
   }
 }
 
+// Pre-process markdown to fix common parsing issues
+// Problem: "---" directly after text becomes setext H2 instead of HR
+function preprocessMarkdown(content: string): string {
+  if (!content) return '';
+
+  // Ensure --- is always treated as HR by adding blank lines around it
+  // This prevents setext-style heading interpretation
+  return content
+    .replace(/([^\n])\n---\n/g, '$1\n\n---\n\n')  // Add blank lines around ---
+    .replace(/\n---\n([^\n])/g, '\n\n---\n\n$1');
+}
+
 // Convert markdown content to HTML
-const htmlContent = article ? marked(article.content || '') : '';
+const htmlContent = article ? marked(preprocessMarkdown(article.content || '')) : '';
 
 // SEO: BlogPosting Schema.org für Rich Snippets
 const blogPostingSchema = article ? {

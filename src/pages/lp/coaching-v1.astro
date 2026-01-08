@@ -2197,6 +2197,20 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
           });
         },
 
+        // Called when a validation error occurs
+        onValidationError(fieldName: string, errorType: string, errorMessage: string) {
+          this.sendEvent({
+            event_type: 'field_validation_error',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            field_name: fieldName,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
+            validation_error_field: fieldName,
+            validation_error_type: errorType,
+            validation_error_message: errorMessage,
+          });
+        },
+
         // Called when field receives focus
         onFieldFocus(fieldName: string, fieldType: string) {
           this.sendEvent({
@@ -2382,30 +2396,62 @@ const description = "6 Monate Intensiv-Coaching: Werde zum Projektleiter, der mi
 
       // Validate current step
       function validateStep(step: number): boolean {
+        let hasErrors = false;
+
         if (step === 1) {
           const goal = form.querySelector('input[name="q_goal"]:checked');
           const time = form.querySelector('input[name="q_time_commitment"]:checked');
-          return !!(goal && time);
+
+          if (!goal) {
+            formTracking.onValidationError('q_goal', 'required', 'Bitte wähle dein Ziel aus');
+            hasErrors = true;
+          }
+          if (!time) {
+            formTracking.onValidationError('q_time_commitment', 'required', 'Bitte wähle deinen Zeitaufwand aus');
+            hasErrors = true;
+          }
+          return !hasErrors;
         } else if (step === 2) {
           const firstName = (form.querySelector('input[name="firstName"]') as HTMLInputElement)?.value?.trim();
           const lastName = (form.querySelector('input[name="lastName"]') as HTMLInputElement)?.value?.trim();
           const email = (form.querySelector('input[name="email"]') as HTMLInputElement)?.value?.trim();
           const phone = phoneInput?.value?.trim();
 
+          // Track missing required fields
+          if (!firstName) {
+            formTracking.onValidationError('firstName', 'required', 'Vorname ist erforderlich');
+            hasErrors = true;
+          }
+          if (!lastName) {
+            formTracking.onValidationError('lastName', 'required', 'Nachname ist erforderlich');
+            hasErrors = true;
+          }
+
           // Basic email validation
-          const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if (!email) {
+            formTracking.onValidationError('email', 'required', 'E-Mail ist erforderlich');
+            hasErrors = true;
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            formTracking.onValidationError('email', 'format', 'Ungültiges E-Mail-Format');
+            hasErrors = true;
+          }
 
           // Phone validation (at least 6 digits)
           const phoneDigits = phone?.replace(/\D/g, '') || '';
           const phoneValid = phoneDigits.length >= 6;
 
-          if (!phoneValid && phone) {
+          if (!phone) {
+            formTracking.onValidationError('phone', 'required', 'Telefonnummer ist erforderlich');
+            hasErrors = true;
+          } else if (!phoneValid) {
+            formTracking.onValidationError('phone', 'format', 'Ungültige Telefonnummer (min. 6 Ziffern)');
             phoneError?.classList.remove('hidden');
+            hasErrors = true;
           } else {
             phoneError?.classList.add('hidden');
           }
 
-          return !!(firstName && lastName && emailValid && phoneValid);
+          return !hasErrors;
         } else if (step === 3) {
           // Step 3 is optional, always valid
           return true;

@@ -8,7 +8,7 @@ interface FormEventPayload {
   visitor_id?: string;
 
   // Event Details
-  event_type: 'step_enter' | 'step_exit' | 'step_complete' | 'field_focus' | 'field_blur' | 'field_change' | 'form_abandon' | 'form_submit';
+  event_type: 'step_enter' | 'step_exit' | 'step_complete' | 'field_focus' | 'field_blur' | 'field_change' | 'field_validation_error' | 'form_abandon' | 'form_submit';
   step_number?: number;
   step_name?: string;
 
@@ -17,6 +17,11 @@ interface FormEventPayload {
   field_type?: string;
   field_filled?: boolean;
   field_value_length?: number;
+
+  // Validation Error Details
+  validation_error_field?: string;
+  validation_error_type?: string;
+  validation_error_message?: string;
 
   // Timing
   time_since_form_open_ms?: number;
@@ -76,6 +81,10 @@ export const POST: APIRoute = async ({ request }) => {
       device_type: data.device_type || null,
       utm_source: data.utm_source || null,
       utm_medium: data.utm_medium || null,
+      // Validation Error Tracking
+      validation_error_field: data.validation_error_field || null,
+      validation_error_type: data.validation_error_type || null,
+      validation_error_message: data.validation_error_message || null,
     };
 
     const eventResponse = await fetch(`${supabaseUrl}/rest/v1/lp_form_events`, {

@@ -7,6 +7,8 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://synclaro.de',
+  // SEO: Konsistente URLs ohne trailing slash (vermeidet Duplikate in GSC)
+  trailingSlash: 'never',
   integrations: [
     react(),
     tailwind({

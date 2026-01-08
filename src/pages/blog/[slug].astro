@@ -79,9 +79,50 @@ if (article) {
 
 // Convert markdown content to HTML
 const htmlContent = article ? marked(article.content || '') : '';
+
+// SEO: BlogPosting Schema.org für Rich Snippets
+const blogPostingSchema = article ? {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": article.title,
+  "description": article.meta_description || article.title,
+  "image": `${storageUrl}/${article.slug}.webp`,
+  "author": {
+    "@type": "Person",
+    "name": article.author || "Synclaro Team",
+    "url": "https://synclaro.de/ueber-uns"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Synclaro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://synclaro.de/images/logo.png"
+    }
+  },
+  "datePublished": article.published_at || article.created_at,
+  "dateModified": article.updated_at || article.published_at || article.created_at,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://synclaro.de/blog/${article.slug}`
+  },
+  "wordCount": article.content ? article.content.split(/\s+/).length : undefined,
+  "timeRequired": `PT${article.reading_time || 5}M`,
+  "inLanguage": "de-DE"
+} : null;
 ---
 
-<MainLayout title={article ? `${article.title} | Synclaro Blog` : 'Artikel nicht gefunden | Synclaro Blog'}>
+<MainLayout
+  title={article ? `${article.title} | Synclaro Blog` : 'Artikel nicht gefunden | Synclaro Blog'}
+  description={article?.meta_description}
+  ogImage={article ? `${storageUrl}/${article.slug}.webp` : undefined}
+  ogType="article"
+>
+  {/* SEO: BlogPosting Schema */}
+  {blogPostingSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  )}
+
   <article class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-12">
     <!-- Dark gradient background -->
     <div class="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900"></div>

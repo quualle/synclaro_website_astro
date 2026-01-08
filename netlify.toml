@@ -9,6 +9,21 @@
   directory = ".netlify/functions"
   included_files = [".netlify/functions/**"]
 
+# SEO: Trailing Slash Normalisierung (vermeidet Duplikate in GSC)
+# Alle URLs mit trailing slash werden auf ohne trailing slash umgeleitet
+[[redirects]]
+  from = "/*/"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# SEO: www zu non-www Redirect (Canonical Domain)
+[[redirects]]
+  from = "https://www.synclaro.de/*"
+  to = "https://synclaro.de/:splat"
+  status = 301
+  force = true
+
 # SEO: Sitemap Redirects (Astro SSR Mode)
 [[redirects]]
   from = "/sitemap.xml"
@@ -32,6 +47,14 @@
 [[redirects]]
   from = "/mastermind"
   to = "/academy/mastermind"
+  status = 301
+  force = true
+
+# SEO: Blog-URL-Fix (Prompt-Slug zu korrektem Slug)
+# Nach DB-Update in Supabase (ouqhysemcldamthpuqqq) aktivieren
+[[redirects]]
+  from = "/blog/which-exact-keyword-should-the-title-target-if-the-keyword-is-e-rechnung-pflicht-2026-a-short-seo-friendly-title-could-be-e-rechnung-pflicht-2026-eingangsrechnungen-automatisieren"
+  to = "/blog/e-rechnung-pflicht-2026"
   status = 301
   force = true
 

@@ -182,9 +182,59 @@ if (!post) {
 const relatedPosts = allPosts
   .filter(p => p.slug !== slug)
   .slice(0, 3);
+
+// Helper: Parse German date to ISO
+function parseGermanDate(dateStr: string): string {
+  const months: Record<string, string> = {
+    'Januar': '01', 'Februar': '02', 'März': '03', 'April': '04',
+    'Mai': '05', 'Juni': '06', 'Juli': '07', 'August': '08',
+    'September': '09', 'Oktober': '10', 'November': '11', 'Dezember': '12'
+  };
+  const parts = dateStr.split(' ');
+  if (parts.length === 3) {
+    const day = parts[0].replace('.', '').padStart(2, '0');
+    const month = months[parts[1]] || '01';
+    const year = parts[2];
+    return `${year}-${month}-${day}`;
+  }
+  return new Date().toISOString().split('T')[0];
+}
+
+// SEO: BlogPosting Schema.org für Rich Snippets
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.excerpt,
+  "author": {
+    "@type": "Person",
+    "name": post.author,
+    "url": "https://synclaro.de/ueber-uns"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Synclaro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://synclaro.de/images/logo.png"
+    }
+  },
+  "datePublished": parseGermanDate(post.date),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://synclaro.de/academy/blog/${post.slug}`
+  },
+  "wordCount": post.content.split(/\s+/).length,
+  "timeRequired": `PT${parseInt(post.readTime)}M`,
+  "inLanguage": "de-DE",
+  "articleSection": post.category
+};
 ---
 
-<MainLayout title={`${post.title} | Academy Blog | Synclaro`} description={post.excerpt}>
+<MainLayout title={`${post.title} | Academy Blog | Synclaro`} description={post.excerpt} ogType="article">
+  {/* SEO: BlogPosting Schema */}
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+
   <article class="min-h-screen bg-white">
     <!-- Header -->
     <header class="pt-24 pb-12 px-6 lg:px-12">

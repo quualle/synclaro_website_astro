@@ -18,6 +18,8 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^6.0.0",
     "@calcom/embed-react": "^1.5.3",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
     "@supabase/supabase-js": "^2.45.0",
     "astro": "^5.16.0",
     "marked": "^17.0.1",

@@ -189,9 +189,25 @@ const faqs = [
     answer: 'Vereinbare einfach ein unverbindliches Erstgespräch über unser Kontaktformular. Wir besprechen deine Situation, deine Ziele und empfehlen das passende Angebot. Von dort aus können wir direkt loslegen oder einen Start-Termin vereinbaren.'
   }
 ];
+
+// SEO: FAQPage Schema für Rich Snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <MainLayout title="KI-Coaching & KI-Automatisierung für Unternehmer | Synclaro" description="Praxisnahes KI-Coaching, Mastermind und Automatisierungs-Lösungen für den Mittelstand. Wir befähigen für den Eintritt ins KI-Zeitalter. Made in Bavaria.">
+  <!-- SEO: FAQ Schema for Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- HERO SECTION - EXACT TEXT FROM Hero.tsx -->
   <section class="min-h-screen flex flex-col justify-center px-4 md:px-12 pt-24 pb-12 border-b-2 border-black relative overflow-hidden bg-white">

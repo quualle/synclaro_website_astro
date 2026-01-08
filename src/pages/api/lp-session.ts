@@ -28,8 +28,8 @@ interface SessionPayload {
   error_message?: string;
   error_type?: string;
   interaction_type?: string; // 'field_focus' | 'field_change' | 'tap' | 'selection'
-  // A/B Test
-  form_variant?: 'v1' | 'v2_short';
+  // Form Version
+  form_variant?: 'v1' | 'v2_short' | 'v3_single_page';
 }
 
 export const POST: APIRoute = async ({ request }) => {

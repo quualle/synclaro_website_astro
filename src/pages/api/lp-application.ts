@@ -15,7 +15,7 @@ interface LPApplicationFormData {
   motivation?: string | null;
   source?: string | null;
   formVersion?: string | null;
-  form_variant?: 'v1' | 'v2_short' | null;
+  form_variant?: 'v1' | 'v2_short' | 'v3_single_page' | null;
 }
 
 const WEBHOOK_URL = 'https://quualle.app.n8n.cloud/webhook/7db9cded-9fef-4e36-a3c5-75c46739789f';

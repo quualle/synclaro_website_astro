@@ -32,8 +32,8 @@ interface FormEventPayload {
   utm_source?: string;
   utm_medium?: string;
 
-  // A/B Test
-  form_variant?: 'v1' | 'v2_short';
+  // Form Version
+  form_variant?: 'v1' | 'v2_short' | 'v3_single_page';
 
   // Summary Update (for session tracking table)
   update_session_summary?: boolean;

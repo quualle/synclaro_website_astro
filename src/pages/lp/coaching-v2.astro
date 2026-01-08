@@ -8,7 +8,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="de" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -16,212 +16,254 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <!-- Fonts: Lokal via global.css -->
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://synclaro.de/lp/coaching-v2" />
+    <meta property="og:url" content="https://synclaro.de/lp/coaching" />
 
-    <!-- Logo Carousel Animation -->
+    <!-- Google Fonts: Inter & Space Grotesk for Tech/Modern feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
-      @keyframes logo-scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+      :root {
+        --swiss-orange: #FF4F00;
+        --deep-bg: #030305;
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --neon-glow: 0 0 40px rgba(255, 79, 0, 0.15);
       }
-      .logo-carousel {
-        animation: logo-scroll 25s linear infinite;
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--deep-bg);
+        color: #e2e8f0;
+        overflow-x: hidden;
       }
-      .logo-carousel:hover {
-        animation-play-state: paused;
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      /* Premium Gradients */
+      .text-gradient {
+        background: linear-gradient(135deg, #fff 30%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .text-gradient-orange {
+        background: linear-gradient(135deg, #FF4F00 0%, #FF8F00 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Glassmorphism Utilities */
+      .glass-panel {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+      }
+
+      .glass-card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--swiss-orange);
+      }
+
+      /* Sticky Mobile Button Animation */
+      @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .sticky-btn-appear {
+        animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
     </style>
   </head>
 
-  <body class="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+  <body class="min-h-screen bg-[#030305] text-slate-200 overflow-x-hidden selection:bg-swiss-orange/30 selection:text-white">
 
     <!-- ============================================
          HERO SECTION - OUTCOME FIRST (Chef-KI Vorgabe)
          Prinzip: Outcome → Proof → Action → KEIN PREIS
          ============================================ -->
-    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <!-- ============================================
+         HERO SECTION - OUTCOME FIRST
+         ============================================ -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 sm:pt-0">
 
-      <!-- Subtle Background -->
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white"></div>
-      <div class="absolute inset-0 opacity-30">
-        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,79,0,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,0,0.08) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      <!-- Premium Background Effects -->
+      <div class="absolute inset-0 bg-[#030305]"></div>
+      
+      <!-- Animated Glow Orbs -->
+      <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-swiss-orange/20 rounded-full blur-[120px] opacity-40 animate-pulse"></div>
+      <div class="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] opacity-30"></div>
+      
+      <!-- Grid Overlay -->
+      <div class="absolute inset-0 opacity-20" 
+           style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px;">
       </div>
-
-      <!-- Single Accent Orb -->
-      <div class="absolute top-1/3 right-0 w-[400px] h-[400px] bg-gradient-radial from-swiss-orange/15 via-swiss-orange/5 to-transparent rounded-full blur-3xl translate-x-1/2"></div>
 
       <!-- Main Content -->
       <div class="relative z-10 container mx-auto px-5 py-8 sm:py-12">
 
-        <!-- MOBILE HERO - Visuelle Hierarchie durch verschiedene Backgrounds -->
-        <div class="sm:hidden text-left max-w-lg mx-auto">
+        <!-- MOBILE HERO (Optimized for High Conversion & App-Feel) -->
+        <div class="sm:hidden text-left max-w-lg mx-auto flex flex-col h-full justify-center">
 
-          <!-- HEADLINE - Groß und dominant -->
-          <h1 class="text-[1.75rem] font-black leading-[1.12] tracking-tight mb-6 text-gray-900">
-            Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI angeht.
+          <!-- Trust Badge -->
+          <div class="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border-swiss-orange/20">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-swiss-orange opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-swiss-orange"></span>
+            </span>
+            <span class="text-[11px] font-medium tracking-wide uppercase text-gray-300">Live Ausbildung 2026</span>
+          </div>
+
+          <!-- HEADLINE - Massive & Impactful -->
+          <h1 class="text-[2.25rem] font-bold leading-[1.1] tracking-tight mb-6 text-white font-space">
+            Verstehe KI.<br/>
+            <span class="text-gradient-orange">Beherrsche es.</span><br/>
+            <span class="text-gray-500 font-normal text-3xl">Wende es an.</span>
           </h1>
 
-          <!-- Quote Card - Eigene visuelle Einheit -->
-          <div class="mb-6 p-4 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl">
-            <p class="text-[15px] font-medium text-gray-800 italic leading-relaxed">
-              „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
-            </p>
-            <p class="text-[12px] text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
-          </div>
+          <!-- Value Proposition -->
+          <p class="text-gray-400 text-lg leading-relaxed mb-8">
+            Eine Ausbildung, die dir <span class="text-white font-medium border-b border-swiss-orange/50">wirklich erklärt</span>, wie man KI im Unternehmen implementiert. Ohne Hype.
+          </p>
 
-          <!-- Marco Strip - Prominent -->
-          <div class="flex items-center gap-4 mb-6 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
-            <img src="/images/marco_new.png" alt="Marco Heer" class="w-16 h-16 rounded-xl object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
+          <!-- Glass Card: Marco -->
+          <div class="mb-8 p-4 glass-card rounded-2xl flex items-center gap-4 border-l-4 border-l-swiss-orange">
+            <div class="relative">
+              <img src="/images/marco_new.png" alt="Marco Heer" class="w-14 h-14 rounded-full object-cover border-2 border-white/10" />
+              <div class="absolute -bottom-1 -right-1 bg-swiss-orange text-[10px] font-bold px-1.5 py-0.5 rounded text-white">#1</div>
+            </div>
             <div>
-              <p class="text-sm font-bold text-gray-900 mb-0.5">Marco Heer</p>
-              <p class="text-[13px] text-gray-600 leading-snug">
-                Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
-              </p>
+              <p class="text-white font-bold text-sm">Marco Heer</p>
+              <p class="text-gray-400 text-xs">Dein Mentor & Ingenieur</p>
             </div>
+             <div class="ml-auto">
+               <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+             </div>
           </div>
 
-          <!-- Fragen als Mini-Cards - VOLLER TEXT + FETT -->
-          <div class="mb-5 space-y-2">
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-              <p class="text-[14px] text-gray-700 font-semibold">Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?</p>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-              <p class="text-[14px] text-gray-700 font-semibold">Was kann man mit KI eigentlich machen?</p>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-              <p class="text-[14px] text-gray-700 font-semibold">Welche Tools kann ich dafür nutzen?</p>
-            </div>
+          <!-- Benefits Chips -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1.5 glass-panel rounded-full text-xs text-gray-300 flex items-center gap-1.5">
+              <svg class="w-3 h-3 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Websites bauen
+            </span>
+            <span class="px-3 py-1.5 glass-panel rounded-full text-xs text-gray-300 flex items-center gap-1.5">
+              <svg class="w-3 h-3 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Automatisierung
+            </span>
+            <span class="px-3 py-1.5 glass-panel rounded-full text-xs text-gray-300 flex items-center gap-1.5">
+              <svg class="w-3 h-3 text-swiss-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Recherche
+            </span>
           </div>
 
-          <!-- Benefits als Chips - Kompakt -->
-          <div class="mb-4">
-            <p class="text-[12px] text-swiss-orange font-semibold mb-2.5 uppercase tracking-wide">Nach dem Coaching kannst du:</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Websites bauen</span>
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">E-Mails automatisieren</span>
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Recherche & Entscheidungen</span>
-              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Apps programmieren</span>
-            </div>
-          </div>
-
-          <!-- CTA - Prominent -->
+          <!-- Primary CTA (Mobile) -->
           <button
             id="open-modal-hero-mobile"
-            class="w-full bg-swiss-orange text-white font-bold py-4 px-6 text-base rounded-lg transition-all duration-300 active:scale-[0.98] shadow-[0_0_40px_rgba(255,79,0,0.3)]"
+            class="w-full relative overflow-hidden group bg-white text-black font-bold py-4 rounded-xl transition-all duration-300 active:scale-[0.98] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
-            <span class="block text-lg">Jetzt bewerben!</span>
-            <span class="block text-xs font-normal opacity-90 mt-1">2–3 Minuten · Unverbindlich</span>
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+            <span class="flex items-center justify-center gap-2 text-lg">
+              Jetzt bewerben
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
           </button>
+           <p class="text-center text-xs text-gray-500 mt-3 flex items-center justify-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+            2-3 Minuten · Unverbindlich
+          </p>
 
         </div>
 
-        <!-- DESKTOP HERO - Volle Breite nutzen -->
+        <!-- DESKTOP HERO -->
         <div class="hidden sm:block max-w-7xl mx-auto">
+          <div class="grid lg:grid-cols-[1.2fr,0.8fr] gap-16 items-center">
+            
+            <!-- LEFT: Content -->
+            <div class="text-left relative">
+              <div class="absolute -left-20 -top-20 w-40 h-40 bg-swiss-orange/20 blur-[80px]"></div>
+              
+              <h1 class="text-6xl lg:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8 text-white font-space">
+                Verstehe KI.<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-swiss-orange to-orange-400">Beherrsche es.</span>
+              </h1>
+              
+              <p class="text-xl text-gray-400 mb-10 max-w-xl leading-relaxed">
+                Schluss mit oberflächlichem Wissen. Lerne in 180 Tagen, wie du KI-Tools und Automatisierung <span class="text-white">wirklich</span> in deinem Unternehmen einsetzt.
+              </p>
 
-          <!-- Two-Column Layout: Content Left, Marco Right -->
-          <div class="grid lg:grid-cols-[1fr,380px] gap-12 lg:gap-16 items-center px-4 lg:px-8">
-
-              <!-- LEFT: Main Content -->
-              <div class="text-left">
-
-                <!-- HEADLINE - Bigger, Bolder, Flowing -->
-                <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-black leading-[1.1] tracking-tight mb-8 text-gray-900">
-                  Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI angeht.
-                </h1>
-
-                <!-- Fragen-Block - Prominent -->
-                <div class="mb-8 space-y-2.5">
-                  <p class="text-lg text-gray-600 flex items-start gap-3">
-                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-                    Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
-                  </p>
-                  <p class="text-lg text-gray-600 flex items-start gap-3">
-                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-                    Was kann man mit KI eigentlich machen?
-                  </p>
-                  <p class="text-lg text-gray-600 flex items-start gap-3">
-                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-                    Welche Tools kann ich dafür nutzen?
-                  </p>
+              <!-- Stats / Proof -->
+              <div class="grid grid-cols-3 gap-6 mb-12 border-t border-white/10 pt-8 max-w-2xl">
+                <div>
+                  <p class="text-3xl font-bold text-white font-space">180</p>
+                  <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">Tage Begleitung</p>
                 </div>
-
-                <!-- Benefits as Chips -->
-                <div class="flex flex-wrap gap-2 mb-8">
-                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                    <span class="text-swiss-orange mr-1">+</span> Websites bauen
-                  </span>
-                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                    <span class="text-swiss-orange mr-1">+</span> E-Mails automatisieren
-                  </span>
-                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                    <span class="text-swiss-orange mr-1">+</span> Recherche & Entscheidungen
-                  </span>
-                  <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                    <span class="text-swiss-orange mr-1">+</span> Apps programmieren
-                  </span>
+                <div>
+                  <p class="text-3xl font-bold text-white font-space">1:1</p>
+                  <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">Mentoring</p>
                 </div>
+                <div>
+                  <p class="text-3xl font-bold text-white font-space">∞ zukunft</p>
+                  <p class="text-sm text-gray-500 uppercase tracking-wider mt-1">Fähigkeiten</p>
+                </div>
+              </div>
 
-                <!-- CTA - Bigger, More Prominent -->
-                <button
+               <button
                   id="open-modal-hero"
-                  class="group inline-flex flex-col items-start bg-swiss-orange text-white font-bold py-5 px-10 text-xl transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,79,0,0.35)] hover:scale-[1.02]"
+                  class="group relative inline-flex items-center gap-4 bg-white text-black font-bold py-5 px-10 text-xl rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]"
                 >
-                  <span class="flex items-center gap-3">
-                    <span>Jetzt bewerben!</span>
-                    <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                  <span class="text-sm font-normal opacity-90 mt-1.5">2–3 Minuten · Unverbindlich</span>
-                </button>
-
-              </div>
-
-              <!-- RIGHT: Marco Card - GROSS -->
-              <div class="hidden lg:block">
-                <!-- Marco Image Card -->
-                <div class="relative bg-white rounded-3xl shadow-2xl shadow-gray-300/50 overflow-hidden border border-gray-100">
-                  <img
-                    src="/images/marco_new.png"
-                    alt="Marco Heer"
-                    class="w-[340px] h-[420px] object-cover object-top"
-                  />
-                  <!-- Name Badge -->
-                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pt-16">
-                    <p class="text-white font-bold text-xl">Marco Heer</p>
-                    <p class="text-white/80 text-sm">KI-Coach & Gründer</p>
+                  <span>Jetzt bewerben</span>
+                  <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white transition-transform group-hover:translate-x-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                   </div>
-                </div>
-
-                <!-- Quote Card - UNTER Marco, nicht überlappend -->
-                <div class="mt-6 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl p-5">
-                  <p class="text-base text-gray-700 italic leading-relaxed">
-                    „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
-                  </p>
-                  <p class="text-sm text-swiss-orange font-semibold mt-3">– Coaching Teilnehmer aus 12/2025</p>
-                </div>
-              </div>
-
+                </button>
             </div>
 
-            <!-- Mobile-only Quote (hidden on lg) -->
-            <div class="lg:hidden mt-10 p-5 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl">
-              <p class="text-lg font-medium text-gray-800 italic leading-relaxed">
-                „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
-              </p>
-              <p class="text-sm text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
+            <!-- RIGHT: Visual -->
+            <div class="relative">
+              <div class="relative z-10 glass-card rounded-[2rem] p-2 border border-white/10 overflow-hidden transform rotate-[-2deg] transition-transform hover:rotate-0 duration-500">
+                <img src="/images/marco_new.png" alt="Marco Heer" class="w-full h-auto rounded-[1.8rem] contrast-125 saturate-0 hover:saturate-100 transition-all duration-700" />
+                
+                <!-- Floating Badge -->
+                <div class="absolute bottom-8 left-8 right-8 glass-panel p-6 rounded-xl backdrop-blur-xl border border-white/20">
+                  <p class="text-white font-space text-lg font-bold">"Transformation entsteht durch Tun, nicht durch Reden."</p>
+                  <div class="flex items-center gap-2 mt-3">
+                     <span class="w-2 h-2 rounded-full bg-swiss-orange"></span>
+                     <p class="text-xs text-gray-400 uppercase tracking-widest">Marco Heer · KI Experte</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Background Elements -->
+              <div class="absolute -right-10 -bottom-10 w-full h-full border-2 border-swiss-orange/20 rounded-[2rem] -z-10 translate-x-4 translate-y-4"></div>
             </div>
 
           </div>
-
         </div>
 
       </div>
@@ -232,98 +274,109 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
          SOCIAL PROOF SECTION - PROMINENT (Chef-KI Vorgabe)
          Kommt DIREKT nach Hero, BEVOR irgendwelche Details
          ============================================ -->
-    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-white via-gray-100 to-white overflow-hidden">
+    <!-- ============================================
+         SOCIAL PROOF SECTION
+         ============================================ -->
+    <section class="relative py-20 bg-[#030305] overflow-hidden">
 
-      <!-- Background -->
-      <div class="absolute inset-0">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-swiss-orange/5 to-transparent rounded-full"></div>
-      </div>
+      <!-- Background Glow -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-swiss-orange/5 rounded-full blur-[100px]"></div>
 
-      <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
+      <div class="container mx-auto px-5 sm:px-6 relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-10 sm:mb-14">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">
-            Was Teilnehmer <span class="text-swiss-orange">berichten</span>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-3 text-white font-space">
+            Was Teilnehmer <span class="text-gradient-orange">berichten</span>
           </h2>
-          <p class="text-gray-500 text-sm sm:text-base">Echte Zitate aus laufenden Projekten</p>
+          <p class="text-gray-500 text-sm sm:text-base">Echte Ergebnisse. Keine Fake-Reviews.</p>
         </div>
 
-        <!-- Testimonials Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <!-- Mobile: Horizontal Scroll Snap | Desktop: Grid -->
+        <div class="flex sm:grid sm:grid-cols-2 gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-8 sm:pb-0 -mx-5 px-5 sm:mx-0 sm:px-0 scrollbar-hide">
 
-          <!-- Testimonial 1: Karl -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6">
+          <!-- Testimonial 1 -->
+          <div class="min-w-[85vw] sm:min-w-0 snap-center glass-panel p-6 rounded-2xl border-l-[3px] border-l-swiss-orange relative group hover:bg-white/5 transition-colors">
+            <div class="absolute top-6 right-6 text-swiss-orange/20 group-hover:text-swiss-orange/40 transition-colors">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg>
+            </div>
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-lg font-bold">K</div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-sm font-bold border border-white/10 text-white">K</div>
               <div>
-                <p class="font-bold text-gray-900">Karl</p>
-                <p class="text-xs text-gray-500">Spenglerei, München</p>
+                <p class="font-bold text-white text-sm">Karl</p>
+                <p class="text-[11px] text-gray-500 uppercase tracking-wide">Handwerk</p>
               </div>
             </div>
-            <p class="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-              „Das KI-Potenzial war mir klar. Aber nicht, dass ich damit plötzlich <span class="text-gray-900 font-medium">500% mehr selbst machen kann</span>. Programmieren, Webseiten bauen, statistische Arbeiten. Es ist einfach unglaublich!"
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              „Das KI-Potenzial war mir klar. Aber nicht, dass ich damit plötzlich <span class="text-white font-medium">500% mehr selbst machen kann</span>."
             </p>
             <div class="flex gap-2">
-              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">500% mehr Output</span>
-              <span class="px-2 py-1 bg-gray-50 text-gray-500 text-xs">Handwerk</span>
+              <span class="px-2 py-1 rounded bg-swiss-orange/10 border border-swiss-orange/20 text-swiss-orange text-[10px] uppercase font-bold tracking-wide">500% Output</span>
             </div>
           </div>
 
-          <!-- Testimonial 2: Daniela -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6">
+          <!-- Testimonial 2 -->
+          <div class="min-w-[85vw] sm:min-w-0 snap-center glass-panel p-6 rounded-2xl border-l-[3px] border-l-purple-500 relative group hover:bg-white/5 transition-colors">
+             <div class="absolute top-6 right-6 text-purple-500/20 group-hover:text-purple-500/40 transition-colors">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z"></path></svg>
+            </div>
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-lg font-bold">D</div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-sm font-bold border border-white/10 text-white">D</div>
               <div>
-                <p class="font-bold text-gray-900">Daniela</p>
-                <p class="text-xs text-gray-500">Holzbau-GF, Baden-Württemberg</p>
+                <p class="font-bold text-white text-sm">Daniela</p>
+                <p class="text-[11px] text-gray-500 uppercase tracking-wide">Bauwesen</p>
               </div>
             </div>
-            <p class="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-              „KI greift jetzt auf mein ERP zu, analysiert Daten, <span class="text-gray-900 font-medium">schreibt Rechnungen und Zahlungserinnerungen</span>. Ich wusste nicht, dass die Welt schon so weit ist."
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              „KI analysiert Daten, <span class="text-white font-medium">schreibt Rechnungen</span>. Ich wusste nicht, dass die Welt schon so weit ist."
             </p>
             <div class="flex gap-2">
-              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">ERP-Integration</span>
-              <span class="px-2 py-1 bg-gray-50 text-gray-500 text-xs">Baubranche</span>
+              <span class="px-2 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] uppercase font-bold tracking-wide">ERP Integration</span>
             </div>
           </div>
 
-          <!-- Testimonial 3: Evelyn -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6">
+          <!-- Testimonial 3 -->
+           <div class="min-w-[85vw] sm:min-w-0 snap-center glass-panel p-6 rounded-2xl border-l-[3px] border-l-blue-500 relative group hover:bg-white/5 transition-colors">
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-lg font-bold">E</div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-sm font-bold border border-white/10 text-white">E</div>
               <div>
-                <p class="font-bold text-gray-900">Evelyn</p>
-                <p class="text-xs text-gray-500">Selbstständig, Baden-Württemberg</p>
+                <p class="font-bold text-white text-sm">Evelyn</p>
+                <p class="text-[11px] text-gray-500 uppercase tracking-wide">Selbstständig</p>
               </div>
             </div>
-            <p class="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-              „Ich war vorher ein gefangener Selbstständiger. <span class="text-gray-900 font-medium">So frei habe ich mich schon lang nicht mehr gefühlt</span> – und dabei schaffe ich mehr als vorher."
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              „Ich war vorher ein gefangener Selbstständiger. <span class="text-white font-medium">So frei habe ich mich schon lang nicht mehr gefühlt</span>."
             </p>
             <div class="flex gap-2">
-              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">Mehr Freiheit</span>
-              <span class="px-2 py-1 bg-gray-50 text-gray-500 text-xs">Selbstständig</span>
+              <span class="px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] uppercase font-bold tracking-wide">Freiheit</span>
             </div>
           </div>
 
-          <!-- Testimonial 4: Holger -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6">
+           <!-- Testimonial 4 -->
+           <div class="min-w-[85vw] sm:min-w-0 snap-center glass-panel p-6 rounded-2xl border-l-[3px] border-l-amber-500 relative group hover:bg-white/5 transition-colors">
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-lg font-bold">H</div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-sm font-bold border border-white/10 text-white">H</div>
               <div>
-                <p class="font-bold text-gray-900">Holger</p>
-                <p class="text-xs text-gray-500">Bauunternehmen-GF, NRW</p>
+                <p class="font-bold text-white text-sm">Holger</p>
+                <p class="text-[11px] text-gray-500 uppercase tracking-wide">Bauunternehmer</p>
               </div>
             </div>
-            <p class="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-              „Der Tiefgang ist unfassbar. Ich habe jetzt <span class="text-gray-900 font-medium">vier KI-Integrationen</span> umgesetzt, die meinen Bauingenieuren täglich mindestens 90 Minuten sparen."
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              „Ich habe jetzt <span class="text-white font-medium">vier KI-Integrationen</span> umgesetzt, die meinen Bauingenieuren täglich 90 Minuten sparen."
             </p>
             <div class="flex gap-2">
-              <span class="px-2 py-1 bg-swiss-orange/10 text-swiss-orange text-xs font-medium">90 Min/Tag gespart</span>
-              <span class="px-2 py-1 bg-gray-50 text-gray-500 text-xs">Baubranche</span>
+              <span class="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] uppercase font-bold tracking-wide">90 Min/Tag</span>
             </div>
           </div>
 
+        </div>
+        
+        <!-- Mobile Swipe Hint -->
+        <div class="sm:hidden flex justify-center mt-4 gap-1">
+          <div class="w-1.5 h-1.5 rounded-full bg-swiss-orange"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-gray-700"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-gray-700"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-gray-700"></div>
         </div>
 
       </div>
@@ -333,91 +386,88 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
     <!-- ============================================
          TRANSFORMATION SECTION - Was du erreichen wirst
          ============================================ -->
-    <section class="relative py-16 sm:py-24 bg-white overflow-hidden">
+    <!-- ============================================
+         TRANSFORMATION SECTION
+         ============================================ -->
+    <section class="relative py-24 bg-[#030305] overflow-hidden">
+      
+      <!-- Gradient Line -->
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
-      <div class="absolute inset-0">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-swiss-orange/5 to-transparent rounded-full"></div>
-      </div>
-
-      <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
+      <div class="container mx-auto px-5 sm:px-6 max-w-6xl relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16">
-          <span class="inline-block px-3 py-1.5 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-4">
+        <div class="text-center mb-16">
+          <span class="inline-block px-3 py-1.5 rounded-full bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-[10px] tracking-widest uppercase mb-4">
             Die Transformation
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">
-            Was du erreichst
+          <h2 class="text-3xl sm:text-5xl font-bold mb-4 text-white font-space">
+            Was du <span class="text-gradient-orange">erreichst</span>
           </h2>
-          <p class="text-gray-500 text-sm sm:text-base max-w-xl mx-auto">
-            Keine Theorie. Keine Spielerei. Echte Ergebnisse in deinem Unternehmen.
+          <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+            Keine Theorie. Echte Ergebnisse für dein Business.
           </p>
         </div>
 
-        <!-- Transformation Points -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
+        <!-- Transformation Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          <div class="flex gap-4">
-            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-lg mb-1">80% weniger Routinearbeit</h3>
-              <p class="text-gray-500 text-sm">KI übernimmt wiederkehrende Aufgaben – du fokussierst auf Wertschöpfung.</p>
+          <!-- Card 1 -->
+          <div class="group relative glass-panel p-8 rounded-3xl hover:border-swiss-orange/50 transition-colors duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-swiss-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div class="relative z-10 flex gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500 group-hover:border-swiss-orange/50 group-hover:shadow-[0_0_20px_rgba(255,79,0,0.2)]">
+                <svg class="w-7 h-7 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2 text-white font-space">80% weniger Routine</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">KI übernimmt deine administrativen und wiederkehrenden Aufgaben. Du gewinnst Zeit für Strategie.</p>
+              </div>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-lg mb-1">Unabhängigkeit von Agenturen</h3>
-              <p class="text-gray-500 text-sm">Du baust und wartest deine Automatisierungen selbst – keine laufenden Kosten.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-lg mb-1">Integration in deine Systeme</h3>
-              <p class="text-gray-500 text-sm">ERP, CRM, E-Mail, Buchhaltung – KI greift auf deine bestehenden Tools zu.</p>
+          <!-- Card 2 -->
+          <div class="group relative glass-panel p-8 rounded-3xl hover:border-blue-500/50 transition-colors duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div class="relative z-10 flex gap-6">
+               <div class="w-14 h-14 rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500 group-hover:border-blue-500/50 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2 text-white font-space">Unabhängigkeit</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Du baust und wartest deine Automatisierungen selbst. Keine teuren Agenturen mehr nötig.</p>
+              </div>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 flex items-center justify-center">
-              <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-lg mb-1">Zeitgewinn ab Woche 1</h3>
-              <p class="text-gray-500 text-sm">Erste Automatisierungen stehen nach Stunden, nicht Monaten.</p>
+          <!-- Card 3 -->
+          <div class="group relative glass-panel p-8 rounded-3xl hover:border-purple-500/50 transition-colors duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div class="relative z-10 flex gap-6">
+               <div class="w-14 h-14 rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500 group-hover:border-purple-500/50 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]">
+                <svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2 text-white font-space">Vollständige Integration</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">KI greift auf deine bestehenden Tools zu (ERP, CRM, Mail). Kein Systemwechsel nötig.</p>
+              </div>
             </div>
           </div>
 
-        </div>
+           <!-- Card 4 -->
+          <div class="group relative glass-panel p-8 rounded-3xl hover:border-green-500/50 transition-colors duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div class="relative z-10 flex gap-6">
+               <div class="w-14 h-14 rounded-2xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500 group-hover:border-green-500/50 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]">
+                <svg class="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-2 text-white font-space">Zeitgewinn sofort</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Erste Ergebnisse nicht erst nach Monaten, sondern nach den ersten Live-Sessions.</p>
+              </div>
+            </div>
+          </div>
 
-        <!-- CTA -->
-        <div class="text-center">
-          <button
-            id="open-modal-transformation"
-            class="inline-flex items-center gap-2 bg-gray-50 border border-swiss-orange/50 text-gray-900 font-semibold py-3 px-6 text-sm hover:bg-swiss-orange/10 transition-all duration-300"
-          >
-            <span>Passt das zu mir?</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
         </div>
 
       </div>
@@ -425,62 +475,63 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
 
     <!-- ============================================
-         SO LÄUFT ES AB - Der Prozess
+         PROCESS SECTION - TIMELINE
          ============================================ -->
-    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
+    <section class="relative py-24 bg-[#050507] overflow-hidden">
+      
+      <!-- Gradient Line -->
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
 
       <div class="container mx-auto px-5 sm:px-6 max-w-4xl relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16">
-          <span class="inline-block px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-500 text-xs tracking-widest uppercase mb-4">
-            Der Ablauf
-          </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">
-            So funktioniert es
+        <div class="text-center mb-20">
+          <h2 class="text-3xl sm:text-5xl font-bold mb-4 text-white font-space">
+            So läuft es ab
           </h2>
+          <p class="text-gray-500">Dein Weg zur KI-Kompetenz</p>
         </div>
 
-        <!-- Process Steps -->
-        <div class="space-y-6 sm:space-y-8">
-
-          <div class="flex gap-4 sm:gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">1</div>
+        <!-- Timeline Steps -->
+        <div class="relative space-y-12 sm:space-y-20 before:absolute before:inset-0 before:left-[19px] sm:before:left-1/2 before:w-[2px] before:-translate-x-1/2 before:bg-gradient-to-b before:from-swiss-orange before:via-gray-800 before:to-gray-900 before:h-full">
+          
+          <!-- Step 1 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 group">
+            <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 sm:pr-8">
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-swiss-orange transition-colors">1. Kennenlernen (15 Min.)</h3>
+              <p class="text-gray-400 text-sm">Prüfung ob es passt. Wenn ja, besprechen wir den Fahrplan. Unverbindlich.</p>
             </div>
-            <div class="pt-1">
-              <h3 class="font-bold text-lg mb-1">Kurzes Kennenlernen (15 Min.)</h3>
-              <p class="text-gray-500 text-sm">Wir prüfen gemeinsam, ob das Programm zu dir und deinem Unternehmen passt – wenn es passt, besprechen wir die nächsten Schritte.</p>
+            <div class="absolute left-0 sm:left-1/2 w-10 h-10 -translate-x-1 sm:-translate-x-1/2 rounded-full bg-[#050507] border-4 border-swiss-orange z-10 flex items-center justify-center order-1 text-white font-bold text-xs shadow-[0_0_20px_rgba(255,79,0,0.4)]">1</div>
+            <div class="sm:w-1/2 order-3 sm:pl-8"></div>
+          </div>
+
+           <!-- Step 2 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 group">
+            <div class="sm:w-1/2 order-3 sm:order-1"></div>
+            <div class="absolute left-0 sm:left-1/2 w-10 h-10 -translate-x-1 sm:-translate-x-1/2 rounded-full bg-[#050507] border-4 border-gray-800 group-hover:border-swiss-orange transition-colors z-10 flex items-center justify-center order-1 text-gray-500 group-hover:text-white font-bold text-xs">2</div>
+            <div class="sm:w-1/2 order-2 sm:pl-8">
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-swiss-orange transition-colors">2. Live-Sessions (Weekly)</h3>
+              <p class="text-gray-400 text-sm">Wöchentlich 2 Stunden Deep Dive. Echte Projekte, kein Bullshit-Bingo.</p>
             </div>
           </div>
 
-          <div class="flex gap-4 sm:gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">2</div>
+           <!-- Step 3 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 group">
+            <div class="sm:w-1/2 sm:text-right order-2 sm:order-1 sm:pr-8">
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-swiss-orange transition-colors">3. 1:1 Begleitung</h3>
+              <p class="text-gray-400 text-sm">Persönlicher Support für deine spezifischen Unternehmens-Herausforderungen.</p>
             </div>
-            <div class="pt-1">
-              <h3 class="font-bold text-lg mb-1">Wöchentliche Live-Sessions (2h)</h3>
-              <p class="text-gray-500 text-sm">Echte Interaktion, echte Projekte, echte Fragen. Von den Grundlagen bis zu komplexen Automatisierungen.</p>
-            </div>
+            <div class="absolute left-0 sm:left-1/2 w-10 h-10 -translate-x-1 sm:-translate-x-1/2 rounded-full bg-[#050507] border-4 border-gray-800 group-hover:border-swiss-orange transition-colors z-10 flex items-center justify-center order-1 text-gray-500 group-hover:text-white font-bold text-xs">3</div>
+            <div class="sm:w-1/2 order-3 sm:pl-8"></div>
           </div>
 
-          <div class="flex gap-4 sm:gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">3</div>
-            </div>
-            <div class="pt-1">
-              <h3 class="font-bold text-lg mb-1">Persönliche 1:1-Begleitung</h3>
-              <p class="text-gray-500 text-sm">Individuelle Unterstützung bei der Umsetzung in deinem konkreten Anwendungsfall.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4 sm:gap-6">
-            <div class="flex-shrink-0">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black flex items-center justify-center">4</div>
-            </div>
-            <div class="pt-1">
-              <h3 class="font-bold text-lg mb-1">Deine Automatisierungen laufen</h3>
-              <p class="text-gray-500 text-sm">Am Ende hast du funktionierende KI-Workflows in deinem Unternehmen – und das Wissen, sie weiterzuentwickeln.</p>
+           <!-- Step 4 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 group">
+             <div class="sm:w-1/2 order-3 sm:order-1"></div>
+            <div class="absolute left-0 sm:left-1/2 w-10 h-10 -translate-x-1 sm:-translate-x-1/2 rounded-full bg-[#050507] border-4 border-gray-800 group-hover:border-swiss-orange transition-colors z-10 flex items-center justify-center order-1 text-gray-500 group-hover:text-white font-bold text-xs">4</div>
+            <div class="sm:w-1/2 order-2 sm:pl-8">
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-swiss-orange transition-colors">4. Ergebnis</h3>
+              <p class="text-gray-400 text-sm">Dauerhafte Automatisierung und das Wissen, es selbst zu erweitern.</p>
             </div>
           </div>
 
@@ -991,9 +1042,41 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
          ============================================ -->
     <script>
       // ============================================
-      // SINGLE-PAGE FORM - No A/B Test, No Multi-Step
+      // FORM A/B TEST - Feature Flag
       // ============================================
-      const FORM_VERSION = 'v3_single_page';
+      function getFormVariant(): 'v1' | 'v2_short' {
+        const STORAGE_KEY = 'form_variant';
+        let variant = localStorage.getItem(STORAGE_KEY) as 'v1' | 'v2_short' | null;
+
+        if (!variant) {
+          // 50/50 split based on random, persist for stable experience
+          variant = Math.random() < 0.5 ? 'v1' : 'v2_short';
+          localStorage.setItem(STORAGE_KEY, variant);
+        }
+
+        return variant;
+      }
+
+      const FORM_VARIANT = getFormVariant();
+      console.log('[A/B Test] Form variant:', FORM_VARIANT);
+
+      // Apply variant-specific UI changes on load
+      document.addEventListener('DOMContentLoaded', () => {
+        if (FORM_VARIANT === 'v2_short') {
+          // Hide v1-only elements, show v2-only elements
+          document.querySelectorAll('[data-form-v1-only]').forEach(el => (el as HTMLElement).style.display = 'none');
+          document.querySelectorAll('[data-form-v2-only]').forEach(el => (el as HTMLElement).style.display = '');
+
+          // Update progress bar for 2 steps
+          const stepIndicator3 = document.getElementById('step-indicator-3');
+          const stepLine2 = document.getElementById('step-line-2');
+          if (stepIndicator3) stepIndicator3.style.display = 'none';
+          if (stepLine2) stepLine2.style.display = 'none';
+        } else {
+          // Hide v2-only elements
+          document.querySelectorAll('[data-form-v2-only]').forEach(el => (el as HTMLElement).style.display = 'none');
+        }
+      });
 
       // Modal functionality
       const modal = document.getElementById('application-modal');
@@ -1057,7 +1140,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               body: JSON.stringify({
                 action,
                 session_id: this.getSessionId(),
-                form_variant: FORM_VERSION,
+                form_variant: FORM_VARIANT,
                 ...extraData,
               }),
             });
@@ -1152,21 +1235,41 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       });
 
       // ============================================
-      // SINGLE-PAGE FORM - Elements
+      // MULTI-STEP FORM WIZARD
       // ============================================
+      let currentStep = 1;
+      // V2 Short: Only 1 step (goal + contact combined), then calendar
+      const totalSteps = FORM_VARIANT === 'v2_short' ? 1 : 3;
+      const stepLabels = FORM_VARIANT === 'v2_short' ? ['Bewerbung'] : ['Dein Ziel', 'Kontaktdaten', 'Details'];
+      const stepNames = FORM_VARIANT === 'v2_short' ? ['application'] : ['goal', 'contact', 'details'];
+
       const form = document.getElementById('application-form') as HTMLFormElement;
-      const submitBtn = document.getElementById('submit-btn');
-      const submitBtnText = document.getElementById('submit-btn-text');
-      const submitBtnArrow = document.getElementById('submit-btn-arrow');
+      const nextStepBtn = document.getElementById('next-step-btn');
+      const prevStepBtn = document.getElementById('prev-step-btn');
+      const nextBtnText = document.getElementById('next-btn-text');
+      const nextBtnArrow = document.getElementById('next-btn-arrow');
       const submitLoading = document.getElementById('submit-loading');
+      const currentStepNum = document.getElementById('current-step-num');
+      const stepLabel = document.getElementById('step-label');
       const phoneInput = document.getElementById('phone-input') as HTMLInputElement;
+      const phoneError = document.getElementById('phone-error');
+
+      const formSteps = [
+        document.getElementById('form-step-1'),
+        document.getElementById('form-step-2'),
+        document.getElementById('form-step-3')
+      ];
 
       // ============================================
-      // FORM TRACKING (Single-Page Version)
+      // GRANULAR FORM TRACKING
       // ============================================
       const formTracking = {
         formOpenTime: 0,
+        stepEnterTime: 0,
+        stepTimes: { 1: 0, 2: 0, 3: 0 } as Record<number, number>,
         filledFields: [] as string[],
+        maxStepReached: 0,
+        stepsCompleted: { 1: false, 2: false, 3: false } as Record<number, boolean>,
         isFormOpen: false,
 
         getSessionInfo() {
@@ -1186,7 +1289,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               body: JSON.stringify({
                 ...sessionInfo,
                 ...eventData,
-                form_variant: FORM_VERSION,
+                form_variant: FORM_VARIANT,
                 time_since_form_open_ms: this.formOpenTime > 0 ? Date.now() - this.formOpenTime : 0,
               })
             });
@@ -1197,18 +1300,50 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
         onFormOpen() {
           this.formOpenTime = Date.now();
+          this.stepEnterTime = Date.now();
           this.isFormOpen = true;
-          this.sendEvent({ event_type: 'step_enter', step_number: 1, step_name: 'application', time_on_current_step_ms: 0 });
+          this.maxStepReached = 1;
+          this.sendEvent({ event_type: 'step_enter', step_number: 1, step_name: stepNames[0], time_on_current_step_ms: 0 });
+        },
+
+        onStepEnter(step: number) {
+          if (this.stepEnterTime > 0 && currentStep !== step) {
+            const timeOnPrevStep = Date.now() - this.stepEnterTime;
+            this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnPrevStep;
+            this.sendEvent({ event_type: 'step_exit', step_number: currentStep, step_name: stepNames[currentStep - 1], time_on_current_step_ms: timeOnPrevStep });
+          }
+          this.stepEnterTime = Date.now();
+          if (step > this.maxStepReached) this.maxStepReached = step;
+          this.sendEvent({ event_type: 'step_enter', step_number: step, step_name: stepNames[step - 1], time_on_current_step_ms: 0 });
+        },
+
+        onStepComplete(step: number) {
+          const timeOnStep = Date.now() - this.stepEnterTime;
+          this.stepTimes[step] = (this.stepTimes[step] || 0) + timeOnStep;
+          this.stepsCompleted[step] = true;
+          this.sendEvent({
+            event_type: 'step_complete',
+            step_number: step,
+            step_name: stepNames[step - 1],
+            time_on_current_step_ms: timeOnStep,
+            update_session_summary: true,
+            form_max_step_reached: this.maxStepReached,
+            form_step_1_completed: this.stepsCompleted[1],
+            form_step_2_completed: this.stepsCompleted[2],
+            form_step_3_completed: this.stepsCompleted[3],
+            form_total_time_ms: Date.now() - this.formOpenTime,
+            form_fields_filled: this.filledFields,
+          });
         },
 
         onFieldFocus(fieldName: string, fieldType: string) {
           this.sendEvent({
             event_type: 'field_focus',
-            step_number: 1,
-            step_name: 'application',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
             field_name: fieldName,
             field_type: fieldType,
-            time_on_current_step_ms: Date.now() - this.formOpenTime,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
           });
         },
 
@@ -1219,12 +1354,12 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           }
           this.sendEvent({
             event_type: 'field_blur',
-            step_number: 1,
-            step_name: 'application',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
             field_name: fieldName,
             field_type: fieldType,
             field_filled: isFilled,
-            time_on_current_step_ms: Date.now() - this.formOpenTime,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
           });
         },
 
@@ -1234,42 +1369,46 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           }
           this.sendEvent({
             event_type: 'field_change',
-            step_number: 1,
-            step_name: 'application',
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
             field_name: fieldName,
             field_type: fieldType,
             field_filled: true,
-            time_on_current_step_ms: Date.now() - this.formOpenTime,
+            time_on_current_step_ms: Date.now() - this.stepEnterTime,
           });
         },
 
         onFormAbandon() {
           if (!this.isFormOpen) return;
-          const timeOnForm = Date.now() - this.formOpenTime;
+          const timeOnCurrentStep = Date.now() - this.stepEnterTime;
+          this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnCurrentStep;
           this.sendEvent({
             event_type: 'form_abandon',
-            step_number: 1,
-            step_name: 'application',
-            time_on_current_step_ms: timeOnForm,
+            step_number: currentStep,
+            step_name: stepNames[currentStep - 1],
+            time_on_current_step_ms: timeOnCurrentStep,
             update_session_summary: true,
-            form_max_step_reached: 1,
-            form_abandonment_step: 1,
-            form_total_time_ms: timeOnForm,
+            form_max_step_reached: this.maxStepReached,
+            form_abandonment_step: currentStep,
+            form_total_time_ms: Date.now() - this.formOpenTime,
             form_fields_filled: this.filledFields,
           });
           this.reset();
         },
 
         onFormSubmit() {
-          const timeOnForm = Date.now() - this.formOpenTime;
+          const timeOnCurrentStep = Date.now() - this.stepEnterTime;
+          this.stepTimes[currentStep] = (this.stepTimes[currentStep] || 0) + timeOnCurrentStep;
+          this.stepsCompleted[3] = true;
           this.sendEvent({
             event_type: 'form_submit',
-            step_number: 1,
-            step_name: 'application',
-            time_on_current_step_ms: timeOnForm,
+            step_number: 3,
+            step_name: stepNames[2],
+            time_on_current_step_ms: timeOnCurrentStep,
             update_session_summary: true,
-            form_max_step_reached: 1,
+            form_max_step_reached: 3,
             form_step_1_completed: true,
+            form_step_2_completed: true,
             form_step_3_completed: true,
             form_total_time_ms: Date.now() - this.formOpenTime,
             form_fields_filled: this.filledFields,
@@ -1279,20 +1418,26 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
         reset() {
           this.formOpenTime = 0;
+          this.stepEnterTime = 0;
+          this.stepTimes = { 1: 0, 2: 0, 3: 0 };
           this.filledFields = [];
+          this.maxStepReached = 0;
+          this.stepsCompleted = { 1: false, 2: false, 3: false };
           this.isFormOpen = false;
         }
       };
 
-      // Attach field listeners for tracking
+      // Attach field listeners
       function attachFieldListeners() {
-        // Checkbox inputs (q_situation)
-        const checkboxInputs = form.querySelectorAll('input[type="checkbox"]');
-        checkboxInputs.forEach((input) => {
+        // Radio inputs
+        const radioInputs = form.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach((input) => {
           const el = input as HTMLInputElement;
           el.addEventListener('change', () => {
-            forensicTracking.onFirstInteraction('selection');
-            formTracking.onFieldChange(el.name, 'checkbox', el.checked ? el.value : '');
+            if (el.checked) {
+              forensicTracking.onFirstInteraction('selection');
+              formTracking.onFieldChange(el.name, 'radio', el.value);
+            }
           });
         });
 
@@ -1315,38 +1460,141 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       }
       attachFieldListeners();
 
-      // Validate the single-page form
-      function validateForm(): boolean {
-        const firstName = (form.querySelector('input[name="firstName"]') as HTMLInputElement)?.value?.trim();
-        const lastName = (form.querySelector('input[name="lastName"]') as HTMLInputElement)?.value?.trim();
-        const email = (form.querySelector('input[name="email"]') as HTMLInputElement)?.value?.trim();
-        const phone = phoneInput?.value?.trim();
+      function validateStep(step: number): boolean {
+        // V2 Short: Single step with goal + email required
+        if (FORM_VARIANT === 'v2_short' && step === 1) {
+          const goal = form.querySelector('input[name="q_goal"]:checked');
+          const email = (form.querySelector('input[name="email_v2"]') as HTMLInputElement)?.value?.trim();
+          const phone = (form.querySelector('input[name="phone_v2"]') as HTMLInputElement)?.value?.trim();
 
-        // Email validation (tolerant)
-        const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          // Email validation (tolerant)
+          const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-        // Phone validation
-        const phoneDigits = phone?.replace(/\D/g, '') || '';
-        const phoneValid = phoneDigits.length >= 6;
+          // Phone validation only if filled
+          if (phone) {
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 6) {
+              formTracking.sendEvent({
+                event_type: 'field_validation_error',
+                step_number: 1,
+                validation_error_field: 'phone_v2',
+                validation_error_type: 'format',
+                validation_error_message: 'Phone too short'
+              });
+              return false;
+            }
+          }
 
-        // Track validation errors
-        if (!firstName) {
-          formTracking.sendEvent({ event_type: 'field_validation_error', step_number: 1, validation_error_field: 'firstName', validation_error_type: 'required', validation_error_message: 'First name required' });
-        }
-        if (!lastName) {
-          formTracking.sendEvent({ event_type: 'field_validation_error', step_number: 1, validation_error_field: 'lastName', validation_error_type: 'required', validation_error_message: 'Last name required' });
-        }
-        if (!emailValid) {
-          formTracking.sendEvent({ event_type: 'field_validation_error', step_number: 1, validation_error_field: 'email', validation_error_type: email ? 'format' : 'required', validation_error_message: email ? 'Invalid email format' : 'Email required' });
-        }
-        if (!phoneValid) {
-          formTracking.sendEvent({ event_type: 'field_validation_error', step_number: 1, validation_error_field: 'phone', validation_error_type: phone ? 'format' : 'required', validation_error_message: phone ? 'Phone too short' : 'Phone required' });
+          if (!goal) {
+            formTracking.sendEvent({
+              event_type: 'field_validation_error',
+              step_number: 1,
+              validation_error_field: 'q_goal',
+              validation_error_type: 'required',
+              validation_error_message: 'Goal not selected'
+            });
+          }
+          if (!emailValid) {
+            formTracking.sendEvent({
+              event_type: 'field_validation_error',
+              step_number: 1,
+              validation_error_field: 'email_v2',
+              validation_error_type: email ? 'format' : 'required',
+              validation_error_message: email ? 'Invalid email format' : 'Email required'
+            });
+          }
+
+          return !!(goal && emailValid);
         }
 
-        return !!(firstName && lastName && emailValid && phoneValid);
+        // V1: Original step validation
+        if (step === 1) {
+          const goal = form.querySelector('input[name="q_goal"]:checked');
+          const time = form.querySelector('input[name="q_time_commitment"]:checked');
+          return !!(goal && time);
+        } else if (step === 2) {
+          const firstName = (form.querySelector('input[name="firstName"]') as HTMLInputElement)?.value?.trim();
+          const lastName = (form.querySelector('input[name="lastName"]') as HTMLInputElement)?.value?.trim();
+          const email = (form.querySelector('input[name="email"]') as HTMLInputElement)?.value?.trim();
+          const phone = phoneInput?.value?.trim();
+          const emailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          const phoneDigits = phone?.replace(/\D/g, '') || '';
+          const phoneValid = phoneDigits.length >= 6;
+          if (!phoneValid && phone) phoneError?.classList.remove('hidden');
+          else phoneError?.classList.add('hidden');
+          return !!(firstName && lastName && emailValid && phoneValid);
+        }
+        return true;
       }
 
-      // Phone input formatting
+      function updateStepUI() {
+        if (currentStepNum) currentStepNum.textContent = String(currentStep);
+        if (stepLabel) stepLabel.textContent = stepLabels[currentStep - 1];
+        const stepLabelMobile = document.getElementById('step-label-mobile');
+        if (stepLabelMobile) stepLabelMobile.textContent = stepLabels[currentStep - 1];
+
+        for (let i = 1; i <= totalSteps; i++) {
+          const indicator = document.getElementById(`step-indicator-${i}`);
+          if (indicator) {
+            if (i < currentStep) {
+              indicator.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-sm font-bold text-gray-900';
+              indicator.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>';
+            } else if (i === currentStep) {
+              indicator.className = 'w-8 h-8 rounded-full bg-swiss-orange flex items-center justify-center text-sm font-bold text-gray-900 shadow-lg shadow-swiss-orange/30';
+              indicator.innerHTML = String(i);
+            } else {
+              indicator.className = 'w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-500';
+              indicator.innerHTML = String(i);
+            }
+          }
+          if (i < totalSteps) {
+            const line = document.getElementById(`step-line-${i}`);
+            if (line) line.className = i < currentStep ? 'w-8 sm:w-12 h-0.5 bg-green-500 transition-colors' : 'w-8 sm:w-12 h-0.5 bg-gray-100 transition-colors';
+          }
+        }
+
+        formSteps.forEach((stepEl, index) => {
+          if (stepEl) stepEl.classList.toggle('hidden', index + 1 !== currentStep);
+        });
+
+        if (prevStepBtn) prevStepBtn.classList.toggle('hidden', currentStep === 1);
+
+        if (nextBtnText && nextBtnArrow) {
+          if (currentStep === totalSteps) {
+            nextBtnText.textContent = 'Bewerbung absenden';
+            nextBtnArrow.classList.add('hidden');
+          } else {
+            nextBtnText.textContent = 'Weiter';
+            nextBtnArrow.classList.remove('hidden');
+          }
+        }
+      }
+
+      function goToNextStep() {
+        if (!validateStep(currentStep)) {
+          nextStepBtn?.classList.add('animate-shake');
+          setTimeout(() => nextStepBtn?.classList.remove('animate-shake'), 500);
+          return;
+        }
+        formTracking.onStepComplete(currentStep);
+        if (currentStep < totalSteps) {
+          const nextStep = currentStep + 1;
+          formTracking.onStepEnter(nextStep);
+          currentStep = nextStep;
+          updateStepUI();
+        } else {
+          submitForm();
+        }
+      }
+
+      function goToPrevStep() {
+        if (currentStep > 1) {
+          formTracking.onStepEnter(currentStep - 1);
+          currentStep--;
+          updateStepUI();
+        }
+      }
+
       if (phoneInput) {
         phoneInput.addEventListener('input', (e) => {
           let value = (e.target as HTMLInputElement).value;
@@ -1354,20 +1602,27 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           value = value.replace(/[^\d\s\-\/]/g, '');
           if (value.replace(/[\s\-\/]/g, '').length > 15) value = value.slice(0, -1);
           (e.target as HTMLInputElement).value = value;
+          phoneError?.classList.add('hidden');
         });
       }
 
-      // Reset form and track abandonment
+      nextStepBtn?.addEventListener('click', goToNextStep);
+      prevStepBtn?.addEventListener('click', goToPrevStep);
+
       function resetFormAndTrack() {
-        if (!form.classList.contains('hidden')) {
+        if (currentStep > 0 && !form.classList.contains('hidden')) {
           formTracking.onFormAbandon();
         }
+        currentStep = 1;
+        updateStepUI();
         form.reset();
         form.classList.remove('hidden');
       }
 
       closeModal?.addEventListener('click', resetFormAndTrack);
       modalBackdrop?.addEventListener('click', resetFormAndTrack);
+
+      updateStepUI();
 
       // ============================================
       // CALENDAR BOOKING
@@ -1529,46 +1784,60 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       retryCalendar?.addEventListener('click', loadAvailableSlots);
 
       async function submitForm() {
-        // Validate first
-        if (!validateForm()) {
-          submitBtn?.classList.add('animate-shake');
-          setTimeout(() => submitBtn?.classList.remove('animate-shake'), 500);
-          return;
-        }
-
         formTracking.onFormSubmit();
-        if (submitBtn) submitBtn.setAttribute('disabled', 'true');
-        if (submitBtnText) submitBtnText.classList.add('hidden');
-        if (submitBtnArrow) submitBtnArrow.classList.add('hidden');
+        if (nextStepBtn) nextStepBtn.setAttribute('disabled', 'true');
+        if (nextBtnText) nextBtnText.classList.add('hidden');
+        if (nextBtnArrow) nextBtnArrow.classList.add('hidden');
         submitLoading?.classList.remove('hidden');
 
         const formData = new FormData(form);
+        let data: Record<string, any>;
 
-        // Collect q_situation checkboxes as array
-        const situationCheckboxes = form.querySelectorAll('input[name="q_situation"]:checked');
-        const situationValues: string[] = [];
-        situationCheckboxes.forEach((cb) => {
-          situationValues.push((cb as HTMLInputElement).value);
-        });
+        if (FORM_VARIANT === 'v2_short') {
+          // V2 Short: Minimal fields, nulls for optional data
+          let phone = formData.get('phone_v2') as string;
+          if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
 
-        // Format phone with +49 prefix
-        let phone = formData.get('phone') as string;
-        if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
+          data = {
+            firstName: formData.get('firstName_v2') || null,
+            lastName: null,
+            email: formData.get('email_v2'),
+            phone: phone || null,
+            program: 'gruppen_coaching',
+            questionnaireAnswers: {
+              goal: formData.get('q_goal'),
+              time_commitment: null,
+              knowledge_level: null
+            },
+            motivation: null,
+            source: 'lp_coaching_v2_short',
+            formVersion: 'v2_short',
+            form_variant: FORM_VARIANT
+          };
+        } else {
+          // V1: Original full form
+          const questionnaireAnswers = {
+            goal: formData.get('q_goal'),
+            time_commitment: formData.get('q_time_commitment'),
+            knowledge_level: formData.get('q_knowledge_level') || 'anfaenger'
+          };
 
-        const data = {
-          firstName: formData.get('firstName'),
-          lastName: formData.get('lastName'),
-          email: formData.get('email'),
-          phone: phone,
-          program: 'gruppen_coaching',
-          questionnaireAnswers: {
-            situation: situationValues,
-          },
-          motivation: null,
-          source: 'lp_coaching_v3',
-          formVersion: 'v3_single_page',
-          form_variant: FORM_VERSION
-        };
+          let phone = formData.get('phone') as string;
+          if (phone && !phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
+
+          data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: phone,
+            program: 'gruppen_coaching',
+            questionnaireAnswers,
+            motivation: formData.get('motivation') || null,
+            source: 'lp_coaching_v2',
+            formVersion: 'v2_multistep',
+            form_variant: FORM_VARIANT
+          };
+        }
 
         try {
           const sessionId = sessionStorage.getItem('meta_session_id') || sessionStorage.getItem('lp_session_id');
@@ -1589,23 +1858,13 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           }
         } catch (error) {
           alert('Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.');
-          if (submitBtn) submitBtn.removeAttribute('disabled');
-          if (submitBtnText) submitBtnText.classList.remove('hidden');
+          if (nextStepBtn) nextStepBtn.removeAttribute('disabled');
+          if (nextBtnText) nextBtnText.classList.remove('hidden');
           submitLoading?.classList.add('hidden');
         }
       }
 
-      // Form submission handler
-      form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        submitForm();
-      });
-
-      // Also allow direct button click
-      submitBtn?.addEventListener('click', (e) => {
-        e.preventDefault();
-        submitForm();
-      });
+      form?.addEventListener('submit', (e) => e.preventDefault());
     </script>
 
 

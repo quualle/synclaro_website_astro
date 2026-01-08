@@ -56,102 +56,85 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       <div class="absolute top-1/3 right-0 w-[400px] h-[400px] bg-gradient-radial from-swiss-orange/15 via-swiss-orange/5 to-transparent rounded-full blur-3xl translate-x-1/2"></div>
 
       <!-- Main Content -->
-      <div class="relative z-10 container mx-auto px-5 py-12 max-w-3xl">
+      <div class="relative z-10 container mx-auto px-5 py-8 sm:py-12">
 
-        <!-- MOBILE HERO -->
-        <div class="sm:hidden text-left">
+        <!-- MOBILE HERO - Visuelle Hierarchie durch verschiedene Backgrounds -->
+        <div class="sm:hidden text-left max-w-lg mx-auto">
 
-          <!-- HEADLINE -->
-          <h1 class="text-[1.5rem] font-black leading-[1.15] tracking-tight mb-3 text-gray-900">
-            Eine Ausbildung, die dir verständlich erklärt, wie man KI angeht.
+          <!-- HEADLINE - Groß und dominant -->
+          <h1 class="text-[1.75rem] font-black leading-[1.12] tracking-tight mb-6 text-gray-900">
+            Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI angeht.
           </h1>
 
-          <!-- Teilnehmer-Zitat -->
-          <p class="text-[1rem] font-bold leading-tight mb-4">
-            <span class="bg-gradient-to-r from-swiss-orange to-orange-500 bg-clip-text text-transparent">„Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"</span>
-            <span class="text-[11px] text-gray-500 font-normal block mt-1">– Coaching Teilnehmer aus 12/2025</span>
-          </p>
-
-          <!-- Marco + Preheader -->
-          <div class="flex items-center gap-3 mb-5 p-3 bg-gray-50 rounded-lg border border-gray-200">
-            <img src="/images/marco_new.png" alt="Marco Heer" class="w-14 h-14 rounded-lg object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
-            <p class="text-[13px] text-gray-600 leading-snug">
-              Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
+          <!-- Quote Card - Eigene visuelle Einheit -->
+          <div class="mb-6 p-4 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl">
+            <p class="text-[15px] font-medium text-gray-800 italic leading-relaxed">
+              „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
             </p>
+            <p class="text-[12px] text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
           </div>
 
-          <!-- Fragen-Block -->
-          <div class="mb-5 space-y-2">
-            <p class="text-[14px] text-gray-700 flex items-start gap-2">
-              <span class="text-swiss-orange mt-0.5">?</span>
-              Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
-            </p>
-            <p class="text-[14px] text-gray-700 flex items-start gap-2">
-              <span class="text-swiss-orange mt-0.5">?</span>
-              Was kann man mit KI eigentlich machen?
-            </p>
-            <p class="text-[14px] text-gray-700 flex items-start gap-2">
-              <span class="text-swiss-orange mt-0.5">?</span>
-              Welche Tools kann ich dafür nutzen?
-            </p>
+          <!-- Marco Strip - Prominent -->
+          <div class="flex items-center gap-4 mb-6 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+            <img src="/images/marco_new.png" alt="Marco Heer" class="w-16 h-16 rounded-xl object-cover object-top border-2 border-swiss-orange/30 flex-shrink-0" />
+            <div>
+              <p class="text-sm font-bold text-gray-900 mb-0.5">Marco Heer</p>
+              <p class="text-[13px] text-gray-600 leading-snug">
+                Für alle, die KI beginnen wollen – aber nicht wissen, wo sie anfangen sollen.
+              </p>
+            </div>
           </div>
 
-          <!-- Benefit-Block -->
-          <div class="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-            <p class="text-[13px] text-swiss-orange font-semibold mb-3">
-              Ohne Vorkenntnisse. Wir starten, wo du stehst.
-            </p>
-            <p class="text-[12px] text-gray-500 mb-2">Nach meinem Coaching kannst du vieles. Nur einige Beispiele:</p>
-            <ul class="text-[13px] text-gray-700 space-y-1.5">
-              <li class="flex items-start gap-2">
-                <span class="text-swiss-orange">+</span>
-                Eigene Websites bauen
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-swiss-orange">+</span>
-                Deine E-Mails automatisch verwalten lassen
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-swiss-orange">+</span>
-                Sehr gute Recherche führen und Entscheidungen treffen
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-swiss-orange">+</span>
-                Eigene Apps & Anwendungen programmieren
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-swiss-orange">+</span>
-                So, so viel mehr...
-              </li>
-            </ul>
+          <!-- Fragen als Mini-Cards -->
+          <div class="mb-6 space-y-2.5">
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
+              <p class="text-[14px] text-gray-700">Wo fängt man eigentlich an?</p>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
+              <p class="text-[14px] text-gray-700">Was kann man mit KI machen?</p>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <span class="w-7 h-7 rounded-full bg-swiss-orange/15 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
+              <p class="text-[14px] text-gray-700">Welche Tools kann ich nutzen?</p>
+            </div>
           </div>
 
-          <!-- CTA -->
+          <!-- Benefits als Chips - Kompakt -->
+          <div class="mb-6">
+            <p class="text-[12px] text-swiss-orange font-semibold mb-2.5 uppercase tracking-wide">Nach dem Coaching kannst du:</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Websites bauen</span>
+              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">E-Mails automatisieren</span>
+              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Recherche & Entscheidungen</span>
+              <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-[12px] text-gray-700 shadow-sm">Apps programmieren</span>
+            </div>
+          </div>
+
+          <!-- CTA - Prominent -->
           <button
             id="open-modal-hero-mobile"
-            class="w-full bg-swiss-orange text-white font-bold py-4 px-6 text-base transition-all duration-300 active:scale-[0.98] shadow-[0_0_40px_rgba(255,79,0,0.25)]"
+            class="w-full bg-swiss-orange text-white font-bold py-4 px-6 text-base rounded-lg transition-all duration-300 active:scale-[0.98] shadow-[0_0_40px_rgba(255,79,0,0.3)]"
           >
-            <span class="block">Jetzt bewerben!</span>
-            <span class="block text-xs font-normal opacity-90 mt-1">2–3 Minuten · Unverbindliches Kennenlernen</span>
+            <span class="block text-lg">Jetzt bewerben!</span>
+            <span class="block text-xs font-normal opacity-90 mt-1">2–3 Minuten · Unverbindlich</span>
           </button>
 
         </div>
 
-        <!-- DESKTOP HERO -->
-        <div class="hidden sm:block">
+        <!-- DESKTOP HERO - Volle Breite nutzen -->
+        <div class="hidden sm:block max-w-7xl mx-auto">
 
           <!-- Two-Column Layout: Content Left, Marco Right -->
-          <div class="max-w-5xl mx-auto">
-            <div class="grid lg:grid-cols-[1fr,auto] gap-10 lg:gap-16 items-center">
+          <div class="grid lg:grid-cols-[1fr,380px] gap-12 lg:gap-16 items-center px-4 lg:px-8">
 
               <!-- LEFT: Main Content -->
               <div class="text-left">
 
-                <!-- HEADLINE - Bigger, Bolder -->
-                <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight mb-6 text-gray-900">
-                  Eine Ausbildung, die dir<br class="hidden lg:block" />
-                  <span class="text-swiss-orange">verständlich erklärt</span>,<br class="hidden lg:block" />
-                  wie man KI angeht.
+                <!-- HEADLINE - Bigger, Bolder, Flowing -->
+                <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-black leading-[1.1] tracking-tight mb-8 text-gray-900">
+                  Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI angeht.
                 </h1>
 
                 <!-- Fragen-Block - Prominent -->
@@ -202,28 +185,28 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
               </div>
 
-              <!-- RIGHT: Marco Card with Quote -->
+              <!-- RIGHT: Marco Card with Quote - GROSS -->
               <div class="hidden lg:block relative">
                 <!-- Marco Image Card -->
-                <div class="relative bg-white rounded-2xl shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100">
+                <div class="relative bg-white rounded-3xl shadow-2xl shadow-gray-300/50 overflow-hidden border border-gray-100">
                   <img
                     src="/images/marco_new.png"
                     alt="Marco Heer"
-                    class="w-72 h-80 object-cover object-top"
+                    class="w-[340px] h-[420px] object-cover object-top"
                   />
                   <!-- Name Badge -->
-                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-5 pt-12">
-                    <p class="text-white font-bold text-lg">Marco Heer</p>
+                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pt-16">
+                    <p class="text-white font-bold text-xl">Marco Heer</p>
                     <p class="text-white/80 text-sm">KI-Coach & Gründer</p>
                   </div>
                 </div>
 
                 <!-- Quote Card - Overlapping -->
-                <div class="absolute -bottom-6 -left-8 right-4 bg-white rounded-xl shadow-xl border border-swiss-orange/20 p-4">
-                  <p class="text-sm text-gray-700 italic leading-relaxed">
+                <div class="absolute -bottom-8 -left-12 right-2 bg-white rounded-xl shadow-2xl border border-swiss-orange/20 p-5">
+                  <p class="text-base text-gray-700 italic leading-relaxed">
                     „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
                   </p>
-                  <p class="text-xs text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
+                  <p class="text-sm text-swiss-orange font-semibold mt-3">– Coaching Teilnehmer aus 12/2025</p>
                 </div>
               </div>
 

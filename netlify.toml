@@ -9,13 +9,8 @@
   directory = ".netlify/functions"
   included_files = [".netlify/functions/**"]
 
-# SEO: Trailing Slash Normalisierung (vermeidet Duplikate in GSC)
-# Alle URLs mit trailing slash werden auf ohne trailing slash umgeleitet
-[[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 301
-  force = true
+# SEO: Trailing Slash wird von Astro gehandhabt (trailingSlash: 'never' in astro.config.mjs)
+# Netlify-Redirect entfernt da force=true mit SSR kollidiert
 
 # SEO: www zu non-www Redirect (Canonical Domain)
 [[redirects]]

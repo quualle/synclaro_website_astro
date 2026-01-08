@@ -1,0 +1,27 @@
+# robots.txt for synclaro.de
+# SEO-optimiert am 2026-01-08
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://synclaro.de/sitemap-index.xml
+
+# Crawl-delay für respektvolles Crawling
+Crawl-delay: 1
+
+# Blockiere interne API-Routen
+Disallow: /api/
+Disallow: /_astro/
+
+# Blockiere Tracking und interne Seiten
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+
+# Erlaube wichtige Ressourcen
+Allow: /images/
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js

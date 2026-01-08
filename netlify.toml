@@ -9,6 +9,25 @@
   directory = ".netlify/functions"
   included_files = [".netlify/functions/**"]
 
+# SEO: Sitemap Redirects (Astro SSR Mode)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/sitemap-index.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/sitemap-0.xml"
+  to = "/sitemap-0.xml"
+  status = 200
+  force = false
+
 # Redirects
 [[redirects]]
   from = "/mastermind"

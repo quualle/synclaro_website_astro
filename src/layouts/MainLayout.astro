@@ -5,19 +5,66 @@ import UserBehaviorTracker from '../components/UserBehaviorTracker';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Synclaro - Wir befähigen für den Eintritt ins KI-Zeitalter. Coaching, Mastermind und individuelle Software-Lösungen für den Mittelstand." } = Astro.props;
+const {
+  title,
+  description = "KI-Coaching & Automatisierung fur Unternehmer. Synclaro befahigt fur den Eintritt ins KI-Zeitalter mit praxisnahen Schulungen, Mastermind und Software-Losungen.",
+  ogImage = "/images/og-default.jpg",
+  ogType = "website",
+  noindex = false
+} = Astro.props;
 
 const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(currentPath, Astro.site || 'https://synclaro.de').href;
+const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site || 'https://synclaro.de').href;
 
+// SEO: Blog in Navigation hinzugefuegt
 const navLinks = [
   { text: 'Überblick', href: '/' },
   { text: 'Academy', href: '/academy' },
+  { text: 'Blog', href: '/blog' },
   { text: 'Solutions', href: '/solutions' },
   { text: 'Advisory', href: '/advisory' },
   { text: 'Kontakt', href: '/kontakt' },
 ];
+
+// Schema.org Organization
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Synclaro",
+  "url": "https://synclaro.de",
+  "logo": "https://synclaro.de/images/logo.png",
+  "description": "KI-Coaching und Automatisierung fur den Mittelstand. Wir befahigen Unternehmer fur den Eintritt ins KI-Zeitalter.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bayern",
+    "addressCountry": "DE"
+  },
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": ["German"]
+  }
+};
+
+// Schema.org WebSite with SearchAction
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Synclaro",
+  "url": "https://synclaro.de",
+  "description": "KI-Coaching, Mastermind und Automatisierungs-Losungen fur Unternehmer",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Synclaro"
+  }
+};
 
 // Check if a nav link is active (exact match for home, startsWith for others)
 const isActive = (href: string) => {
@@ -32,14 +79,54 @@ const isActive = (href: string) => {
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO: Primary Meta Tags -->
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO: Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Synclaro" />
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- SEO: Additional Meta Tags -->
+    <meta name="author" content="Synclaro" />
+    <meta name="publisher" content="Synclaro" />
+    <meta name="theme-color" content="#f97316" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO: Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    <!-- Fonts: Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Navigation -->
@@ -152,10 +239,10 @@ const isActive = (href: string) => {
               <span class="absolute -bottom-1 left-0 w-8 h-0.5 bg-swiss-orange"></span>
             </h4>
             <ul class="space-y-3">
-              <li><a href="/academy" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Schulungen</a></li>
+              <li><a href="/academy" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Coaching</a></li>
               <li><a href="/solutions" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Automatisierung</a></li>
               <li><a href="/advisory" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Beratung</a></li>
-              <li><a href="/solutions/referenzen" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">Individuelle Use Cases</a></li>
+              <li><a href="/blog" class="text-gray-400 hover:text-swiss-orange transition-colors hover:translate-x-1 inline-block">KI-Blog</a></li>
             </ul>
           </div>
 

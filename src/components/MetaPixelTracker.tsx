@@ -432,175 +432,180 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
 
     // ========== CTA TRACKING SYSTEM ==========
     // Centralized cta_impression + cta_click tracking with sessionStorage deduping
-    console.log('[CTA] Initializing CTA tracking system...')
-
-    const CTA_IMPRESSIONS_KEY = 'synclaro_cta_impressions'
-
-    // Get already-impressed CTAs from sessionStorage
-    function getImpressedCtaIds(): Set<string> {
-      try {
-        const stored = sessionStorage.getItem(CTA_IMPRESSIONS_KEY)
-        return stored ? new Set(JSON.parse(stored)) : new Set()
-      } catch {
-        return new Set()
-      }
-    }
-
-    // Save impressed CTA to sessionStorage
-    function saveImpressedCtaId(ctaId: string) {
-      try {
-        const impressed = getImpressedCtaIds()
-        impressed.add(ctaId)
-        sessionStorage.setItem(CTA_IMPRESSIONS_KEY, JSON.stringify([...impressed]))
-      } catch {
-        // Ignore storage errors
-      }
-    }
-
-    // Check if CTA was already impressed this session
-    function wasCtaImpressed(ctaId: string): boolean {
-      return getImpressedCtaIds().has(ctaId)
-    }
-
-    // Send CTA event to API
-    async function sendCtaEvent(eventType: 'cta_impression' | 'cta_click', ctaId: string, ctaPosition: string, extraData: Record<string, any> = {}) {
-      const payload = {
-        action: eventType,
-        session_id: sessionIdRef.current,
-        visitor_id: visitorIdRef.current,
-        event_payload: {
-          cta_id: ctaId,
-          cta_position: ctaPosition,
-          path: pagePath,
-          ts: Date.now(),
-          scroll_depth: scrollDepthRef.current,
-          viewport_h: window.innerHeight,
-          viewport_w: window.innerWidth,
-          form_variant: 'v3_single_page',
-          user_agent: navigator.userAgent,
-          ...extraData,
-        },
-      }
-
-      try {
-        await fetch('/api/lp-session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        })
-        console.log(`[CTA] ${eventType}: ${ctaId} (session: ${sessionIdRef.current?.slice(-8)})`)
-      } catch (e) {
-        console.error(`[CTA] Failed to send ${eventType}:`, e)
-      }
-    }
-
-    // Track CTA impression (with sessionStorage dedupe)
-    function trackCtaImpression(ctaId: string, ctaPosition: string) {
-      if (wasCtaImpressed(ctaId)) {
-        console.log(`[CTA] Skip impression (already tracked): ${ctaId}`)
-        return
-      }
-      saveImpressedCtaId(ctaId)
-      sendCtaEvent('cta_impression', ctaId, ctaPosition)
-    }
-
-    // Track CTA click (no dedupe - each click counts)
-    function trackCtaClick(ctaId: string, ctaPosition: string, buttonText?: string) {
-      sendCtaEvent('cta_click', ctaId, ctaPosition, { button_text: buttonText })
-    }
-
-    // IntersectionObserver for CTA impressions
-    const ctaObserver = new IntersectionObserver(
-      (entries) => {
-        console.log(`[CTA] IntersectionObserver fired with ${entries.length} entries`)
-        entries.forEach((entry) => {
-          const el = entry.target as HTMLElement
-          const ctaId = el.dataset.ctaId
-          console.log(`[CTA] Entry: ${ctaId}, isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`)
-
-          if (entry.isIntersecting) {
-            const ctaPosition = el.dataset.ctaPosition
-
-            // Check if element is truly visible (not hidden via transform/display)
-            const style = getComputedStyle(el)
-            const rect = el.getBoundingClientRect()
-            const isHidden = style.display === 'none' ||
-                            style.visibility === 'hidden' ||
-                            style.opacity === '0' ||
-                            rect.height === 0
-
-            console.log(`[CTA] Visibility check: ctaId=${ctaId}, ctaPosition=${ctaPosition}, isHidden=${isHidden}`)
-
-            if (ctaId && ctaPosition && !isHidden) {
-              trackCtaImpression(ctaId, ctaPosition)
-            }
-          }
-        })
-      },
-      { threshold: 0.5 }
-    )
-
-    // Observe all CTAs with data-cta-id (except sticky - handled separately)
-    const ctaElements = document.querySelectorAll('[data-cta-id]:not([data-cta-id="sticky_cta"])')
-    console.log(`[CTA] Found ${ctaElements.length} CTA elements to observe:`,
-      [...ctaElements].map(el => (el as HTMLElement).dataset.ctaId))
-    ctaElements.forEach((el) => {
-      ctaObserver.observe(el)
-    })
-
-    // Special handling for sticky CTA - only observe when visible
-    const stickyCtaEl = document.querySelector('[data-cta-id="sticky_cta"]') as HTMLElement
-    let stickyObserved = false
-
-    function updateStickyObservation() {
-      if (!stickyCtaEl) return
-      const container = stickyCtaEl.closest('#sticky-cta-container') as HTMLElement
-      if (!container) return
-
-      const isVisible = container.style.transform === 'translateY(0)' ||
-                       container.style.transform === 'translateY(0px)'
-
-      if (isVisible && !stickyObserved) {
-        stickyObserved = true
-        ctaObserver.observe(stickyCtaEl)
-        console.log('[CTA] Sticky CTA now observed')
-      } else if (!isVisible && stickyObserved) {
-        stickyObserved = false
-        ctaObserver.unobserve(stickyCtaEl)
-        console.log('[CTA] Sticky CTA unobserved')
-      }
-    }
-
-    // MutationObserver to watch for sticky visibility changes
-    const stickyContainer = document.getElementById('sticky-cta-container')
+    // Use window flag to prevent duplicate initialization from React Strict Mode
+    const CTA_TRACKING_FLAG = '__synclaro_cta_tracking_initialized__'
+    let ctaObserver: IntersectionObserver | null = null
     let stickyMutationObserver: MutationObserver | null = null
+    let handleCtaClick: ((e: MouseEvent) => void) | null = null
 
-    if (stickyContainer) {
-      stickyMutationObserver = new MutationObserver(() => {
-        updateStickyObservation()
-      })
-      stickyMutationObserver.observe(stickyContainer, {
-        attributes: true,
-        attributeFilter: ['style']
-      })
-      // Initial check
-      updateStickyObservation()
-    }
+    if (!(window as any)[CTA_TRACKING_FLAG]) {
+      (window as any)[CTA_TRACKING_FLAG] = true
+      console.log('[CTA] Initializing CTA tracking system...')
 
-    // Global click handler for all CTAs
-    const handleCtaClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest('[data-cta-id]') as HTMLElement
-      if (target) {
-        const ctaId = target.dataset.ctaId
-        const ctaPosition = target.dataset.ctaPosition
-        const buttonText = target.textContent?.trim().split('\n')[0] || ''
-        if (ctaId && ctaPosition) {
-          trackCtaClick(ctaId, ctaPosition, buttonText)
+      const CTA_IMPRESSIONS_KEY = 'synclaro_cta_impressions'
+
+      // Get already-impressed CTAs from sessionStorage
+      function getImpressedCtaIds(): Set<string> {
+        try {
+          const stored = sessionStorage.getItem(CTA_IMPRESSIONS_KEY)
+          return stored ? new Set(JSON.parse(stored)) : new Set()
+        } catch {
+          return new Set()
         }
       }
-    }
 
-    document.addEventListener('click', handleCtaClick)
+      // Save impressed CTA to sessionStorage
+      function saveImpressedCtaId(ctaId: string) {
+        try {
+          const impressed = getImpressedCtaIds()
+          impressed.add(ctaId)
+          sessionStorage.setItem(CTA_IMPRESSIONS_KEY, JSON.stringify([...impressed]))
+        } catch {
+          // Ignore storage errors
+        }
+      }
+
+      // Check if CTA was already impressed this session
+      function wasCtaImpressed(ctaId: string): boolean {
+        return getImpressedCtaIds().has(ctaId)
+      }
+
+      // Send CTA event to API
+      async function sendCtaEvent(eventType: 'cta_impression' | 'cta_click', ctaId: string, ctaPosition: string, extraData: Record<string, any> = {}) {
+        const payload = {
+          action: eventType,
+          session_id: sessionIdRef.current,
+          visitor_id: visitorIdRef.current,
+          event_payload: {
+            cta_id: ctaId,
+            cta_position: ctaPosition,
+            path: pagePath,
+            ts: Date.now(),
+            scroll_depth: scrollDepthRef.current,
+            viewport_h: window.innerHeight,
+            viewport_w: window.innerWidth,
+            form_variant: 'v3_single_page',
+            user_agent: navigator.userAgent,
+            ...extraData,
+          },
+        }
+
+        try {
+          await fetch('/api/lp-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+          console.log(`[CTA] ${eventType}: ${ctaId} (session: ${sessionIdRef.current?.slice(-8)})`)
+        } catch (e) {
+          console.error(`[CTA] Failed to send ${eventType}:`, e)
+        }
+      }
+
+      // Track CTA impression (with sessionStorage dedupe)
+      function trackCtaImpression(ctaId: string, ctaPosition: string) {
+        if (wasCtaImpressed(ctaId)) {
+          console.log(`[CTA] Skip impression (already tracked): ${ctaId}`)
+          return
+        }
+        saveImpressedCtaId(ctaId)
+        sendCtaEvent('cta_impression', ctaId, ctaPosition)
+      }
+
+      // Track CTA click (no dedupe - each click counts)
+      function trackCtaClick(ctaId: string, ctaPosition: string, buttonText?: string) {
+        sendCtaEvent('cta_click', ctaId, ctaPosition, { button_text: buttonText })
+      }
+
+      // IntersectionObserver for CTA impressions
+      ctaObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const el = entry.target as HTMLElement
+            const ctaId = el.dataset.ctaId
+
+            if (entry.isIntersecting) {
+              const ctaPosition = el.dataset.ctaPosition
+
+              // Check if element is truly visible (not hidden via transform/display)
+              const style = getComputedStyle(el)
+              const rect = el.getBoundingClientRect()
+              const isHidden = style.display === 'none' ||
+                              style.visibility === 'hidden' ||
+                              style.opacity === '0' ||
+                              rect.height === 0
+
+              if (ctaId && ctaPosition && !isHidden) {
+                trackCtaImpression(ctaId, ctaPosition)
+              }
+            }
+          })
+        },
+        { threshold: 0.5 }
+      )
+
+      // Observe all CTAs with data-cta-id (except sticky - handled separately)
+      const ctaElements = document.querySelectorAll('[data-cta-id]:not([data-cta-id="sticky_cta"])')
+      console.log(`[CTA] Found ${ctaElements.length} CTA elements to observe`)
+      ctaElements.forEach((el) => {
+        ctaObserver!.observe(el)
+      })
+
+      // Special handling for sticky CTA - only observe when visible
+      const stickyCtaEl = document.querySelector('[data-cta-id="sticky_cta"]') as HTMLElement
+      let stickyObserved = false
+
+      function updateStickyObservation() {
+        if (!stickyCtaEl || !ctaObserver) return
+        const container = stickyCtaEl.closest('#sticky-cta-container') as HTMLElement
+        if (!container) return
+
+        const isVisible = container.style.transform === 'translateY(0)' ||
+                         container.style.transform === 'translateY(0px)'
+
+        if (isVisible && !stickyObserved) {
+          stickyObserved = true
+          ctaObserver.observe(stickyCtaEl)
+          console.log('[CTA] Sticky CTA now observed')
+        } else if (!isVisible && stickyObserved) {
+          stickyObserved = false
+          ctaObserver.unobserve(stickyCtaEl)
+          console.log('[CTA] Sticky CTA unobserved')
+        }
+      }
+
+      // MutationObserver to watch for sticky visibility changes
+      const stickyContainer = document.getElementById('sticky-cta-container')
+
+      if (stickyContainer) {
+        stickyMutationObserver = new MutationObserver(() => {
+          updateStickyObservation()
+        })
+        stickyMutationObserver.observe(stickyContainer, {
+          attributes: true,
+          attributeFilter: ['style']
+        })
+        // Initial check
+        updateStickyObservation()
+      }
+
+      // Global click handler for all CTAs
+      handleCtaClick = (e: MouseEvent) => {
+        const target = (e.target as HTMLElement).closest('[data-cta-id]') as HTMLElement
+        if (target) {
+          const ctaId = target.dataset.ctaId
+          const ctaPosition = target.dataset.ctaPosition
+          const buttonText = target.textContent?.trim().split('\n')[0] || ''
+          if (ctaId && ctaPosition) {
+            trackCtaClick(ctaId, ctaPosition, buttonText)
+          }
+        }
+      }
+
+      document.addEventListener('click', handleCtaClick)
+    } else {
+      console.log('[CTA] Already initialized, skipping duplicate setup')
+    }
 
     // ========== CLEANUP ==========
 
@@ -609,10 +614,10 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       clearInterval(heartbeatInterval)
       clearInterval(viewContentInterval)
       window.removeEventListener('scroll', handleScroll)
-      // CTA tracking cleanup
-      ctaObserver.disconnect()
+      // CTA tracking cleanup (only if we initialized it)
+      ctaObserver?.disconnect()
       stickyMutationObserver?.disconnect()
-      document.removeEventListener('click', handleCtaClick)
+      if (handleCtaClick) document.removeEventListener('click', handleCtaClick)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('beforeunload', handleBeforeUnload)
       window.removeEventListener('form_modal_open' as any, handleFormOpen)

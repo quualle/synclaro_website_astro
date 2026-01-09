@@ -209,6 +209,8 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           <div class="pb-8">
             <button
               id="open-modal-hero-mobile"
+              data-cta-id="hero_cta"
+              data-cta-position="hero"
               class="w-full bg-swiss-orange text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 active:scale-[0.98] shadow-lg shadow-swiss-orange/25"
             >
               <span class="block text-lg">Jetzt bewerben</span>
@@ -266,6 +268,8 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                 <!-- CTA - Bigger, More Prominent -->
                 <button
                   id="open-modal-hero"
+                  data-cta-id="hero_cta"
+                  data-cta-position="hero"
                   class="group inline-flex flex-col items-start bg-swiss-orange text-white font-bold py-5 px-10 text-xl rounded-xl transition-all duration-300 hover:shadow-[0_0_60px_rgba(255,79,0,0.3)] hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <span class="flex items-center gap-3">
@@ -501,17 +505,20 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
         </div>
 
-        <!-- CTA -->
+        <!-- CTA - Primary Styling for Mid-Page -->
         <div class="text-center">
           <button
             id="open-modal-transformation"
-            class="group inline-flex items-center gap-2 bg-white border border-swiss-orange/40 text-gray-900 font-semibold py-3.5 px-7 text-sm rounded-xl hover:bg-swiss-orange hover:text-white hover:border-swiss-orange transition-all duration-300"
+            data-cta-id="mid_cta"
+            data-cta-position="mid"
+            class="group inline-flex items-center gap-3 bg-swiss-orange text-white font-bold py-4 px-8 text-base rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,79,0,0.3)] hover:scale-[1.01] active:scale-[0.99]"
           >
-            <span>Passt das zu mir?</span>
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <span>Jetzt bewerben</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
+          <p class="text-gray-400 text-xs mt-3">15 Min. Kennenlernen · Unverbindlich</p>
         </div>
 
       </div>
@@ -754,6 +761,8 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <div class="text-center">
           <button
             id="open-modal-offer"
+            data-cta-id="offer_cta"
+            data-cta-position="offer"
             class="w-full sm:w-auto bg-swiss-orange text-white font-bold py-4 px-8 sm:px-12 text-base sm:text-lg rounded-xl transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,79,0,0.35)] hover:scale-[1.01] active:scale-[0.99]"
           >
             <span class="block">Jetzt bewerben!</span>
@@ -782,6 +791,8 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
         <button
           id="open-modal-final"
+          data-cta-id="final_cta"
+          data-cta-position="final"
           class="w-full sm:w-auto bg-swiss-orange text-white font-bold py-4 px-8 sm:px-12 text-base sm:text-lg rounded-xl transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,79,0,0.35)] hover:scale-[1.01] active:scale-[0.99]"
         >
           <span class="block">Kostenlos Gespräch buchen</span>
@@ -813,11 +824,14 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
 
     <!-- ============================================
-         STICKY MOBILE CTA (Optional)
+         STICKY MOBILE CTA
+         Shows when Hero CTA not visible, hides when modal open
          ============================================ -->
-    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-white/95 backdrop-blur-sm border-t border-gray-100">
+    <div id="sticky-cta-container" class="sm:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-white/95 backdrop-blur-sm border-t border-gray-100" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); transform: translateY(100%); transition: transform 0.3s ease-out;">
       <button
         id="open-modal-sticky"
+        data-cta-id="sticky_cta"
+        data-cta-position="sticky"
         class="w-full bg-swiss-orange text-white font-bold py-3.5 text-sm rounded-xl shadow-lg shadow-swiss-orange/20 active:scale-[0.98] transition-transform"
       >
         Jetzt bewerben!
@@ -1089,29 +1103,51 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         'open-modal-sticky'
       ].map(id => document.getElementById(id)).filter(Boolean);
 
-      // Sticky CTA visibility
-      const stickyCTA = document.querySelector('.fixed.bottom-0');
+      // ============================================
+      // STICKY CTA VISIBILITY (IntersectionObserver)
+      // Shows when Hero CTA not visible, hides when modal open
+      // ============================================
+      const stickyCTA = document.getElementById('sticky-cta-container');
+      const heroCTAMobile = document.getElementById('open-modal-hero-mobile');
+      const heroCTADesktop = document.getElementById('open-modal-hero');
+      let heroCtaVisible = true;
 
-      function updateStickyCTA() {
-        const scrollY = window.scrollY;
-        const heroHeight = window.innerHeight * 0.8;
+      function updateStickyVisibility() {
         const isModalOpen = !modal?.classList.contains('hidden');
+        const isMobile = window.innerWidth < 640; // sm breakpoint
 
-        if (scrollY > heroHeight && !isModalOpen && stickyCTA) {
-          (stickyCTA as HTMLElement).style.transform = 'translateY(0)';
+        if (!heroCtaVisible && !isModalOpen && isMobile && stickyCTA) {
+          stickyCTA.style.transform = 'translateY(0)';
         } else if (stickyCTA) {
-          (stickyCTA as HTMLElement).style.transform = 'translateY(100%)';
+          stickyCTA.style.transform = 'translateY(100%)';
         }
       }
 
-      // Initial state
-      if (stickyCTA) {
-        (stickyCTA as HTMLElement).style.transform = 'translateY(100%)';
-        (stickyCTA as HTMLElement).style.transition = 'transform 0.3s ease-out';
+      // IntersectionObserver for Hero CTA visibility
+      const heroObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            heroCtaVisible = entry.isIntersecting;
+            updateStickyVisibility();
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      // Observe the appropriate hero CTA based on screen size
+      function setupHeroObserver() {
+        heroObserver.disconnect();
+        const isMobile = window.innerWidth < 640;
+        const targetCTA = isMobile ? heroCTAMobile : heroCTADesktop;
+        if (targetCTA) heroObserver.observe(targetCTA);
       }
 
-      window.addEventListener('scroll', updateStickyCTA, { passive: true });
-      updateStickyCTA();
+      setupHeroObserver();
+      window.addEventListener('resize', setupHeroObserver);
+      updateStickyVisibility();
+
+      // NOTE: CTA tracking (cta_impression + cta_click) is handled centrally
+      // in MetaPixelTracker.tsx - no duplicate tracking here
 
       // ============================================
       // FORENSIC TRACKING SYSTEM
@@ -1185,7 +1221,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       function showModal() {
         forensicTracking.onCtaClick();
         modal?.classList.remove('hidden');
-        if (stickyCTA) (stickyCTA as HTMLElement).style.transform = 'translateY(100%)';
+        updateStickyVisibility(); // Hide sticky when modal opens
         document.body.style.overflow = 'hidden';
 
         setTimeout(() => {
@@ -1206,6 +1242,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         setTimeout(() => {
           modal?.classList.add('hidden');
           document.body.style.overflow = '';
+          updateStickyVisibility(); // Re-show sticky if hero not visible
         }, 300);
         forensicTracking.reset();
       }

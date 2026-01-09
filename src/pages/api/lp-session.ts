@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 interface SessionPayload {
-  action: 'create' | 'heartbeat' | 'form_open' | 'form_submit' | 'end' | 'cta_click' | 'modal_rendered' | 'first_interaction' | 'client_error' | 'modal_timeout';
+  action: 'create' | 'heartbeat' | 'form_open' | 'form_submit' | 'end' | 'cta_click' | 'cta_impression' | 'modal_rendered' | 'first_interaction' | 'client_error' | 'modal_timeout';
   session_id: string;
   visitor_id?: string;
   page_path?: string;
@@ -30,6 +30,18 @@ interface SessionPayload {
   interaction_type?: string; // 'field_focus' | 'field_change' | 'tap' | 'selection'
   // Form Version
   form_variant?: 'v1' | 'v2_short' | 'v3_single_page';
+  // CTA Tracking (event_payload for detailed analytics)
+  event_payload?: {
+    cta_id?: string;
+    cta_position?: string;
+    path?: string;
+    ts?: number;
+    scroll_depth?: number;
+    viewport_h?: number;
+    viewport_w?: number;
+    form_variant?: string;
+    button_text?: string;
+  };
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -176,10 +188,11 @@ export const POST: APIRoute = async ({ request }) => {
 
     } else if (data.action === 'cta_click') {
       // Track CTA button click (BEFORE modal renders)
+      // 1. Update session tracking (legacy, for first CTA click timestamp)
       const update = {
         cta_clicked_at: now,
-        viewport_height: data.viewport_height || null,
-        form_variant: data.form_variant || 'v1',
+        viewport_height: data.viewport_height || data.event_payload?.viewport_h || null,
+        form_variant: data.form_variant || data.event_payload?.form_variant || 'v1',
         last_heartbeat: now,
       };
 
@@ -191,7 +204,26 @@ export const POST: APIRoute = async ({ request }) => {
           body: JSON.stringify(update),
         }
       );
-      console.log(`[LP Session] cta_click: session=${data.session_id}`);
+
+      // 2. Also store detailed event in lp_form_events (if event_payload present)
+      if (data.event_payload) {
+        const eventRecord = {
+          session_id: data.session_id,
+          visitor_id: data.visitor_id || null,
+          event_type: 'cta_click',
+          device_type: data.event_payload?.viewport_w && data.event_payload.viewport_w < 768 ? 'mobile' : 'desktop',
+          form_variant: data.event_payload?.form_variant || data.form_variant || null,
+          event_payload: data.event_payload,
+        };
+
+        await fetch(`${supabaseUrl}/rest/v1/lp_form_events`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(eventRecord),
+        });
+      }
+
+      console.log(`[LP Session] cta_click: session=${data.session_id}, cta_id=${data.event_payload?.cta_id || 'legacy'}`);
 
     } else if (data.action === 'modal_rendered') {
       // Track when modal is actually visible and interactable
@@ -267,6 +299,33 @@ export const POST: APIRoute = async ({ request }) => {
         }
       );
       console.log(`[LP Session] modal_timeout: session=${data.session_id}`);
+
+    // ============================================
+    // CTA IMPRESSION TRACKING (to lp_form_events)
+    // ============================================
+    } else if (data.action === 'cta_impression') {
+      // Store cta_impression in lp_form_events for detailed analytics
+      const eventRecord = {
+        session_id: data.session_id,
+        visitor_id: data.visitor_id || null,
+        event_type: 'cta_impression',
+        device_type: data.event_payload?.viewport_w && data.event_payload.viewport_w < 768 ? 'mobile' : 'desktop',
+        form_variant: data.event_payload?.form_variant || data.form_variant || null,
+        event_payload: data.event_payload || null,
+      };
+
+      const response = await fetch(`${supabaseUrl}/rest/v1/lp_form_events`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(eventRecord),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        console.error('[LP Session] cta_impression insert error:', error);
+      } else {
+        console.log(`[LP Session] cta_impression: session=${data.session_id}, cta_id=${data.event_payload?.cta_id}`);
+      }
     }
 
     return new Response(JSON.stringify({ success: true }), {

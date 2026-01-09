@@ -444,6 +444,9 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       console.log('[CTA] Initializing CTA tracking system...')
 
       const CTA_IMPRESSIONS_KEY = 'synclaro_cta_impressions'
+      let ctaObserver: IntersectionObserver
+      let stickyMutationObserver: MutationObserver | null = null
+      let handleCtaClick: (e: MouseEvent) => void
 
       // Get already-impressed CTAs from sessionStorage
       function getImpressedCtaIds(): Set<string> {

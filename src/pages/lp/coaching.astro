@@ -65,6 +65,32 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       .quote-item:nth-child(1) { animation: quote-fade-1 12s infinite; }
       .quote-item:nth-child(2) { animation: quote-fade-2 12s infinite; }
       .quote-item:nth-child(3) { animation: quote-fade-3 12s infinite; }
+
+      /* Scroll Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .animate-on-scroll.animated {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .animate-delay-1 { animation-delay: 0.1s; }
+      .animate-delay-2 { animation-delay: 0.2s; }
+      .animate-delay-3 { animation-delay: 0.3s; }
+      .animate-delay-4 { animation-delay: 0.4s; }
     </style>
   </head>
 
@@ -96,7 +122,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
             <!-- HEADLINE - Dominant, zentriert -->
             <h1 class="text-[1.75rem] font-black leading-[1.12] tracking-tight mb-8 text-gray-900 text-left">
-              Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI wirklich nutzt.
+              Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich und praxisnah</span> zeigt, wie du KI in deinem Alltag wirklich nutzt.
             </h1>
 
             <!-- MARCO - Groß und zentral als Trust-Anker -->
@@ -161,25 +187,21 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             <div class="space-y-3 mb-5">
               <p class="text-[14px] text-gray-800 font-semibold flex items-start gap-2.5">
                 <span class="text-swiss-orange font-bold">?</span>
-                Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
+                Wo fängt man eigentlich an, wenn man KI nicht nur verstehen, sondern auch nutzen will?
               </p>
               <p class="text-[14px] text-gray-800 font-semibold flex items-start gap-2.5">
                 <span class="text-swiss-orange font-bold">?</span>
-                Was kann man mit KI eigentlich machen?
-              </p>
-              <p class="text-[14px] text-gray-800 font-semibold flex items-start gap-2.5">
-                <span class="text-swiss-orange font-bold">?</span>
-                Welche Tools kann ich dafür nutzen?
+                Was kann man mit KI realistisch machen – und was kann man guten Gewissens ignorieren?
               </p>
             </div>
 
             <!-- Benefits - Als Beispiele kennzeichnen -->
             <p class="text-[11px] text-gray-400 text-center mb-2">Beispiele, was du danach kannst:</p>
             <div class="flex flex-wrap gap-1.5 justify-center">
-              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ Websites bauen</span>
-              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ E-Mails automatisieren</span>
-              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ Recherche</span>
-              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ Apps programmieren</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ E-Mails & Abläufe automatisieren</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ Recherche & Entscheidungen</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ Einfache Tools umsetzen</span>
+              <span class="px-2.5 py-1 bg-white rounded-full text-[11px] text-gray-600 font-medium border border-gray-100">✓ Verstehen, was sich lohnt</span>
             </div>
           </div>
 
@@ -189,8 +211,8 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
               id="open-modal-hero-mobile"
               class="w-full bg-swiss-orange text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 active:scale-[0.98] shadow-lg shadow-swiss-orange/25"
             >
-              <span class="block text-lg">Jetzt bewerben!</span>
-              <span class="block text-[11px] font-normal opacity-90 mt-0.5">2–3 Minuten · Unverbindlich</span>
+              <span class="block text-lg">Jetzt bewerben</span>
+              <span class="block text-[11px] font-normal opacity-90 mt-0.5">2–3 Minuten · keine Zahlung · unverbindlich</span>
             </button>
           </div>
 
@@ -207,22 +229,18 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
 
                 <!-- HEADLINE - Bigger, Bolder, Flowing -->
                 <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-black leading-[1.1] tracking-tight mb-8 text-gray-900">
-                  Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich erklärt</span>, wie man KI wirklich nutzt.
+                  Eine Ausbildung, die dir <span class="text-swiss-orange">verständlich und praxisnah</span> zeigt, wie du KI in deinem Alltag wirklich nutzt.
                 </h1>
 
                 <!-- Fragen-Block - Prominent -->
                 <div class="mb-8 space-y-2.5">
                   <p class="text-lg text-gray-600 flex items-start gap-3">
                     <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-                    Wo fängt man eigentlich an, wenn man die KI-Welt verstehen will?
+                    Wo fängt man eigentlich an, wenn man KI nicht nur verstehen, sondern auch nutzen will?
                   </p>
                   <p class="text-lg text-gray-600 flex items-start gap-3">
                     <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-                    Was kann man mit KI eigentlich machen?
-                  </p>
-                  <p class="text-lg text-gray-600 flex items-start gap-3">
-                    <span class="w-7 h-7 rounded-full bg-swiss-orange/10 text-swiss-orange flex items-center justify-center flex-shrink-0 text-sm font-bold">?</span>
-                    Welche Tools kann ich dafür nutzen?
+                    Was kann man mit KI realistisch machen – und was kann man guten Gewissens ignorieren?
                   </p>
                 </div>
 
@@ -231,16 +249,16 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                   <p class="text-xs text-gray-400 mb-2">Beispiele, was du danach kannst:</p>
                   <div class="flex flex-wrap gap-2">
                     <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                      <span class="text-swiss-orange mr-1">✓</span> Websites bauen
+                      <span class="text-swiss-orange mr-1">✓</span> E-Mails & Abläufe automatisieren
                     </span>
                     <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                      <span class="text-swiss-orange mr-1">✓</span> E-Mails automatisieren
+                      <span class="text-swiss-orange mr-1">✓</span> Recherche & Entscheidungen unterstützen
                     </span>
                     <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                      <span class="text-swiss-orange mr-1">✓</span> Recherche & Entscheidungen
+                      <span class="text-swiss-orange mr-1">✓</span> Einfache Tools & Anwendungen umsetzen
                     </span>
                     <span class="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm text-gray-700">
-                      <span class="text-swiss-orange mr-1">✓</span> Apps programmieren
+                      <span class="text-swiss-orange mr-1">✓</span> Verstehen, was sich wirklich lohnt
                     </span>
                   </div>
                 </div>
@@ -251,38 +269,38 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
                   class="group inline-flex flex-col items-start bg-swiss-orange text-white font-bold py-5 px-10 text-xl rounded-xl transition-all duration-300 hover:shadow-[0_0_60px_rgba(255,79,0,0.3)] hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <span class="flex items-center gap-3">
-                    <span>Jetzt bewerben!</span>
+                    <span>Jetzt bewerben</span>
                     <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
-                  <span class="text-sm font-normal opacity-90 mt-1.5">2–3 Minuten · Unverbindlich</span>
+                  <span class="text-sm font-normal opacity-90 mt-1.5">2–3 Minuten · keine Zahlung · unverbindlich</span>
                 </button>
 
               </div>
 
               <!-- RIGHT: Marco Card - GROSS -->
-              <div class="hidden lg:block">
+              <div class="hidden lg:block w-[300px]">
                 <!-- Marco Image Card -->
-                <div class="relative bg-white rounded-3xl shadow-2xl shadow-gray-300/50 overflow-hidden border border-gray-100">
+                <div class="relative bg-white rounded-2xl shadow-2xl shadow-gray-300/50 overflow-hidden border border-gray-100">
                   <img
                     src="/images/marco_new.png"
                     alt="Marco Heer"
-                    class="w-[340px] h-[420px] object-cover object-top"
+                    class="w-full h-[380px] object-cover object-top"
                   />
                   <!-- Name Badge -->
-                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pt-16">
-                    <p class="text-white font-bold text-xl">Marco Heer</p>
+                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-5 pt-14">
+                    <p class="text-white font-bold text-lg">Marco Heer</p>
                     <p class="text-white/80 text-sm">KI-Coach & Gründer</p>
                   </div>
                 </div>
 
-                <!-- Quote Card - UNTER Marco, nicht überlappend -->
-                <div class="mt-6 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl p-5">
-                  <p class="text-base text-gray-700 italic leading-relaxed">
-                    „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
+                <!-- Quote Card - UNTER Marco, passend zur Bildbreite -->
+                <div class="mt-4 bg-gradient-to-r from-swiss-orange/10 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl p-4">
+                  <p class="text-sm text-gray-700 italic leading-relaxed">
+                    „Endlich mal jemand, der KI so erklärt, dass man es wirklich versteht und nutzen kann."
                   </p>
-                  <p class="text-sm text-swiss-orange font-semibold mt-3">– Coaching Teilnehmer aus 12/2025</p>
+                  <p class="text-xs text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer</p>
                 </div>
               </div>
 
@@ -291,9 +309,9 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             <!-- Mobile-only Quote (hidden on lg) -->
             <div class="lg:hidden mt-10 p-5 bg-gradient-to-r from-swiss-orange/5 to-orange-50 border-l-4 border-swiss-orange rounded-r-xl">
               <p class="text-lg font-medium text-gray-800 italic leading-relaxed">
-                „Ich wusste, dass in KI Potenzial steckt. Aber nicht, dass es mein Leben so sehr verändern würde!"
+                „Endlich mal jemand, der KI so erklärt, dass man es wirklich versteht und nutzen kann."
               </p>
-              <p class="text-sm text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer aus 12/2025</p>
+              <p class="text-sm text-swiss-orange font-semibold mt-2">– Coaching Teilnehmer</p>
             </div>
 
           </div>
@@ -308,7 +326,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
          SOCIAL PROOF SECTION - PROMINENT (Chef-KI Vorgabe)
          Kommt DIREKT nach Hero, BEVOR irgendwelche Details
          ============================================ -->
-    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-white via-gray-100 to-white overflow-hidden">
+    <section class="relative py-16 sm:py-24 bg-gray-100 overflow-hidden">
 
       <!-- Background -->
       <div class="absolute inset-0">
@@ -318,7 +336,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-10 sm:mb-14">
+        <div class="text-center mb-10 sm:mb-14 scroll-reveal">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">
             Was Teilnehmer <span class="text-swiss-orange">berichten</span>
           </h2>
@@ -329,7 +347,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
 
           <!-- Testimonial 1: Karl -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
+          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-swiss-orange to-orange-600 flex items-center justify-center text-lg font-bold text-white">K</div>
               <div>
@@ -347,7 +365,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           </div>
 
           <!-- Testimonial 2: Daniela -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
+          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-lg font-bold text-white">D</div>
               <div>
@@ -365,7 +383,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           </div>
 
           <!-- Testimonial 3: Evelyn -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
+          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-lg font-bold text-white">E</div>
               <div>
@@ -383,7 +401,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           </div>
 
           <!-- Testimonial 4: Holger -->
-          <div class="group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
+          <div class="scroll-reveal group relative bg-gradient-to-br from-gray-50 to-gray-100 border border-swiss-orange/30 p-5 sm:p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-swiss-orange/10 hover:-translate-y-1">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-lg font-bold text-white">H</div>
               <div>
@@ -418,7 +436,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       <div class="container mx-auto px-5 sm:px-6 max-w-5xl relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16">
+        <div class="text-center mb-12 sm:mb-16 scroll-reveal">
           <span class="inline-block px-3 py-1.5 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange text-xs tracking-widest uppercase mb-4">
             Die Transformation
           </span>
@@ -433,7 +451,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <!-- Transformation Points -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
 
-          <div class="group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
+          <div class="scroll-reveal group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
             <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-swiss-orange/20">
               <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -445,7 +463,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <div class="group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
+          <div class="scroll-reveal group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
             <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-swiss-orange/20">
               <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -457,7 +475,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <div class="group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
+          <div class="scroll-reveal group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
             <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-swiss-orange/20">
               <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -469,7 +487,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <div class="group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
+          <div class="scroll-reveal group flex gap-4 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-swiss-orange/5">
             <div class="w-12 h-12 flex-shrink-0 bg-swiss-orange/10 border border-swiss-orange/30 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-swiss-orange/20">
               <svg class="w-6 h-6 text-swiss-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -503,12 +521,12 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
     <!-- ============================================
          SO LÄUFT ES AB - Der Prozess
          ============================================ -->
-    <section class="relative py-16 sm:py-24 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
+    <section class="relative py-16 sm:py-24 bg-gray-50 overflow-hidden">
 
       <div class="container mx-auto px-5 sm:px-6 max-w-4xl relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-12 sm:mb-16">
+        <div class="text-center mb-12 sm:mb-16 scroll-reveal">
           <span class="inline-block px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-500 text-xs tracking-widest uppercase mb-4">
             Der Ablauf
           </span>
@@ -520,7 +538,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <!-- Process Steps -->
         <div class="space-y-6 sm:space-y-8">
 
-          <div class="group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
+          <div class="scroll-reveal group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
             <div class="flex-shrink-0">
               <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black rounded-xl flex items-center justify-center shadow-lg shadow-swiss-orange/20 transition-transform duration-300 group-hover:scale-105">1</div>
             </div>
@@ -530,7 +548,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <div class="group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
+          <div class="scroll-reveal group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
             <div class="flex-shrink-0">
               <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black rounded-xl flex items-center justify-center shadow-lg shadow-swiss-orange/20 transition-transform duration-300 group-hover:scale-105">2</div>
             </div>
@@ -540,7 +558,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <div class="group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
+          <div class="scroll-reveal group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
             <div class="flex-shrink-0">
               <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black rounded-xl flex items-center justify-center shadow-lg shadow-swiss-orange/20 transition-transform duration-300 group-hover:scale-105">3</div>
             </div>
@@ -550,7 +568,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
             </div>
           </div>
 
-          <div class="group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
+          <div class="scroll-reveal group flex gap-4 sm:gap-6 p-4 -m-4 rounded-xl transition-all duration-300 hover:bg-white/60">
             <div class="flex-shrink-0">
               <div class="w-10 h-10 sm:w-12 sm:h-12 bg-swiss-orange text-white font-black rounded-xl flex items-center justify-center shadow-lg shadow-swiss-orange/20 transition-transform duration-300 group-hover:scale-105">4</div>
             </div>
@@ -576,7 +594,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
 
           <!-- Text Content -->
-          <div class="order-2 lg:order-1">
+          <div class="order-2 lg:order-1 scroll-reveal">
             <span class="inline-block px-3 sm:px-4 py-2 bg-swiss-orange/10 border border-swiss-orange/30 text-swiss-orange font-mono text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6">
               Über Marco
             </span>
@@ -613,7 +631,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
           </div>
 
           <!-- Visual Element -->
-          <div class="relative order-1 lg:order-2">
+          <div class="relative order-1 lg:order-2 scroll-reveal">
             <!-- Marco Image -->
             <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 to-white border border-swiss-orange/20 rounded-xl">
               <img
@@ -679,7 +697,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
       <div class="container mx-auto px-5 sm:px-6 max-w-4xl relative z-10">
 
         <!-- Section Header -->
-        <div class="text-center mb-10 sm:mb-12">
+        <div class="text-center mb-10 sm:mb-12 scroll-reveal">
           <span class="inline-block px-4 py-2 bg-swiss-orange/20 border border-swiss-orange/40 text-swiss-orange text-xs tracking-widest uppercase mb-5 font-semibold">
             Das Angebot
           </span>
@@ -692,7 +710,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         </div>
 
         <!-- Offer Box -->
-        <div class="bg-white/95 backdrop-blur-sm border border-swiss-orange/15 rounded-3xl shadow-2xl shadow-black/10 p-8 sm:p-10 mb-8">
+        <div class="scroll-reveal bg-white/95 backdrop-blur-sm border border-swiss-orange/15 rounded-3xl shadow-2xl shadow-black/10 p-8 sm:p-10 mb-8">
 
           <h3 class="text-xl sm:text-2xl font-bold mb-8 text-center text-gray-900">Im Paket enthalten:</h3>
 
@@ -753,7 +771,7 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
          ============================================ -->
     <section class="relative py-16 sm:py-20 bg-white overflow-hidden">
 
-      <div class="container mx-auto px-5 sm:px-6 max-w-2xl relative z-10 text-center">
+      <div class="container mx-auto px-5 sm:px-6 max-w-2xl relative z-10 text-center scroll-reveal">
 
         <h2 class="text-2xl sm:text-3xl font-black mb-4">
           Bereit für den nächsten Schritt?
@@ -1710,6 +1728,26 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         .bg-gradient-radial { opacity: 0.15 !important; }
       }
     </style>
+
+    <!-- Scroll Animation Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+          observer.observe(el);
+        });
+      });
+    </script>
 
   </body>
 </html>

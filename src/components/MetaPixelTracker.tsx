@@ -432,14 +432,15 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
 
     // ========== CTA TRACKING SYSTEM ==========
     // Centralized cta_impression + cta_click tracking with sessionStorage deduping
-    // Use window flag to prevent duplicate initialization from React Strict Mode
-    const CTA_TRACKING_FLAG = '__synclaro_cta_tracking_initialized__'
-    let ctaObserver: IntersectionObserver | null = null
-    let stickyMutationObserver: MutationObserver | null = null
-    let handleCtaClick: ((e: MouseEvent) => void) | null = null
+    // Use window-level storage to persist across React re-mounts
+    const CTA_TRACKING_KEY = '__synclaro_cta_tracking__'
 
-    if (!(window as any)[CTA_TRACKING_FLAG]) {
-      (window as any)[CTA_TRACKING_FLAG] = true
+    // Check if already initialized - if so, skip entirely (no cleanup of existing observers)
+    if ((window as any)[CTA_TRACKING_KEY]?.initialized) {
+      console.log('[CTA] Already initialized, reusing existing observers')
+    } else {
+      // Initialize tracking state on window
+      (window as any)[CTA_TRACKING_KEY] = { initialized: true }
       console.log('[CTA] Initializing CTA tracking system...')
 
       const CTA_IMPRESSIONS_KEY = 'synclaro_cta_impressions'
@@ -603,9 +604,8 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       }
 
       document.addEventListener('click', handleCtaClick)
-    } else {
-      console.log('[CTA] Already initialized, skipping duplicate setup')
     }
+    // Note: CTA observers are NOT cleaned up - they persist globally across re-mounts
 
     // ========== CLEANUP ==========
 
@@ -614,10 +614,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       clearInterval(heartbeatInterval)
       clearInterval(viewContentInterval)
       window.removeEventListener('scroll', handleScroll)
-      // CTA tracking cleanup (only if we initialized it)
-      ctaObserver?.disconnect()
-      stickyMutationObserver?.disconnect()
-      if (handleCtaClick) document.removeEventListener('click', handleCtaClick)
+      // Note: CTA observers persist globally - don't disconnect them here
       document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('beforeunload', handleBeforeUnload)
       window.removeEventListener('form_modal_open' as any, handleFormOpen)

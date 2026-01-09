@@ -1247,9 +1247,20 @@ const description = "In 180 Tagen setzt du KI so ein, dass sie dir wirklich Arbe
         isFormOpen: false,
 
         getSessionInfo() {
+          // Ensure session_id exists even if MetaPixelTracker hasn't initialized yet
+          let sessionId = sessionStorage.getItem('meta_session_id');
+          if (!sessionId) {
+            sessionId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            sessionStorage.setItem('meta_session_id', sessionId);
+          }
+          let visitorId = localStorage.getItem('meta_visitor_id');
+          if (!visitorId) {
+            visitorId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            localStorage.setItem('meta_visitor_id', visitorId);
+          }
           return {
-            session_id: sessionStorage.getItem('meta_session_id') || '',
-            visitor_id: localStorage.getItem('meta_visitor_id') || '',
+            session_id: sessionId,
+            visitor_id: visitorId,
             device_type: window.innerWidth < 768 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop',
           };
         },

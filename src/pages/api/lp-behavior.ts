@@ -40,8 +40,8 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const data: LPBehaviorPayload = await request.json();
 
-    const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseUrl = import.meta.env.CRM_SUPABASE_URL || 'https://xmlrqsyzmnuidjsxghco.supabase.co';
+    const supabaseServiceKey = import.meta.env.CRM_SUPABASE_SERVICE_ROLE_KEY;
 
     if (!supabaseUrl || !supabaseServiceKey) {
       console.error('[LP Behavior API] Missing Supabase environment variables');

@@ -98,6 +98,10 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
   const lastHeartbeatRef = useRef<number>(0)
   const sessionCreatedRef = useRef(false)
 
+  // Callback refs - stable references for event handlers
+  const trackSessionRef = useRef<typeof trackSession | null>(null)
+  const trackEventRef = useRef<typeof trackEvent | null>(null)
+
   // ========== GRANULAR SESSION TRACKING (NEW) ==========
 
   const trackSession = useCallback(async (
@@ -194,6 +198,12 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     trackToSupabase(eventName, eventId, supabaseData)
     return eventId
   }, [trackPixelEvent, trackToSupabase])
+
+  // Keep refs in sync with callbacks (prevents stale closures in event handlers)
+  useEffect(() => {
+    trackSessionRef.current = trackSession
+    trackEventRef.current = trackEvent
+  }, [trackSession, trackEvent])
 
   // ========== INITIALIZATION ==========
 
@@ -300,7 +310,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       const now = Date.now()
       if (now - lastHeartbeatRef.current >= HEARTBEAT_INTERVAL_MS) {
         lastHeartbeatRef.current = now
-        trackSession('heartbeat')
+        trackSessionRef.current?.('heartbeat')
       }
     }, HEARTBEAT_INTERVAL_MS)
 
@@ -320,7 +330,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
           scrollDepthRef.current >= 50 &&
           timeOnPageRef.current >= VIEW_CONTENT_THRESHOLD_SECONDS) {
         viewContentSentRef.current = true
-        trackEvent('ViewContent', {
+        trackEventRef.current?.('ViewContent', {
           content_name: 'KI-Coaching Landing Page',
           content_category: 'coaching',
           content_type: 'landing_page'
@@ -339,7 +349,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
           scrollDepthRef.current >= 50 &&
           timeOnPageRef.current >= VIEW_CONTENT_THRESHOLD_SECONDS) {
         viewContentSentRef.current = true
-        trackEvent('ViewContent', {
+        trackEventRef.current?.('ViewContent', {
           content_name: 'KI-Coaching Landing Page',
           content_category: 'coaching',
           content_type: 'landing_page'
@@ -356,7 +366,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
         // Send final heartbeat when tab becomes hidden
-        trackSession('heartbeat')
+        trackSessionRef.current?.('heartbeat')
       }
     }
 
@@ -376,19 +386,20 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     window.addEventListener('beforeunload', handleBeforeUnload)
 
     // ========== FORM EVENTS ==========
+    // Using refs to avoid stale closures when dependencies change
 
     const handleFormOpen = () => {
-      trackSession('form_open')
+      trackSessionRef.current?.('form_open')
     }
 
     const handleLeadEvent = (e: CustomEvent) => {
       const { applicationId } = e.detail || {}
 
       // Track to granular session
-      trackSession('form_submit')
+      trackSessionRef.current?.('form_submit')
 
       // Track to Meta Pixel (existing)
-      trackEvent('Lead', {
+      trackEventRef.current?.('Lead', {
         content_name: 'KI-Coaching Bewerbung',
         content_category: 'coaching',
         currency: 'EUR',
@@ -402,7 +413,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
 
     const handleScheduleEvent = (e: CustomEvent) => {
       const { applicationId, appointmentDatetime } = e.detail || {}
-      trackEvent('Schedule', {
+      trackEventRef.current?.('Schedule', {
         content_name: 'KI-Coaching Termin',
         content_category: 'coaching',
         currency: 'EUR',
@@ -432,7 +443,8 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
       window.removeEventListener('meta_lead' as any, handleLeadEvent)
       window.removeEventListener('meta_schedule' as any, handleScheduleEvent)
     }
-  }, [trackEvent, trackToSupabase, trackSession])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pagePath]) // Only re-run if pagePath changes, callbacks are accessed via refs
 
   return null
 }

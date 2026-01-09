@@ -432,6 +432,7 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
 
     // ========== CTA TRACKING SYSTEM ==========
     // Centralized cta_impression + cta_click tracking with sessionStorage deduping
+    console.log('[CTA] Initializing CTA tracking system...')
 
     const CTA_IMPRESSIONS_KEY = 'synclaro_cta_impressions'
 
@@ -511,10 +512,13 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     // IntersectionObserver for CTA impressions
     const ctaObserver = new IntersectionObserver(
       (entries) => {
+        console.log(`[CTA] IntersectionObserver fired with ${entries.length} entries`)
         entries.forEach((entry) => {
+          const el = entry.target as HTMLElement
+          const ctaId = el.dataset.ctaId
+          console.log(`[CTA] Entry: ${ctaId}, isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`)
+
           if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement
-            const ctaId = el.dataset.ctaId
             const ctaPosition = el.dataset.ctaPosition
 
             // Check if element is truly visible (not hidden via transform/display)
@@ -524,6 +528,8 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
                             style.visibility === 'hidden' ||
                             style.opacity === '0' ||
                             rect.height === 0
+
+            console.log(`[CTA] Visibility check: ctaId=${ctaId}, ctaPosition=${ctaPosition}, isHidden=${isHidden}`)
 
             if (ctaId && ctaPosition && !isHidden) {
               trackCtaImpression(ctaId, ctaPosition)
@@ -535,7 +541,10 @@ export default function MetaPixelTracker({ pagePath }: MetaPixelTrackerProps) {
     )
 
     // Observe all CTAs with data-cta-id (except sticky - handled separately)
-    document.querySelectorAll('[data-cta-id]:not([data-cta-id="sticky_cta"])').forEach((el) => {
+    const ctaElements = document.querySelectorAll('[data-cta-id]:not([data-cta-id="sticky_cta"])')
+    console.log(`[CTA] Found ${ctaElements.length} CTA elements to observe:`,
+      [...ctaElements].map(el => (el as HTMLElement).dataset.ctaId))
+    ctaElements.forEach((el) => {
       ctaObserver.observe(el)
     })
 
